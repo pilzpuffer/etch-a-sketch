@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "Undertale-Title-Back";
+    src: url('./fonts/MonsterFriend2/MonsterFriend2Back.otf') format("opentype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Undertale-Title-Center";
+    src: url('./fonts/MonsterFriend2/MonsterFriend2Center.otf') format("opentype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Undertale-Title-Front";
+    src: url('./fonts/MonsterFriend2/MonsterFriend2Fore.otf') format("opentype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Undertale-Text-Menu";
+    src: 
+        url('./fonts/Determination/DeterminationMonoWeb.woff') format("woff"),
+        url('./fonts/Determination/DTM-Mono.otf') format("opentype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Undertale-Text-Dialogue";
+    src: 
+        url('./fonts/Determination/DeterminationSansWeb.woff') format("woff"),
+        url('./fonts/Determination/DTM-Sans.otf') format("opentype");
+    font-style: normal;
+    font-weight: normal;
+}
