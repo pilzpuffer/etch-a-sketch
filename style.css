@@ -1,24 +1,3 @@
-@font-face {
-    font-family: "Undertale-Title-Back";
-    src: url('./fonts/MonsterFriend2/MonsterFriend2Back.otf') format("opentype");
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "Undertale-Title-Center";
-    src: url('./fonts/MonsterFriend2/MonsterFriend2Center.otf') format("opentype");
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "Undertale-Title-Front";
-    src: url('./fonts/MonsterFriend2/MonsterFriend2Fore.otf') format("opentype");
-    font-style: normal;
-    font-weight: normal;
-}
-
 /* looks best at 16px */
 @font-face {
     font-family: "Undertale-Text-Menu";
@@ -92,6 +71,44 @@ body {
     width: 100vw;
     background-color: var(--background-color);
 }
+
+.content-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+}
+
+.left-section,
+.right-section {
+    width: 12%;
+}
+
+.middle-section {
+    width: 76%;
+}
+
+.title-back,
+.title-center,
+.title-front {
+    font-size: 45px;
+}
+
+.title-back {
+    font-family: "Undertale-Title-Back";
+    color: var(--background-text-color);
+    opacity: 0.5;
+}
+
+.title-center {
+    font-family: "Undertale-Title-Center";
+    color: var(--red)
+}
+
+.title-front {
+    font-family: "Undertale-Title-Front";
+    color:var(--main-text-color)
+}
+
 
 .buttons {
     padding: 10px 10px;

@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./script.js" defer></script>
     <link href="./style.css" rel="stylesheet">
-    <title>Document</title>
+    <link rel="icon" href="./Red_SOUL_sprite.webp">
+    <title>Etch-a-TON: Drawn to Fame</title>
 </head>
 <body>
+    <div class="content-wrapper">
 
-    <div class="buttons">
-        <button id="fight"># fight</button>
-        <button id="act">$ ACT</button>
-        <button id="item">% item</button>
-        <button id="mercy">& mercy</button>
+        <div class="left-section"></div>
+
+        <div class="middle-section">
+
+            <div class="buttons">
+                <button id="fight"># fight</button>
+                <button id="act">$ ACT</button>
+                <button id="item">% item</button>
+                <button id="mercy">& mercy</button>
+            </div>
+        </div>
+
+        <div class="right-section"></div>
+
     </div>
     
     <audio id="battle-theme" src="./music/Undertale OST： 050 - Metal Crusher.mp3" loop="loop"></audio>
@@ -22,6 +33,7 @@
 
     <audio id="button-select" src="./music/battle-button-select.mp3"></audio>
     <audio id="textbox-select" src="./music/textbox-select.mp3"></audio>
+    
     <!-- speech effects work best when set to 0.15 speed (approximately, maybe a bit more/less)
     i'll need to look into how I can achieve the "typewriter" effect to play a random beep for every new 
     on-screen word -->
