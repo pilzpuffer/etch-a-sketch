@@ -19,20 +19,109 @@
     font-weight: normal;
 }
 
+/* looks best at 16px */
 @font-face {
     font-family: "Undertale-Text-Menu";
-    src: 
-        url('./fonts/Determination/DeterminationMonoWeb.woff') format("woff"),
-        url('./fonts/Determination/DTM-Mono.otf') format("opentype");
+    src: url('./fonts/Determination/DeterminationMonoWeb.woff') format("woff"); 
     font-style: normal;
     font-weight: normal;
 }
 
 @font-face {
     font-family: "Undertale-Text-Dialogue";
-    src: 
-        url('./fonts/Determination/DeterminationSansWeb.woff') format("woff"),
-        url('./fonts/Determination/DTM-Sans.otf') format("opentype");
+    src: url('./fonts/Determination/DeterminationSansWeb.woff') format("woff");
     font-style: normal;
     font-weight: normal;
+}
+
+@font-face {
+    font-family: "Undertale-Battle-Text-Dialogue";
+    src: url('./fonts/Dotumche-Pixel/dotumche-pixel.otf') format('opentype');
+}
+
+/*  
+Glyph Cheatsheet
+@ = Double Sans
+& = Mercy Icon
+# = Fight Icon
+$ = Act Icon
+% = Item Icon
+
+uppercase - letters with bigger spacing, tighter spacing -lowercase
+*/
+@font-face {
+    font-family: "Undertale-Text-Buttons";
+    src: 
+        url('./fonts/Mercy/MERCY.otf') format("opentype"),
+        url('./fonts/Mercy/MERCY.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "Undertale-Pixelated";
+    src: url('./fonts/Undertale-Pixel/undertale-pixelated.otf') format("opentype");
+}
+
+/*background-text grey should be used at 50% opacity, used for layering*/
+:root {
+    --red: #FF0000;
+    --orange: #eb8133;
+    --yellow: #fff10a;
+    --button-yellow: #c5bb03;
+    --green: #00C700;
+    --light-blue: #42E2FF;
+    --blue: #003EFF;
+    --purple: #E038E1;
+
+    --main-text-color: #fff;
+    --background-text-color: #888;
+    --background-color: #000;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--background-color);
+}
+
+.buttons {
+    padding: 10px 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons button {
+    display: inline-block;
+    line-height: 1.15;
+    padding: 1px 3px 4px 8px;
+    border: var(--orange) solid 3px;
+    font-family: "Undertale-Text-Buttons";
+    font-size: 43px;
+    color: var(--orange);
+    background-color: var(--background-color);
+}
+
+#act {
+    padding: 1px 0px 4px 12px;
+}
+
+#item {
+    padding: 1px 8px 4px 12px;
+}
+
+.buttons :hover {
+    color: var(--button-yellow);
+    border: var(--button-yellow) solid 3px;
 }
