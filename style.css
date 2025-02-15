@@ -16,6 +16,8 @@
 @font-face {
     font-family: "Undertale-Battle-Text-Dialogue";
     src: url('./fonts/Dotumche-Pixel/dotumche-pixel.otf') format('opentype');
+    font-style: normal;
+    font-weight: normal;
 }
 
 /*  
@@ -76,69 +78,144 @@ body {
     display: flex;
     width: 100vw;
     height: 100%;
+    min-width: 800px;
 }
 
 .left-section,
 .right-section {
-    width: 12%;
+    width: 15%;
 }
 
 .middle-section {
-    width: 76%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 70%;
 }
 
-.title-back,
-.title-center,
-.title-front {
-    font-size: 45px;
+.textbox {
+    width: 100%;
+    height: 200px;
+    padding: 20px 60px;
+    border: var(--main-text-color) solid 5px;
+
+    font-family: "Undertale-Text-Dialogue";
+    color: var(--main-text-color);
+    font-size: 40px;
 }
 
-.title-back {
-    font-family: "Undertale-Title-Back";
-    color: var(--background-text-color);
-    opacity: 0.5;
+.stats,
+.main-info,
+.health-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.title-center {
-    font-family: "Undertale-Title-Center";
-    color: var(--red)
+.stats {
+    color: var(--main-text-color);
+    font-family: "Undertale-Pixelated";
+    padding: 10px 2px 5px;
+    gap: 5%
 }
 
-.title-front {
-    font-family: "Undertale-Title-Front";
-    color:var(--main-text-color)
+.name {
+    padding-right: 30px;
 }
 
+.hp {
+    font-family: "Undertale-Text-Dialogue";
+    display: inline-block;
+    line-height: 0.8;
+    font-size: 20px;
+    padding-right: 8px;
+}
 
-.buttons {
-    padding: 10px 10px;
+.hp-bar {
+    margin-top: 4px;
+    display: flex;
+    width: 30px;
+    height: 23px;
+}
+
+#red {
+    background-color: var(--red);
+    width: 0%;
+}
+
+#yellow {
+    background-color: var(--yellow);
+    width: 100%;
+}
+
+.hp-numbers {
+    padding-left: 15px;
 }
 
 .buttons {
     display: flex;
-    justify-content: space-around;
+    padding: 10px 10px;
+    justify-content: space-between;
+    gap: 10%;
+    
 }
 
 .buttons button {
     display: inline-block;
     line-height: 1.15;
-    padding: 1px 3px 4px 8px;
+    height: 60.44px;
+    padding: 1px 3px 4px 10px;
     border: var(--orange) solid 3px;
     font-family: "Undertale-Text-Buttons";
     font-size: 43px;
     color: var(--orange);
     background-color: var(--background-color);
+    flex-shrink: 0;
 }
 
 #act {
-    padding: 1px 0px 4px 12px;
+    padding: 1px 0px 4px 14px;
 }
 
 #item {
-    padding: 1px 8px 4px 12px;
+    padding: 1px 8px 4px 14px;
 }
 
 .buttons :hover {
     color: var(--button-yellow);
     border: var(--button-yellow) solid 3px;
+}
+
+
+@media screen and (max-width: 1500px){
+    .middle-section{
+        width: 75%
+    }
+
+    .left-section,
+    .right-section {
+        width: 12.5%;
+    }
+}
+
+
+@media screen and (max-width: 1200px){
+    .buttons {
+        gap: 5%;
+    }
+
+    .middle-section{
+        width: 80%
+    }
+
+    .left-section,
+    .right-section {
+        width: 10%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .buttons {
+        gap: 1%;
+    }
 }
