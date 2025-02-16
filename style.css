@@ -79,6 +79,7 @@ body {
     width: 100vw;
     height: 100%;
     min-width: 800px;
+    min-height: 900px;
 }
 
 .left-section,
@@ -86,7 +87,7 @@ body {
     width: 15%;
 }
 
-.middle-section {
+.center-section {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -94,22 +95,67 @@ body {
 }
 
 .top-part {
-    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 70%;
+}
+
+.middle-part {
+    height: 20%;
+    margin-bottom: 10px;
 }
 
 .bottom-part {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 50%;
+    height: 10%;
+}
+
+.head,
+.body {
+    display: flex;
+    flex-direction: row;
+
+    border: var(--main-text-color) solid 8px;
+}
+
+.head {
+    height: 60%;
+    width: 100%; 
+}
+
+.body {
+    justify-content: space-around;
+    align-items: center;
+
+    width: 50%;
+    height: 120px;
+
+    border-top: var(--background-color) solid 8px;
+    object-fit: contain;
+    margin-top: -8px;
+}
+
+.body img {
+    height: 60%;
+    width: auto;
+}
+
+.leg {
+    width: 23px;
+    height: 58px;
+    background-color: var(--main-text-color);
+    margin-bottom: 1%;
 }
 
 .textbox {
     width: 100%;
-    height: 200px;
+    height: 100%;
     padding: 20px 60px;
     border: var(--main-text-color) solid 5px;
-
     font-family: "Undertale-Text-Dialogue";
     color: var(--main-text-color);
     font-size: 40px;
@@ -126,7 +172,8 @@ body {
 .stats {
     color: var(--main-text-color);
     font-family: "Undertale-Pixelated";
-    padding: 10px 2px 5px;
+    font-size: 18px;
+    padding: 10px 2px 0px;
     gap: 5%
 }
 
@@ -139,13 +186,13 @@ body {
     display: inline-block;
     line-height: 0.8;
     font-size: 20px;
-    padding-right: 8px;
+    padding: 3px 8px 0px 0px;
 }
 
 .hp-bar {
     margin-top: 4px;
     display: flex;
-    width: 30px;
+    width: 28px;
     height: 23px;
 }
 
@@ -167,8 +214,7 @@ body {
     display: flex;
     padding: 10px 0px;
     justify-content: space-between;
-    gap: 10%;
-    
+    gap: 10%;   
 }
 
 .buttons button {
@@ -197,9 +243,23 @@ body {
     border: var(--button-yellow) solid 3px;
 }
 
+@media screen and (max-height: 1000px){
+    .top-part {
+        height: 65%;
+    }
+    
+    .middle-part {
+        height: 23%;
+    }
+    
+    .bottom-part {
+        height: 12%;
+    }
+}
+
 @media screen and (min-width: 2300px){
-    .middle-section{
-        width: 60%;
+    .center-section{
+        width: 60%;  
     }
 
     .left-section,
@@ -209,18 +269,18 @@ body {
 }
 
 @media screen and (min-width: 2100px){
-    .middle-section{
-        width: 65%
+    .center-section{
+        width: 60%
     }
 
     .left-section,
     .right-section {
-        width: 17.5%;
+        width: 20%;
     }
 }
 
 @media screen and (max-width: 1500px){
-    .middle-section{
+    .center-section{
         width: 75%
     }
 
@@ -236,7 +296,7 @@ body {
         gap: 5%;
     }
 
-    .middle-section{
+    .center-section{
         width: 80%
     }
 
