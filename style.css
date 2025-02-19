@@ -148,7 +148,7 @@ body {
     justify-content: space-around;
     align-items: center;
 
-    width: 30%;
+    width: 40%;
     height: 120px;
 
     border-top: var(--background-color) solid 6px;
@@ -266,12 +266,6 @@ body {
     border: var(--yellow) solid 3px;
 }
 
-.arm-right {  
-    height: 60%;
-    transform: rotate(-25deg);
-    margin-left: -15%;
-}
-
 #mett-a-sketch {
     display: flex;
     flex-direction: row;
@@ -279,19 +273,36 @@ body {
     width: 80%
 }
 
-.visible {
+.newRow {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
 }
 
-.visible2 {
+.innerCells {
     border: var(--background-color) 1px solid;
     background: #fff;
     height: 100%;
     width: 100%;
 }
+
+.arm-space {
+    width: 15%;
+}
+
+#right-arm {
+    position: absolute;
+    margin-left: -11%;
+    margin-top: -2%;
+}
+
+#left-arm {
+    position: absolute;
+    margin-left: 15.5%;
+    margin-top: 3%;
+}
+
 
 @media screen and (max-height: 1000px){
     .top-part {
