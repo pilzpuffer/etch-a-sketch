@@ -303,6 +303,10 @@ body {
     margin-top: 3%;
 }
 
+/* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 
+add breakpoints for that resolution and anything lower 
+
+also I REALLY need to work on button scaling*/
 
 @media screen and (max-height: 1000px){
     .top-part {
