@@ -55,6 +55,9 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     --main-text-color: #fff;
     --background-text-color: #888;
     --background-color: #000;
+
+    --right-hand-position: -3%;
+    --left-hand-position: 2.8%;
 }
 
 html,
@@ -157,7 +160,7 @@ body {
 }
 
 .body img {
-    height: 45%;
+    height: 50%;
     width: auto;
 }
 
@@ -294,13 +297,19 @@ body {
 #right-arm {
     position: absolute;
     margin-left: -11%;
-    margin-top: -2%;
+    margin-top: var(--right-hand-position);
+    
+    width: auto;
+    height: 18%;
 }
 
 #left-arm {
     position: absolute;
-    margin-left: 15.5%;
-    margin-top: 3%;
+    margin-left: 15%;
+    margin-top: var(--left-hand-position);
+
+    width: auto;
+    height: 20%;
 }
 
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 
