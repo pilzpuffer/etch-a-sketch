@@ -47,28 +47,45 @@ function adjustValue(element, operation, amount){
 
     wentUp = false;
 
+    const arms = {
+        left: {
+            upperLimit: 3.8,
+            lowerLimit: 4.8
+        },
+
+        right: {
+            upperLimit: -2,
+            lowerLimit: -1
+        }
+    }
+
+
 let jazzHands = setInterval(function () {
     //may be best to tie this as an event listener for domload event?
+    let leftPosition = getNumber('--left-hand-position');
+    let rightPosition = getNumber('--right-hand-position');
 
-
-    if (getNumber('--left-hand-position') >= 1.9 && getNumber('--right-hand-position') >= -3.9 && !wentUp) {
-        if (getNumber('--left-hand-position') === 1.9 && getNumber('--right-hand-position') === -3.9) {
+    if (leftPosition >= arms["left"]["upperLimit"] && rightPosition >= arms["right"]["upperLimit"] && !wentUp) {
+        if (leftPosition === arms["left"]["upperLimit"] && rightPosition === arms["right"]["upperLimit"]) {
             wentUp = true;
         }
         document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "reduce", 0.1));
         document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "reduce", 0.1)); 
-    } else if (getNumber('--left-hand-position') <= 4.8 && getNumber('--right-hand-position') <= -1 && wentUp){
-        if (getNumber('--left-hand-position') === 4.8 && getNumber('--right-hand-position') === -1) {
+        
+        console.log(`left position is ${leftPosition}`);
+        console.log(`right position is ${rightPosition}`);
+    } else if (leftPosition <= arms["left"]["lowerLimit"] && rightPosition <= arms["right"]["lowerLimit"] && wentUp){
+        if (leftPosition === arms["left"]["lowerLimit"] && rightPosition === arms["right"]["lowerLimit"]) {
             wentUp = false;
         }
         document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "increase", 0.1));
         document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "increase", 0.1));
+
+        console.log(`left position is ${leftPosition}`);
+        console.log(`right position is ${rightPosition}`);
     }
 
-    console.log(`left is ${getNumber('--left-hand-position')}`);
-    console.log(`right is ${getNumber('--right-hand-position')}`);
-
 }
-, 35)
+, 45)
 
 //on button functionality - attack to change the... squarity of the drawing field, mercy to clear it. act for funny fuckery and item to change the drawing mode
