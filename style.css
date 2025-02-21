@@ -56,8 +56,8 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     --background-text-color: #888;
     --background-color: #000;
 
-    --right-hand-position: -3%;
-    --left-hand-position: 2.8%;
+    --right-hand-position: -1%;
+    --left-hand-position: 4.8%;
 }
 
 html,

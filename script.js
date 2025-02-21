@@ -24,7 +24,6 @@ function getNumber(element){
     let prepare = initialCss.slice(0, -1);
     let toNumber = parseFloat(prepare); // toFixed Returns a string
     toNumber = Math.round(toNumber * 10) / 10;
-    console.log(`the number is ${toNumber} and its type is  ${typeof(toNumber)}`);
     return toNumber;
 };
 
@@ -58,8 +57,8 @@ let jazzHands = setInterval(function () {
         }
         document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "reduce", 0.1));
         document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "reduce", 0.1)); 
-    } else if (getNumber('--left-hand-position') <= 2.8 && getNumber('--right-hand-position') <= -3 && wentUp){
-        if (getNumber('--left-hand-position') === 2.8 && getNumber('--right-hand-position') === -3) {
+    } else if (getNumber('--left-hand-position') <= 4.8 && getNumber('--right-hand-position') <= -1 && wentUp){
+        if (getNumber('--left-hand-position') === 4.8 && getNumber('--right-hand-position') === -1) {
             wentUp = false;
         }
         document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "increase", 0.1));
@@ -70,6 +69,6 @@ let jazzHands = setInterval(function () {
     console.log(`right is ${getNumber('--right-hand-position')}`);
 
 }
-, 40)
+, 35)
 
 //on button functionality - attack to change the... squarity of the drawing field, mercy to clear it. act for funny fuckery and item to change the drawing mode
