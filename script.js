@@ -51,10 +51,6 @@ function adjustValue(element, operation, amount){
 let jazzHands = setInterval(function () {
     //may be best to tie this as an event listener for domload event?
 
-    /* left starts at 2.8, right at -3
-    function that brings them up should decrease left to 1.9 and  decrease right to -3.9
-    function that brings them down should increase left back to 2.8 and increase right to -3
-    */
 
     if (getNumber('--left-hand-position') >= 1.9 && getNumber('--right-hand-position') >= -3.9 && !wentUp) {
         if (getNumber('--left-hand-position') === 1.9 && getNumber('--right-hand-position') === -3.9) {
@@ -75,29 +71,5 @@ let jazzHands = setInterval(function () {
 
 }
 , 40)
-
-// const altJazzHands = function () {
-//     let loopedThrough = true;
-//     let ranUp;
-
-//     setTimeout(() => {
-//         if (getNumber('--left-hand-position') === 1.9 && getNumber('--right-hand-position') === -3.8) {
-//             loopedThrough = false;
-//             ranUp = 0;
-//         } else if (getNumber('--left-hand-position') === 2.8 && getNumber('--right-hand-position') === -3 && ranUp > 0) {
-//             loopedThrough = true;
-//         }
-
-//         if (getNumber('--left-hand-position') >= 1.9 && getNumber('--right-hand-position') >= -3.8 && loopedThrough) {
-//             ranUp++;
-//             console.log(ranUp);
-//             document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "reduce", 0.1));
-//             document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "increase", -0.1));
-//         } else {
-//             document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "increase", 0.1));
-//             document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "reduce", -0.1));
-//         }
-//     }, 100)
-// }
 
 //on button functionality - attack to change the... squarity of the drawing field, mercy to clear it. act for funny fuckery and item to change the drawing mode
