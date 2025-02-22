@@ -71,21 +71,28 @@ let jazzHands = setInterval(function () {
         }
         document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "reduce", 0.1));
         document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "reduce", 0.1)); 
-        
-        console.log(`left position is ${leftPosition}`);
-        console.log(`right position is ${rightPosition}`);
     } else if (leftPosition <= arms["left"]["lowerLimit"] && rightPosition <= arms["right"]["lowerLimit"] && wentUp){
         if (leftPosition === arms["left"]["lowerLimit"] && rightPosition === arms["right"]["lowerLimit"]) {
             wentUp = false;
         }
         document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "increase", 0.1));
         document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "increase", 0.1));
-
-        console.log(`left position is ${leftPosition}`);
-        console.log(`right position is ${rightPosition}`);
     }
 
 }
 , 45)
+let waved = true;
+
+let handWave = setInterval(function() {
+    if (waved) {
+        rightArm.src = "./images/mett-sprite/arm-right-1.png";
+        waved = !waved;
+    } else {
+        rightArm.src = "./images/mett-sprite/arm-right-2.png";
+        waved = true;
+    }
+
+    
+}, 315)
 
 //on button functionality - attack to change the... squarity of the drawing field, mercy to clear it. act for funny fuckery and item to change the drawing mode
