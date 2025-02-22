@@ -22,7 +22,7 @@ for (let i = 0; i < fieldSize; i++) {
 function getNumber(element){
     const initialCss = getComputedStyle(document.documentElement).getPropertyValue(element);
     let prepare = initialCss.slice(0, -1);
-    let toNumber = parseFloat(prepare); // toFixed Returns a string
+    let toNumber = parseFloat(prepare); 
     toNumber = Math.round(toNumber * 10) / 10;
     return toNumber;
 };
@@ -48,35 +48,37 @@ function adjustValue(element, operation, amount){
     wentUp = false;
 
     const arms = {
-        left: {
-            upperLimit: 3.8,
-            lowerLimit: 4.8
+        leftY: {
+            upperLimit: 1.8,
+            lowerLimit: 2.8
         },
 
-        right: {
-            upperLimit: -2,
-            lowerLimit: -1
+        rightY: {
+            upperLimit: -4,
+            lowerLimit: -3
         }
     }
+
+   
 
 
 let jazzHands = setInterval(function () {
     //may be best to tie this as an event listener for domload event?
-    let leftPosition = getNumber('--left-hand-position');
-    let rightPosition = getNumber('--right-hand-position');
+    let leftPosition = getNumber('--left-hand-position-Y');
+    let rightPosition = getNumber('--right-hand-position-Y');
 
-    if (leftPosition >= arms["left"]["upperLimit"] && rightPosition >= arms["right"]["upperLimit"] && !wentUp) {
-        if (leftPosition === arms["left"]["upperLimit"] && rightPosition === arms["right"]["upperLimit"]) {
+    if (leftPosition >= arms["leftY"]["upperLimit"] && rightPosition >= arms["rightY"]["upperLimit"] && !wentUp) {
+        if (leftPosition === arms["leftY"]["upperLimit"] && rightPosition === arms["rightY"]["upperLimit"]) {
             wentUp = true;
         }
-        document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "reduce", 0.1));
-        document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "reduce", 0.1)); 
-    } else if (leftPosition <= arms["left"]["lowerLimit"] && rightPosition <= arms["right"]["lowerLimit"] && wentUp){
-        if (leftPosition === arms["left"]["lowerLimit"] && rightPosition === arms["right"]["lowerLimit"]) {
+        document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', "reduce", 0.1));
+        document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', "reduce", 0.1)); 
+    } else if (leftPosition <= arms["leftY"]["lowerLimit"] && rightPosition <= arms["rightY"]["lowerLimit"] && wentUp){
+        if (leftPosition === arms["leftY"]["lowerLimit"] && rightPosition === arms["rightY"]["lowerLimit"]) {
             wentUp = false;
         }
-        document.documentElement.style.setProperty('--left-hand-position', adjustValue('--left-hand-position', "increase", 0.1));
-        document.documentElement.style.setProperty('--right-hand-position', adjustValue('--right-hand-position', "increase", 0.1));
+        document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', "increase", 0.1));
+        document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', "increase", 0.1));
     }
 
 }
@@ -94,5 +96,9 @@ let handWave = setInterval(function() {
 
     
 }, 315)
+
+let sideSwing = setInterval(function() {
+
+}, 270)
 
 //on button functionality - attack to change the... squarity of the drawing field, mercy to clear it. act for funny fuckery and item to change the drawing mode
