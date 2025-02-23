@@ -56,10 +56,23 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     --background-text-color: #888;
     --background-color: #000;
 
-    --right-hand-position-Y: -1%;
-    --right-hand-position-X: -11%;
     --left-hand-position-Y: 4.8%;
+    --right-hand-position-Y: -1%;
+    
+
+    /* left-arm     max-left/right: 27%; center: 15%
+       right-arm    max-right/left:-18%; center:-11%; */
     --left-hand-position-X: 15%;
+    --right-hand-position-X: -11%;
+    
+
+    /* should be raised up to 1.344 at the highest point of the swinging motion */
+    --arm-scaling: 1;
+
+    /* transform: rotate(-5deg) skew(5deg); - slide to the left
+    transform: rotate(5deg) skew(-5deg); - slide to the right */
+    --rotate-value: 0deg;
+    --skew-value: 0deg;
 }
 
 html,
@@ -107,9 +120,6 @@ body {
     align-items: center;
     justify-content: center;
     height: 70%;
-    
-    /* transform: rotate(-5deg) skew(5deg); - slide to the left
-    transform: rotate(5deg) skew(-5deg); - slide to the right */
 }
 
 .middle-part {
@@ -317,9 +327,13 @@ body {
     height: 20%;
 }
 
-/* apply for when the wiggle effect will be in action */
+/* meant to be applied to top-part */
+.body-wiggle {
+    transform: rotate(var(--rotate-value)) skew(var(--skew-value));
+}
+
 .correct-arm {
-    transform: scale(1.344)
+    transform: scale(var(--arm-scaling)); 
 }
 
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 

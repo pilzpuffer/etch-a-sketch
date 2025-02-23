@@ -56,25 +56,33 @@ function adjustValue(element, operation, amount){
         rightY: {
             upperLimit: -4,
             lowerLimit: -3
-        }
+        },
+
+        leftX: {
+            upperLimit: 27,
+            lowerLimit: 15
+        },
+
+        rightX: {
+            upperLimit: -18,
+            lowerLimit: -11
+        },
     }
-
    
-
 
 let jazzHands = setInterval(function () {
     //may be best to tie this as an event listener for domload event?
-    let leftPosition = getNumber('--left-hand-position-Y');
-    let rightPosition = getNumber('--right-hand-position-Y');
+    let leftPositionY = getNumber('--left-hand-position-Y');
+    let rightPositionY = getNumber('--right-hand-position-Y');
 
-    if (leftPosition >= arms["leftY"]["upperLimit"] && rightPosition >= arms["rightY"]["upperLimit"] && !wentUp) {
-        if (leftPosition === arms["leftY"]["upperLimit"] && rightPosition === arms["rightY"]["upperLimit"]) {
+    if (leftPositionY >= arms["leftY"]["upperLimit"] && rightPositionY >= arms["rightY"]["upperLimit"] && !wentUp) {
+        if (leftPositionY === arms["leftY"]["upperLimit"] && rightPositionY === arms["rightY"]["upperLimit"]) {
             wentUp = true;
         }
         document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', "reduce", 0.1));
         document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', "reduce", 0.1)); 
-    } else if (leftPosition <= arms["leftY"]["lowerLimit"] && rightPosition <= arms["rightY"]["lowerLimit"] && wentUp){
-        if (leftPosition === arms["leftY"]["lowerLimit"] && rightPosition === arms["rightY"]["lowerLimit"]) {
+    } else if (leftPositionY <= arms["leftY"]["lowerLimit"] && rightPositionY <= arms["rightY"]["lowerLimit"] && wentUp){
+        if (leftPositionY === arms["leftY"]["lowerLimit"] && rightPositionY === arms["rightY"]["lowerLimit"]) {
             wentUp = false;
         }
         document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', "increase", 0.1));
@@ -97,7 +105,48 @@ let handWave = setInterval(function() {
     
 }, 315)
 
+const bodyWiggle = {
+    rotate: {
+        left: -5,
+        right: 5
+    },
+
+    skew: {
+        left: 5,
+        right: -5
+    }
+}
+
+let wentLeft = false;
+let swingTimes = 5;
+let swingAmount = function(direction, swingTimes) {
+        result = Math.round(((arms[direction]["upperLimit"]- arms[direction]["lowerLimit"])/swingTimes)*10)/10;
+        console.log(result);
+        return result;
+}
+
+//2.4 and 1.4
 let sideSwing = setInterval(function() {
+    let leftPositionX = getNumber('--left-hand-position-X');
+    let rightPositionX = getNumber('--right-hand-position-X');
+   
+
+    if (leftPositionX <= arms["leftX"]["upperLimit"] && rightPositionX >= arms["rightX"]["upperLimit"] && !wentLeft) {
+        if (leftPositionX === arms["leftX"]["upperLimit"] && rightPositionX === arms["rightX"]["upperLimit"]) {
+            wentLeft = true;
+        }
+        document.documentElement.style.setProperty('--left-hand-position-X', adjustValue('--left-hand-position-X', "increase", swingAmount("leftX", swingTimes)));
+        document.documentElement.style.setProperty('--right-hand-position-X', adjustValue('--right-hand-position-X', "increase", swingAmount("rightX", swingTimes))); 
+        
+    } else if (leftPositionX >= arms["leftX"]["lowerLimit"] && rightPositionX <= arms["rightX"]["lowerLimit"] && wentLeft){
+        if (leftPositionX === arms["leftX"]["lowerLimit"] && rightPositionX === arms["rightX"]["lowerLimit"]) {
+            wentLeft = false;
+        }
+        document.documentElement.style.setProperty('--left-hand-position-X', adjustValue('--left-hand-position-X', "reduce", swingAmount("leftX", swingTimes)));
+        document.documentElement.style.setProperty('--right-hand-position-X', adjustValue('--right-hand-position-X', "reduce", swingAmount("rightX", swingTimes)));
+    }
+
+
 
 }, 270)
 
