@@ -41,6 +41,10 @@ function adjustValue(element, operation, amount){
         console.log("Invalid operation");
         return;
     }
+
+    if(element === "--rotate-value" || element === "--skew-value") {
+        return `${result}deg`
+    }
     
     return `${result}%`;
     }
@@ -112,22 +116,35 @@ let handWave = setInterval(function() {
 }, 315)
 
 const bodyWiggle = {
-    rotate: {
-        left: -5,
-        right: 5
+    left: {
+        rotate: -5,
+        skew: 5
     },
 
-    skew: {
-        left: 5,
-        right: -5
+    right: {
+        rotate: 5,
+        skew: -5
     }
 }
 
 let wentLeft = false;
 
-function swingAmount (direction, swingTimes) {
+const mettBody = document.querySelector(".top-part");
+
+function swingAmountArms (direction, swingTimes) {
         result = Math.round(((arms[direction]["upperLimit"]- arms[direction]["lowerLimit"])/swingTimes)*10)/10;
         return result;
+}
+
+/* 
+ok, so to make this easier to get:
+when going left, rotate goes from 0 to -5. when going right - it goes to -5 
+skew goes from 0 to 5 when going left, and then goes to -5 on the right
+we'll need to use adjustValue to achieve this effect
+*/
+function swingAmountBody () {
+    result = Math.round(((bodyWiggle[transform]["upperLimit"]- arms[direction]["lowerLimit"])/swingTimes)*100)/100;
+    return result;
 }
 
 function swingArms(direction, leftSwing, rightSwing) {
@@ -135,14 +152,43 @@ function swingArms(direction, leftSwing, rightSwing) {
     document.documentElement.style.setProperty('--right-hand-position-X', adjustValue('--right-hand-position-X', direction, rightSwing));
 }
 
+//direction - left or right (increase or decrease in the adjust value function)
+function swayBody(direction, swingTimes) {
+    document.documentElement.style.setProperty('--rotate-value', adjustValue('--rotate-value', direction, swingAmountBody));
+    document.documentElement.style.setProperty('--skew-value', adjustValue('--skew-value', direction, swingAmountBody));
+}
+
+// // .body-wiggle {
+// //     transform: rotate(var(--rotate-value)) skew(var(--skew-value));
+// // }
+
+// // .correct-arm {
+// //     transform: scale(var(--arm-scaling)); 
+// // }
+//  /* should be raised up to 1.344 at the highest point of the swinging motion */
+//  --arm-scaling: 1;
+
+//  /* transform: rotate(-5deg) skew(5deg); - slide to the left
+//  transform: rotate(5deg) skew(-5deg); - slide to the right */
+//  --rotate-value: 0deg;
+//  --skew-value: 0deg;
+
+
 let sideSwing = setInterval(function() {
     let leftPositionX = getNumber('--left-hand-position-X');
     let rightPositionX = getNumber('--right-hand-position-X');
+    let rotation = getNumber('--rotate-value');
+    let skew = getNumber('--skew-value');
     
     let swingTimes = 5;
-    let leftSwing = swingAmount("leftX", swingTimes);
-    let rightSwing = swingAmount("rightX", swingTimes);
+    let leftSwing = swingAmountArms("leftX", swingTimes);
+    let rightSwing = swingAmountArms("rightX", swingTimes);
    
+    if (!mettBody.classList.contains("body-wiggle") && !leftArm.classList.contains("correct-arm") && !rightArm.classList.contains("correct-arm")) {
+        mettBody.classList.add("body-wiggle");
+        leftArm.classList.add("correct-arm") ;
+        rightArm.classList.add("correct-arm") ;
+    }
 
     if (leftPositionX <= arms["leftX"]["upperLimit"] && rightPositionX >= arms["rightX"]["upperLimit"] && !wentLeft) {
         if (leftPositionX === arms["leftX"]["upperLimit"] && rightPositionX === arms["rightX"]["upperLimit"]) {
