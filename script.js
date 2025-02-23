@@ -69,24 +69,30 @@ function adjustValue(element, operation, amount){
         },
     }
    
+function moveArms(direction, moveSpeed) {
+    document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', direction, moveSpeed));
+    document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', direction, moveSpeed));
+}
 
 let jazzHands = setInterval(function () {
     //may be best to tie this as an event listener for domload event?
     let leftPositionY = getNumber('--left-hand-position-Y');
     let rightPositionY = getNumber('--right-hand-position-Y');
 
+    let moveSpeed = 0.1;
+
     if (leftPositionY >= arms["leftY"]["upperLimit"] && rightPositionY >= arms["rightY"]["upperLimit"] && !wentUp) {
         if (leftPositionY === arms["leftY"]["upperLimit"] && rightPositionY === arms["rightY"]["upperLimit"]) {
             wentUp = true;
         }
-        document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', "reduce", 0.1));
-        document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', "reduce", 0.1)); 
+        moveArms("reduce", moveSpeed);
+        console.log(`left is ${leftPositionY}`);
+        console.log(`right is ${rightPositionY}`);
     } else if (leftPositionY <= arms["leftY"]["lowerLimit"] && rightPositionY <= arms["rightY"]["lowerLimit"] && wentUp){
         if (leftPositionY === arms["leftY"]["lowerLimit"] && rightPositionY === arms["rightY"]["lowerLimit"]) {
             wentUp = false;
         }
-        document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', "increase", 0.1));
-        document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', "increase", 0.1));
+        moveArms("increase", moveSpeed);
     }
 
 }
@@ -118,36 +124,38 @@ const bodyWiggle = {
 }
 
 let wentLeft = false;
-let swingTimes = 5;
-let swingAmount = function(direction, swingTimes) {
+
+function swingAmount (direction, swingTimes) {
         result = Math.round(((arms[direction]["upperLimit"]- arms[direction]["lowerLimit"])/swingTimes)*10)/10;
-        console.log(result);
         return result;
 }
 
-//2.4 and 1.4
+function swingArms(direction, leftSwing, rightSwing) {
+    document.documentElement.style.setProperty('--left-hand-position-X', adjustValue('--left-hand-position-X', direction, leftSwing));
+    document.documentElement.style.setProperty('--right-hand-position-X', adjustValue('--right-hand-position-X', direction, rightSwing));
+}
+
 let sideSwing = setInterval(function() {
     let leftPositionX = getNumber('--left-hand-position-X');
     let rightPositionX = getNumber('--right-hand-position-X');
+    
+    let swingTimes = 5;
+    let leftSwing = swingAmount("leftX", swingTimes);
+    let rightSwing = swingAmount("rightX", swingTimes);
    
 
     if (leftPositionX <= arms["leftX"]["upperLimit"] && rightPositionX >= arms["rightX"]["upperLimit"] && !wentLeft) {
         if (leftPositionX === arms["leftX"]["upperLimit"] && rightPositionX === arms["rightX"]["upperLimit"]) {
             wentLeft = true;
         }
-        document.documentElement.style.setProperty('--left-hand-position-X', adjustValue('--left-hand-position-X', "increase", swingAmount("leftX", swingTimes)));
-        document.documentElement.style.setProperty('--right-hand-position-X', adjustValue('--right-hand-position-X', "increase", swingAmount("rightX", swingTimes))); 
+        swingArms("increase", leftSwing, rightSwing);
         
     } else if (leftPositionX >= arms["leftX"]["lowerLimit"] && rightPositionX <= arms["rightX"]["lowerLimit"] && wentLeft){
         if (leftPositionX === arms["leftX"]["lowerLimit"] && rightPositionX === arms["rightX"]["lowerLimit"]) {
             wentLeft = false;
         }
-        document.documentElement.style.setProperty('--left-hand-position-X', adjustValue('--left-hand-position-X', "reduce", swingAmount("leftX", swingTimes)));
-        document.documentElement.style.setProperty('--right-hand-position-X', adjustValue('--right-hand-position-X', "reduce", swingAmount("rightX", swingTimes)));
+        swingArms("reduce", leftSwing, rightSwing);
     }
-
-
-
 }, 270)
 
 //on button functionality - attack to change the... squarity of the drawing field, mercy to clear it. act for funny fuckery and item to change the drawing mode
