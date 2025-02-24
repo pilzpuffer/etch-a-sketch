@@ -152,8 +152,10 @@ body {
 
 .head {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: space-around; */
     align-content: center;
+    align-items: center;
     padding-top: 4%;
     height: 60%;
     width: 50%; 
@@ -300,6 +302,23 @@ body {
     background: #fff;
     height: 100%;
     width: 100%;
+}
+
+#mouth {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 25%;
+    height: 10%;
+    margin-top: 5%;
+    z-index: 2;
+    
+}
+
+#mouth > div {
+    background-color: var(--main-text-color);
+    width: 22%;
+    height: 100%;
 }
 
 .arm-space {
