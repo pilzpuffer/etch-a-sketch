@@ -169,7 +169,7 @@ body {
 
     border-top: var(--background-color) solid 12px;
     object-fit: contain;
-    margin-top: -6px;
+    margin-top: -7px;
 }
 
 .body img {
@@ -306,17 +306,16 @@ body {
 #mouth {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 25%;
+    justify-content: center;
+    gap: 5%;
+    width: 95%;
     height: 8%;
     margin-top: 5%;
-    z-index: 2;
-    
 }
 
 #mouth > div {
     background-color: var(--main-text-color);
-    width: 22%;
+    width: 7%;
     height: 100%;
 }
 
@@ -331,6 +330,7 @@ body {
     
     width: auto;
     height: 18%;
+    z-index: 3;
 }
 
 #left-arm {
