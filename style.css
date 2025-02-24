@@ -56,8 +56,9 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     --background-text-color: #888;
     --background-color: #000;
 
-    --left-hand-position-Y: 4.8%;
-    --right-hand-position-Y: -1%;
+    /* left should be at 1.8 normally and right - at -4 */
+    --left-hand-position-Y: 7.5%; 
+    --right-hand-position-Y: -2%;
     
 
     /* left-arm     center: 15% (without scaling) 27% (with scaling)

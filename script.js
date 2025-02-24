@@ -36,7 +36,7 @@ function adjustValue(element, operation, amount){
     if (operation === "reduce") {
         result = Math.round((properNumber - amount)*10) / 10;
     } else if (operation === "increase") {
-        result = Math.round((properNumber + amount)*10) / 10
+        result = Math.round((properNumber + amount)*10) / 10;
     } else {
         console.log("Invalid operation");
         return;
@@ -53,14 +53,14 @@ function adjustValue(element, operation, amount){
 
     const arms = {
         leftY: {
-            upperLimit: 1.8,
+            upperLimit: 7.5,
             get lowerLimit() {
                 return (this.upperLimit + 1);
             }
         },
 
         rightY: {
-            upperLimit: -4,
+            upperLimit: -2,
             get lowerLimit() {
                 return (this.upperLimit + 1);
             }
@@ -80,6 +80,8 @@ function adjustValue(element, operation, amount){
 function moveArms(direction, moveSpeed) {
     document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', direction, moveSpeed));
     document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', direction, moveSpeed));
+    console.log(`left is ${getNumber('--left-hand-position-Y')}`);
+    console.log(`right is${getNumber('--right-hand-position-Y')}`);
 }
 
 let jazzHands = setInterval(function () {
@@ -102,7 +104,7 @@ let jazzHands = setInterval(function () {
     }
 
 }
-, 45)
+, 40) //45 is optimal speed
 let waved = true;
 
 let handWave = setInterval(function() {
@@ -115,7 +117,7 @@ let handWave = setInterval(function() {
     }
 
     
-}, 315)
+}, 280)
 
 //if changed, left and right skews should be the same number - but the right skew should always be negative
 const bodyWiggle = {
