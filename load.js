@@ -1,12 +1,23 @@
-heart = document.querySelector("#heart")
+const beatAmount = 10;
+let beatCount = 0;
+let heartBeatDone = false;
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    setInterval(function() {
-        
-    })
+    const beatingMotion = setInterval(function() {
+        const heart = document.querySelector("#heart")
+            
+            heart.classList.toggle("beat");
+            beatCount++;
 
-    setTimeout(() => {
-        document.querySelector("#load").classList.toggle("invisible");
-    }, 500);
+            if (beatAmount === beatCount) {
+                heartBeatDone = true;
+                clearInterval(beatingMotion);
+                setTimeout(() => {
+                    document.querySelector("#load").classList.toggle("invisible");
+                }, 1000);
+            }
+    }, 180)
+
+    
 });
