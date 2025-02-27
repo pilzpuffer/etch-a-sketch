@@ -306,7 +306,7 @@ transform: scale(1.5);
 
 .buttons :hover {
     color: var(--yellow);
-    border: var(--yellow) solid 3px;
+    border: var(--yellow) solid 4px;
 }
 
 #mett-a-sketch {

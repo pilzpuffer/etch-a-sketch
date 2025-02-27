@@ -2,7 +2,7 @@ const beatAmount = 10;
 let beatCount = 0;
 let heartBeatDone = false;
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
 
     const beatingMotion = setInterval(function() {
         const heart = document.querySelector("#heart")
