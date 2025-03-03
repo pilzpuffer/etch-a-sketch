@@ -56,9 +56,9 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     --background-text-color: #888;
     --background-color: #000;
 
-    /* left should be at 1.8 normally and right - at -4 */
-    --left-hand-position-Y: 7.5%; 
-    --right-hand-position-Y: -2%;
+    /* left should be at 7 and right and -2.5 - values here and in the arms.leftY and arms.rightY object values should be the same */
+    --left-hand-position-Y: 7%; 
+    --right-hand-position-Y: -2.5%;
     
 
     /* left-arm     center: 15% (without scaling) 30% (with scaling)
@@ -325,7 +325,7 @@ transform: scale(1.5);
 
 .innerCells {
     border: var(--background-color) 1px solid;
-    background: #fff;
+    background: var(--main-text-color);
     height: 100%;
     width: 100%;
 }
@@ -375,6 +375,10 @@ transform: scale(1.5);
 
 .correct-arm {
     transform: scale(var(--arm-scaling)); 
+}
+
+.selected {
+    background: var(--red);
 }
 
 

@@ -4,7 +4,6 @@ const rightArm = document.querySelector('#right-arm');
 
 let fieldSize = 16;
 
-
 for (let i = 0; i < fieldSize; i++) {
     let newRow = document.createElement('div');
     newRow.classList.add("newRow");
@@ -16,7 +15,18 @@ for (let i = 0; i < fieldSize; i++) {
             innerCells.classList.add("innerCells");
             newRow.appendChild(innerCells);
         }
-    
+
+    function drawing (event) {
+        event.target.closest(".innerCells")?.classList.add("selected");
+    }
+
+    sketchField.addEventListener("mousedown", (event) => {
+        sketchField.addEventListener("mouseover", drawing);
+    })
+
+    window.addEventListener("mouseup", (event) => {
+        sketchField.removeEventListener("mouseover", drawing);
+    })
 }
 
 function getNumber(element){
@@ -53,14 +63,14 @@ function adjustValue(element, operation, amount){
 
     const arms = {
         leftY: {
-            upperLimit: 7.5,
+            upperLimit: 7,
             get lowerLimit() {
                 return (this.upperLimit + 1);
             }
         },
 
         rightY: {
-            upperLimit: -2,
+            upperLimit: -2.5,
             get lowerLimit() {
                 return (this.upperLimit + 1);
             }
@@ -80,8 +90,6 @@ function adjustValue(element, operation, amount){
 function moveArms(direction, moveSpeed) {
     document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', direction, moveSpeed));
     document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', direction, moveSpeed));
-    console.log(`left is ${getNumber('--left-hand-position-Y')}`);
-    console.log(`right is${getNumber('--right-hand-position-Y')}`);
 }
 
 let jazzHands = setInterval(function () {
