@@ -3,6 +3,7 @@ const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
 
 let fieldSize = 16;
+let currentClass = "selected";
 
 for (let i = 0; i < fieldSize; i++) {
     let newRow = document.createElement('div');
@@ -17,7 +18,7 @@ for (let i = 0; i < fieldSize; i++) {
         }
 
     function drawing (event) {
-        event.target.closest(".innerCells")?.classList.add("selected");
+        event.target.classList.add(currentClass);
     }
 
     sketchField.addEventListener("mousedown", (event) => {
