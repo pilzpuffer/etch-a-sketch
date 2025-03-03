@@ -88,6 +88,14 @@ body {
     background-color: var(--background-color);
 }
 
+img {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 #load {
     width: 100%;
     height: 100vh;
@@ -228,6 +236,12 @@ transform: scale(1.5);
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .stats {
@@ -281,7 +295,7 @@ transform: scale(1.5);
     gap: 10%;   
 }
 
-.buttons button {
+.buttons .action-button {
     display: inline-block;
     line-height: 1.15;
 
@@ -294,6 +308,12 @@ transform: scale(1.5);
     color: var(--orange);
     background-color: var(--background-color);
     flex-shrink: 0;
+
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #act {
@@ -304,10 +324,12 @@ transform: scale(1.5);
     padding: 1px 8px 4px 14px;
 }
 
-.buttons :hover {
+/* use those "button" hovering css settings in js
+
+label:hover {
     color: var(--yellow);
     border: var(--yellow) solid 4px;
-}
+} */
 
 #mett-a-sketch {
     display: flex;
@@ -471,7 +493,7 @@ also I REALLY need to work on button scaling*/
         height: 60%;
     }
 
-    .buttons button {
+    .buttons .action-button {
         font-size: 300%
     }
 }
@@ -482,7 +504,7 @@ also I REALLY need to work on button scaling*/
         height: 60%
     }
 
-    .buttons button {
+    .buttons .action-button {
         font-size: 300%
     }
 }

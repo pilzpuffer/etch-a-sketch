@@ -2,8 +2,10 @@ const sketchField = document.querySelector('#mett-a-sketch');
 const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
 
-let fieldSize = 16;
-let currentClass = "selected";
+//seems to get laggy at 64
+let fieldSize = 32;
+let currentDrawingColor = "selected";
+let isDrawing = false;
 
 for (let i = 0; i < fieldSize; i++) {
     let newRow = document.createElement('div');
@@ -17,16 +19,18 @@ for (let i = 0; i < fieldSize; i++) {
             newRow.appendChild(innerCells);
         }
 
-    function drawing (event) {
-        event.target.classList.add(currentClass);
-    }
-
-    sketchField.addEventListener("mousedown", (event) => {
-        sketchField.addEventListener("mouseover", drawing);
+    sketchField.addEventListener("mousedown", () => {
+        isDrawing = true;
     })
 
-    window.addEventListener("mouseup", (event) => {
-        sketchField.removeEventListener("mouseover", drawing);
+    window.addEventListener("mouseup", () => {
+        isDrawing = false;
+    })
+
+    sketchField.addEventListener("mouseover", (event) => {
+        if (isDrawing) {
+            event.target.classList.add(currentDrawingColor);
+        }
     })
 }
 
@@ -97,15 +101,14 @@ let jazzHands = setInterval(function () {
     //may be best to tie this as an event listener for domload event?
     let leftPositionY = getNumber('--left-hand-position-Y');
     let rightPositionY = getNumber('--right-hand-position-Y');
-
     let moveSpeed = 0.1;
 
-    if (leftPositionY >= arms["leftY"]["upperLimit"] && rightPositionY >= arms["rightY"]["upperLimit"] && !wentUp) {
+    if (!wentUp && leftPositionY >= arms["leftY"]["upperLimit"] && rightPositionY >= arms["rightY"]["upperLimit"]) {
         if (leftPositionY === arms["leftY"]["upperLimit"] && rightPositionY === arms["rightY"]["upperLimit"]) {
             wentUp = true;
         }
         moveArms("reduce", moveSpeed);
-    } else if (leftPositionY <= arms["leftY"]["lowerLimit"] && rightPositionY <= arms["rightY"]["lowerLimit"] && wentUp){
+    } else if (wentUp && leftPositionY <= arms["leftY"]["lowerLimit"] && rightPositionY <= arms["rightY"]["lowerLimit"]){
         if (leftPositionY === arms["leftY"]["lowerLimit"] && rightPositionY === arms["rightY"]["lowerLimit"]) {
             wentUp = false;
         }
