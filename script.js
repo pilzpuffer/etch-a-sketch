@@ -3,7 +3,7 @@ const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
 
 //seems to get laggy at 64
-let fieldSize = 32;
+let fieldSize = 16;
 let currentDrawingColor = "selected";
 let isDrawing = false;
 
@@ -19,8 +19,10 @@ for (let i = 0; i < fieldSize; i++) {
             newRow.appendChild(innerCells);
         }
 
-    sketchField.addEventListener("mousedown", () => {
+    sketchField.addEventListener("mousedown", (event) => {
         isDrawing = true;
+        
+        event.target.classList.add(currentDrawingColor);
     })
 
     window.addEventListener("mouseup", () => {
@@ -33,6 +35,21 @@ for (let i = 0; i < fieldSize; i++) {
         }
     })
 }
+
+const actionButtons = document.querySelectorAll(".action-button");
+
+actionButtons.forEach((div) => {
+
+    div.addEventListener("mouseover", () => {
+        div.classList.add("button-highlight");
+        console.log("mouse is in!!")
+    })
+
+    div.addEventListener("mouseout", () => {
+        div.classList.remove("button-highlight");
+        console.log("mouse is out??")
+    })
+})
 
 function getNumber(element){
     const initialCss = getComputedStyle(document.documentElement).getPropertyValue(element);

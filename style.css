@@ -286,34 +286,13 @@ transform: scale(1.5);
     padding-left: 15px;
 }
 
-/* need to make buttons even bigger + work on their scaling */
 .buttons {
     height: 80%;
+    width: 100%;
     display: flex;
     padding: 1% 0;
     justify-content: space-between;
-    gap: 10%;   
-}
-
-.buttons .action-button {
-    display: inline-block;
-    line-height: 1.15;
-
-    aspect-ratio: 82/31;
-
-    padding: 1px 3px 4px 10px;
-    border: var(--orange) solid 4px;
-    font-family: "Undertale-Text-Buttons";
-    font-size: 550%;
-    color: var(--orange);
-    background-color: var(--background-color);
-    flex-shrink: 0;
-
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    gap: 5%;   
 }
 
 #act {
@@ -324,12 +303,6 @@ transform: scale(1.5);
     padding: 1px 8px 4px 14px;
 }
 
-/* use those "button" hovering css settings in js
-
-label:hover {
-    color: var(--yellow);
-    border: var(--yellow) solid 4px;
-} */
 
 #mett-a-sketch {
     display: flex;
@@ -403,7 +376,50 @@ label:hover {
     background: var(--red);
 }
 
+.button-highlight {
+    color: var(--yellow);
+    border: var(--yellow) solid 4px;
+} 
 
+.action-button {
+    display: flex;
+    direction: row;
+    justify-content: space-around;
+
+    align-items: center;
+    padding: 5px 8px 15px 15px;
+    /* width: 290px;
+    height: 110px; */
+    aspect-ratio: 277/92;
+    max-height: 100px;
+    gap: 15px;
+
+    border: var(--orange) solid 4px;
+    font-family: "Undertale-Text-Buttons";
+    font-size: 550%;
+    color: var(--orange);
+    background-color: var(--background-color);
+}
+
+#act-button {
+    justify-content: right;
+}
+
+#act-button .button-text {
+    width: 75%;
+}
+
+#item-button {
+    padding: 5px 13px 15px 20px;
+}
+
+.button-symbol {
+    width: 18%;
+}
+
+.button-text {
+    width: 80%;
+}
 
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 
 add breakpoints for that resolution and anything lower 
