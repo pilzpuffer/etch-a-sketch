@@ -376,11 +376,6 @@ transform: scale(1.5);
     background: var(--red);
 }
 
-.button-highlight {
-    color: var(--yellow);
-    border: var(--yellow) solid 4px;
-} 
-
 .action-button {
     display: flex;
     direction: row;
@@ -388,8 +383,6 @@ transform: scale(1.5);
 
     align-items: center;
     padding: 5px 8px 15px 15px;
-    /* width: 290px;
-    height: 110px; */
     aspect-ratio: 277/92;
     max-height: 100px;
     gap: 15px;
@@ -400,6 +393,11 @@ transform: scale(1.5);
     color: var(--orange);
     background-color: var(--background-color);
 }
+
+.button-highlight {
+    border: var(--yellow) solid 4px;
+    color: var(--yellow);
+} 
 
 #act-button {
     justify-content: right;

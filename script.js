@@ -40,13 +40,15 @@ const actionButtons = document.querySelectorAll(".action-button");
 
 actionButtons.forEach((div) => {
 
-    div.addEventListener("mouseover", () => {
-        div.classList.add("button-highlight");
+    div.addEventListener("mouseover", (event) => {
+        event.currentTarget.classList.add("button-highlight");
+
         console.log("mouse is in!!")
     })
 
-    div.addEventListener("mouseout", () => {
-        div.classList.remove("button-highlight");
+    div.addEventListener("mouseout", (event) => {
+        event.currentTarget.classList.remove("button-highlight");
+        
         console.log("mouse is out??")
     })
 })
