@@ -223,7 +223,7 @@ transform: scale(1.5);
 .textbox {
     width: 100%;
     height: 100%;
-    padding: 20px 60px;
+    padding: 20px 60px 20px 0px;
     border: var(--main-text-color) solid 5px;
     font-family: "Undertale-Text-Dialogue";
     color: var(--main-text-color);
@@ -249,9 +249,9 @@ transform: scale(1.5);
     height: 40%;
     color: var(--main-text-color);
     font-family: "Undertale-Pixelated";
-    font-size: 18px;
-    padding: 10px 2px 0px;
-    gap: 5%
+    font-size: 160%;
+    padding: 0px 2px 0px;
+    gap: 15%
 }
 
 .name {
@@ -262,7 +262,7 @@ transform: scale(1.5);
     font-family: "Undertale-Text-Dialogue";
     display: inline-block;
     line-height: 0.8;
-    font-size: 20px;
+    font-size: 120%;
     padding: 3px 8px 0px 0px;
 }
 
@@ -291,7 +291,7 @@ transform: scale(1.5);
     height: 80%;
     width: 100%;
     display: flex;
-    padding: 1% 0;
+    padding: 0.5% 0 1%;
     justify-content: space-between;
     gap: 5%;   
 }
