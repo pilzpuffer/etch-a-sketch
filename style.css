@@ -103,15 +103,24 @@ img {
     position: fixed;
     background: var(--background-color);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 3;
+
+    gap: 5%;
 }
 
 #load img {
     width: 1.8%;
     height: auto;
     transition: all 0.5s ease-in-out;
+}
+
+.start-text {
+    color: var(--background-text-color);
+    font-family: "Undertale-Pixelated";
+    font-size: 160%;
 }
 
 .invisible {
@@ -353,7 +362,7 @@ transform: scale(1.5);
     
     width: auto;
     height: 18%;
-    z-index: 3;
+    z-index: 2;
 }
 
 #left-arm {
@@ -363,6 +372,7 @@ transform: scale(1.5);
 
     width: auto;
     height: 20%;
+    z-index: 2;
 }
 
 .body-wiggle {
