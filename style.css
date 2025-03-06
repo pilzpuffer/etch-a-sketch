@@ -129,9 +129,8 @@ img {
 }
 
 .beat {
-transform: scale(1.5);
+    transform: scale(1.4);
 }
-
 
 .content-wrapper {
     display: flex;

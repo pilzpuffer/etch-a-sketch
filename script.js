@@ -36,22 +36,6 @@ for (let i = 0; i < fieldSize; i++) {
     })
 }
 
-const actionButtons = document.querySelectorAll(".action-button");
-
-actionButtons.forEach((div) => {
-
-    div.addEventListener("mouseover", (event) => {
-        event.currentTarget.classList.add("button-highlight");
-
-        console.log("mouse is in!!")
-    })
-
-    div.addEventListener("mouseout", (event) => {
-        event.currentTarget.classList.remove("button-highlight");
-        
-        console.log("mouse is out??")
-    })
-})
 
 function getNumber(element){
     const initialCss = getComputedStyle(document.documentElement).getPropertyValue(element);
