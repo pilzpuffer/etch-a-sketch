@@ -30,7 +30,6 @@ window.addEventListener('load', () => {
 
         const handleKeyDown = function(event) {
             if (event.code === "Digit2" || event.code === "Enter") {
-                console.log("we got input boys!!");
 
                 window.removeEventListener("keydown", handleKeyDown);
                 heart.classList.remove("beat");

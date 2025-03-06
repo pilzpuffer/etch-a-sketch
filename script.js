@@ -1,6 +1,9 @@
 const sketchField = document.querySelector('#mett-a-sketch');
 const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
+const battleStart = document.querySelector("#battle-start");
+
+const mettBody = document.querySelector(".top-part");
 
 //seems to get laggy at 64
 let fieldSize = 16;
@@ -19,10 +22,12 @@ for (let i = 0; i < fieldSize; i++) {
             newRow.appendChild(innerCells);
         }
 
-    sketchField.addEventListener("mousedown", (event) => {
+    mettBody.addEventListener("mousedown", (event) => {
         isDrawing = true;
         
-        event.target.classList.add(currentDrawingColor);
+        if (event.target.classList.contains("innerCells")) {
+            event.target.classList.add(currentDrawingColor);
+        }
     })
 
     window.addEventListener("mouseup", () => {
@@ -153,7 +158,7 @@ const bodyWiggle = {
 
 let wentLeft = false;
 
-const mettBody = document.querySelector(".top-part");
+
 
 //works best if the number can be divided by 5/10 - else the math kind of breaks since decimals don't end up adding into a whole number
 //if it would be decided that this needs to be adjusted - relevant code would need to be refactored to allow for some degree of
@@ -199,4 +204,21 @@ let sideSwing = setInterval(function() {
     }
 }, 40)
 
-//on button functionality - attack to change the... squarity of the drawing field, mercy to clear it. act for funny fuckery and item to change the drawing mode
+yellowHeart = document.createElement("img");
+yellowHeart.src = "./images/yellow-soul-sprite.png";
+
+const actionButtons = document.querySelectorAll(".action-button");
+
+actionButtons.forEach((div) => {
+
+div.addEventListener("mouseover", (event) => {
+    event.currentTarget.classList.add("button-highlight");
+
+    })
+
+    div.addEventListener("mouseout", (event) => {
+    event.currentTarget.classList.remove("button-highlight");
+    });
+});
+
+//on button functionality - attack to change the density of the drawing field, mercy to clear it. act for for disabling music\stopping animation (wiggle, waving, arm moving) and item to change the drawing colors

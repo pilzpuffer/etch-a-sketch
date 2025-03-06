@@ -225,7 +225,8 @@ img {
     width: 23px;
     height: 58px;
     background-color: var(--main-text-color);
-    margin-bottom: 1%;
+    margin-bottom: 0.7%;
+    margin-top: 1.2%
 }
 
 .textbox {
