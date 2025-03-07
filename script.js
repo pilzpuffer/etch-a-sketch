@@ -76,14 +76,14 @@ function adjustValue(element, operation, amount){
 
     const arms = {
         leftY: {
-            upperLimit: 7,
+            upperLimit: 6.5,
             get lowerLimit() {
                 return (this.upperLimit + 1);
             }
         },
 
         rightY: {
-            upperLimit: -2.5,
+            upperLimit: -3,
             get lowerLimit() {
                 return (this.upperLimit + 1);
             }
@@ -204,20 +204,34 @@ let sideSwing = setInterval(function() {
     }
 }, 40)
 
-yellowHeart = document.createElement("img");
-yellowHeart.src = "./images/yellow-soul-sprite.png";
-
 const actionButtons = document.querySelectorAll(".action-button");
+// const fight = document.querySelector("#fight-symbol");
+// const act = document.querySelector("#act-symbol");
+// const item = document.querySelector("#item-symbol");
+// const mercy = document.querySelector("#mercy-symbol");
+
+const symbols = {
+    fight: "#",
+    act: "$",
+    item: "%",
+    mercy: "&"
+}
+
 
 actionButtons.forEach((div) => {
-
+    
 div.addEventListener("mouseover", (event) => {
     event.currentTarget.classList.add("button-highlight");
+
+    event.currentTarget.firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
 
     })
 
     div.addEventListener("mouseout", (event) => {
     event.currentTarget.classList.remove("button-highlight");
+    
+    let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
+    event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
     });
 });
 

@@ -56,9 +56,9 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     --background-text-color: #888;
     --background-color: #000;
 
-    /* left should be at 7 and right and -2.5 - values here and in the arms.leftY and arms.rightY object values should be the same */
-    --left-hand-position-Y: 7%; 
-    --right-hand-position-Y: -2.5%;
+    /* left should be at 6.5 and right and -3 - values here and in the arms.leftY and arms.rightY object values should be the same */
+    --left-hand-position-Y: 6.5%; 
+    --right-hand-position-Y: -3%;
     
 
     /* left-arm     center: 15% (without scaling) 30% (with scaling)
@@ -70,6 +70,8 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
 
     --rotate-value:0deg;
     --skew-value: 0deg;
+
+    --heart-size: 44px;
 }
 
 html,
@@ -393,6 +395,7 @@ img {
     justify-content: space-around;
 
     align-items: center;
+    align-content: center;
     padding: 5px 8px 15px 15px;
     aspect-ratio: 277/92;
     max-height: 100px;
@@ -403,6 +406,7 @@ img {
     font-size: 550%;
     color: var(--orange);
     background-color: var(--background-color);
+    flex-grow: 0;
 }
 
 .button-highlight {
@@ -424,10 +428,18 @@ img {
 
 .button-symbol {
     width: 18%;
+    pointer-events: none;
 }
 
 .button-text {
     width: 80%;
+}
+
+
+#yellow-heart{
+    width: var(--heart-size);
+    height: auto;
+    padding-bottom: 25%;
 }
 
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 

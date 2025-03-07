@@ -5,12 +5,8 @@ window.addEventListener('load', () => {
     const load = document.querySelector("#load");
     const heart = document.querySelector("#heart");
     const fightSymbol = document.querySelector("#fight-symbol");
-    const actSymbol = document.querySelector("#act-symbol");
-    const itemSymbol = document.querySelector("#item-symbol");
-    const mercySymbol = document.querySelector("#mercy-symbol");
-
-    const heartBreak = document.querySelector("#battle-start-heartbreak");
     
+    const heartBreak = document.querySelector("#battle-start-heartbreak");
     const battleStart = document.querySelector("#battle-start");
     const battleTheme = document.querySelector("#battle-theme");
     
