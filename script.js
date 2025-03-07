@@ -207,10 +207,13 @@ battleStart.addEventListener("ended", function() {
 
 
 const actionButtons = document.querySelectorAll(".action-button");
-// const fight = document.querySelector("#fight-symbol");
-// const act = document.querySelector("#act-symbol");
-// const item = document.querySelector("#item-symbol");
-// const mercy = document.querySelector("#mercy-symbol");
+const buttonSelect = document.querySelector("#button-select");
+buttonSelect.volume = sameVolume * 2;
+
+const playerButtonSelection = function(event) {
+event.currentTarget.classList.add("button-highlight");
+event.currentTarget.firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
+};
 
 const symbols = {
     fight: "#",
@@ -220,20 +223,37 @@ const symbols = {
 }
 
 
+
+//for this to work properly with keyboard input as well, at least one of the buttons should be selected at all times
+//mouseout check needs to have additional checks to see if the mouse/focus was transferred to a new element before reverting a button to its default state
+
 actionButtons.forEach((div) => {
     
 div.addEventListener("mouseover", (event) => {
-    event.currentTarget.classList.add("button-highlight");
-    event.currentTarget.firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
-
+    if (!event.currentTarget.classList.contains("button-highlight")) {
+        playerButtonSelection(event);
+        buttonSelect.play();
+    }
     })
 
-    div.addEventListener("mouseout", (event) => {
-    event.currentTarget.classList.remove("button-highlight");
+    // div.addEventListener("mouseout", (event) => {
+    // event.currentTarget.classList.remove("button-highlight");
     
-    let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
-    event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
-    });
+    // let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
+    // event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
+    // });
+
+    div.addEventListener("keydown", (event) => {
+        if (event.code === "ArrowRight" || event.code === "KeyD") {
+            for (const entry of actionButtons.entries()) {
+                if (entry.classList.contains("button-highlight")) {
+                    console.log(entry);
+                }
+              }
+        } else if (event.code === "ArrowLeft" || event.code === "KeyA") {
+            console.log("going left");
+        }
+    })
 });
 
 //on button functionality - attack to change the density of the drawing field, mercy to clear it. act for for disabling music\stopping animation (wiggle, waving, arm moving) and item to change the drawing colors

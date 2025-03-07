@@ -63,6 +63,10 @@ window.addEventListener('load', () => {
                         ).onfinish = () => {
                             heart.remove();
                             battleStart.addEventListener("ended", function() {
+
+                                actionButtons[0].classList.add("button-highlight");
+                                actionButtons[0].firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
+
                                 setTimeout(() => {
                                     battleTheme.play();
                                     load.remove();

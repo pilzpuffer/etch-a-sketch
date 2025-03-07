@@ -433,6 +433,7 @@ img {
 
 .button-text {
     width: 80%;
+    pointer-events: none;
 }
 
 
