@@ -1,5 +1,12 @@
 # etch-a-sketch
 
+Project notes:
+
+Initially, I've planned to add keyboard navigation as an option as well to better imitate Undertale's style of gameplay, but decided that logic required to implement that is a bit beyond me for the moment. Plus all this project already seems to be wayy beyond what the initial task required of it - thus, I wanted to complete it for now to be able to proceed with the course.
+
+But in the future I plan to revisit this project and add that functionality. 
+
+
 Acknowledgements/Thank-Yous:
 
 I'm greatly thankful to my girlfriend for giving me feedback/valuable hints on how the visuals/functionality of this project could be improved. 

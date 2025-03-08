@@ -7,7 +7,7 @@ const mettBody = document.querySelector(".top-part");
 
 //seems to get laggy at 64
 let fieldSize = 16;
-let currentDrawingColor = "selected";
+let currentDrawingColor = "red";
 let isDrawing = false;
 
 for (let i = 0; i < fieldSize; i++) {
@@ -222,6 +222,7 @@ const symbols = {
 }
 
 battleStart.addEventListener("ended", function() {
+    const allCells = document.querySelectorAll(".innerCells");
 
     actionButtons.forEach((div) => {
     
@@ -230,13 +231,34 @@ battleStart.addEventListener("ended", function() {
                 playerButtonSelection(event);
                 buttonSelect.play();
             }
+
+            event.currentTarget.addEventListener("click", (event) => {
+                let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
+                
+                if (currentButton === "fight") {
+                    console.log("fight?");
+                    
+                } else if (currentButton === "act") {
+
+                } else if (currentButton === "item") {
+
+                } else if (currentButton === "mercy") {
+                    //will need to re-think this logic when multiple colors will be in play
+                    allCells.forEach((div) => {
+                        console.log("something is happening");
+                        div.classList.remove(currentDrawingColor);
+                    })
+                }
+
+            })
+
             })
 
         div.addEventListener("mouseout", (event) => {
-        event.currentTarget.classList.remove("button-highlight");
-        
-        let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
-        event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
+            event.currentTarget.classList.remove("button-highlight");
+            
+            let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
+            event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
         });
 });
 })

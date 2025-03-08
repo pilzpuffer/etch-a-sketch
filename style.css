@@ -337,6 +337,7 @@ img {
     width: 100%;
 }
 
+
 #mouth {
     display: flex;
     flex-direction: row;
@@ -385,7 +386,7 @@ img {
     transform: scale(var(--arm-scaling)); 
 }
 
-.selected {
+.red {
     background: var(--red);
 }
 
