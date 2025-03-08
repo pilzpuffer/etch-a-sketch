@@ -2,13 +2,15 @@ const sketchField = document.querySelector('#mett-a-sketch');
 const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
 const battleStart = document.querySelector("#battle-start");
+const allColors = ["red", "blue"];
 
 const mettBody = document.querySelector(".top-part");
 
 //seems to get laggy at 64
 let fieldSize = 16;
-let currentDrawingColor = "red";
+let currentDrawingColor = allColors[0];
 let isDrawing = false;
+let isErasing = false;
 
 for (let i = 0; i < fieldSize; i++) {
     let newRow = document.createElement('div');
@@ -21,25 +23,33 @@ for (let i = 0; i < fieldSize; i++) {
             innerCells.classList.add("innerCells");
             newRow.appendChild(innerCells);
         }
+}
 
     mettBody.addEventListener("mousedown", (event) => {
-        isDrawing = true;
-        
         if (event.target.classList.contains("innerCells")) {
-            event.target.classList.add(currentDrawingColor);
+            if (event.button === 0) {
+                isDrawing = true;
+                event.target.classList.add(currentDrawingColor);
+            } else if (event.button === 2) {
+                event.target.classList.remove(...allColors);
+                isErasing = true;
+            }
+            
         }
     })
 
     window.addEventListener("mouseup", () => {
-        isDrawing = false;
+            isDrawing = false;
+            isErasing = false;
     })
 
     sketchField.addEventListener("mouseover", (event) => {
         if (isDrawing) {
-            event.target.classList.add(currentDrawingColor);
-        }
-    })
-}
+                event.target.classList.add(currentDrawingColor);
+        } else if (isErasing) {
+                event.target.classList.remove(...allColors);
+            }
+        })
 
 battleStart.addEventListener("ended", function() {
     function getNumber(element){
@@ -206,6 +216,7 @@ battleStart.addEventListener("ended", function() {
 })
 
 const actionButtons = document.querySelectorAll(".action-button");
+const textBox = document.querySelector("#textbox");
 const buttonSelect = document.querySelector("#button-select");
 buttonSelect.volume = sameVolume * 2;
 
@@ -239,14 +250,14 @@ battleStart.addEventListener("ended", function() {
                     console.log("fight?");
                     
                 } else if (currentButton === "act") {
-
+                    
                 } else if (currentButton === "item") {
 
                 } else if (currentButton === "mercy") {
-                    //will need to re-think this logic when multiple colors will be in play
+                    
                     allCells.forEach((div) => {
-                        console.log("something is happening");
-                        div.classList.remove(currentDrawingColor);
+                        div.classList.remove(...allColors);
+                        // div.classList.add("innerCells");
                     })
                 }
 
