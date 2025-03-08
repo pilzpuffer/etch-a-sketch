@@ -89,13 +89,7 @@ body {
     height: 100vh;
     width: 100vw;
     background-color: var(--background-color);
-}
 
-img {
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
 
@@ -234,12 +228,25 @@ img {
 #textbox {
     width: 100%;
     height: 100%;
-    padding: 20px 60px;
+    padding: 1.5% 0%;
     border: var(--main-text-color) solid 5px;
     font-family: "Undertale-Text-Dialogue";
     color: var(--main-text-color);
-    font-size: 40px;
+    font-size: 400%;
     flex-shrink: 1.5;
+
+    display: flex;
+    flex-direction: row;
+}
+
+#star-space {
+    width: 5%;
+    padding-left: 1.5%
+}
+
+#text-field {
+    width: 95%;
+    padding-right: 5%;
 }
 
 .stats,
@@ -248,12 +255,6 @@ img {
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 .stats {

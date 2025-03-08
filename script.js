@@ -31,8 +31,8 @@ for (let i = 0; i < fieldSize; i++) {
                 isDrawing = true;
                 event.target.classList.add(currentDrawingColor);
             } else if (event.button === 2) {
-                event.target.classList.remove(...allColors);
                 isErasing = true;
+                event.target.classList.remove(...allColors);
             }
             
         }
@@ -216,7 +216,8 @@ battleStart.addEventListener("ended", function() {
 })
 
 const actionButtons = document.querySelectorAll(".action-button");
-const textBox = document.querySelector("#textbox");
+const textField = document.querySelector("#text-field");
+const starSpace = document.querySelector("#star-space");
 const buttonSelect = document.querySelector("#button-select");
 buttonSelect.volume = sameVolume * 2;
 
@@ -232,6 +233,8 @@ const symbols = {
     mercy: "&"
 }
 
+let buttonClicked = false;
+
 battleStart.addEventListener("ended", function() {
     const allCells = document.querySelectorAll(".innerCells");
 
@@ -244,6 +247,7 @@ battleStart.addEventListener("ended", function() {
             }
 
             event.currentTarget.addEventListener("click", (event) => {
+                buttonClicked = true;
                 let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
                 
                 if (currentButton === "fight") {
@@ -254,22 +258,24 @@ battleStart.addEventListener("ended", function() {
                 } else if (currentButton === "item") {
 
                 } else if (currentButton === "mercy") {
-                    
+                    starSpace.classList.toggle("invisible");
                     allCells.forEach((div) => {
                         div.classList.remove(...allColors);
-                        // div.classList.add("innerCells");
                     })
                 }
 
+                buttonClicked = false;
             })
 
             })
 
         div.addEventListener("mouseout", (event) => {
-            event.currentTarget.classList.remove("button-highlight");
+            if (!buttonClicked) {
+                event.currentTarget.classList.remove("button-highlight");
             
-            let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
-            event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
+                let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
+                event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
+            } 
         });
 });
 })
