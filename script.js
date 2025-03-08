@@ -235,6 +235,34 @@ const symbols = {
 
 let buttonClicked = false;
 
+let createMenuOption = function(optionName, providedText, actionApplied) {
+    let optionName = document.createElement("div");
+    let heartSpace = document.createElement("div");
+    let star = document.createElement("div");
+    let option = document.createElement("div");
+
+    star.textContent = "*";
+
+    optionName.appendChild(heartSpace);
+    optionName.appendChild(star);
+    optionName.appendChild(option);
+
+    optionName.textContent = providedText;
+    textField.appendChild(optionName);
+
+    optionName.addEventListener("mouseover", () => {
+        heartSpace.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
+    })
+
+    optionName.addEventListener("mouseout", () => {
+        heartSpace.innerHTML = "";
+    })
+
+    optionName.addEventListener("click", () => {
+        actionApplied();
+    }) 
+}
+
 battleStart.addEventListener("ended", function() {
     const allCells = document.querySelectorAll(".innerCells");
 
@@ -249,6 +277,7 @@ battleStart.addEventListener("ended", function() {
             event.currentTarget.addEventListener("click", (event) => {
                 buttonClicked = true;
                 let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
+                textField.textContent = "";
                 
                 if (currentButton === "fight") {
                     console.log("fight?");
@@ -259,10 +288,16 @@ battleStart.addEventListener("ended", function() {
 
                 } else if (currentButton === "mercy") {
                     starSpace.classList.toggle("invisible");
+
+                    createMenuOption(spareOption, "Mettaton")
+
                     allCells.forEach((div) => {
                         div.classList.remove(...allColors);
                     })
                 }
+
+                //if user wants to return back to action buttons, they would need to click on the button in "menu" of which they're in at the moment
+                //this will be communicated by the heart symbol
 
                 buttonClicked = false;
             })
