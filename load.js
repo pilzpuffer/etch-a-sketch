@@ -33,6 +33,9 @@ window.addEventListener('load', () => {
                 clearInterval(beatingMotion);
                 heartBreak.play();
                 heartBreak.addEventListener("ended", function() {
+
+                actionButtons[0].classList.add("button-highlight");
+                actionButtons[0].firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
                                 
                 const heartStart = heart.getBoundingClientRect();
                 const heartEnd = fightSymbol.getBoundingClientRect();
@@ -63,10 +66,6 @@ window.addEventListener('load', () => {
                         ).onfinish = () => {
                             heart.remove();
                             battleStart.addEventListener("ended", function() {
-
-                                actionButtons[0].classList.add("button-highlight");
-                                actionButtons[0].firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
-
                                 setTimeout(() => {
                                     battleTheme.play();
                                     load.remove();
