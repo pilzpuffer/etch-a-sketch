@@ -2,7 +2,7 @@ const sketchField = document.querySelector('#mett-a-sketch');
 const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
 const battleStart = document.querySelector("#battle-start");
-const allColors = ["red", "blue"];
+const allColors = ["red", "orange", "yellow", "green", "light-blue", "blue", "purple", "black", "grey"];
 
 const mettBody = document.querySelector(".top-part");
 

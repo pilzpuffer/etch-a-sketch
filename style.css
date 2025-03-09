@@ -419,10 +419,6 @@ body {
     transform: scale(var(--arm-scaling)); 
 }
 
-.red {
-    background: var(--red);
-}
-
 .action-button {
     display: flex;
     direction: row;
@@ -486,9 +482,40 @@ body {
     padding-bottom: 25%;
 }
 
+.red {
+    background: var(--red);
+}
+
+.orange {
+    background: var(--orange);
+}
+
+.yellow {
+    background: var(--yellow);
+}
+
+.green {
+    background: var(--green);
+}
+
+.light-blue {
+    background: var(--light-blue);
+}
 
 .blue {
     background: var(--blue);
+}
+
+.purple {
+    background: var(--purple);
+}
+
+.black {
+    background: var(--background-color);
+}
+
+.grey {
+    background: var(--background-text-color);
 }
 
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 
