@@ -238,7 +238,7 @@ const symbols = {
 const gameState = {
     actionButtonClicked: false,
     menuOptionConfirmed: false,
-    clickAmount: {
+    currentActiveActionButton: {
         fight: 0,
         act: 0,
         item: 0,
@@ -260,7 +260,7 @@ const removeButtonFocus = function () {
 const clearTextField = function () {
     textField.replaceChildren();
     gameState["actionButtonClicked"] = false;
-    textField.textContent = "Previous content was erased because you clicked on a menu option";
+    textField.textContent = "Previous content was erased because you clicked on a menu option"; //added for testing purposes
 
     removeButtonFocus();
 }
@@ -332,12 +332,12 @@ const hideYellowHeart = function (event) {
 
         div.addEventListener("click", (event) => {
             let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
-            gameState["clickAmount"][`${currentButton}`] +=1;
 
             if (gameState["actionButtonClicked"] === false) {
 
                 hideYellowHeart(event);
                 gameState["actionButtonClicked"] = true;
+                gameState["currentActiveActionButton"][`${currentButton}`]+=1;
                     
                 textField.textContent = "";
                 starSpace.classList.add("invisible");
@@ -353,14 +353,12 @@ const hideYellowHeart = function (event) {
                         
                     let spareOption = document.createElement("div");
                     createMenuOption(spareOption, "Mettaton", clearSketchField);
-                    if (gameState["menuOptionConfirmed"] === true) {
-                        clearTextField();
-                    }
                 }   
                     
-            } else if (gameState["actionButtonClicked"] === true && gameState["clickAmount"][`${currentButton}`] >= 2) {
+            } else if (gameState["actionButtonClicked"] === true && gameState["currentActiveActionButton"][`${currentButton}`] >= 1) {
                 clearTextField();
-                textField.textContent = "Previous content was erased because you clicked on an action button again"
+                gameState["currentActiveActionButton"][`${currentButton}`] = 0;
+                textField.textContent = "Previous content was erased because you clicked on an action button again"//added for testing purposes
             }
         })
 
