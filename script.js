@@ -260,6 +260,7 @@ const removeButtonFocus = function () {
 const clearTextField = function () {
     textField.replaceChildren();
     gameState["actionButtonClicked"] = false;
+    starSpace.classList.remove("invisible");
     textField.textContent = "Previous content was erased because you clicked on a menu option"; //added for testing purposes
 
     removeButtonFocus();
@@ -309,6 +310,7 @@ const clearSketchField = function() {
     })
 
     clearTextField();
+    buttonConfirm.play();
 }
 
 const handleMouseOver = function (event) {
@@ -335,6 +337,8 @@ const hideYellowHeart = function (event) {
 
             if (gameState["actionButtonClicked"] === false) {
 
+                buttonConfirm.play();
+
                 hideYellowHeart(event);
                 gameState["actionButtonClicked"] = true;
                 gameState["currentActiveActionButton"][`${currentButton}`]+=1;
@@ -357,6 +361,7 @@ const hideYellowHeart = function (event) {
                     
             } else if (gameState["actionButtonClicked"] === true && gameState["currentActiveActionButton"][`${currentButton}`] >= 1) {
                 clearTextField();
+                buttonConfirm.play();
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
                 textField.textContent = "Previous content was erased because you clicked on an action button again"//added for testing purposes
             }

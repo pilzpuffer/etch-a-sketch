@@ -272,11 +272,13 @@ body {
 }
 
 .star {
-    width: 10%
+    width: 10%;
+    pointer-events: none;
 }
 
 .option-name {
     width: 50%;
+    pointer-events: none;
 }
 
 .stats,
