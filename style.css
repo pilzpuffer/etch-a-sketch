@@ -352,6 +352,7 @@ body {
 #mett-a-sketch {
     display: flex;
     flex-direction: row;
+    /* border: var(--main-text-color) solid 2px; */
     height: 80%;
     width: 80%
 }

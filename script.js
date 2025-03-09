@@ -8,7 +8,7 @@ const mettBody = document.querySelector(".top-part");
 
 //seems to get laggy at 64
 let fieldSize = 16;
-let currentDrawingColor = allColors[0];
+let currentDrawingColor = allColors[7];
 let isDrawing = false;
 let isErasing = false;
 
@@ -257,16 +257,45 @@ const removeButtonFocus = function () {
     })
 }
 
+const typeWriterSound = document.querySelector("#textbox-typing")
+
+//mettaton's words are output word-by-word instead of letter-by-letter - so a separate function will be needed for that + there will be a different mechanism for playing music
+const typeWriter = function (phrase) {
+    let phraseDivided = phrase.split(" ");
+    let lettersDivided =[...phraseDivided.join(" ")];
+    let i = 0;
+
+    const wordOutput = setInterval(function() {
+
+        if (i === lettersDivided.length) {
+            clearInterval(wordOutput)
+        } else {
+            textField.textContent += `${lettersDivided[i]}`;
+            i++;
+
+            
+        }
+    }, 35)
+
+    const musicEffects = setInterval(function() {
+
+        if (i === lettersDivided.length) {
+            clearInterval(musicEffects)
+        } else {
+            typeWriterSound.play();
+        }
+    }, 5)
+}
+
 const clearTextField = function () {
     textField.replaceChildren();
     gameState["actionButtonClicked"] = false;
     starSpace.classList.remove("invisible");
-    textField.textContent = "Previous content was erased because you clicked on a menu option"; //added for testing purposes
 
     removeButtonFocus();
 }
 
-let createMenuOption = function(containerName, providedText, actionApplied) {
+let createMenuOption = function(containerName, providedText, actionApplied, phrase) {
     let heartSpace = document.createElement("div");
     let star = document.createElement("div");
     let optionName = document.createElement("div");
@@ -297,6 +326,8 @@ let createMenuOption = function(containerName, providedText, actionApplied) {
     containerName.addEventListener("click", () => {
         buttonConfirm.play();
         actionApplied();
+
+        buttonConfirm.addEventListener("ended", typeWriter("The previous contents were removed since you clicked on a menu item"));
     }) 
 }
 
@@ -347,26 +378,25 @@ const hideYellowHeart = function (event) {
                 starSpace.classList.add("invisible");
                     
                 if (currentButton === "fight") {
-                    console.log("fight?");
-                        
+                        //change the density of the drawing field
                 } else if (currentButton === "act") {
-                        
+                        //for disabling music\stopping animation (wiggle, waving, arm moving) - the latter should be 3 separate requests 
                 } else if (currentButton === "item") {
-
+                    //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items?
                 } else if (currentButton === "mercy") {
                         
                     let spareOption = document.createElement("div");
-                    createMenuOption(spareOption, "Mettaton", clearSketchField);
+                    createMenuOption(spareOption, "Mettaton", clearSketchField, "The previous content was removed because you've clicked on a menu item");
                 }   
                     
             } else if (gameState["actionButtonClicked"] === true && gameState["currentActiveActionButton"][`${currentButton}`] >= 1) {
                 clearTextField();
                 buttonConfirm.play();
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
-                textField.textContent = "Previous content was erased because you clicked on an action button again"//added for testing purposes
+
+                buttonConfirm.addEventListener("ended", typeWriter("Previous content was erased because you clicked on an action button again")); //added for testing purposes
             }
         })
-
             
 
         div.addEventListener("mouseout", (event) => {
@@ -381,4 +411,3 @@ const hideYellowHeart = function (event) {
         });
 });
 })
-//on button functionality - attack to change the density of the drawing field, mercy to clear it. act for for disabling music\stopping animation (wiggle, waving, arm moving) and item to change the drawing colors

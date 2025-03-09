@@ -66,7 +66,7 @@ window.addEventListener('load', () => {
                                 setTimeout(() => {
                                     battleTheme.play();
                                     load.remove();
-                                }, 800);   
+                                }, 600);   
                             })
 
                         };
