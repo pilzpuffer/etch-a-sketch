@@ -219,7 +219,9 @@ const actionButtons = document.querySelectorAll(".action-button");
 const textField = document.querySelector("#text-field");
 const starSpace = document.querySelector("#star-space");
 const buttonSelect = document.querySelector("#button-select");
-buttonSelect.volume = sameVolume * 2;
+const buttonConfirm = document.querySelector("#button-select-confirm");
+buttonSelect.volume = sameVolume;
+buttonConfirm.volume = sameVolume;
 
 const playerButtonSelection = function(event) {
 event.currentTarget.classList.add("button-highlight");
@@ -233,84 +235,146 @@ const symbols = {
     mercy: "&"
 }
 
-let buttonClicked = false;
+const gameState = {
+    actionButtonClicked: false,
+    menuOptionConfirmed: false,
+    clickAmount: {
+        fight: 0,
+        act: 0,
+        item: 0,
+        mercy: 0
+    }
+}
 
-let createMenuOption = function(optionName, providedText, actionApplied) {
-    let optionName = document.createElement("div");
+const removeButtonFocus = function () {
+    actionButtons.forEach((div) => {
+        div.classList.remove("button-highlight");
+        
+        if (div.classList.contains("action-button")) {
+            let currentButton = div.getAttribute("id").split("-")[0];
+            div.firstElementChild.innerHTML = symbols[currentButton];
+        }
+    })
+}
+
+const clearTextField = function () {
+    textField.replaceChildren();
+    gameState["actionButtonClicked"] = false;
+    textField.textContent = "Previous content was erased because you clicked on a menu option";
+
+    removeButtonFocus();
+}
+
+let createMenuOption = function(containerName, providedText, actionApplied) {
     let heartSpace = document.createElement("div");
     let star = document.createElement("div");
-    let option = document.createElement("div");
+    let optionName = document.createElement("div");
+
+    containerName.classList.add("menu-element");
+    heartSpace.classList.add("heart-space");
+    star.classList.add("star");
+    optionName.classList.add("option-name");
 
     star.textContent = "*";
-
-    optionName.appendChild(heartSpace);
-    optionName.appendChild(star);
-    optionName.appendChild(option);
-
     optionName.textContent = providedText;
-    textField.appendChild(optionName);
 
-    optionName.addEventListener("mouseover", () => {
+    containerName.appendChild(heartSpace);
+    containerName.appendChild(star);
+    containerName.appendChild(optionName);
+
+    textField.appendChild(containerName);
+
+    containerName.addEventListener("mouseover", () => {
+        buttonSelect.play();
         heartSpace.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
     })
 
-    optionName.addEventListener("mouseout", () => {
+    containerName.addEventListener("mouseout", () => {
         heartSpace.innerHTML = "";
     })
 
-    optionName.addEventListener("click", () => {
+    containerName.addEventListener("click", () => {
+        buttonConfirm.play();
         actionApplied();
     }) 
 }
 
+
 battleStart.addEventListener("ended", function() {
     const allCells = document.querySelectorAll(".innerCells");
 
+const clearSketchField = function() {
+    allCells.forEach((div) => {
+        div.classList.remove(...allColors);
+    })
+
+    clearTextField();
+}
+
+const handleMouseOver = function (event) {
+    playerButtonSelection(event);
+    buttonSelect.play();
+}
+
+const hideYellowHeart = function (event) {
+    event.currentTarget.firstElementChild.innerHTML = `<img id="stand-in-for-yellow-heart" src="./images/red-soul-hidden.png">`;
+}
+ 
     actionButtons.forEach((div) => {
     
         div.addEventListener("mouseover", (event) => {
-            if (!event.currentTarget.classList.contains("button-highlight")) {
-                playerButtonSelection(event);
-                buttonSelect.play();
+            if (gameState["actionButtonClicked"] === false && !event.currentTarget.classList.contains("button-highlight")) {
+                handleMouseOver(event);
+            } else if (gameState["actionButtonClicked"] === true && event.currentTarget.classList.contains("button-highlight")) {
+                handleMouseOver(event);
             }
+        })
 
-            event.currentTarget.addEventListener("click", (event) => {
-                buttonClicked = true;
-                let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
+        div.addEventListener("click", (event) => {
+            let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
+            gameState["clickAmount"][`${currentButton}`] +=1;
+
+            if (gameState["actionButtonClicked"] === false) {
+
+                hideYellowHeart(event);
+                gameState["actionButtonClicked"] = true;
+                    
                 textField.textContent = "";
-                
+                starSpace.classList.add("invisible");
+                    
                 if (currentButton === "fight") {
                     console.log("fight?");
-                    
+                        
                 } else if (currentButton === "act") {
-                    
+                        
                 } else if (currentButton === "item") {
 
                 } else if (currentButton === "mercy") {
-                    starSpace.classList.toggle("invisible");
+                        
+                    let spareOption = document.createElement("div");
+                    createMenuOption(spareOption, "Mettaton", clearSketchField);
+                    if (gameState["menuOptionConfirmed"] === true) {
+                        clearTextField();
+                    }
+                }   
+                    
+            } else if (gameState["actionButtonClicked"] === true && gameState["clickAmount"][`${currentButton}`] >= 2) {
+                clearTextField();
+                textField.textContent = "Previous content was erased because you clicked on an action button again"
+            }
+        })
 
-                    createMenuOption(spareOption, "Mettaton")
-
-                    allCells.forEach((div) => {
-                        div.classList.remove(...allColors);
-                    })
-                }
-
-                //if user wants to return back to action buttons, they would need to click on the button in "menu" of which they're in at the moment
-                //this will be communicated by the heart symbol
-
-                buttonClicked = false;
-            })
-
-            })
+            
 
         div.addEventListener("mouseout", (event) => {
-            if (!buttonClicked) {
+            if (gameState["actionButtonClicked"] === false) {
                 event.currentTarget.classList.remove("button-highlight");
             
                 let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
                 event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
-            } 
+            } else if (gameState["actionButtonClicked"] === true && event.currentTarget.classList.contains("button-highlight")) {
+                hideYellowHeart(event);
+            }
         });
 });
 })

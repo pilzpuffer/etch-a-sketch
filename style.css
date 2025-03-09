@@ -238,6 +238,7 @@ body {
 
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 #star-space {
@@ -251,6 +252,31 @@ body {
 
     display: flex;
     flex-direction: row;
+}
+
+.menu-element {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    height: 33%;
+
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+.heart-space {
+    width: 12%;
+    padding-top: 5%;
+    pointer-events: none;
+}
+
+.star {
+    width: 10%
+}
+
+.option-name {
+    width: 50%;
 }
 
 .stats,
@@ -420,6 +446,10 @@ body {
     color: var(--yellow);
 } 
 
+.border-highlight {
+    border: var(--yellow) solid 4px;
+}
+
 .yellow-text {
     color: var(--yellow); 
 }
@@ -447,11 +477,13 @@ body {
 }
 
 
-#yellow-heart{
+#yellow-heart,
+#stand-in-for-yellow-heart{
     width: var(--heart-size);
     height: auto;
     padding-bottom: 25%;
 }
+
 
 .blue {
     background: var(--blue);
