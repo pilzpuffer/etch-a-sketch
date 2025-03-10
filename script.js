@@ -259,6 +259,7 @@ const removeButtonFocus = function () {
 }
 
 const typeWriterSound = document.querySelector("#textbox-typing");
+const battleTheme = document.querySelector("#battle-theme")
 typeWriterSound.volume = sameVolume - 0.1;
 
 function randomize (arr) {
@@ -276,7 +277,7 @@ const mettSound8 = document.querySelector("#speech-effect-8");
 const mettSound9 = document.querySelector("#speech-effect-9");
 
 const allMettSounds = [mettSound1, mettSound2, mettSound3, mettSound4, mettSound5, mettSound6, mettSound7, mettSound8, mettSound9];
-allMettSounds.forEach(sound => sound.volume = sameVolume);
+allMettSounds.forEach(sound => sound.volume = sameVolume - 0.1);
 
 //mettaton's words are output word-by-word instead of letter-by-letter - so a separate function will be needed for that + there will be a different mechanism for playing music
 const typeWriter = function (phrase) {
@@ -314,7 +315,8 @@ const mettTalking = function (phrase) {
         if (i === phraseSpaceSeparated.length) {
             clearInterval(wordOutput)
         } else {
-            //+ need to dedicate a space to his text bubble + make it work
+            //textfield is created, but specific behavior for text showing/for when it'll be showing still needs to be adjusted
+            //will work on that once I'll be done with the action buttons + will generate all needed text, as it doesn't make much sense to work on this until then
             bubbleTextField.textContent += `${phraseSpaceSeparated[i]}`;
             i++; 
         }
@@ -331,6 +333,7 @@ const mettTalking = function (phrase) {
     }, 70)
 
 }
+
 
 const clearTextField = function () {
     textField.replaceChildren();
@@ -371,9 +374,8 @@ let createMenuOption = function(containerName, providedText, actionApplied, phra
     containerName.addEventListener("click", () => {
         buttonConfirm.play();
         actionApplied();
-        mettTalking("let's test if this thing works right");
 
-        buttonConfirm.addEventListener("ended", typeWriter("The previous contents were removed since you clicked on a menu item"));
+        buttonConfirm.addEventListener("ended", typeWriter(phrase));
     }) 
 }
 
@@ -397,6 +399,25 @@ const handleMouseOver = function (event) {
 
 const hideYellowHeart = function (event) {
     event.currentTarget.firstElementChild.innerHTML = `<img id="stand-in-for-yellow-heart" src="./images/red-soul-hidden.png">`;
+}
+
+let quietTimes = 0;
+const allAudio = document.querySelectorAll("audio")
+
+const musicQuiet = function () {
+    if (quietTimes === 0) {
+        battleTheme.pause();
+    } else if (quietTimes === 1) {
+        allAudio.forEach(audio => audio.volume = 0.1);
+        mettTalking("You want to keep this even more hush-hush??? Kind of rude of you, don't you think?"); //for testing, will need to change phrases in the future updates
+    } else if (quietTimes >= 2) {
+        allAudio.forEach(audio => audio.volume = 0);
+        mettTalking("Darling, I believe we can't make things any quieter at this point"); //for testing, will need to change phrases in the future updates
+    }
+
+    quietTimes++;
+    clearTextField();
+    buttonConfirm.play();
 }
  
     actionButtons.forEach((div) => {
@@ -427,6 +448,8 @@ const hideYellowHeart = function (event) {
                         //change the density of the drawing field
                 } else if (currentButton === "act") {
                         //for disabling music\stopping animation (wiggle, waving, arm moving) - the latter should be 3 separate requests 
+                        let stopMusic = document.createElement("div");
+                        createMenuOption(stopMusic, "Quiet", musicQuiet);
                 } else if (currentButton === "item") {
                     //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items?
                 } else if (currentButton === "mercy") {
