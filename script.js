@@ -312,7 +312,8 @@ const mettTalking = function (phrase) {
         if (i === phraseDivided.length) {
             clearInterval(wordOutput)
         } else {
-            textField.textContent += `${phraseDivided[i]}`;
+            //+ need to dedicate a space to his text bubble + make it work
+            textBubble.textContent += `${phraseDivided[i]}`;
             i++; 
         }
 
