@@ -217,6 +217,7 @@ battleStart.addEventListener("ended", function() {
 
 const actionButtons = document.querySelectorAll(".action-button");
 const textField = document.querySelector("#text-field");
+const bubbleTextField = document.querySelector("#bubble-textfield")
 const starSpace = document.querySelector("#star-space");
 const buttonSelect = document.querySelector("#button-select");
 const buttonConfirm = document.querySelector("#button-select-confirm");
@@ -306,27 +307,28 @@ const typeWriter = function (phrase) {
 
 const mettTalking = function (phrase) {
     let phraseDivided = phrase.split(" ");
+    let phraseSpaceSeparated = phraseDivided.join(" ");
     let i = 0;
 
     const wordOutput = setInterval(function() {
-        if (i === phraseDivided.length) {
+        if (i === phraseSpaceSeparated.length) {
             clearInterval(wordOutput)
         } else {
             //+ need to dedicate a space to his text bubble + make it work
-            textBubble.textContent += `${phraseDivided[i]}`;
+            bubbleTextField.textContent += `${phraseSpaceSeparated[i]}`;
             i++; 
         }
 
     }, 35)
         
     const talkingSounds = setInterval(function() {
-        if (i === phraseDivided.length) {
+        if (i === phraseSpaceSeparated.length) {
             clearInterval(talkingSounds)
         } else {
-            randomize(allMettSounds).play();
-            allMettSounds.forEach(sound => sound.currentTime = 0);
+            randomSound = randomize(allMettSounds);
+            randomSound.play();
         }
-    }, 50)
+    }, 70)
 
 }
 
@@ -369,6 +371,7 @@ let createMenuOption = function(containerName, providedText, actionApplied, phra
     containerName.addEventListener("click", () => {
         buttonConfirm.play();
         actionApplied();
+        mettTalking("let's test if this thing works right");
 
         buttonConfirm.addEventListener("ended", typeWriter("The previous contents were removed since you clicked on a menu item"));
     }) 
@@ -438,6 +441,7 @@ const hideYellowHeart = function (event) {
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
 
                 buttonConfirm.addEventListener("ended", typeWriter("Previous content was erased because you clicked on an action button again")); //added for testing purposes
+                mettTalking("chickened out, ey?");
             }
         })
             
