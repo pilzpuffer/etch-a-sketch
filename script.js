@@ -257,7 +257,8 @@ const removeButtonFocus = function () {
     })
 }
 
-const typeWriterSound = document.querySelector("#textbox-typing")
+const typeWriterSound = document.querySelector("#textbox-typing");
+typeWriterSound.volume = sameVolume - 0.1;
 
 //mettaton's words are output word-by-word instead of letter-by-letter - so a separate function will be needed for that + there will be a different mechanism for playing music
 const typeWriter = function (phrase) {
@@ -283,8 +284,9 @@ const typeWriter = function (phrase) {
             clearInterval(musicEffects)
         } else {
             typeWriterSound.play();
+            typeWriterSound.currentTime = 0;
         }
-    }, 5)
+    }, 50)
 }
 
 const clearTextField = function () {
