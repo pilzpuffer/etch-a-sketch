@@ -260,21 +260,36 @@ const removeButtonFocus = function () {
 const typeWriterSound = document.querySelector("#textbox-typing");
 typeWriterSound.volume = sameVolume - 0.1;
 
+function randomize (arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+const mettSound1 = document.querySelector("#speech-effect-1");
+const mettSound2 = document.querySelector("#speech-effect-2");
+const mettSound3 = document.querySelector("#speech-effect-3");
+const mettSound4 = document.querySelector("#speech-effect-4");
+const mettSound5 = document.querySelector("#speech-effect-5");
+const mettSound6 = document.querySelector("#speech-effect-6");
+const mettSound7 = document.querySelector("#speech-effect-7");
+const mettSound8 = document.querySelector("#speech-effect-8");
+const mettSound9 = document.querySelector("#speech-effect-9");
+
+const allMettSounds = [mettSound1, mettSound2, mettSound3, mettSound4, mettSound5, mettSound6, mettSound7, mettSound8, mettSound9];
+allMettSounds.forEach(sound => sound.volume = sameVolume);
+
 //mettaton's words are output word-by-word instead of letter-by-letter - so a separate function will be needed for that + there will be a different mechanism for playing music
 const typeWriter = function (phrase) {
     let phraseDivided = phrase.split(" ");
     let lettersDivided =[...phraseDivided.join(" ")];
     let i = 0;
 
-    const wordOutput = setInterval(function() {
+    const wordByLetterOutput = setInterval(function() {
 
         if (i === lettersDivided.length) {
-            clearInterval(wordOutput)
+            clearInterval(wordByLetterOutput)
         } else {
             textField.textContent += `${lettersDivided[i]}`;
-            i++;
-
-            
+            i++;      
         }
     }, 35)
 
@@ -287,6 +302,31 @@ const typeWriter = function (phrase) {
             typeWriterSound.currentTime = 0;
         }
     }, 50)
+}
+
+const mettTalking = function (phrase) {
+    let phraseDivided = phrase.split(" ");
+    let i = 0;
+
+    const wordOutput = setInterval(function() {
+        if (i === phraseDivided.length) {
+            clearInterval(wordOutput)
+        } else {
+            textField.textContent += `${phraseDivided[i]}`;
+            i++; 
+        }
+
+    }, 35)
+        
+    const talkingSounds = setInterval(function() {
+        if (i === phraseDivided.length) {
+            clearInterval(talkingSounds)
+        } else {
+            randomize(allMettSounds).play();
+            allMettSounds.forEach(sound => sound.currentTime = 0);
+        }
+    }, 50)
+
 }
 
 const clearTextField = function () {
