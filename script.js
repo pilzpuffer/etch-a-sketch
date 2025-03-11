@@ -488,6 +488,7 @@ const restartMoving = function () {
                     
                 if (currentButton === "fight") {
                         //change the density of the drawing field
+                        //should be a "hit" minigame similiar to one used in undertale for the fight action
                 } else if (currentButton === "act") {
                         let stopMusic = document.createElement("div");
                         let restartMusic = document.createElement("div");
@@ -510,7 +511,7 @@ const restartMoving = function () {
                         let stopWiggle = document.createElement("div");
                         let restartWiggle = document.createElement("div"); 
 
-                        createMenuOption(stopWiggle, "Stay Still", stopMoving);
+                        createMenuOption(stopWiggle, "Stay Still", stopMoving); //need to adjust this function and set skew and rotate to 0 when this option is applied
                         createMenuOption(restartWiggle, "Dance", restartMoving);
 
                         if (!animationOn && stayStill >= 2) {
@@ -524,10 +525,16 @@ const restartMoving = function () {
                             restartWiggle.classList.remove("gone")
                         } else {
                             restartWiggle.classList.add("gone")
-                        }
+                        } 
+
+
+                        //add an option to move closer/move back
+                        //check (+ will need to look into adding an extra "star" to the star section to the left of the textfield) + flirt
+                        //maybe some funny options 
+                        //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section)
 
                 } else if (currentButton === "item") {
-                    //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items?
+                    //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items? like a stick
                 } else if (currentButton === "mercy") {
                         
                     let spareOption = document.createElement("div");
