@@ -442,6 +442,7 @@ const stopMoving = function () {
     }
 
     stayStill++;
+    console.log(stayStill);
  
     clearTextField();
     buttonConfirm.play();
@@ -488,7 +489,6 @@ const restartMoving = function () {
                 if (currentButton === "fight") {
                         //change the density of the drawing field
                 } else if (currentButton === "act") {
-                        //for disabling music\stopping animation (wiggle, waving, arm moving) - the latter should be 3 separate requests 
                         let stopMusic = document.createElement("div");
                         let restartMusic = document.createElement("div");
 
@@ -507,15 +507,24 @@ const restartMoving = function () {
                             restartMusic.classList.add("gone");
                         }
 
-                        let stopWiggle = document.createElement("div"); //2 stages to disable wiggle + disable arm movements
+                        let stopWiggle = document.createElement("div");
                         let restartWiggle = document.createElement("div"); 
 
                         createMenuOption(stopWiggle, "Stay Still", stopMoving);
                         createMenuOption(restartWiggle, "Dance", restartMoving);
 
+                        if (!animationOn && stayStill >= 2) {
+                            stopWiggle.classList.add("gone")
+                        } else {
+                            stopWiggle.classList.remove("gone")
+                        }
 
 
-
+                        if (!animationOn) {
+                            restartWiggle.classList.remove("gone")
+                        } else {
+                            restartWiggle.classList.add("gone")
+                        }
 
                 } else if (currentButton === "item") {
                     //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items?
