@@ -51,7 +51,6 @@ for (let i = 0; i < fieldSize; i++) {
             }
         })
 
-battleStart.addEventListener("ended", function() {
     function getNumber(element){
         const initialCss = getComputedStyle(document.documentElement).getPropertyValue(element);
         let prepare = initialCss.slice(0, -1);
@@ -114,9 +113,8 @@ battleStart.addEventListener("ended", function() {
         document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', direction, moveSpeed));
         document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', direction, moveSpeed));
     }
-    
-    let jazzHands = setInterval(function () {
-        //may be best to tie this as an event listener for domload event?
+
+    const armsMotion = function () {
         let leftPositionY = getNumber('--left-hand-position-Y');
         let rightPositionY = getNumber('--right-hand-position-Y');
         let moveSpeed = 0.1;
@@ -132,12 +130,12 @@ battleStart.addEventListener("ended", function() {
             }
             moveArms("increase", moveSpeed);
         }
-    
     }
-    , 40) //45 is optimal speed
-    let waved = true;
     
-    let handWave = setInterval(function() {
+    let jazzHands = setInterval(armsMotion, 40);
+    let waved = true;
+
+    const waveMotion = function() {
         if (waved) {
             rightArm.src = "./images/mett-sprite/arm-right-1.png";
             waved = !waved;
@@ -145,9 +143,9 @@ battleStart.addEventListener("ended", function() {
             rightArm.src = "./images/mett-sprite/arm-right-2.png";
             waved = true;
         }
+    }
     
-        
-    }, 280)
+    let handWave = setInterval(waveMotion, 280);
     
     //if changed, left and right skews should be the same number - but the right skew should always be negative
     const bodyWiggle = {
@@ -185,8 +183,9 @@ battleStart.addEventListener("ended", function() {
         document.documentElement.style.setProperty('--rotate-value', adjustValue('--rotate-value', direction, swingTimes));
         document.documentElement.style.setProperty('--skew-value', adjustValue('--skew-value', direction, -swingTimes));
     }
-    
-    let sideSwing = setInterval(function() {
+
+    const swingingMotion = function () {
+
         let rotation = getNumber('--rotate-value');
         let skew = getNumber('--skew-value');
         let bodySwing = swingAmountBody(swingTimes);
@@ -212,8 +211,9 @@ battleStart.addEventListener("ended", function() {
             swingBody("increase", bodySwing);
     
         }
-    }, 40)
-})
+    }
+
+let sideSwing = setInterval(swingingMotion, 40);
 
 const actionButtons = document.querySelectorAll(".action-button");
 const textField = document.querySelector("#text-field");
@@ -343,7 +343,7 @@ const clearTextField = function () {
     removeButtonFocus();
 }
 
-let createMenuOption = function(containerName, providedText, actionApplied, phrase) {
+let createMenuOption = function(containerName, providedText, actionApplied) {
     let heartSpace = document.createElement("div");
     let star = document.createElement("div");
     let optionName = document.createElement("div");
@@ -374,8 +374,6 @@ let createMenuOption = function(containerName, providedText, actionApplied, phra
     containerName.addEventListener("click", () => {
         buttonConfirm.play();
         actionApplied();
-
-        buttonConfirm.addEventListener("ended", typeWriter(phrase));
     }) 
 }
 
@@ -401,23 +399,66 @@ const hideYellowHeart = function (event) {
     event.currentTarget.firstElementChild.innerHTML = `<img id="stand-in-for-yellow-heart" src="./images/red-soul-hidden.png">`;
 }
 
-let quietTimes = 0;
+let quietTimes = 0; //add to gamestate object later to clean things up
+let musicOn = true;
+let stayStill = 0;
+let animationOn = true;
 const allAudio = document.querySelectorAll("audio")
 
 const musicQuiet = function () {
     if (quietTimes === 0) {
         battleTheme.pause();
-    } else if (quietTimes === 1) {
-        allAudio.forEach(audio => audio.volume = 0.1);
-        mettTalking("You want to keep this even more hush-hush??? Kind of rude of you, don't you think?"); //for testing, will need to change phrases in the future updates
-    } else if (quietTimes >= 2) {
+        musicOn = false;
+    } else if (quietTimes >= 1) {
         allAudio.forEach(audio => audio.volume = 0);
-        mettTalking("Darling, I believe we can't make things any quieter at this point"); //for testing, will need to change phrases in the future updates
+        sameVolume = 0;
+        mettTalking("that's as quiet as things CAN be.."); //for testing, will need to change phrases in the future updates
     }
 
     quietTimes++;
     clearTextField();
     buttonConfirm.play();
+}
+
+const musicBack = function () {
+    if (!musicOn) {
+        battleTheme.play()
+        sameVolume = 2;
+        quietTimes = 0;
+
+        musicOn = true;
+        clearTextField();
+        buttonConfirm.play();
+    } 
+}
+
+const stopMoving = function () {
+    if (stayStill === 0) {
+        clearInterval(sideSwing);
+        animationOn = false;
+    } else if (stayStill >= 1) {
+        clearInterval(handWave)
+        clearInterval(jazzHands)
+    }
+
+    stayStill++;
+ 
+    clearTextField();
+    buttonConfirm.play();
+}
+
+const restartMoving = function () {
+    if (!animationOn) {
+        sideSwing = setInterval(swingingMotion, 40);
+        handWave = setInterval(waveMotion, 280)
+        jazzHands = setInterval(armsMotion, 40);
+
+        animationOn = true;
+        stayStill = 0;
+
+        clearTextField();
+        buttonConfirm.play();
+    }
 }
  
     actionButtons.forEach((div) => {
@@ -449,13 +490,39 @@ const musicQuiet = function () {
                 } else if (currentButton === "act") {
                         //for disabling music\stopping animation (wiggle, waving, arm moving) - the latter should be 3 separate requests 
                         let stopMusic = document.createElement("div");
+                        let restartMusic = document.createElement("div");
+
                         createMenuOption(stopMusic, "Quiet", musicQuiet);
+                        createMenuOption(restartMusic, "Music", musicBack)
+
+                        if (!musicOn && sameVolume === 0) {
+                            stopMusic.classList.add("gone");
+                        } else {
+                            stopMusic.classList.remove("gone");
+                        }
+
+                        if (!musicOn) {
+                            restartMusic.classList.remove("gone")
+                        } else {
+                            restartMusic.classList.add("gone");
+                        }
+
+                        let stopWiggle = document.createElement("div"); //2 stages to disable wiggle + disable arm movements
+                        let restartWiggle = document.createElement("div"); 
+
+                        createMenuOption(stopWiggle, "Stay Still", stopMoving);
+                        createMenuOption(restartWiggle, "Dance", restartMoving);
+
+
+
+
+
                 } else if (currentButton === "item") {
                     //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items?
                 } else if (currentButton === "mercy") {
                         
                     let spareOption = document.createElement("div");
-                    createMenuOption(spareOption, "Mettaton", clearSketchField, "The previous content was removed because you've clicked on a menu item");
+                    createMenuOption(spareOption, "Mettaton", clearSketchField);
                 }   
                     
             } else if (gameState["actionButtonClicked"] === true && gameState["currentActiveActionButton"][`${currentButton}`] >= 1) {

@@ -293,6 +293,10 @@ body {
     align-content: center;
 }
 
+.gone {
+    display: none;
+}
+
 .heart-space {
     width: 12%;
     padding-top: 5%;
