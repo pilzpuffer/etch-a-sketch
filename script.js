@@ -435,6 +435,10 @@ const musicBack = function () {
 const stopMoving = function () {
     if (stayStill === 0) {
         clearInterval(sideSwing);
+        
+        document.documentElement.style.setProperty('--rotate-value', "0deg");
+        document.documentElement.style.setProperty('--skew-value', "0deg");
+
         animationOn = false;
     } else if (stayStill >= 1) {
         clearInterval(handWave)
@@ -511,7 +515,7 @@ const restartMoving = function () {
                         let stopWiggle = document.createElement("div");
                         let restartWiggle = document.createElement("div"); 
 
-                        createMenuOption(stopWiggle, "Stay Still", stopMoving); //need to adjust this function and set skew and rotate to 0 when this option is applied
+                        createMenuOption(stopWiggle, "Freeze", stopMoving); //need to adjust this function and set skew and rotate to 0 when this option is applied
                         createMenuOption(restartWiggle, "Dance", restartMoving);
 
                         if (!animationOn && stayStill >= 2) {

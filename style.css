@@ -68,7 +68,7 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     
     --arm-scaling: 1.344;
 
-    --rotate-value:0deg;
+    --rotate-value: 0deg;
     --skew-value: 0deg;
 
     --heart-size: 44px;
@@ -267,6 +267,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    z-index: 2;
 }
 
 #star-space {
