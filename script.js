@@ -423,8 +423,13 @@ const musicQuiet = function () {
 const musicBack = function () {
     if (!musicOn) {
         battleTheme.play()
-        sameVolume = 2;
+        sameVolume = 0.2;
         quietTimes = 0;
+
+        allAudio.forEach(audio => audio.volume = 0.2);
+        battleTheme.volume = 0.1;
+        typeWriterSound.volume = 0.1
+        allMettSounds.forEach(sound => sound.volume = sameVolume - 0.1);
 
         musicOn = true;
         clearTextField();
@@ -456,7 +461,7 @@ const restartMoving = function () {
     if (!animationOn) {
         sideSwing = setInterval(swingingMotion, 40);
 
-        if (!handWave && !jazzHands) {
+        if (stayStill >= 1) {
             handWave = setInterval(waveMotion, 280)
             jazzHands = setInterval(armsMotion, 40);
         }
@@ -466,6 +471,34 @@ const restartMoving = function () {
 
         clearTextField();
         buttonConfirm.play();
+    }
+}
+
+const hideAndShowEqual = function (functionNameOne, functionNameTwo, checkOne, checkTwo, checkedValue) {
+    if (!checkOne && checkTwo === checkedValue) {
+        functionNameOne.classList.add("gone");
+    } else {
+        functionNameOne.classList.remove("gone");
+    }
+
+    if (!checkOne) {
+        functionNameTwo.classList.remove("gone")
+    } else {
+        functionNameTwo.classList.add("gone");
+    }
+}
+
+const hideAndShowMore = function (functionNameOne, functionNameTwo, checkOne, checkTwo, checkedValue) {
+    if (!checkOne && checkTwo >= checkedValue) {
+        functionNameOne.classList.add("gone");
+    } else {
+        functionNameOne.classList.remove("gone");
+    }
+
+    if (!checkOne) {
+        functionNameTwo.classList.remove("gone")
+    } else {
+        functionNameTwo.classList.add("gone");
     }
 }
  
@@ -502,38 +535,17 @@ const restartMoving = function () {
 
                         createMenuOption(stopMusic, "Quiet", musicQuiet);
                         createMenuOption(restartMusic, "Music", musicBack)
-
-                        if (!musicOn && sameVolume === 0) {
-                            stopMusic.classList.add("gone");
-                        } else {
-                            stopMusic.classList.remove("gone");
-                        }
-
-                        if (!musicOn) {
-                            restartMusic.classList.remove("gone")
-                        } else {
-                            restartMusic.classList.add("gone");
-                        }
+                        hideAndShowEqual(stopMusic, restartMusic, musicOn, sameVolume, 0);
 
                         let stopWiggle = document.createElement("div");
                         let restartWiggle = document.createElement("div"); 
 
                         createMenuOption(stopWiggle, "Freeze", stopMoving); 
                         createMenuOption(restartWiggle, "Dance", restartMoving);
+                        hideAndShowMore(stopWiggle, restartWiggle, animationOn, stayStill, 2)
 
-                        if (!animationOn && stayStill >= 2) {
-                            stopWiggle.classList.add("gone")
-                        } else {
-                            stopWiggle.classList.remove("gone")
-                        }
-
-
-                        if (!animationOn) {
-                            restartWiggle.classList.remove("gone")
-                        } else {
-                            restartWiggle.classList.add("gone")
-                        } 
-
+                        let moveIn = document.createElement("div");
+                        let moveBack = document.createElement("div");
 
                         //add an option to move closer/move back
                         //check (+ will need to look into adding an extra "star" to the star section to the left of the textfield) + flirt
