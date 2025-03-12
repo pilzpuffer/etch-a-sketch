@@ -474,32 +474,14 @@ const restartMoving = function () {
     }
 }
 
-const hideAndShowEqual = function (functionNameOne, functionNameTwo, checkOne, checkTwo, checkedValue) {
-    if (!checkOne && checkTwo === checkedValue) {
-        functionNameOne.classList.add("gone");
+const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, checkedValue, comparator) {
+    if (!checkOne && comparator(checkTwo, checkedValue)) {
+        functionOne.classList.add("gone");
     } else {
-        functionNameOne.classList.remove("gone");
+        functionOne.classList.remove("gone");
     }
 
-    if (!checkOne) {
-        functionNameTwo.classList.remove("gone")
-    } else {
-        functionNameTwo.classList.add("gone");
-    }
-}
-
-const hideAndShowMore = function (functionNameOne, functionNameTwo, checkOne, checkTwo, checkedValue) {
-    if (!checkOne && checkTwo >= checkedValue) {
-        functionNameOne.classList.add("gone");
-    } else {
-        functionNameOne.classList.remove("gone");
-    }
-
-    if (!checkOne) {
-        functionNameTwo.classList.remove("gone")
-    } else {
-        functionNameTwo.classList.add("gone");
-    }
+    functionTwo.classList.toggle("gone", checkOne) //if true, adds the gone class - if false, removes it
 }
  
     actionButtons.forEach((div) => {
@@ -535,14 +517,14 @@ const hideAndShowMore = function (functionNameOne, functionNameTwo, checkOne, ch
 
                         createMenuOption(stopMusic, "Quiet", musicQuiet);
                         createMenuOption(restartMusic, "Music", musicBack)
-                        hideAndShowEqual(stopMusic, restartMusic, musicOn, sameVolume, 0);
+                        hideAndShow(stopMusic, restartMusic, musicOn, sameVolume, 0, (a, b) => a === b);
 
                         let stopWiggle = document.createElement("div");
                         let restartWiggle = document.createElement("div"); 
 
                         createMenuOption(stopWiggle, "Freeze", stopMoving); 
                         createMenuOption(restartWiggle, "Dance", restartMoving);
-                        hideAndShowMore(stopWiggle, restartWiggle, animationOn, stayStill, 2)
+                        hideAndShow(stopWiggle, restartWiggle, animationOn, stayStill, 2, (a, b) => a >= b)
 
                         let moveIn = document.createElement("div");
                         let moveBack = document.createElement("div");
