@@ -455,9 +455,12 @@ const stopMoving = function () {
 const restartMoving = function () {
     if (!animationOn) {
         sideSwing = setInterval(swingingMotion, 40);
-        handWave = setInterval(waveMotion, 280)
-        jazzHands = setInterval(armsMotion, 40);
 
+        if (!handWave && !jazzHands) {
+            handWave = setInterval(waveMotion, 280)
+            jazzHands = setInterval(armsMotion, 40);
+        }
+        
         animationOn = true;
         stayStill = 0;
 
@@ -515,7 +518,7 @@ const restartMoving = function () {
                         let stopWiggle = document.createElement("div");
                         let restartWiggle = document.createElement("div"); 
 
-                        createMenuOption(stopWiggle, "Freeze", stopMoving); //need to adjust this function and set skew and rotate to 0 when this option is applied
+                        createMenuOption(stopWiggle, "Freeze", stopMoving); 
                         createMenuOption(restartWiggle, "Dance", restartMoving);
 
                         if (!animationOn && stayStill >= 2) {
