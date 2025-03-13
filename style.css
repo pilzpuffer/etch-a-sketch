@@ -250,7 +250,7 @@ body {
     height: 58px;
     background-color: var(--main-text-color);
     margin-bottom: 0.7%;
-    margin-top: 1.2%
+    margin-top: 1.2%;
 }
 
 
@@ -267,12 +267,11 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    z-index: 2;
 }
 
 #star-space {
     width: 5%;
-    padding-left: 1.5%
+    padding-left: 1.5%;
 }
  
 #text-field {
@@ -283,13 +282,13 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .menu-element {
     display: flex;
     flex-direction: row;
-    width: 30%;
+    width: 33.33%;
     height: 33%;
 
     justify-content: space-around;

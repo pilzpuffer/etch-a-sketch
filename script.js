@@ -239,6 +239,7 @@ const symbols = {
 const gameState = {
     actionButtonClicked: false,
     menuOptionConfirmed: false,
+    currentLineShown: false,
     currentActiveActionButton: {
         fight: 0,
         act: 0,
@@ -280,17 +281,20 @@ const allMettSounds = [mettSound1, mettSound2, mettSound3, mettSound4, mettSound
 allMettSounds.forEach(sound => sound.volume = sameVolume - 0.1);
 
 //mettaton's words are output word-by-word instead of letter-by-letter - so a separate function will be needed for that + there will be a different mechanism for playing music
-const typeWriter = function (phrase) {
+const typeWriter = function (location, phrase) {
     let phraseDivided = phrase.split(" ");
     let lettersDivided =[...phraseDivided.join(" ")];
     let i = 0;
+    gameState["currentLineShown"] = false
 
     const wordByLetterOutput = setInterval(function() {
 
         if (i === lettersDivided.length) {
             clearInterval(wordByLetterOutput)
+            gameState["currentLineShown"] = true;
+
         } else {
-            textField.textContent += `${lettersDivided[i]}`;
+            location.textContent += `${lettersDivided[i]}`;
             i++;      
         }
     }, 35)
@@ -474,7 +478,38 @@ const restartMoving = function () {
     }
 }
 
-const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, checkedValue, comparator) {
+const checkOut = function() {
+    clearTextField();
+    buttonConfirm.play();
+
+    let lineOne = document.createElement("div");
+    let lineTwo = document.createElement("div");
+
+    textField.appendChild(lineOne);
+    textField.appendChild(lineTwo);
+
+    const secondLine = function() { //keeps re-running, need to look into this + change styling of textField for this function, flex-direction should be column
+        clearInterval(secondLine);
+        if (gameState["currentLineShown"] === true) {
+            lineTwo.textContent = typeWriter(lineTwo, `another testing line!`);
+        }
+    }
+    
+    setTimeout(function() {
+        
+        mettTalking("TESTING!!");
+        starSpace.textContent = `*
+        *`
+
+        lineOne.textContent = typeWriter(lineOne, `METTATON 8 ATK 999 DEF`);
+        
+    }, 10)
+
+    setInterval(secondLine, 50); 
+    
+    } 
+
+const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, checkedValue, comparator) { //comparator should be used like (a, b) => a (insert the needed check, like >= or === or what else) b)  example: (a, b) => a < b
     if (!checkOne && comparator(checkTwo, checkedValue)) {
         functionOne.classList.add("gone");
     } else {
@@ -512,27 +547,33 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         //change the density of the drawing field
                         //should be a "hit" minigame similiar to one used in undertale for the fight action
                 } else if (currentButton === "act") {
+                        //sound
                         let stopMusic = document.createElement("div");
                         let restartMusic = document.createElement("div");
 
                         createMenuOption(stopMusic, "Quiet", musicQuiet);
                         createMenuOption(restartMusic, "Music", musicBack)
+
                         hideAndShow(stopMusic, restartMusic, musicOn, sameVolume, 0, (a, b) => a === b);
 
+                        //movement
                         let stopWiggle = document.createElement("div");
                         let restartWiggle = document.createElement("div"); 
 
                         createMenuOption(stopWiggle, "Freeze", stopMoving); 
                         createMenuOption(restartWiggle, "Dance", restartMoving);
+
                         hideAndShow(stopWiggle, restartWiggle, animationOn, stayStill, 2, (a, b) => a >= b)
 
-                        let moveIn = document.createElement("div");
-                        let moveBack = document.createElement("div");
-
-                        //add an option to move closer/move back
-                        //check (+ will need to look into adding an extra "star" to the star section to the left of the textfield) + flirt
-                        //maybe some funny options 
-                        //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section)
+                        let check = document.createElement("div"); //will need to look into adding an extra "star" to the star section to the left of the textfield to fit undertale look
+                        let flirt = document.createElement("div");
+                        let rate = document.createElement("div"); //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
+                        let stickThrow = document.createElement("div");
+                        let autograph = document.createElement("div");
+                        
+                        createMenuOption(check, "Check", checkOut);
+    
+                        //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
                 } else if (currentButton === "item") {
                     //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items? like a stick
