@@ -239,7 +239,6 @@ const symbols = {
 const gameState = {
     actionButtonClicked: false,
     menuOptionConfirmed: false,
-    currentLineShown: false,
     currentActiveActionButton: {
         fight: 0,
         act: 0,
@@ -282,17 +281,18 @@ allMettSounds.forEach(sound => sound.volume = sameVolume - 0.1);
 
 //mettaton's words are output word-by-word instead of letter-by-letter - so a separate function will be needed for that + there will be a different mechanism for playing music
 const typeWriter = function (location, phrase) {
+    return new Promise((resolve) => {
+
     let phraseDivided = phrase.split(" ");
     let lettersDivided =[...phraseDivided.join(" ")];
     let i = 0;
-    gameState["currentLineShown"] = false
 
     const wordByLetterOutput = setInterval(function() {
 
         if (i === lettersDivided.length) {
             clearInterval(wordByLetterOutput)
-            gameState["currentLineShown"] = true;
 
+            resolve();
         } else {
             location.textContent += `${lettersDivided[i]}`;
             i++;      
@@ -308,6 +308,7 @@ const typeWriter = function (location, phrase) {
             typeWriterSound.currentTime = 0;
         }
     }, 50)
+});
 }
 
 const mettTalking = function (phrase) {
@@ -478,36 +479,42 @@ const restartMoving = function () {
     }
 }
 
+const multiLineText = function(textLineOne, textlineTwo) {
+    let lineOne = document.createElement("div");
+    let lineTwo = document.createElement("div");
+
+    let multiLine = document.createElement("div");
+    multiLine.classList.add("multi-line-text");
+
+    multiLine.appendChild(lineOne);
+    multiLine.appendChild(lineTwo);
+
+    textField.appendChild(multiLine);
+        
+    mettTalking("TESTING!!");
+    starSpace.textContent = `*
+    *`
+
+    const firstLine = async function() {
+        await typeWriter(lineOne, textLineOne);
+        }
+        
+    const secondLine = async () => {
+        await firstLine()
+
+        await typeWriter(lineTwo, textlineTwo);
+    }
+
+        secondLine();
+}
+
+
 const checkOut = function() {
     clearTextField();
     buttonConfirm.play();
 
-    let lineOne = document.createElement("div");
-    let lineTwo = document.createElement("div");
-
-    textField.appendChild(lineOne);
-    textField.appendChild(lineTwo);
-
-    const secondLine = function() { //keeps re-running, need to look into this + change styling of textField for this function, flex-direction should be column
-        clearInterval(secondLine);
-        if (gameState["currentLineShown"] === true) {
-            lineTwo.textContent = typeWriter(lineTwo, `another testing line!`);
-        }
+    multiLineText(`METTATON 8 ATK 999 DEF`, `another testing line!`);
     }
-    
-    setTimeout(function() {
-        
-        mettTalking("TESTING!!");
-        starSpace.textContent = `*
-        *`
-
-        lineOne.textContent = typeWriter(lineOne, `METTATON 8 ATK 999 DEF`);
-        
-    }, 10)
-
-    setInterval(secondLine, 50); 
-    
-    } 
 
 const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, checkedValue, comparator) { //comparator should be used like (a, b) => a (insert the needed check, like >= or === or what else) b)  example: (a, b) => a < b
     if (!checkOne && comparator(checkTwo, checkedValue)) {
