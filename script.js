@@ -239,6 +239,7 @@ const symbols = {
 const gameState = {
     actionButtonClicked: false,
     menuOptionConfirmed: false,
+
     currentActiveActionButton: {
         fight: 0,
         act: 0,
@@ -265,6 +266,38 @@ typeWriterSound.volume = sameVolume - 0.1;
 function randomize (arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
+
+
+/*
+flirt:
+"You ask if he believes in love at first sight. ‘I do! That’s why I keep mirrors everywhere~’ [Flirt]"
+"You confess you’ve never met a robot quite like him. ‘Naturally! I’m one of a kind, dear~’ [Flirt]"
+"You promise to always be his number-one fan.He twirls—‘How charming! But do try to stand out, dear~’ [Flirt]
+"You strike a pose and wink. The lights seem to shine a little brighter! [Flirt]"
+"You call Mettaton ‘the most glamorous machine in existence.’ He already knew, but appreciates it. [Flirt]"
+"You wink and say, ‘I’d give you a 10/10.’ Mettaton gasps—‘ONLY TEN?!’ [Flirt]"
+"You ask if he believes in fate. He spins—‘Fate? No, darling. Destiny! And mine is to dazzle!’ [Flirt]"
+
+
+INSULT:
+nothing is drawn:
+"You tell him his design is outdated. He twirls—‘Vintage, dear! Timeless! Unlike that attitude.’ [Insult]"
+"You declare his screen is looking especially empty today. He scoffs—‘A blank canvas, darling! True art is yet to come~’ [Insult]"
+"You ask if his screen is supposed to be that dull. He gasps—‘DULL?! My pixels exude sophistication!’ [Insult]"
+
+something is drawn:
+"You say, ‘I think I improved you.’ He spins—‘Nonsense! I was already flawless!’ [Insult]"
+"You critique your masterpiece—‘Actually, this is a perfect representation of you.’ He gasps—‘Gorgeous, then?! Why, thank you!’ [Insult]"
+"You frown. ‘Hmm… You still don’t look great.’ He gasps—‘Such slander! Even art cannot contain my beauty!’ [Insult]"
+"You snicker. ‘This looks like a budget version of you.’ He twirls—‘Oh, how adorable! Even a discount Mettaton outshines the rest~’ [Insult]"
+
+stick:
+"You throw the stick. It bounces off Mettaton’s screen with a loud clunk. He gasps—‘Darling, I am not a fetching machine!’"
+"You throw the stick. It lands on top of Mettaton with a soft plonk. He sighs—‘Ah, a gift? How touching~ But try roses next time!’"
+"You throw the stick. Mettaton dramatically dodges—‘Scandalous! Is this an attack or an avant-garde performance?!’"
+"You toss the stick onto his screen. Somehow it stays there. He doesn’t react. ‘…Darling, I hope that wasn’t an attempt at modern art.’"
+
+*/
 
 const mettSound1 = document.querySelector("#speech-effect-1");
 const mettSound2 = document.querySelector("#speech-effect-2");
@@ -311,14 +344,46 @@ const typeWriter = function (location, phrase) {
 });
 }
 
+mettStick = [
+    ["Darling, I am not a fetching machine!"], 
+    ["Ah, a gift? How touching~", "But try roses next time!"], 
+    ["Scandalous!", "Is this an attack or an avant-garde performance?!"], 
+    ["…Darling, I hope that wasn’t an attempt at modern art."]
+];
+
+stickText = [
+    ["You throw the stick.","It bounces off Mettaton’s screen with a loud clunk."], 
+    ["You throw the stick.", "It lands on top of Mettaton with a soft plonk."], 
+    ["You throw the stick.", "Mettaton dodges, dramatically."], 
+    ["You toss the stick onto Mettaton's screen.", "Somehow it just stays there. He doesn’t react, but he is not impressed by you now."]
+];
+
+allText = {
+    flavor: {
+        stick: stickText
+    },
+    mettaton: {
+        stick: mettStick
+    }
+}
+
 const mettTalking = function (phrase) {
+    return new Promise((resolve) => {
     let phraseDivided = phrase.split(" ");
     let phraseSpaceSeparated = phraseDivided.join(" ");
     let i = 0;
 
+    const clearUpBubble = function() {
+        bubbleTextField.textContent = "";
+
+        window.removeEventListener("click", clearUpBubble);
+    }
+
     const wordOutput = setInterval(function() {
         if (i === phraseSpaceSeparated.length) {
-            clearInterval(wordOutput)
+            clearInterval(wordOutput);
+            resolve();
+            window.addEventListener("click", clearUpBubble);
         } else {
             //textfield is created, but specific behavior for text showing/for when it'll be showing still needs to be adjusted
             //will work on that once I'll be done with the action buttons + will generate all needed text, as it doesn't make much sense to work on this until then
@@ -336,7 +401,7 @@ const mettTalking = function (phrase) {
             randomSound.play();
         }
     }, 70)
-
+})
 }
 
 
@@ -410,6 +475,11 @@ let stayStill = 0;
 let animationOn = true;
 const allAudio = document.querySelectorAll("audio")
 
+const successfulSelect = function() {
+    clearTextField();
+    buttonConfirm.play();
+}
+
 const musicQuiet = function () {
     if (quietTimes === 0) {
         battleTheme.pause();
@@ -421,8 +491,7 @@ const musicQuiet = function () {
     }
 
     quietTimes++;
-    clearTextField();
-    buttonConfirm.play();
+    successfulSelect();
 }
 
 const musicBack = function () {
@@ -437,8 +506,7 @@ const musicBack = function () {
         allMettSounds.forEach(sound => sound.volume = sameVolume - 0.1);
 
         musicOn = true;
-        clearTextField();
-        buttonConfirm.play();
+        successfulSelect();
     } 
 }
 
@@ -456,10 +524,8 @@ const stopMoving = function () {
     }
 
     stayStill++;
-    console.log(stayStill);
  
-    clearTextField();
-    buttonConfirm.play();
+    successfulSelect();
 }
 
 const restartMoving = function () {
@@ -474,12 +540,12 @@ const restartMoving = function () {
         animationOn = true;
         stayStill = 0;
 
-        clearTextField();
-        buttonConfirm.play();
+        successfulSelect();
     }
 }
 
-const multiLineText = function(textLineOne, textlineTwo) {
+const multiLineText = function(textLineOne, textLineTwo) {
+    return new Promise((resolve) => {
     let lineOne = document.createElement("div");
     let lineTwo = document.createElement("div");
 
@@ -491,30 +557,52 @@ const multiLineText = function(textLineOne, textlineTwo) {
 
     textField.appendChild(multiLine);
         
-    mettTalking("TESTING!!");
     starSpace.textContent = `*
     *`
 
-    const firstLine = async function() {
+    const firstLine = async () => {
         await typeWriter(lineOne, textLineOne);
         }
         
     const secondLine = async () => {
-        await firstLine()
+        await firstLine();
 
-        await typeWriter(lineTwo, textlineTwo);
+        await typeWriter(lineTwo, textLineTwo);
     }
 
-        secondLine();
-}
+    const cleanUp = function() {
+        starSpace.textContent = `*`;
+        multiLine.remove();
+        window.removeEventListener("click", cleanUp);
+        resolve();
+    }
+
+    secondLine().then(() => {
+        window.addEventListener("click", cleanUp);
+    });
+})
+    }
 
 
 const checkOut = function() {
-    clearTextField();
-    buttonConfirm.play();
+    successfulSelect();
 
-    multiLineText(`METTATON 8 ATK 999 DEF`, `another testing line!`);
+    multiLineText(`METTATON 8 ATK 999 DEF`, `His metal body renders him invulnerable to attack.`);
+    mettTalking("TESTING!!");
     }
+
+const flirt = function() {
+    successfulSelect();
+
+
+}
+
+const stick = function() {
+    successfulSelect();
+    multiLineText(`You throw the stick`, `It bounces off Mettaton’s screen with a loud clunk`).then(() => {
+        mettTalking("Darling, I am not a fetching machine!");
+    });
+}
 
 const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, checkedValue, comparator) { //comparator should be used like (a, b) => a (insert the needed check, like >= or === or what else) b)  example: (a, b) => a < b
     if (!checkOne && comparator(checkTwo, checkedValue)) {
@@ -575,15 +663,18 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         let check = document.createElement("div"); //will need to look into adding an extra "star" to the star section to the left of the textfield to fit undertale look
                         let flirt = document.createElement("div");
                         let rate = document.createElement("div"); //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
-                        let stickThrow = document.createElement("div");
                         let autograph = document.createElement("div");
                         
                         createMenuOption(check, "Check", checkOut);
+                        createMenuOption(flirt, "Flirt", flirting);
     
                         //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
                 } else if (currentButton === "item") {
                     //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items? like a stick
+                    let stickThrow = document.createElement("div");
+                    createMenuOption(stickThrow, "Stick", stick);
+
                 } else if (currentButton === "mercy") {
                         
                     let spareOption = document.createElement("div");
