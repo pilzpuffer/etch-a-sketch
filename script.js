@@ -240,6 +240,8 @@ const symbols = {
 const gameState = {
     actionButtonClicked: false,
     menuOptionConfirmed: false,
+    hasDrawing: false,
+    checkOutTimes: 0,
 
     currentActiveActionButton: {
         fight: 0,
@@ -350,27 +352,52 @@ const typeWriter = function (location, phrase) {
 });
 }
 
-mettStick = [
+const mettStick = [
     ["Darling, I am not a fetching machine!"], 
-    ["Ah, a gift? How touching~", "But try roses next time!"], 
+    ["Ah, a gift? How touching.", "But try roses next time!"], 
     ["Scandalous!", "Is this an attack or an avant-garde performance?!"], 
     ["…Darling, I hope that wasn’t an attempt at modern art."]
 ];
 
-stickText = [
+const stickText = [
     ["You throw the stick.","It bounces off Mettaton’s screen with a loud clunk."], 
     ["You throw the stick.", "It lands on top of Mettaton with a soft plonk."], 
     ["You throw the stick.", "Mettaton dodges, dramatically."], 
     ["You toss the stick onto Mettaton's screen.", "Somehow it just stays there. He doesn’t react, but he is not impressed by you now."]
 ];
 
+const checkOut = 
+[
+    [`METTATON 8 ATK 999 DEF`, `His metal body renders him invulnerable to attack.`],
+    [`METTATON 8 ATK 999 DEF`, `Yes, this still didn't change.`]
+];
+
+const mettCheckNone = [
+    ["I see you've checked again!", "And oh — would you look at that? Nothing’s changed!"],
+    ["Ah, a critic returning for a second glance?", "You’ll find the masterpiece is already perfect."],
+    ["Repetition is the key to success!", "Except here.", "Here, it’s just a waste of time."],
+    ["Oh, checking twice? How thorough!", "But the perfection remains unchanged."]
+]
+
+const mettCheckDrawn = [
+    ["Checking again? Marvelous!", "Appreciate your own work, darling!", "Such bold choices… truly."],
+    ["Checking again? What’s wrong, dear?", "Second thoughts about your artistic masterpiece?"],
+    ["Ah, still looking? Marvelous!", "A true artist should always reevaluate their work...", "...or regret it."]
+]
+
+
 allText = {
     flavor: {
-        stick: stickText
+        stick: stickText,
+        check: checkOut,
     },
     mettaton: {
-        stick: mettStick
-    }
+        stick: mettStick,
+        check: {
+            mettCheckNone: mettCheckNone,
+            mettCheckDrawn: mettCheckDrawn
+        },
+    },
 }
 
 
@@ -604,12 +631,38 @@ const flavorText = function(lines) {
 
 
 
-const checkOut = function() {
+const checkOut = async function() {
     successfulSelect();
+    let correctKey;
 
-    flavorText(`METTATON 8 ATK 999 DEF`, `His metal body renders him invulnerable to attack.`); //need to rewrite to make it a part of the allText
-    mettTalking("TESTING!!"); //need to rewrite to make it a part of the allText
+    if (gameState["hasDrawing"] === true) {
+        correctKey = "mettCheckDrawn";
+    } else {
+        correctKey = "mettCheckNone";
     }
+
+    let selectedIndex = randomIndex(allText["mettaton"]["check"][correctKey]);
+
+const flavorLine = async () => {
+    if (gameState["checkOutTimes"] === 0) {
+        await flavorText(allText["flavor"]["check"][0]);
+    } else {
+        await flavorText(allText["flavor"]["check"][1]);
+    }
+}
+
+if (gameState["checkOutTimes"] === 0) {
+    await flavorLine()
+} else {
+    const talking = async() => {
+        await flavorLine();
+        await mettTalking(allText["mettaton"]["check"][correctKey][selectedIndex]);
+    }
+    talking();
+}
+
+gameState["checkOutTimes"]++;
+};
 
 // const flirt = function() {
 //     successfulSelect();
