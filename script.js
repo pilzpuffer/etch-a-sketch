@@ -5,6 +5,7 @@ const battleStart = document.querySelector("#battle-start");
 const allColors = ["red", "orange", "yellow", "green", "light-blue", "blue", "purple", "black", "grey"];
 
 const mettBody = document.querySelector(".top-part");
+const textBubble = document.querySelector("#text-bubble");
 
 //seems to get laggy at 64
 let fieldSize = 16;
@@ -267,6 +268,9 @@ function randomize (arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
+function randomIndex (arr) {
+    return Math.floor(Math.random() * arr.length)
+}
 
 /*
 flirt:
@@ -367,43 +371,44 @@ allText = {
     }
 }
 
+
+
 const mettTalking = function (phrase) {
-    return new Promise((resolve) => {
-    let phraseDivided = phrase.split(" ");
-    let phraseSpaceSeparated = phraseDivided.join(" ");
-    let i = 0;
+    return new Promise(async (resolve) => {
+        let i = 0; 
+        textBubble.classList.remove("gone");
 
-    const clearUpBubble = function() {
-        bubbleTextField.textContent = "";
+        async function displayNextPhrase() {
+            if (i >= phrase.length) {
+                resolve();
+                window.removeEventListener("click", displayNextPhrase);
+                textBubble.classList.add("gone");
+                return
+            }
 
-        window.removeEventListener("click", clearUpBubble);
-    }
+            let phraseDivided = phrase[i].split(" ");
+            let j = 0;
 
-    const wordOutput = setInterval(function() {
-        if (i === phraseSpaceSeparated.length) {
-            clearInterval(wordOutput);
-            resolve();
-            window.addEventListener("click", clearUpBubble);
-        } else {
-            //textfield is created, but specific behavior for text showing/for when it'll be showing still needs to be adjusted
-            //will work on that once I'll be done with the action buttons + will generate all needed text, as it doesn't make much sense to work on this until then
-            bubbleTextField.textContent += `${phraseSpaceSeparated[i]}`;
-            i++; 
+            bubbleTextField.textContent = "";
+
+            for (j; j < phraseDivided.length; j++) {
+                bubbleTextField.textContent += phraseDivided[j] + " ";
+
+                let randomSound = randomize(allMettSounds);
+                randomSound.play(); //sound plays whenever a word shows
+
+                await new Promise((resolve) => setTimeout(resolve, 100)); //wait before a new word
+            }  
+
+            i++; //move to next phrase
+            window.addEventListener("click", displayNextPhrase);
         }
 
-    }, 35)
-        
-    const talkingSounds = setInterval(function() {
-        if (i === phraseSpaceSeparated.length) {
-            clearInterval(talkingSounds)
-        } else {
-            randomSound = randomize(allMettSounds);
-            randomSound.play();
-        }
-    }, 70)
-})
+        await displayNextPhrase();
+    })
 }
 
+            
 
 const clearTextField = function () {
     textField.replaceChildren();
@@ -449,6 +454,7 @@ let createMenuOption = function(containerName, providedText, actionApplied) {
 
 
 battleStart.addEventListener("ended", function() {
+    textBubble.classList.add("gone");
     const allCells = document.querySelectorAll(".innerCells");
 
 const clearSketchField = function() {
@@ -544,8 +550,12 @@ const restartMoving = function () {
     }
 }
 
-const multiLineText = function(textLineOne, textLineTwo) {
+const multiLineText = function(lines) {
     return new Promise((resolve) => {
+    
+    let textLineOne = lines[0];
+    let textLineTwo = lines[1];
+    
     let lineOne = document.createElement("div");
     let lineTwo = document.createElement("div");
 
@@ -591,16 +601,19 @@ const checkOut = function() {
     mettTalking("TESTING!!");
     }
 
-const flirt = function() {
-    successfulSelect();
+// const flirt = function() {
+//     successfulSelect();
 
 
-}
+// }
 
 const stick = function() {
     successfulSelect();
-    multiLineText(`You throw the stick`, `It bounces off Mettaton’s screen with a loud clunk`).then(() => {
-        mettTalking("Darling, I am not a fetching machine!");
+
+    let selectedIndex = randomIndex(allText["flavor"]["stick"]);
+
+    multiLineText(allText["flavor"]["stick"][selectedIndex]).then(() => {
+        mettTalking(allText["mettaton"]["stick"][selectedIndex]);
     });
 }
 
@@ -666,7 +679,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         let autograph = document.createElement("div");
                         
                         createMenuOption(check, "Check", checkOut);
-                        createMenuOption(flirt, "Flirt", flirting);
+                        // createMenuOption(flirt, "Flirt", flirting);
     
                         //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
