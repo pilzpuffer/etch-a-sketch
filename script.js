@@ -767,8 +767,20 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
 
                         let check = document.createElement("div"); //will need to look into adding an extra "star" to the star section to the left of the textfield to fit undertale look
                         let flirt = document.createElement("div");
+                        let insult = document.createElement("div");
                         let rate = document.createElement("div"); //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
-                        let autograph = document.createElement("div");
+                        
+                        //rate will be the act function that will complete this game - MTT will ask if this drawing is final, player will need to confirm
+                        //after that, mettaton will "appraise" the drawing
+                        //he will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares
+                        //and then the drawing will be rated randomly. yeah. maybe I can add some extra checks, like, if the drawing contains more than a few colors, the amount of squares colored in + numbers can be deducted based on user's behavior
+                        //like, insults would deduct points, but flirts will increase them
+                        //once rated, it will be possible to fully spare MTT (his name will become yellow) - and the game will end!!!!
+                        //if the rating will be lower than 8, MTT will initially threaten the player that he will kill them, but at the end will just tell that there's the show is on an ad break as there were not enough viewers - so he will have to save killing the player
+                        //for the grand finale
+                        //if the rating is somewhere around 1-3, MTT will be appalled at the player's lack of artistry - and tell them that they're too pathetic/not inspiring enough to be killed. 
+                        //rainbow-colored drawing would automatically grant 5 points and the rest will depend on player's actions and the power of random
+                        // there should be a separate check if too many points were deducted due to the player's bad behavior, then he will calculate their drawing score separately, but note that the player is an awful person 
                         
                         createMenuOption(check, "Check", checkOut);
                         // createMenuOption(flirt, "Flirt", flirting);
@@ -781,7 +793,6 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                     createMenuOption(stickThrow, "Stick", stick);
 
                 } else if (currentButton === "mercy") {
-                        
                     let spareOption = document.createElement("div");
                     createMenuOption(spareOption, "Mettaton", clearSketchField);
                 }   
