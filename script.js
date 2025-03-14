@@ -274,26 +274,28 @@ function randomIndex (arr) {
 
 /*
 flirt:
-"You ask if he believes in love at first sight. ‘I do! That’s why I keep mirrors everywhere~’ [Flirt]"
-"You confess you’ve never met a robot quite like him. ‘Naturally! I’m one of a kind, dear~’ [Flirt]"
-"You promise to always be his number-one fan.He twirls—‘How charming! But do try to stand out, dear~’ [Flirt]
-"You strike a pose and wink. The lights seem to shine a little brighter! [Flirt]"
-"You call Mettaton ‘the most glamorous machine in existence.’ He already knew, but appreciates it. [Flirt]"
-"You wink and say, ‘I’d give you a 10/10.’ Mettaton gasps—‘ONLY TEN?!’ [Flirt]"
-"You ask if he believes in fate. He spins—‘Fate? No, darling. Destiny! And mine is to dazzle!’ [Flirt]"
+"You ask Mettaton if he believes in love at first sight. ‘Naturally, darling! That’s why I keep mirrors everywhere~’ [Flirt]"
+"You confess you’ve never met a robot quite like him. ‘But of course! I’m one of a kind, dear~’ [Flirt]"
+"You promise to always be his number-one fan. ‘How charming! But do try to stand out, dear~’ [Flirt]
+"You wink and tell Mettaton he’s a perfect 10. ‘ONLY TEN?! How utterly tragic!’ [Flirt]" - typewriter, mettTalk
+
+"You ask if he believes in fate. He spins dramatically. ‘Fate? No, no, darling — destiny! And mine is to shine!’ [Flirt]" - flavorText, mettTalk
+
+"You strike a pose and wink. The lights seem to shine a little brighter! [Flirt]" - flavorText
+"You call Mettaton the most glamorous machine in existence. He already knew that, but clearly appreciates this sentiment. [Flirt]"
 
 
 INSULT:
 nothing is drawn:
-"You tell him his design is outdated. He twirls—‘Vintage, dear! Timeless! Unlike that attitude.’ [Insult]"
-"You declare his screen is looking especially empty today. He scoffs—‘A blank canvas, darling! True art is yet to come~’ [Insult]"
-"You ask if his screen is supposed to be that dull. He gasps—‘DULL?! My pixels exude sophistication!’ [Insult]"
+"You tell Mettaton his design is dated.  He twirls dismissively. ‘Vintage, dear! Timeless elegance - unlike that attitude.’ [Insult]"
+"You declare Mettaton's screen is looking especially empty today. He scoffs at that. ‘A pristine canvas, darling! The true masterpiece is yet to come.’ [Insult]"
+"You ask Mettaton if his screen is supposed to look that dull. He gasps, insulted by the notion. ‘DULL?! Impossible! Every pixel of mine radiates sophistication!’ [Insult]"
 
 something is drawn:
-"You say, ‘I think I improved you.’ He spins—‘Nonsense! I was already flawless!’ [Insult]"
-"You critique your masterpiece—‘Actually, this is a perfect representation of you.’ He gasps—‘Gorgeous, then?! Why, thank you!’ [Insult]"
-"You frown. ‘Hmm… You still don’t look great.’ He gasps—‘Such slander! Even art cannot contain my beauty!’ [Insult]"
-"You snicker. ‘This looks like a budget version of you.’ He twirls—‘Oh, how adorable! Even a discount Mettaton outshines the rest~’ [Insult]"
+"You tell him that you've improved his look. He flicks his wrist. "Nonsense! Perfection needs no adjustments!" [Insult]"
+"You critique your masterpiece, saying it’s the perfect representation of him. ‘Ah! So you’ve captured my brilliance? How thoughtful!’ [Insult]"
+"You frown, saying that something about Mettaton still doesn’t look great."Scandalous! Even art struggles to contain my beauty!" [Insult]"
+"You snicker, calling your drawing a budget version of him. He twirls. "Oh, how adorable! Even a discount Mettaton outshines the rest~"  [Insult]"
 
 stick:
 "You throw the stick. It bounces off Mettaton’s screen with a loud clunk. He gasps—‘Darling, I am not a fetching machine!’"
@@ -550,7 +552,7 @@ const restartMoving = function () {
     }
 }
 
-const multiLineText = function(lines) {
+const flavorText = function(lines) {
     return new Promise((resolve) => {
     
     let textLineOne = lines[0];
@@ -570,35 +572,43 @@ const multiLineText = function(lines) {
     starSpace.textContent = `*
     *`
 
-    const firstLine = async () => {
-        await typeWriter(lineOne, textLineOne);
-        }
-        
-    const secondLine = async () => {
-        await firstLine();
-
-        await typeWriter(lineTwo, textLineTwo);
-    }
-
     const cleanUp = function() {
         starSpace.textContent = `*`;
         multiLine.remove();
         window.removeEventListener("click", cleanUp);
         resolve();
     }
+    
+    const firstLine = async () => {
+        await typeWriter(lineOne, textLineOne);
+        }
 
-    secondLine().then(() => {
-        window.addEventListener("click", cleanUp);
-    });
+        if (lines.length === 2) { 
+            const secondLine = async () => {
+                await firstLine();
+                await typeWriter(lineTwo, textLineTwo);
+            }
+
+            secondLine().then(() => {
+                window.addEventListener("click", cleanUp);
+            });
+
+            } else if (lines.length === 1) {
+                starSpace.textContent = `*`
+                firstLine.then(() => {
+                    window.addEventListener("click", cleanUp); 
+                });
+            }
 })
-    }
+}
+
 
 
 const checkOut = function() {
     successfulSelect();
 
-    multiLineText(`METTATON 8 ATK 999 DEF`, `His metal body renders him invulnerable to attack.`);
-    mettTalking("TESTING!!");
+    flavorText(`METTATON 8 ATK 999 DEF`, `His metal body renders him invulnerable to attack.`); //need to rewrite to make it a part of the allText
+    mettTalking("TESTING!!"); //need to rewrite to make it a part of the allText
     }
 
 // const flirt = function() {
@@ -612,7 +622,7 @@ const stick = function() {
 
     let selectedIndex = randomIndex(allText["flavor"]["stick"]);
 
-    multiLineText(allText["flavor"]["stick"][selectedIndex]).then(() => {
+    flavorText(allText["flavor"]["stick"][selectedIndex]).then(() => {
         mettTalking(allText["mettaton"]["stick"][selectedIndex]);
     });
 }
