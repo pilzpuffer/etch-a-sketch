@@ -13,6 +13,8 @@ let currentDrawingColor = allColors[7];
 let isDrawing = false;
 let isErasing = false;
 
+
+
 for (let i = 0; i < fieldSize; i++) {
     let newRow = document.createElement('div');
     newRow.classList.add("newRow");
@@ -24,16 +26,29 @@ for (let i = 0; i < fieldSize; i++) {
             innerCells.classList.add("innerCells");
             newRow.appendChild(innerCells);
         }
+
 }
+
+const allSketchFieldElements = document.querySelectorAll("div.innerCells");
 
     mettBody.addEventListener("mousedown", (event) => {
         if (event.target.classList.contains("innerCells")) {
             if (event.button === 0) {
                 isDrawing = true;
                 event.target.classList.add(currentDrawingColor);
+                gameState["hasDrawing"] = true;
             } else if (event.button === 2) {
                 isErasing = true;
                 event.target.classList.remove(...allColors);
+
+                for (const div of allSketchFieldElements) {
+                    if ([...div.classList].some(className => allColors.includes(className))) {
+                        gameState["hasDrawing"] = true;
+                        break;
+                    } else {
+                        gameState["hasDrawing"] = false;
+                    }
+                }
             }
             
         }
@@ -47,10 +62,20 @@ for (let i = 0; i < fieldSize; i++) {
     sketchField.addEventListener("mouseover", (event) => {
         if (isDrawing) {
                 event.target.classList.add(currentDrawingColor);
+                gameState["hasDrawing"] = true;
         } else if (isErasing) {
                 event.target.classList.remove(...allColors);
-            }
-        })
+
+                for (const div of allSketchFieldElements) {
+                    if ([...div.classList].some(className => allColors.includes(className))) {
+                        gameState["hasDrawing"] = true;
+                        break;
+                    } else {
+                        gameState["hasDrawing"] = false;
+                    }
+                }
+        }
+    })
 
     function getNumber(element){
         const initialCss = getComputedStyle(document.documentElement).getPropertyValue(element);
@@ -490,7 +515,7 @@ const clearSketchField = function() {
     allCells.forEach((div) => {
         div.classList.remove(...allColors);
     })
-
+    gameState["hasDrawing"] = false;
     clearTextField();
     buttonConfirm.play();
 }
@@ -629,39 +654,43 @@ const flavorText = function(lines) {
 })
 }
 
+const drawnOrNotConversation = async function (keyOne, keyTwo, topic, checkToIncrement) {
+
+    let correctKey;
+
+    if (gameState["hasDrawing"] === true) {
+        correctKey = keyOne;
+    } else {
+        correctKey = keyTwo;
+    }
+
+    let selectedIndex = randomIndex(allText["mettaton"][topic][correctKey]);
+
+const flavorLine = async () => {
+    if (gameState[checkToIncrement] === 0) {
+        await flavorText(allText["flavor"][topic][0]);
+    } else {
+        await flavorText(allText["flavor"][topic][1]);
+    }
+}
+
+if (gameState[checkToIncrement] === 0) {
+    await flavorLine()
+} else {
+    const mettResponding = async() => {
+        await flavorLine();
+        await mettTalking(allText["mettaton"][topic][correctKey][selectedIndex]);
+    }
+    mettResponding();
+}
+
+gameState[checkToIncrement]++;
+}
 
 
 const checkOut = async function() {
     successfulSelect();
-    let correctKey;
-
-    if (gameState["hasDrawing"] === true) {
-        correctKey = "mettCheckDrawn";
-    } else {
-        correctKey = "mettCheckNone";
-    }
-
-    let selectedIndex = randomIndex(allText["mettaton"]["check"][correctKey]);
-
-const flavorLine = async () => {
-    if (gameState["checkOutTimes"] === 0) {
-        await flavorText(allText["flavor"]["check"][0]);
-    } else {
-        await flavorText(allText["flavor"]["check"][1]);
-    }
-}
-
-if (gameState["checkOutTimes"] === 0) {
-    await flavorLine()
-} else {
-    const talking = async() => {
-        await flavorLine();
-        await mettTalking(allText["mettaton"]["check"][correctKey][selectedIndex]);
-    }
-    talking();
-}
-
-gameState["checkOutTimes"]++;
+    drawnOrNotConversation("mettCheckDrawn", "mettCheckNone", "check", "checkOutTimes")
 };
 
 // const flirt = function() {
