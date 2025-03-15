@@ -301,18 +301,47 @@ function randomIndex (arr) {
 
 /*
 flirt:
+
+common phrase pool:
 "You ask Mettaton if he believes in love at first sight. ‘Naturally, darling! That’s why I keep mirrors everywhere~’ [Flirt]"
 "You confess you’ve never met a robot quite like him. ‘But of course! I’m one of a kind, dear~’ [Flirt]"
 "You promise to always be his number-one fan. ‘How charming! But do try to stand out, dear~’ [Flirt]
 "You wink and tell Mettaton he’s a perfect 10. ‘ONLY TEN?! How utterly tragic!’ [Flirt]" - typewriter, mettTalk
-
-"You ask if he believes in fate. He spins dramatically. ‘Fate? No, no, darling — destiny! And mine is to shine!’ [Flirt]" - flavorText, mettTalk
+"You ask if he believes in fate. He spins dramatically. ‘Fate? No, no, darling — destiny! And mine is to shine!’ [Flirt]"
+"You tell Mettaton he must be the brightest star in the Underground. ‘Naturally, darling! But do say it louder—the cameras are rolling~!’ [Flirt]"
+"You sigh dreamily and call him breathtaking. ‘Oh, stop~! No, actually—go on!’ [Flirt]"
+"You dramatically clutch your chest and declare you’ve fallen for him. ‘Ah! A tragic, star-crossed romance! Quick, someone cue the sweeping orchestral score~!’ [Flirt]"
+"You declare your undying admiration. ‘Of course you do, dear! But let’s really sell it—tears, music, confetti!’ [Flirt]"
+"You compliment his dazzling charisma. ‘Flattery will get you everywhere, darling~! But do keep going—my ego demands it~!’ [Flirt]"
 
 "You strike a pose and wink. The lights seem to shine a little brighter! [Flirt]" - flavorText
 "You call Mettaton the most glamorous machine in existence. He already knew that, but clearly appreciates this sentiment. [Flirt]"
 
+flirt, something is drawn
+"You sigh, saying even your best work can't capture his perfection. ‘Oh, sweetheart, nothing could — but I do adore a devoted artist~’ [Flirt]"
+"You ask Mettaton if he’d autograph your artwork. ‘Darling, my mere presence is the signature of excellence!’ [Flirt]"
+"You ask if he’d consider modeling for your next piece. ‘Why, of course! But be warned, dear — no portrait could ever outshine the original.’ [Flirt]"
+"You tell Mettaton your art was inspired by his beauty. ‘Oh, darling, inspiration was inevitable! But can your art truly contain my brilliance?’ [Flirt]"
+"You trace a heart around your drawing and wink. ‘Oh, how sweet! But darling, where’s the grand entrance? The fireworks? The thunderous applause I so richly deserve?’ [Flirt]"
+
+flirt, nothing is drawn:
+"You declare that he is already the ultimate work of art. ‘Oh, darling! Such exquisite taste! But I do want to see your artistic genius, too~!’ [Flirt]"
+"You lean in and call Mettaton ‘the ultimate muse.’ He gasps. ‘A muse with no masterpiece? Darling, this is artistic blasphemy!’ [Flirt]"
+"You whisper that his beauty has rendered you incapable of holding a pen. ‘Ah~! A tragic curse! But fear not, dear—I accept verbal tributes, too~!’ [Flirt]"
+"You promise you were merely warming up. ‘Ah! The anticipation! But remember, dear—fashionably late is only charming if you actually arrive!’ [Flirt]"
+"You claim your masterpiece is invisible — a true avant-garde statement. ‘Oh, how daring! But let’s see if you can push the medium just a little further~!’ [Flirt]"
+"You dramatically insist that true art exists in the mind. ‘Ah, yes~ The concept of art! Now, let’s see you manifest it~!’ [Flirt]"
+"You claim your empty canvas represents the boundless potential of the universe. ‘Oh! How profound! But darling, the judges might call it lazy!’ [Flirt]"
+
 
 INSULT:
+common pool:
+"You tell Mettaton that maybe he should tone it down a bit. He chuckles. ‘Tone it down? Oh, darling, I’m a symphony, not a lullaby. You wouldn’t understand true brilliance if it slapped you in the face.’ [Insult]"
+"You tell Mettaton he’s a little overhyped for your taste. He smirks. ‘Sweetheart, I’m the only thing worth talking about - so I'd say I'm not hyped enough. Your taste is clearly as out of date as your opinions.’ [Insult]"
+"You say Mettaton’s a bit of a one-trick pony. He tilts his head, almost amused. ‘One trick? Darling, every move I make is a masterpiece. I’d hate to see you try anything that isn’t utterly forgettable.’ [Insult]"
+"You suggest Mettaton could use a little humility for once. He rolls his eyes. ‘Please, darling, I’m not here to blend in with the background. You’re confusing me with someone else.’ [Insult]"
+
+
 nothing is drawn:
 "You tell Mettaton his design is dated.  He twirls dismissively. ‘Vintage, dear! Timeless elegance - unlike that attitude.’ [Insult]"
 "You declare Mettaton's screen is looking especially empty today. He scoffs at that. ‘A pristine canvas, darling! The true masterpiece is yet to come.’ [Insult]"
@@ -324,7 +353,17 @@ something is drawn:
 "You frown, saying that something about Mettaton still doesn’t look great."Scandalous! Even art struggles to contain my beauty!" [Insult]"
 "You snicker, calling your drawing a budget version of him. He twirls. "Oh, how adorable! Even a discount Mettaton outshines the rest~"  [Insult]"
 
-stick:
+TooManyInsults (after insulted 3 times):
+"You throw out an insult that cuts through the air. The sound team quickly blurs the words with a loud, abrupt beep.
+Mettaton tilts his head, lips curling into a mock smile. “Oh, darling, you’re really digging yourself a hole, aren’t you? Keep this up, and I may stop gracing you with my attention.”"
+"You push further, your words becoming sharper. Mettaton’s dazzling screen flickers, just a hint of irritation seeping through his cool composure.
+He sighs, a flicker of warning in his voice. “You’re testing my patience, aren’t you? Keep going, and I’ll have no sympathy left for you. Rudeness isn’t wit, darling — it’s a death sentence.”"
+"You get bolder, throwing insults that make even the production team uneasy. “You’re really pushing it, darling. If you’re not careful, you’ll find yourself in a much worse position than you realize. Not everyone takes insults lightly.”"
+"Your insults have gone too far, and the crew looks nervous. Mettaton’s usually vibrant shine seems to dull for a split second.
+His voice is low, dangerous. "You’ve crossed a line now, darling. One more word, and you’ll regret ever uttering my name. You’ve lost the privilege of my attention.""
+"You call Mettaton something unthinkable. The crew frantically cuts to a commercial break, but it’s too late. His tone turns venomous. "That’s it. You’ve earned yourself a one-way ticket out of here. You want to keep insulting me? Well, let’s see how much you enjoy your final act.""
+
+STICK:
 "You throw the stick. It bounces off Mettaton’s screen with a loud clunk. He gasps—‘Darling, I am not a fetching machine!’"
 "You throw the stick. It lands on top of Mettaton with a soft plonk. He sighs—‘Ah, a gift? How touching~ But try roses next time!’"
 "You throw the stick. Mettaton dramatically dodges—‘Scandalous! Is this an attack or an avant-garde performance?!’"
@@ -391,8 +430,7 @@ const stickText = [
     ["You toss the stick onto Mettaton's screen.", "Somehow it just stays there. He doesn’t react, but he is not impressed by you now."]
 ];
 
-const checkOut = 
-[
+const checkOut = [
     [`METTATON 8 ATK 999 DEF`, `His metal body renders him invulnerable to attack.`],
     [`METTATON 8 ATK 999 DEF`, `Yes, this still didn't change.`]
 ];
@@ -405,9 +443,9 @@ const mettCheckNone = [
 ]
 
 const mettCheckDrawn = [
-    ["Checking again? Marvelous!", "Appreciate your own work, darling!", "Such bold choices… truly."],
-    ["Checking again? What’s wrong, dear?", "Second thoughts about your artistic masterpiece?"],
-    ["Ah, still looking? Marvelous!", "A true artist should always reevaluate their work...", "...or regret it."]
+    ["Back for another check? Marvelous!", "Appreciate your own work, darling!", "Such bold choices… truly."],
+    ["Oh, you're checking it again? What’s wrong, dear?", "Second thoughts about your artistic masterpiece?"],
+    ["Ah, still looking?", "A true artist should always reevaluate their work...", "...or regret it."]
 ]
 
 
@@ -425,8 +463,6 @@ allText = {
     },
 }
 
-
-
 const mettTalking = function (phrase) {
     return new Promise(async (resolve) => {
         let i = 0; 
@@ -434,33 +470,36 @@ const mettTalking = function (phrase) {
 
         async function displayNextPhrase() {
             if (i >= phrase.length) {
-                resolve();
-                window.removeEventListener("click", displayNextPhrase);
-                textBubble.classList.add("gone");
-                return
+                setTimeout(removeBubble, 50);
+                return;
             }
 
             let phraseDivided = phrase[i].split(" ");
-            let j = 0;
-
             bubbleTextField.textContent = "";
 
-            for (j; j < phraseDivided.length; j++) {
-                bubbleTextField.textContent += phraseDivided[j] + " ";
+            for (let word of phraseDivided) {
+                bubbleTextField.textContent += word + " ";
 
                 let randomSound = randomize(allMettSounds);
-                randomSound.play(); //sound plays whenever a word shows
+                randomSound.play(); // Play sound on each word
 
-                await new Promise((resolve) => setTimeout(resolve, 100)); //wait before a new word
-            }  
+                await new Promise((resolve) => setTimeout(resolve, 100)); // Delay before next word
+            }
 
-            i++; //move to next phrase
-            window.addEventListener("click", displayNextPhrase);
+            i++; // Move to next phrase
+            window.addEventListener("click", displayNextPhrase, { once: true });
+        }
+
+        function removeBubble() {
+                textBubble.classList.add("gone");
+                bubbleTextField.textContent = "";
+                resolve();
+                return;
         }
 
         await displayNextPhrase();
-    })
-}
+    });
+};
 
             
 
@@ -693,11 +732,11 @@ const checkOut = async function() {
     drawnOrNotConversation("mettCheckDrawn", "mettCheckNone", "check", "checkOutTimes")
 };
 
-// const flirt = function() {
-//     successfulSelect();
+const flirting = function() {
+    successfulSelect();
 
 
-// }
+}
 
 const stick = function() {
     successfulSelect();
@@ -783,7 +822,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         // there should be a separate check if too many points were deducted due to the player's bad behavior, then he will calculate their drawing score separately, but note that the player is an awful person 
                         
                         createMenuOption(check, "Check", checkOut);
-                        // createMenuOption(flirt, "Flirt", flirting);
+                        createMenuOption(flirt, "Flirt", flirting);
     
                         //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
