@@ -266,7 +266,11 @@ const gameState = {
     actionButtonClicked: false,
     menuOptionConfirmed: false,
     hasDrawing: false,
+
     checkOutTimes: 0,
+    flirtTimes: 0,
+    performTimes: 0,
+    insultTimes: 0,
 
     currentActiveActionButton: {
         fight: 0,
@@ -367,7 +371,7 @@ const mettCheckDrawn = [
 const flavorPerformNone = [
     ["You insist you’re merely building suspense."], 
     ["You claim your masterpiece is invisible — a true avant-garde statement."],
-    ['You dramatically insist that true art exists in the mind'],
+    ['You dramatically insist that true art exists in the mind.'],
     ['You claim your empty canvas represents the boundless potential of the universe.'],
     ["You say you're still summoning the artistic spirits."],
     ['You dramatically gesture at the blank canvas, declaring it a statement on silence and restraint.'],
@@ -389,7 +393,7 @@ const mettPerformNone = [
 ];
 
 const flavorPerformDrawn = [
-    ['You frame your creation with your hands and call it a masterpiece'],
+    ['You frame your creation with your hands and call it a masterpiece.'],
     ['You dramatically unveil your work like a magician revealing a trick.'],
     ['You bow, expecting applause.'],
     ['You step back, admiring your creation with a knowing smirk.'],
@@ -410,8 +414,17 @@ const mettPerformDrawn = [
     ['Oh, how passionate! But darling, let’s ensure it reads as poetry, not just scribbles!'],
     ['Oh, the confidence! But dear, does the art share your stage presence?'],
     ['Oh, a true visionary! But darling, why not dazzle the public now?']
+];
+
+const flavorPerformTooMuch = [
+    ["test"],
+    ["test"]
 ]
 
+const mettPerformTooMuch = [
+    ["test"],
+    ["test"]
+]
 
 const flavorFlirtNone = [
     ['You declare that Mettaton is already the ultimate work of art.'],
@@ -431,7 +444,7 @@ const mettFlirtNone = [
     ['Ah! A tragic curse! But fear not, dear — I accept verbal tributes, too!'],
     ['Flattery will get you everywhere, darling!', 'But do keep going — my ego demands it!'],
     ['Of course you do, dear! But let’s really sell it — tears, music, confetti!'],
-    ['Naturally, darling! That’s why I keep mirrors everywhere'],
+    ['Naturally, darling!', 'That’s why I keep mirrors everywhere.'],
     ['How charming! But do try to stand out, dear.'],
     ['But of course! I’m one of a kind, dear.'],
     ['']
@@ -461,6 +474,16 @@ const mettFlirtDrawn = [
     ['']
 ];
 
+const flavorFlirtTooMuch = [
+    ["test"],
+    ["test"]
+]
+
+const mettFlirtTooMuch = [
+    ["test"],
+    ["test"]
+]
+
 const flavorInsultNone = [
     ["You tell Mettaton his design is dated.", "He twirls dismissively in response."],
     ["You declare Mettaton's screen is looking especially empty today."],
@@ -480,7 +503,7 @@ const flavorInsultDrawn = [
     ["You tell Mettaton that you've improved his look."],
     ["You critique your masterpiece, saying it’s the perfect representation of Mettaton."],
     ["You snicker, calling your drawing a budget version of Mettaton."],
-    ["You tell Mettaton he’s a little overhyped for your taste"]
+    ["You tell Mettaton he’s a little overhyped for your taste."]
 ];
 
 const mettInsultDrawn = [
@@ -530,15 +553,18 @@ allText = {
         check: checkOut,
         flirt: {
             none: flavorFlirtNone,
-            drawn:flavorFlirtDrawn
+            drawn:flavorFlirtDrawn,
+            tooMuch: flavorFlirtTooMuch
         },
         perform: {
             none: flavorPerformNone,
-            drawn: flavorPerformDrawn
+            drawn: flavorPerformDrawn,
+            tooMuch: flavorPerformTooMuch
         },
         insult: {
             none: flavorInsultNone,
-            drawn: flavorInsultDrawn
+            drawn: flavorInsultDrawn,
+            tooMuch: flavorInsultTooMuch
         }
     },
     mettaton: {
@@ -550,25 +576,27 @@ allText = {
         flirt: {
             none: mettFlirtNone,
             drawn: mettFlirtDrawn,
-            // tooMuch:
+            tooMuch: mettFlirtTooMuch
         },
         perform: {
             none: mettPerformNone,
             drawn: mettPerformDrawn,
-            // tooMuch:
+            tooMuch: mettPerformTooMuch
         },
         insult: {
             none: mettInsultNone,
             drawn: mettInsultDrawn,
-            // tooMuch:
+            tooMuch: mettInsultTooMuch
         }
     },
 }
 
 const mettTalking = function (phrase) {
-    if (phrase === '') {
-        return;
-    } else {
+    console.log("mettTalking called with phrase:", phrase);
+    if (!phrase || (phrase.length === 1 && phrase[0] === "")) { 
+        return Promise.resolve(); 
+    } 
+
     return new Promise(async (resolve) => {
         let i = 0; 
         textBubble.classList.remove("gone");
@@ -604,7 +632,6 @@ const mettTalking = function (phrase) {
 
         await displayNextPhrase();
     });
-}
 };
 
             
@@ -792,7 +819,7 @@ const flavorText = function(lines) {
 
             } else if (lines.length === 1) {
                 starSpace.textContent = `*`
-                firstLine.then(() => {
+                firstLine().then(() => {
                     window.addEventListener("click", cleanUp); 
                 });
             }
@@ -832,14 +859,52 @@ if (gameState[checkToIncrement] === 0) {
 gameState[checkToIncrement]++;
 }
 
+const defaultConversation = async function (topic, checkToIncrement) {
+
+    let correctKey;
+
+    if (gameState["hasDrawing"] === true) {
+        correctKey = "drawn";
+    } else {
+        correctKey = "none";
+    }
+
+    let selectedIndex = randomIndex(allText["mettaton"][topic][correctKey]);
+
+    const flavorLine = async () => {
+        if (gameState[checkToIncrement] <= 2) {
+            await flavorText(allText["flavor"][topic][correctKey][selectedIndex]);
+        } else {
+            await flavorText(allText["flavor"][topic]["tooMuch"][0]); //will need to go line-by-line instead of random
+        }
+    }
+
+    const mettLine = async () => {
+        if (gameState[checkToIncrement] <= 2) {
+            await mettTalking(allText["mettaton"][topic][correctKey][selectedIndex]);
+        } else {
+            await mettTalking(allText["mettaton"][topic]["tooMuch"][0]);
+        }
+    }
+    
+    const conversation = async () => {
+        await flavorLine();
+        await mettLine();
+    }
+        
+    conversation();
+
+}
+
 
 const checkOut = async function() {
     successfulSelect();
-    checkConversation("check", "checkOutTimes")
+    checkConversation("check", "checkOutTimes");
 };
 
 const flirting = function() {
     successfulSelect();
+    defaultConversation("flirt", "flirtTimes");
 }
 
 const stick = function() {
