@@ -266,6 +266,8 @@ const gameState = {
     actionButtonClicked: false,
     menuOptionConfirmed: false,
     hasDrawing: false,
+    flavorTextShown: false,
+    mettTextShown: false,
 
     checkOutTimes: 0,
     flirtTimes: 0,
@@ -592,7 +594,6 @@ allText = {
 }
 
 const mettTalking = function (phrase) {
-    console.log("mettTalking called with phrase:", phrase);
     if (!phrase || (phrase.length === 1 && phrase[0] === "")) { 
         return Promise.resolve(); 
     } 
@@ -600,6 +601,7 @@ const mettTalking = function (phrase) {
     return new Promise(async (resolve) => {
         let i = 0; 
         textBubble.classList.remove("gone");
+        gameState["mettTextShown"] = true;
 
         async function displayNextPhrase() {
             if (i >= phrase.length) {
@@ -627,6 +629,7 @@ const mettTalking = function (phrase) {
                 textBubble.classList.add("gone");
                 bubbleTextField.textContent = "";
                 resolve();
+                gameState["mettTextShown"] = false;
                 return;
         }
 
@@ -655,6 +658,7 @@ let createMenuOption = function(containerName, providedText, actionApplied) {
     optionName.classList.add("option-name");
 
     star.textContent = "*";
+    heartSpace.innerHTML = "<img id='stand-in-for-yellow-heart' src='./images/red-soul-hidden.png'></img>";
     optionName.textContent = providedText;
 
     containerName.appendChild(heartSpace);
@@ -693,8 +697,8 @@ const clearSketchField = function() {
 }
 
 const handleMouseOver = function (event) {
-    playerButtonSelection(event);
-    buttonSelect.play();
+        playerButtonSelection(event);
+        buttonSelect.play();
 }
 
 const hideYellowHeart = function (event) {
@@ -777,6 +781,7 @@ const restartMoving = function () {
 }
 
 const flavorText = function(lines) {
+    gameState["flavorTextShown"] = true;
     return new Promise((resolve) => {
     
     let textLineOne = lines[0];
@@ -798,6 +803,7 @@ const flavorText = function(lines) {
         starSpace.textContent = `*`;
         multiLine.remove();
         window.removeEventListener("click", cleanUp);
+        gameState["flavorTextShown"] = false;
         resolve();
     }
     
@@ -872,7 +878,7 @@ const defaultConversation = async function (topic, checkToIncrement) {
     let selectedIndex = randomIndex(allText["mettaton"][topic][correctKey]);
 
     const flavorLine = async () => {
-        if (gameState[checkToIncrement] <= 2) {
+        if (gameState[checkToIncrement] < 2) {
             await flavorText(allText["flavor"][topic][correctKey][selectedIndex]);
         } else {
             await flavorText(allText["flavor"][topic]["tooMuch"][0]); //will need to go line-by-line instead of random
@@ -880,7 +886,7 @@ const defaultConversation = async function (topic, checkToIncrement) {
     }
 
     const mettLine = async () => {
-        if (gameState[checkToIncrement] <= 2) {
+        if (gameState[checkToIncrement] < 2) {
             await mettTalking(allText["mettaton"][topic][correctKey][selectedIndex]);
         } else {
             await mettTalking(allText["mettaton"][topic]["tooMuch"][0]);
@@ -892,8 +898,7 @@ const defaultConversation = async function (topic, checkToIncrement) {
         await mettLine();
     }
         
-    conversation();
-
+    conversation().then(() => gameState[checkToIncrement]++);
 }
 
 
@@ -905,6 +910,16 @@ const checkOut = async function() {
 const flirting = function() {
     successfulSelect();
     defaultConversation("flirt", "flirtTimes");
+}
+
+const performing = function() {
+    successfulSelect();
+    defaultConversation("perform", "performTimes");
+}
+
+const insulting = function() {
+    successfulSelect();
+    defaultConversation("insult", "insultTimes");
 }
 
 const stick = function() {
@@ -930,9 +945,9 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
     actionButtons.forEach((div) => {
     
         div.addEventListener("mouseover", (event) => {
-            if (gameState["actionButtonClicked"] === false && !event.currentTarget.classList.contains("button-highlight")) {
+            if (gameState["actionButtonClicked"] === false && !event.currentTarget.classList.contains("button-highlight") && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
                 handleMouseOver(event);
-            } else if (gameState["actionButtonClicked"] === true && event.currentTarget.classList.contains("button-highlight")) {
+            } else if (gameState["actionButtonClicked"] === true && event.currentTarget.classList.contains("button-highlight") && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
                 handleMouseOver(event);
             }
         })
@@ -940,7 +955,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
         div.addEventListener("click", (event) => {
             let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
 
-            if (gameState["actionButtonClicked"] === false) {
+            if (gameState["actionButtonClicked"] === false && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
 
                 buttonConfirm.play();
 
@@ -973,11 +988,14 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
 
                         hideAndShow(stopWiggle, restartWiggle, animationOn, stayStill, 2, (a, b) => a >= b)
 
+                        //dialogue
                         let check = document.createElement("div"); //will need to look into adding an extra "star" to the star section to the left of the textfield to fit undertale look
                         let flirt = document.createElement("div");
                         let insult = document.createElement("div");
-                        let rate = document.createElement("div"); //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
                         let perform = document.createElement("div");
+
+                        //endgame
+                        let rate = document.createElement("div"); //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
                         //rate will be the act function that will complete this game - MTT will ask if this drawing is final, player will need to confirm
                         //after that, mettaton will "appraise" the drawing
                         //he will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares
@@ -992,6 +1010,8 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         
                         createMenuOption(check, "Check", checkOut);
                         createMenuOption(flirt, "Flirt", flirting);
+                        createMenuOption(perform, "Perform", performing);
+                        createMenuOption(insult, "Insult", insulting);
     
                         //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
@@ -1005,13 +1025,12 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                     createMenuOption(spareOption, "Mettaton", clearSketchField);
                 }   
                     
-            } else if (gameState["actionButtonClicked"] === true && gameState["currentActiveActionButton"][`${currentButton}`] >= 1) {
+            } else if (gameState["actionButtonClicked"] === true && gameState["currentActiveActionButton"][`${currentButton}`] >= 1 && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
                 clearTextField();
                 buttonConfirm.play();
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
 
                 buttonConfirm.addEventListener("ended", typeWriter("Previous content was erased because you clicked on an action button again")); //added for testing purposes
-                mettTalking("chickened out, ey?");
             }
         })
             
