@@ -7,21 +7,56 @@ const allColors = ["red", "orange", "yellow", "green", "light-blue", "blue", "pu
 const mettBody = document.querySelector(".top-part");
 const textBubble = document.querySelector("#text-bubble");
 
-//seems to get laggy at 64
-let fieldSize = 16;
-let currentDrawingColor = allColors[7];
-let isDrawing = false;
-let isErasing = false;
+const gameState = {
+    //drawing
+    isDrawing: false,
+    isErasing: false,
+    hasDrawing: false,
+    fieldSize: 16, //gets kinda laggy at 64 when animation is enabled
+    currentDrawingColor: allColors[7],
 
+    //text
+    flavorTextShown: false,
+    mettTextShown: false,
 
+    //dialogue variables
+    checkOutTimes: 0,
+    flirtTimes: 0,
+    performTimes: 0,
+    insultTimes: 0,
 
-for (let i = 0; i < fieldSize; i++) {
+    //for animation/sound tracking
+    quietTimes: 0,
+    stayStill: 0,
+    musicOn: true,
+    animationOn: true,
+    waved: true,
+    wentLeft: false,
+
+    //button state
+    actionButtonClicked: false,
+    menuOptionConfirmed: false,
+    currentActiveActionButton: {
+        fight: 0,
+        act: 0,
+        item: 0,
+        mercy: 0
+    },
+    symbols: {
+        fight: "#",
+        act: "$",
+        item: "%",
+        mercy: "&"
+    }
+}
+
+for (let i = 0; i < gameState["fieldSize"]; i++) {
     let newRow = document.createElement('div');
     newRow.classList.add("newRow");
     
     sketchField.appendChild(newRow);
 
-        for(let j = 0; j < fieldSize; j++) {
+        for(let j = 0; j < gameState["fieldSize"]; j++) {
             let innerCells = document.createElement('div');
             innerCells.classList.add("innerCells");
             newRow.appendChild(innerCells);
@@ -34,11 +69,11 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
     mettBody.addEventListener("mousedown", (event) => {
         if (event.target.classList.contains("innerCells")) {
             if (event.button === 0) {
-                isDrawing = true;
-                event.target.classList.add(currentDrawingColor);
+                gameState["isDrawing"] = true;
+                event.target.classList.add(gameState["currentDrawingColor"]);
                 gameState["hasDrawing"] = true;
             } else if (event.button === 2) {
-                isErasing = true;
+                gameState["isErasing"] = true;
                 event.target.classList.remove(...allColors);
 
                 for (const div of allSketchFieldElements) {
@@ -55,15 +90,15 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
     })
 
     window.addEventListener("mouseup", () => {
-            isDrawing = false;
-            isErasing = false;
+        gameState["isDrawing"] = false;
+        gameState["isErasing"] = false;
     })
 
     sketchField.addEventListener("mouseover", (event) => {
-        if (isDrawing) {
-                event.target.classList.add(currentDrawingColor);
+        if (gameState["isDrawing"]) {
+                event.target.classList.add(gameState["currentDrawingColor"]);
                 gameState["hasDrawing"] = true;
-        } else if (isErasing) {
+        } else if (gameState["isErasing"]) {
                 event.target.classList.remove(...allColors);
 
                 for (const div of allSketchFieldElements) {
@@ -158,20 +193,19 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
         }
     }
     
-    let jazzHands = setInterval(armsMotion, 40);
-    let waved = true;
+    const jazzHands = setInterval(armsMotion, 40);
 
     const waveMotion = function() {
-        if (waved) {
+        if (gameState["waved"]) {
             rightArm.src = "./images/mett-sprite/arm-right-1.png";
-            waved = !waved;
+            gameState["waved"] = !gameState["waved"];
         } else {
             rightArm.src = "./images/mett-sprite/arm-right-2.png";
-            waved = true;
+            gameState["waved"] = true;
         }
     }
     
-    let handWave = setInterval(waveMotion, 280);
+    const handWave = setInterval(waveMotion, 280);
     
     //if changed, left and right skews should be the same number - but the right skew should always be negative
     const bodyWiggle = {
@@ -189,9 +223,6 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
             }
         }
     }
-    
-    let wentLeft = false;
-    
     
     
     //works best if the number can be divided by 5/10 - else the math kind of breaks since decimals don't end up adding into a whole number
@@ -224,15 +255,15 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
             document.documentElement.style.setProperty('--arm-scaling', 1.5);
         }
     
-            if (!wentLeft && rotation >= bodyWiggle["left"]["rotate"] && skew <= bodyWiggle["left"]["skew"]) {
+            if (!gameState["wentLeft"] && rotation >= bodyWiggle["left"]["rotate"] && skew <= bodyWiggle["left"]["skew"]) {
             if (rotation === bodyWiggle["left"]["rotate"] && skew === bodyWiggle["left"]["skew"]) {
-                wentLeft = true;
+                gameState["wentLeft"] = true;
             }
             swingBody("reduce", bodySwing);
             
-        } else if (wentLeft && rotation <= bodyWiggle["right"]["rotate"] && skew >= bodyWiggle["right"]["skew"]) {
+        } else if (gameState["wentLeft"] && rotation <= bodyWiggle["right"]["rotate"] && skew >= bodyWiggle["right"]["skew"]) {
             if (rotation === bodyWiggle["right"]["rotate"] && skew === bodyWiggle["right"]["skew"]) {
-                wentLeft = false;
+                gameState["wentLeft"] = false;
             }
             swingBody("increase", bodySwing);
     
@@ -255,44 +286,13 @@ event.currentTarget.classList.add("button-highlight");
 event.currentTarget.firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
 };
 
-const symbols = {
-    fight: "#",
-    act: "$",
-    item: "%",
-    mercy: "&"
-}
-
-const gameState = {
-    actionButtonClicked: false,
-    menuOptionConfirmed: false,
-    hasDrawing: false,
-    flavorTextShown: false,
-    mettTextShown: false,
-    musicOn: true,
-    animationOn: true,
-
-    checkOutTimes: 0,
-    flirtTimes: 0,
-    performTimes: 0,
-    insultTimes: 0,
-
-    quietTimes: 0,
-
-    currentActiveActionButton: {
-        fight: 0,
-        act: 0,
-        item: 0,
-        mercy: 0
-    }
-}
-
 const removeButtonFocus = function () {
     actionButtons.forEach((div) => {
         div.classList.remove("button-highlight");
         
         if (div.classList.contains("action-button")) {
             let currentButton = div.getAttribute("id").split("-")[0];
-            div.firstElementChild.innerHTML = symbols[currentButton];
+            div.firstElementChild.innerHTML = gameState["symbols"][currentButton];
         }
     })
 }
@@ -847,19 +847,19 @@ const musicBack = function () {
 }
 
 const stopMoving = function () {
-    if (stayStill === 0) {
+    if (gameState["stayStill"] === 0) {
         clearInterval(sideSwing);
         
         document.documentElement.style.setProperty('--rotate-value', "0deg");
         document.documentElement.style.setProperty('--skew-value', "0deg");
 
         gameState["animationOn"] = false;
-    } else if (stayStill >= 1) {
+    } else if (gameState["stayStill"] >= 1) {
         clearInterval(handWave)
         clearInterval(jazzHands)
     }
 
-    stayStill++;
+    gameState["stayStill"]++;
  
     successfulSelect();
 }
@@ -868,13 +868,13 @@ const restartMoving = function () {
     if (!gameState["animationOn"]) {
         sideSwing = setInterval(swingingMotion, 40);
 
-        if (stayStill >= 1) {
+        if (gameState["stayStill"] >= 1) {
             handWave = setInterval(waveMotion, 280)
             jazzHands = setInterval(armsMotion, 40);
         }
         
         gameState["animationOn"] = true;
-        stayStill = 0;
+        gameState["stayStill"] = 0;
 
         successfulSelect();
     }
@@ -1134,7 +1134,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         createMenuOption(stopWiggle, "Freeze", stopMoving); 
                         createMenuOption(restartWiggle, "Dance", restartMoving);
 
-                        hideAndShow(stopWiggle, restartWiggle, "animationOn", stayStill, 2, (a, b) => a >= b)
+                        hideAndShow(stopWiggle, restartWiggle, "animationOn", "stayStill", 2, (a, b) => a >= b)
 
                         //dialogue
                         let check = document.createElement("div"); //will need to look into adding an extra "star" to the star section to the left of the textfield to fit undertale look
@@ -1188,7 +1188,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                 event.currentTarget.classList.remove("button-highlight");
             
                 let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
-                event.currentTarget.firstElementChild.innerHTML = symbols[currentSymbol];
+                event.currentTarget.firstElementChild.innerHTML = gameState["symbols"][currentSymbol];
             } else if (gameState["actionButtonClicked"] === true && event.currentTarget.classList.contains("button-highlight")) {
                 hideYellowHeart(event);
             }
