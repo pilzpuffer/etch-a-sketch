@@ -268,11 +268,14 @@ const gameState = {
     hasDrawing: false,
     flavorTextShown: false,
     mettTextShown: false,
+    musicOn: true,
 
     checkOutTimes: 0,
     flirtTimes: 0,
     performTimes: 0,
     insultTimes: 0,
+
+    quietTimes: 0,
 
     currentActiveActionButton: {
         fight: 0,
@@ -350,7 +353,87 @@ const typeWriter = function (location, phrase) {
 });
 }
 
+const flavorQuietOnce = [
+    ["You ask for something to plug your ears — the combination of public drawing and this blaring music is too much.", "The production team immediately provides earplugs labeled 'FOR OVERLY SENSITIVE ARTISTS'."],
+    ["You gesture for the music to quiet down, muttering something about 'sensory overload'.", "A spotlight dims in sympathy."],
+    ["You declare that true visionaries need silence.", "A rogue stagehand immediately hands you a beret and sunglasses."],
+    ["You cover your ears dramatically.", "A sympathetic audience member tosses you a pair of earmuffs. They’re sequined."]
+];
 
+const flavorQuietTwice = [
+    ["You motion for total silence, gesturing dramatically.", "The production team, now visibly sweating, scrambles to comply."],
+    ["You insist that true artistry needs complete focus.", "The sound technician buries their face in their hands."],
+    ["You silence everything, feeling like a director calling for a dramatic pause.", "The audience leans in, breath held."],
+    ["You gesture for complete silence.", "And for once, even the ever-present stage lights flicker uncertainly."]
+
+];
+
+const flavorQuietDisabled = [
+    ["You flick the switch back on", "Suddenly, a triumphant orchestral swell fills the air. Confetti inexplicably falls from above."],
+    ["You decide that maybe — just maybe — the experience does need a little sound.", "The stage lights brighten approvingly."],
+    ["You hesitantly undo your mistake, allowing the soundtrack to resume.", "The studio exhales collectively."],
+    ["You begrudgingly restore the sound, muttering something about 'artistic compromise'.", "A jazzy flourish plays as if to welcome you back."]
+]
+
+const mettQuietOnce = [
+    ["Oh, darling, have I overwhelmed your fragile senses?", "The price of witnessing true artistry is steep!"],
+    ["Oh, sweetheart, did I overwhelm your delicate artiste sensibilities?", "I do have that effect on people!"],
+    ["A masterpiece demands silence, I see!", "Well, I’ll just sit here reveling in your silence...", "...until the time comes to applaud your brilliance."],
+    ["Oh, darling, suffering for art’s sake has never looked so glamorous!", "But don’t worry, I’ll gracefully endure your silence."]
+];
+
+const mettQuietTwice = [
+    ["Oh, so it’s that kind of performance!", "A pantomime, a mystery, a whispered secret… Delightful!"],
+    ["Darling, if you needed peace, you could have just asked!", "But fine — let’s see if your talent is loud enough without the fanfare"],
+    ["Oh, the tension! The drama!", "I do love an artist who understands the power of anticipation!"],
+    ["Oh, craving that old Hollywood charm, are we?", "A silent film? A tragedy!", "But worry not — I always have a monologue ready!"]
+
+];
+
+const mettQuietDisabled = [
+    ["A flawless decision!", "A dramatic return!", "A scene worthy of me!", "Oh, darling, you do have taste!"],
+    ["Oh, how relieved I am!", "Silence is one thing, but a star without sound? Unthinkable!"],
+    ["A wise move!", "Art without ambiance is like a performance without applause! Which is to say, quite tragic!"],
+    ["See? Much better!", "Now, let’s make some noise, darling!"]
+]
+
+const flavorStopOnce = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorStopTwice = [
+    [""],
+    [""],
+    [""]
+
+];
+
+const flavorStopDisabled = [
+    [""],
+    [""],
+    [""]
+]
+
+const mettStopOnce = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettStopTwice = [
+    [""],
+    [""],
+    [""]
+
+];
+
+const mettStopDisabled = [
+    [""],
+    [""],
+    [""]
+]
 
 const checkOut = [
     [`METTATON 8 ATK 999 DEF`, `His metal body renders him invulnerable to attack.`],
@@ -551,6 +634,16 @@ const stickText = [
 
 allText = {
     flavor: {
+        sound: {
+            firstChange: flavorQuietOnce,
+            secondChange: flavorQuietTwice,
+            changeToDefault: flavorQuietDisabled
+        },
+        motion: {
+            firstChange: flavorStopOnce,
+            secondChange: flavorStopTwice,
+            changeToDefault: flavorStopDisabled
+        },
         stick: stickText,
         check: checkOut,
         flirt: {
@@ -570,6 +663,16 @@ allText = {
         }
     },
     mettaton: {
+        sound: {
+            firstChange: mettQuietOnce,
+            secondChange: mettQuietTwice,
+            changeToDefault: mettQuietDisabled
+        },
+        motion: {
+            firstChange: mettStopOnce,
+            secondChange: mettStopTwice,
+            changeToDefault: mettStopDisabled
+        },
         stick: mettStick,
         check: {
             none: mettCheckNone,
@@ -599,6 +702,7 @@ const mettTalking = function (phrase) {
     } 
 
     return new Promise(async (resolve) => {
+        console.log("mettTalking() called with:", phrase);
         let i = 0; 
         textBubble.classList.remove("gone");
         gameState["mettTextShown"] = true;
@@ -705,8 +809,8 @@ const hideYellowHeart = function (event) {
     event.currentTarget.firstElementChild.innerHTML = `<img id="stand-in-for-yellow-heart" src="./images/red-soul-hidden.png">`;
 }
 
-let quietTimes = 0; //add to gamestate object later to clean things up
-let musicOn = true;
+//add to gamestate object later to clean things up
+gameState["musicOn"] = true;
 let stayStill = 0;
 let animationOn = true;
 const allAudio = document.querySelectorAll("audio")
@@ -717,31 +821,30 @@ const successfulSelect = function() {
 }
 
 const musicQuiet = function () {
-    if (quietTimes === 0) {
+    if (gameState["quietTimes"] === 0) {
         battleTheme.pause();
-        musicOn = false;
-    } else if (quietTimes >= 1) {
+        gameState["musicOn"] = false;
+    } else if (gameState["quietTimes"] >= 1) {
         allAudio.forEach(audio => audio.volume = 0);
         sameVolume = 0;
-        mettTalking("that's as quiet as things CAN be.."); //for testing, will need to change phrases in the future updates
     }
 
-    quietTimes++;
     successfulSelect();
+    twoStepConversation("sound", "quietTimes"); 
 }
 
 const musicBack = function () {
-    if (!musicOn) {
+    if (!gameState["musicOn"]) {
         battleTheme.play()
         sameVolume = 0.2;
-        quietTimes = 0;
+        gameState["quietTimes"] = 0;
 
         allAudio.forEach(audio => audio.volume = 0.2);
         battleTheme.volume = 0.1;
         typeWriterSound.volume = 0.1
         allMettSounds.forEach(sound => sound.volume = sameVolume - 0.1);
 
-        musicOn = true;
+        gameState["musicOn"]  = true;
         successfulSelect();
     } 
 }
@@ -781,6 +884,7 @@ const restartMoving = function () {
 }
 
 const flavorText = function(lines) {
+    console.log("flavorText() called with:", lines);
     gameState["flavorTextShown"] = true;
     return new Promise((resolve) => {
     
@@ -865,6 +969,33 @@ if (gameState[checkToIncrement] === 0) {
 gameState[checkToIncrement]++;
 }
 
+const twoStepConversation = async function (topic, checkToIncrement) {
+    let selectedIndex = randomIndex(allText["mettaton"][topic]['firstChange']);
+    console.log("Selected Index:", selectedIndex);
+
+const flavorLine = async () => {
+    if (gameState[checkToIncrement] === 0) {
+        await flavorText(allText["flavor"][topic]['firstChange'][selectedIndex]);
+    } else {
+        await flavorText(allText["flavor"][topic]['secondChange'][selectedIndex]);
+    }
+    console.log("Flavor Line:", allText["flavor"][topic]['firstChange']);
+}
+
+const mettResponding = async() => {
+    await flavorLine();
+
+    if (gameState[checkToIncrement] === 0) {
+        await mettTalking(allText["mettaton"][topic]['firstChange'][selectedIndex]);
+    } else {
+        await mettTalking(allText["mettaton"][topic]['secondChange'][selectedIndex]);
+    }
+    console.log("Calling mettTalking with:", allText["mettaton"][topic]['firstChange'][selectedIndex]);
+}
+  
+mettResponding().then(() => gameState[checkToIncrement]++);
+}
+
 const defaultConversation = async function (topic, checkToIncrement) {
 
     let correctKey;
@@ -933,13 +1064,13 @@ const stick = function() {
 }
 
 const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, checkedValue, comparator) { //comparator should be used like (a, b) => a (insert the needed check, like >= or === or what else) b)  example: (a, b) => a < b
-    if (!checkOne && comparator(checkTwo, checkedValue)) {
+    if (!gameState[checkOne] && comparator(checkTwo, checkedValue)) {
         functionOne.classList.add("gone");
     } else {
         functionOne.classList.remove("gone");
     }
 
-    functionTwo.classList.toggle("gone", checkOne) //if true, adds the gone class - if false, removes it
+    functionTwo.classList.toggle("gone", gameState[checkOne] === true) //if true, adds the gone class - if false, removes it
 }
  
     actionButtons.forEach((div) => {
@@ -977,7 +1108,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         createMenuOption(stopMusic, "Quiet", musicQuiet);
                         createMenuOption(restartMusic, "Music", musicBack)
 
-                        hideAndShow(stopMusic, restartMusic, musicOn, sameVolume, 0, (a, b) => a === b);
+                        hideAndShow(stopMusic, restartMusic, "musicOn", sameVolume, 0, (a, b) => a === b);
 
                         //movement
                         let stopWiggle = document.createElement("div");
