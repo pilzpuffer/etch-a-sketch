@@ -269,6 +269,7 @@ const gameState = {
     flavorTextShown: false,
     mettTextShown: false,
     musicOn: true,
+    animationOn: true,
 
     checkOutTimes: 0,
     flirtTimes: 0,
@@ -354,8 +355,7 @@ const typeWriter = function (location, phrase) {
 }
 
 const flavorQuietOnce = [
-    ["You ask for something to plug your ears — the combination of public drawing and this blaring music is too much.", "The production team immediately provides earplugs labeled 'FOR OVERLY SENSITIVE ARTISTS'."],
-    ["You gesture for the music to quiet down, muttering something about 'sensory overload'.", "A spotlight dims in sympathy."],
+    ["You ask for something to plug your ears.", "The production team immediately provides earplugs labeled 'FOR OVERLY SENSITIVE ARTISTS'."],
     ["You declare that true visionaries need silence.", "A rogue stagehand immediately hands you a beret and sunglasses."],
     ["You cover your ears dramatically.", "A sympathetic audience member tosses you a pair of earmuffs. They’re sequined."]
 ];
@@ -363,20 +363,19 @@ const flavorQuietOnce = [
 const flavorQuietTwice = [
     ["You motion for total silence, gesturing dramatically.", "The production team, now visibly sweating, scrambles to comply."],
     ["You insist that true artistry needs complete focus.", "The sound technician buries their face in their hands."],
-    ["You silence everything, feeling like a director calling for a dramatic pause.", "The audience leans in, breath held."],
+    ["You call for a dramatic pause, silencing everything.", "The audience leans in, breath held."],
     ["You gesture for complete silence.", "And for once, even the ever-present stage lights flicker uncertainly."]
 
 ];
 
 const flavorQuietDisabled = [
     ["You flick the switch back on", "Suddenly, a triumphant orchestral swell fills the air. Confetti inexplicably falls from above."],
-    ["You decide that maybe — just maybe — the experience does need a little sound.", "The stage lights brighten approvingly."],
-    ["You hesitantly undo your mistake, allowing the soundtrack to resume.", "The studio exhales collectively."],
-    ["You begrudgingly restore the sound, muttering something about 'artistic compromise'.", "A jazzy flourish plays as if to welcome you back."]
+    ["You concede that the experience could use some sound.", "The stage lights brighten approvingly."],
+    ["You cautiously restore the soundtrack.", "The studio exhales collectively."],
+    ["You reluctantly restore the sound for 'artistic compromise'.", "A jazzy flourish plays as if to welcome you back."]
 ]
 
 const mettQuietOnce = [
-    ["Oh, darling, have I overwhelmed your fragile senses?", "The price of witnessing true artistry is steep!"],
     ["Oh, sweetheart, did I overwhelm your delicate artiste sensibilities?", "I do have that effect on people!"],
     ["A masterpiece demands silence, I see!", "Well, I’ll just sit here reveling in your silence...", "...until the time comes to applaud your brilliance."],
     ["Oh, darling, suffering for art’s sake has never looked so glamorous!", "But don’t worry, I’ll gracefully endure your silence."]
@@ -384,7 +383,7 @@ const mettQuietOnce = [
 
 const mettQuietTwice = [
     ["Oh, so it’s that kind of performance!", "A pantomime, a mystery, a whispered secret… Delightful!"],
-    ["Darling, if you needed peace, you could have just asked!", "But fine — let’s see if your talent is loud enough without the fanfare"],
+    ["Darling, if you needed peace, you could have just asked!", "But fine — let’s see if your talent is loud enough without the fanfare."],
     ["Oh, the tension! The drama!", "I do love an artist who understands the power of anticipation!"],
     ["Oh, craving that old Hollywood charm, are we?", "A silent film? A tragedy!", "But worry not — I always have a monologue ready!"]
 
@@ -810,9 +809,7 @@ const hideYellowHeart = function (event) {
 }
 
 //add to gamestate object later to clean things up
-gameState["musicOn"] = true;
 let stayStill = 0;
-let animationOn = true;
 const allAudio = document.querySelectorAll("audio")
 
 const successfulSelect = function() {
@@ -856,7 +853,7 @@ const stopMoving = function () {
         document.documentElement.style.setProperty('--rotate-value', "0deg");
         document.documentElement.style.setProperty('--skew-value', "0deg");
 
-        animationOn = false;
+        gameState["animationOn"] = false;
     } else if (stayStill >= 1) {
         clearInterval(handWave)
         clearInterval(jazzHands)
@@ -868,7 +865,7 @@ const stopMoving = function () {
 }
 
 const restartMoving = function () {
-    if (!animationOn) {
+    if (!gameState["animationOn"]) {
         sideSwing = setInterval(swingingMotion, 40);
 
         if (stayStill >= 1) {
@@ -876,7 +873,7 @@ const restartMoving = function () {
             jazzHands = setInterval(armsMotion, 40);
         }
         
-        animationOn = true;
+        gameState["animationOn"] = true;
         stayStill = 0;
 
         successfulSelect();
@@ -1117,7 +1114,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         createMenuOption(stopWiggle, "Freeze", stopMoving); 
                         createMenuOption(restartWiggle, "Dance", restartMoving);
 
-                        hideAndShow(stopWiggle, restartWiggle, animationOn, stayStill, 2, (a, b) => a >= b)
+                        hideAndShow(stopWiggle, restartWiggle, "animationOn", stayStill, 2, (a, b) => a >= b)
 
                         //dialogue
                         let check = document.createElement("div"); //will need to look into adding an extra "star" to the star section to the left of the textfield to fit undertale look
