@@ -834,15 +834,15 @@ const musicBack = function () {
     if (!gameState["musicOn"]) {
         battleTheme.play()
         sameVolume = 0.2;
-        gameState["quietTimes"] = 0;
 
         allAudio.forEach(audio => audio.volume = 0.2);
         battleTheme.volume = 0.1;
         typeWriterSound.volume = 0.1
         allMettSounds.forEach(sound => sound.volume = sameVolume - 0.1);
 
-        gameState["musicOn"]  = true;
+        
         successfulSelect();
+        restoreDefaults("sound", "musicOn", "quietTimes");
     } 
 }
 
@@ -968,7 +968,7 @@ gameState[checkToIncrement]++;
 
 const twoStepConversation = async function (topic, checkToIncrement) {
     let selectedIndex = randomIndex(allText["mettaton"][topic]['firstChange']);
-    console.log("Selected Index:", selectedIndex);
+    
 
 const flavorLine = async () => {
     if (gameState[checkToIncrement] === 0) {
@@ -976,7 +976,7 @@ const flavorLine = async () => {
     } else {
         await flavorText(allText["flavor"][topic]['secondChange'][selectedIndex]);
     }
-    console.log("Flavor Line:", allText["flavor"][topic]['firstChange']);
+    
 }
 
 const mettResponding = async() => {
@@ -987,10 +987,30 @@ const mettResponding = async() => {
     } else {
         await mettTalking(allText["mettaton"][topic]['secondChange'][selectedIndex]);
     }
-    console.log("Calling mettTalking with:", allText["mettaton"][topic]['firstChange'][selectedIndex]);
+    
 }
   
 mettResponding().then(() => gameState[checkToIncrement]++);
+}
+
+
+const restoreDefaults = async function(topic, checkToDefaultOne, checkToDefaultTwo) {
+    let selectedIndex = randomIndex(allText["mettaton"][topic]['firstChange']);
+    
+
+    const flavorLine = async () => {
+        await flavorText(allText["flavor"][topic]['changeToDefault'][selectedIndex]);
+    }
+
+    const mettResponding = async() => {
+        await flavorLine();
+        await mettTalking(allText["mettaton"][topic]['changeToDefault'][selectedIndex]);
+    }
+  
+    mettResponding().then(() => {
+        gameState[checkToDefaultOne] = true;
+        gameState[checkToDefaultTwo] = 0;
+    });
 }
 
 const defaultConversation = async function (topic, checkToIncrement) {
