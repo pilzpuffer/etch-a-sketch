@@ -7,6 +7,23 @@ const allColors = ["red", "orange", "yellow", "green", "light-blue", "blue", "pu
 const mettBody = document.querySelector(".top-part");
 const textBubble = document.querySelector("#text-bubble");
 
+const flirtRoute = function() {
+    if (gameState["routeStages"]["flirtRouteStage"] === 4) {
+        leftArm.src = "./images/mett-sprite/arm-left-rose.png";
+        if (gameState["routeFinished"]['flirt'] === true) {
+            leftArm.src = "./images/mett-sprite/arm-left.png"
+        }
+    }
+}
+
+const insultRoute = function() {
+
+}
+
+const performRoute = function() {
+
+}
+
 const gameState = {
     //drawing
     isDrawing: false,
@@ -24,9 +41,21 @@ const gameState = {
     flirtTimes: 0,
     performTimes: 0,
     insultTimes: 0,
-    flirtRouteStage: 0,
-    performRouteStage: 0,
-    insultRouteStage: 0,
+    routeStages: {
+        flirtRouteStage: 0,
+        performRouteStage: 0,
+        insultRouteStage: 0,
+    },
+    routeFunctions: {
+        flirt: flirtRoute,
+        perform: insultRoute,
+        insult: performRoute
+    },
+    routeFinished: {
+        flirt: false,
+        perform: false,
+        insult: false
+    },
 
     //for animation/sound tracking
     quietTimes: 0,
@@ -505,7 +534,10 @@ const mettPerformDrawn = [
 
 const flavorPerformTooMuch = [
     ["test"],
-    ["test"]
+    ["test2"],
+    ["flavorThree"],
+    ["flavorFour"],
+    ["flavorFive"]
 ]
 
 const mettPerformTooMuch = [
@@ -563,12 +595,18 @@ const mettFlirtDrawn = [
 
 const flavorFlirtTooMuch = [
     ["flavorOne"],
-    ["flavorTwo"]
+    ["flavorTwo"],
+    ["flavorThree"],
+    ["flavorFour"],
+    ["flavorFive"]
 ]
 
 const mettFlirtTooMuch = [
     ["mettOne"],
-    ["mettTwo"]
+    ["mettTwo"],
+    ["mettThree"],
+    ["mettFour"],
+    ["mettFive"]
 ]
 
 const flavorInsultNone = [
@@ -704,7 +742,6 @@ const mettTalking = function (phrase) {
     } 
 
     return new Promise(async (resolve) => {
-        console.log("mettTalking() called with:", phrase);
         let i = 0; 
         textBubble.classList.remove("gone");
         gameState["mettTextShown"] = true;
@@ -884,7 +921,6 @@ const restartMoving = function () {
 }
 
 const flavorText = function(lines) {
-    console.log("flavorText() called with:", lines);
     gameState["flavorTextShown"] = true;
     return new Promise((resolve) => {
     
@@ -936,62 +972,64 @@ const flavorText = function(lines) {
 })
 }
 
-const checkConversation = async function (topic, checkToIncrement) {
-
+//at the moment, this pattern is used only for checkOut option
+const checkConversation = async function (topic, checkToIncrement) { 
+    successfulSelect();
     let correctKey = gameState["hasDrawing"] ? "drawn" : "none";
-
     let selectedIndex = randomIndex(allText["mettaton"][topic][correctKey]);
 
-const flavorLine = async () => {
+    const flavorLine = async () => {
+        if (gameState[checkToIncrement] === 0) {
+            await flavorText(allText["flavor"][topic][0]);
+        } else {
+            await flavorText(allText["flavor"][topic][1]);
+        }
+    }
+
     if (gameState[checkToIncrement] === 0) {
-        await flavorText(allText["flavor"][topic][0]);
+        await flavorLine()
     } else {
-        await flavorText(allText["flavor"][topic][1]);
+        const mettResponding = async() => {
+            await flavorLine();
+            await mettTalking(allText["mettaton"][topic][correctKey][selectedIndex]);
+        }
+        mettResponding();
     }
-}
 
-if (gameState[checkToIncrement] === 0) {
-    await flavorLine()
-} else {
-    const mettResponding = async() => {
-        await flavorLine();
-        await mettTalking(allText["mettaton"][topic][correctKey][selectedIndex]);
-    }
-    mettResponding();
-}
-
-gameState[checkToIncrement]++;
+    gameState[checkToIncrement]++;
 }
 
 const twoStepConversation = async function (topic, checkToIncrement) {
+    successfulSelect();
     let selectedIndex = randomIndex(allText["mettaton"][topic]['firstChange']);
     
 
-const flavorLine = async () => {
-    if (gameState[checkToIncrement] === 0) {
-        await flavorText(allText["flavor"][topic]['firstChange'][selectedIndex]);
-    } else {
-        await flavorText(allText["flavor"][topic]['secondChange'][selectedIndex]);
+    const flavorLine = async () => {
+        if (gameState[checkToIncrement] === 0) {
+            await flavorText(allText["flavor"][topic]['firstChange'][selectedIndex]);
+        } else {
+            await flavorText(allText["flavor"][topic]['secondChange'][selectedIndex]);
+        }
+        
+    }
+
+    const mettResponding = async() => {
+        await flavorLine();
+
+        if (gameState[checkToIncrement] === 0) {
+            await mettTalking(allText["mettaton"][topic]['firstChange'][selectedIndex]);
+        } else {
+            await mettTalking(allText["mettaton"][topic]['secondChange'][selectedIndex]);
+        }
+        
     }
     
-}
-
-const mettResponding = async() => {
-    await flavorLine();
-
-    if (gameState[checkToIncrement] === 0) {
-        await mettTalking(allText["mettaton"][topic]['firstChange'][selectedIndex]);
-    } else {
-        await mettTalking(allText["mettaton"][topic]['secondChange'][selectedIndex]);
-    }
-    
-}
-  
-mettResponding().then(() => gameState[checkToIncrement]++);
+    mettResponding().then(() => gameState[checkToIncrement]++);
 }
 
 
 const restoreDefaults = async function(topic, checkToDefaultOne, checkToDefaultTwo) {
+    successfulSelect();
     let selectedIndex = randomIndex(allText["mettaton"][topic]['firstChange']);
     
 
@@ -1010,9 +1048,9 @@ const restoreDefaults = async function(topic, checkToDefaultOne, checkToDefaultT
     });
 }
 
-//doesn't work for progressing into the "TooMuch" routes yet, need to work on that
-const defaultConversation = async function (topic, checkToIncrement) {
 
+const defaultConversation = async function (topic, checkToIncrement) {
+    successfulSelect();
     let correctKey = gameState["hasDrawing"] ? "drawn" : "none";
     let selectedIndex = randomIndex(allText["mettaton"][topic][correctKey]);
 
@@ -1023,32 +1061,39 @@ const defaultConversation = async function (topic, checkToIncrement) {
     } else {
         let tooMuchFlavor = allText["flavor"][topic]["tooMuch"];
         let tooMuchMett = allText["mettaton"][topic]["tooMuch"];
+        let routeFunction = gameState["routeFunctions"][`${topic}`];
 
-        await flavorText(tooMuchFlavor[gameState[`${topic}RouteStage`]]);
-        await mettTalking(tooMuchMett[gameState[`${topic}RouteStage`]]);
-        
-        gameState[`${topic}RouteStage`]++
+        await routeFunction();
+
+        await flavorText(tooMuchFlavor[gameState["routeStages"][`${topic}RouteStage`]]);
+        if (gameState["routeStages"][`${topic}RouteStage`] >= 4) {
+            await mettTalking(tooMuchMett[gameState["routeStages"][`${topic}RouteStage`]]).then(() => {
+                gameState["routeFinished"][topic] = true;
+                
+            })
+        } else {
+            await mettTalking(tooMuchMett[gameState["routeStages"][`${topic}RouteStage`]]);
+        }
+
+        await routeFunction();
+        gameState["routeStages"][`${topic}RouteStage`]++;
     } 
 }
 
 
 const checkOut = async function() {
-    successfulSelect();
     checkConversation("check", "checkOutTimes");
 };
 
 const flirting = function() {
-    successfulSelect();
     defaultConversation("flirt", "flirtTimes");
 }
 
 const performing = function() {
-    successfulSelect();
     defaultConversation("perform", "performTimes");
 }
 
 const insulting = function() {
-    successfulSelect();
     defaultConversation("insult", "insultTimes");
 }
 
