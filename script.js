@@ -1,20 +1,145 @@
 const sketchField = document.querySelector('#mett-a-sketch');
 const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
+
 const battleStart = document.querySelector("#battle-start");
+const romanceTheme = document.querySelector("#flirt-route");
+romanceTheme.volume = sameVolume - 0.1;
+
 const allColors = ["red", "orange", "yellow", "green", "light-blue", "blue", "purple", "black", "grey"];
 
 const mettBody = document.querySelector(".top-part");
 const textBubble = document.querySelector("#text-bubble");
 
 const flirtRoute = function() {
+    const petals = {
+        max_amount: 120,
+        max_size: 8,
+        max_speed: 2
+    };
+
     if (gameState["routeStages"]["flirtRouteStage"] === 4) {
         leftArm.src = "./images/mett-sprite/arm-left-rose.png";
-        if (gameState["routeFinished"]['flirt'] === true) {
-            leftArm.src = "./images/mett-sprite/arm-left.png"
+        battleTheme.pause();
+        romanceTheme.play();
+
+        let petalsBackground = document.querySelector("#petals-canvas");
+        const leftSideWidth = window.innerWidth * 0.2;
+
+        // **If the canvas does not exist, create it**
+        if (!petalsBackground) {
+            petalsBackground = document.createElement("canvas");
+            petalsBackground.style.position = "fixed";
+            petalsBackground.style.top = "0";
+            petalsBackground.style.transform = `translateX(${leftSideWidth}px)`; // Transform for better layer handling
+            petalsBackground.style.pointerEvents = "none";
+            petalsBackground.style.zIndex = "-1";
+            document.body.appendChild(petalsBackground);
         }
+
+        const ctx = petalsBackground.getContext("2d");
+        if (!ctx) {
+            console.error("Canvas context could not be retrieved.");
+            return;
+        }
+
+        function updateCanvasSize() {
+            if (!mettBody) {
+                console.error("Mettaton's body not found.");
+                return;
+            }
+
+            petalsBackground.width = mettBody.clientWidth;
+            petalsBackground.height = mettBody.clientHeight;
+        }
+
+        updateCanvasSize();
+        window.addEventListener("resize", updateCanvasSize);
+
+        const petalColors = ["#e5414d", "#bc1d30", "#ec6060"];
+
+        function createPetal() {
+            return {
+                x: Math.random() * petalsBackground.width,
+                y: Math.random() * petalsBackground.height,
+                size: Math.random() * petals.max_size + 2,
+                speed: Math.random() * petals.max_speed + 0.5,
+                sway: Math.random() * 2 - 1,
+                angle: Math.random() * 360,
+                rotationSpeed: (Math.random() - 0.5) * 2,
+                color: petalColors[Math.floor(Math.random() * petalColors.length)],
+                timeOffset: Math.random() * Math.PI * 2
+            };
+        }
+
+        const petalsShown = Array.from({ length: petals.max_amount }, createPetal);
+
+        function drawPetal(petal) {
+            ctx.save();
+            ctx.translate(petal.x, petal.y);
+            ctx.rotate((petal.angle * Math.PI) / 180);
+            ctx.fillStyle = petal.color;
+        
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+        
+            ctx.bezierCurveTo(
+                -petal.size * 0.5, -petal.size * 0.3,
+                -petal.size * 0.6, -petal.size * 0.8,
+                0, -petal.size
+            );
+            
+            ctx.bezierCurveTo(
+                petal.size * 0.6, -petal.size * 0.8,
+                petal.size * 0.5, -petal.size * 0.3,
+                0, 0
+            );
+        
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function updatePetal(petal) {
+            petal.y += petal.speed;
+            petal.x += Math.sin(petal.timeOffset + petal.y * 0.02) * 1.5;
+            petal.angle += petal.rotationSpeed;
+
+            if (petal.y > petalsBackground.height) {
+                Object.assign(petal, createPetal());
+                petal.y = -petal.size;
+            }
+        }
+
+        function animate() {
+            if (!gameState["isAnimating"]) {
+                petalsBackground.remove();
+                return;
+            }
+            ctx.clearRect(0, 0, petalsBackground.width, petalsBackground.height);
+            petalsShown.forEach(petal => {
+                updatePetal(petal);
+                drawPetal(petal);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // **Delay animation slightly to ensure positioning is correct**
+        setTimeout(() => {
+            animate();
+        }, 50);
     }
-}
+
+        if (gameState["routeFinished"]['flirt'] === true) {
+            setTimeout(function() {
+                leftArm.src = "./images/mett-sprite/arm-left.png";
+                romanceTheme.pause();
+                battleTheme.play();
+                gameState["isAnimating"] = false;
+            }, 150)    
+        }
+};
+
 
 const insultRoute = function() {
 
@@ -62,6 +187,7 @@ const gameState = {
     stayStill: 0,
     musicOn: true,
     animationOn: true,
+    isAnimating: true,
     waved: true,
     wentLeft: false,
 

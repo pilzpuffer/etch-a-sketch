@@ -102,7 +102,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 3;
+    z-index: 6;
 
     gap: 5%;
 }
@@ -157,6 +157,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 70%;
+    z-index: 1;
 }
 
 .middle-part {
@@ -216,6 +217,7 @@ body {
     flex-direction: row;
 
     border: var(--main-text-color) solid 6px;
+    background: var(--background-color);
 }
 
 .head {
