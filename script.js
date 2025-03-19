@@ -14,7 +14,7 @@ const textBubble = document.querySelector("#text-bubble");
 const flirtRoute = function() {
     const petals = {
         max_amount: 120,
-        max_size: 8,
+        max_size: 16,
         max_speed: 2
     };
 
@@ -527,7 +527,7 @@ const flavorQuietTwice = [
 ];
 
 const flavorQuietDisabled = [
-    ["You flick the switch back on", "Suddenly, a triumphant orchestral swell fills the air. Confetti inexplicably falls from above."],
+    ["You flick the switch back on.", "Suddenly, a triumphant orchestral swell fills the air. Confetti inexplicably falls from above."],
     ["You concede that the experience could use some sound.", "The stage lights brighten approvingly."],
     ["You cautiously restore the soundtrack.", "The studio exhales collectively."],
     ["You reluctantly restore the sound for 'artistic compromise'.", "A jazzy flourish plays as if to welcome you back."]
@@ -548,7 +548,7 @@ const mettQuietTwice = [
 ];
 
 const mettQuietDisabled = [
-    ["A flawless decision!", "A dramatic return!", "A scene worthy of me!", "Oh, darling, you do have taste!"],
+    ["A dramatic return!", "A scene worthy of me!", "Oh, darling, you do have taste!"],
     ["Oh, how relieved I am!", "Silence is one thing, but a star without sound? Unthinkable!"],
     ["A wise move!", "Art without ambiance is like a performance without applause! Which is to say, quite tragic!"],
     ["See? Much better!", "Now, let’s make some noise, darling!"]
@@ -975,7 +975,6 @@ const hideYellowHeart = function (event) {
 }
 
 //add to gamestate object later to clean things up
-let stayStill = 0;
 const allAudio = document.querySelectorAll("audio")
 
 const successfulSelect = function() {
@@ -1125,6 +1124,7 @@ const checkConversation = async function (topic, checkToIncrement) {
     gameState[checkToIncrement]++;
 }
 
+//used for music/animation handling
 const twoStepConversation = async function (topic, checkToIncrement) {
     successfulSelect();
     let selectedIndex = randomIndex(allText["mettaton"][topic]['firstChange']);
@@ -1153,7 +1153,7 @@ const twoStepConversation = async function (topic, checkToIncrement) {
     mettResponding().then(() => gameState[checkToIncrement]++);
 }
 
-
+//used for music/animation handling
 const restoreDefaults = async function(topic, checkToDefaultOne, checkToDefaultTwo) {
     successfulSelect();
     let selectedIndex = randomIndex(allText["mettaton"][topic]['firstChange']);
@@ -1195,7 +1195,6 @@ const defaultConversation = async function (topic, checkToIncrement) {
         if (gameState["routeStages"][`${topic}RouteStage`] >= 4) {
             await mettTalking(tooMuchMett[gameState["routeStages"][`${topic}RouteStage`]]).then(() => {
                 gameState["routeFinished"][topic] = true;
-                
             })
         } else {
             await mettTalking(tooMuchMett[gameState["routeStages"][`${topic}RouteStage`]]);
@@ -1221,6 +1220,10 @@ const performing = function() {
 
 const insulting = function() {
     defaultConversation("insult", "insultTimes");
+}
+
+const rating = function() {
+    console.log("testing");
 }
 
 const stick = function() {
@@ -1271,32 +1274,49 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         //change the density of the drawing field
                         //should be a "hit" minigame similiar to one used in undertale for the fight action
                 } else if (currentButton === "act") {
-                        //sound
-                        let stopMusic = document.createElement("div");
-                        let restartMusic = document.createElement("div");
 
-                        createMenuOption(stopMusic, "Quiet", musicQuiet);
-                        createMenuOption(restartMusic, "Music", musicBack)
+                    let menuOptions = {
+                        //music
+                        stopMusic: document.createElement("div"),
+                        restartMusic: document.createElement("div"),
 
-                        hideAndShow(stopMusic, restartMusic, "musicOn", sameVolume, 0, (a, b) => a === b);
-
-                        //movement
-                        let stopWiggle = document.createElement("div");
-                        let restartWiggle = document.createElement("div"); 
-
-                        createMenuOption(stopWiggle, "Freeze", stopMoving); 
-                        createMenuOption(restartWiggle, "Dance", restartMoving);
-
-                        hideAndShow(stopWiggle, restartWiggle, "animationOn", "stayStill", 2, (a, b) => a >= b)
+                        //animation
+                        stopWiggle: document.createElement("div"),
+                        restartWiggle: document.createElement("div"),
 
                         //dialogue
-                        let check = document.createElement("div"); //will need to look into adding an extra "star" to the star section to the left of the textfield to fit undertale look
-                        let flirt = document.createElement("div");
-                        let insult = document.createElement("div");
-                        let perform = document.createElement("div");
+                        check: document.createElement("div"),
+                        flirt: document.createElement("div"),
+                        insult: document.createElement("div"),
+                        perform: document.createElement("div"),
+                    }
 
-                        //endgame
-                        let rate = document.createElement("div"); //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
+                    //endgame
+                    if (gameState["hasDrawing"] && !menuOptions["rate"]) {
+                        menuOptions["rate"] = document.createElement("div");
+                        createMenuOption(menuOptions.rate, "Rate", rating);
+                        menuOptions["rate"].classList.add("yellow-text");
+                    } else if (!gameState["hasDrawing"] && menuOptions["rate"]) {
+                        menuOptions["rate"].classList.add("gone");
+                    } else if (gameState["hasDrawing"] && menuOptions["rate"].classList.contains("gone")) {
+                        menuOptions["rate"].classList.remove("gone")
+                    }
+
+                        createMenuOption(menuOptions.stopMusic, "Quiet", musicQuiet);
+                        createMenuOption(menuOptions.restartMusic, "Music", musicBack)
+
+                        hideAndShow(menuOptions.stopMusic, menuOptions.restartMusic, "musicOn", sameVolume, 0, (a, b) => a === b);
+
+
+                        createMenuOption(menuOptions.stopWiggle, "Freeze", stopMoving); 
+                        createMenuOption(menuOptions.restartWiggle, "Dance", restartMoving);
+
+                        hideAndShow(menuOptions.stopWiggle, menuOptions.restartWiggle, "animationOn", "stayStill", 2, (a, b) => a >= b)
+
+
+                        
+                        
+                         //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
                         //rate will be the act function that will complete this game - MTT will ask if this drawing is final, player will need to confirm
                         //after that, mettaton will "appraise" the drawing
                         //he will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares
@@ -1309,10 +1329,16 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         //rainbow-colored drawing would automatically grant 5 points and the rest will depend on player's actions and the power of random
                         // there should be a separate check if too many points were deducted due to the player's bad behavior, then he will calculate their drawing score separately, but note that the player is an awful person 
                         
-                        createMenuOption(check, "Check", checkOut);
-                        createMenuOption(flirt, "Flirt", flirting);
-                        createMenuOption(perform, "Perform", performing);
-                        createMenuOption(insult, "Insult", insulting);
+                        createMenuOption(menuOptions.check, "Check", checkOut);
+                        createMenuOption(menuOptions.flirt, "Flirt", flirting);
+                        createMenuOption(menuOptions.perform, "Perform", performing);
+                        createMenuOption(menuOptions.insult, "Insult", insulting);
+
+                        Object.keys(gameState["routeFinished"]).forEach(route => {
+                            if (gameState["routeFinished"][route] && menuOptions[route]) {
+                                menuOptions[route].classList.add("gone");
+                            }
+                        })
     
                         //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
