@@ -942,7 +942,7 @@ let createMenuOption = function(containerName, providedText, actionApplied) {
     })
 
     containerName.addEventListener("mouseout", () => {
-        heartSpace.innerHTML = "";
+        heartSpace.innerHTML = "<img id='stand-in-for-yellow-heart' src='./images/red-soul-hidden.png'></img>";
     })
 
     containerName.addEventListener("click", () => {
@@ -951,9 +951,12 @@ let createMenuOption = function(containerName, providedText, actionApplied) {
     }) 
 }
 
+const pageNavigation = document.querySelector("#page-navigation");
 
 battleStart.addEventListener("ended", function() {
     textBubble.classList.add("gone");
+    pageNavigation.classList.add("gone");
+
     const allCells = document.querySelectorAll(".innerCells");
 
 const clearSketchField = function() {
@@ -1272,7 +1275,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                     
                 if (currentButton === "fight") {
                         //change the density of the drawing field
-                        //should be a "hit" minigame similiar to one used in undertale for the fight action
+                        //should be a "hit" minigame similar to one used in undertale for the fight action
                 } else if (currentButton === "act") {
 
                     let menuOptions = {
@@ -1292,14 +1295,16 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                     }
 
                     //endgame
-                    if (gameState["hasDrawing"] && !menuOptions["rate"]) {
-                        menuOptions["rate"] = document.createElement("div");
-                        createMenuOption(menuOptions.rate, "Rate", rating);
-                        menuOptions["rate"].classList.add("yellow-text");
-                    } else if (!gameState["hasDrawing"] && menuOptions["rate"]) {
+                    if (gameState["hasDrawing"]) {
+                        if (!menuOptions["rate"]) {
+                            menuOptions["rate"] = document.createElement("div");
+                            createMenuOption(menuOptions.rate, "Rate", rating);
+                            menuOptions["rate"].classList.add("yellow-text");
+                        } else {
+                            menuOptions["rate"].classList.remove("gone");
+                        }
+                    } else if (menuOptions["rate"]) {
                         menuOptions["rate"].classList.add("gone");
-                    } else if (gameState["hasDrawing"] && menuOptions["rate"].classList.contains("gone")) {
-                        menuOptions["rate"].classList.remove("gone")
                     }
 
                         createMenuOption(menuOptions.stopMusic, "Quiet", musicQuiet);
@@ -1356,8 +1361,6 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                 clearTextField();
                 buttonConfirm.play();
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
-
-                buttonConfirm.addEventListener("ended", typeWriter("Previous content was erased because you clicked on an action button again")); //added for testing purposes
             }
         })
             

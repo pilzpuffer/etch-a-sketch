@@ -271,16 +271,22 @@ body {
     justify-content: space-around;
 }
 
+#text-section {
+    width: 95%;
+    padding-right: 5%;
+    font-size: 95%;
+
+    display: flex;
+    flex-direction: column;
+}
+
 #star-space {
     width: 5%;
     padding-left: 1.5%;
 }
  
 #text-field {
-    width: 95%;
-    padding-right: 5%;
-
-    font-size: 95%;
+    height: 75%;
 
     display: flex;
     flex-direction: row;
@@ -289,11 +295,20 @@ body {
     justify-content: flex-start;
 }
 
+#page-navigation {
+    height: 25%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .menu-element {
     display: flex;
     flex-direction: row;
     width: 33.33%;
-    height: 33%;
+    height: 50%;
 
     justify-content: space-around;
     align-items: center;
