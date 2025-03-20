@@ -328,7 +328,7 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
         } else if (gameState["isErasing"]) {
                 event.target.className = "innerCells";
                 event.target.style.backgroundColor = "";
-                event.target.removeAttribute("style")
+                event.target.removeAttribute("style");
 
                 const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
                 console.log("mainTextColor:", mainTextColor);
@@ -1033,7 +1033,9 @@ battleStart.addEventListener("ended", function() {
 
 const clearSketchField = function() {
     allCells.forEach((div) => {
-        div.classList.remove(...allColors);
+        div.className = "innerCells";
+        div.style.backgroundColor = "";
+        div.removeAttribute("style");
     })
     gameState["hasDrawing"] = false;
     clearTextField();
@@ -1400,7 +1402,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                     //endgame
                     if (gameState["hasDrawing"]) {
                         if (!menuOptions["rate"]) {
-                            menuOptions["rate"] = document.createElement("div");
+                            menuOptions["rate"] = document.createElement("div"); //will need to add some text if the user clicks rate while hasDrawing is false - MTT will be like! oh.. the drawing was just here. please stop messing around and submit an actual drawing instead of an empty screen
                             createMenuOption(menuOptions.rate, "Rate", rating);
                             menuOptions["rate"].classList.add("yellow-text");
                         } else {
