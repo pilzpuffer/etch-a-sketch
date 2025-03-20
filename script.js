@@ -11,6 +11,22 @@ const allColors = ["red", "orange", "yellow", "green", "light-blue", "blue", "pu
 const mettBody = document.querySelector(".top-part");
 const textBubble = document.querySelector("#text-bubble");
 
+let allNumbers = []; //colors for the rainbowPen function
+
+    for (let i = 1; i <= 255; i++) {
+        allNumbers.push(i);
+    }
+
+function randomize (arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+const randomRGB = () => `rgb(${randomize(allNumbers)}, ${randomize(allNumbers)}, ${randomize(allNumbers)})`;
+
+function applyRainbowPen(event) {
+    event.target.style.backgroundColor = randomRGB();
+}
+
 const flirtRoute = function() {
     const petals = {
         max_amount: 120,
@@ -156,6 +172,11 @@ const gameState = {
     hasDrawing: false,
     fieldSize: 16, //gets kinda laggy at 64 when animation is enabled
     currentDrawingColor: allColors[7],
+    drawTool: {
+        marker: true,
+        etchPen: false,
+        rainbowPen: false
+    },
 
     //text
     flavorTextShown: false,
@@ -230,12 +251,39 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
                 gameState["isDrawing"] = true;
                 event.target.classList.add(gameState["currentDrawingColor"]);
                 gameState["hasDrawing"] = true;
+                if (gameState["drawTool"]["etchPen"]) {
+                    const checkOpacity = function (event) {
+                        const initialCss = getComputedStyle(event.target).getPropertyValue("opacity");
+                        let toNumber = parseFloat(initialCss); 
+                        toNumber = Math.round(toNumber * 10) / 10;
+                        return toNumber;
+                    }
+                
+                    function changeOpacity(event) {
+                        let eventOpacity = checkOpacity(event);
+                        let newOpacity = Math.round((eventOpacity + 0.1)*10)/10;
+
+                        return newOpacity;
+                    }
+
+                    event.target.style.setProperty("opacity", changeOpacity(event));
+                } else if (gameState["drawTool"]["rainbowPen"]) {
+                    applyRainbowPen(event);
+                }
             } else if (event.button === 2) {
                 gameState["isErasing"] = true;
-                event.target.classList.remove(...allColors);
+                // event.target.classList.remove(...allColors, "etchPen");
+                event.target.className = "innerCells";
+                event.target.style.backgroundColor = "";
+                event.target.removeAttribute("style")
 
+                const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
+                console.log("mainTextColor:", mainTextColor);
                 for (const div of allSketchFieldElements) {
-                    if ([...div.classList].some(className => allColors.includes(className))) {
+                    const backgroundColor = getComputedStyle(div).getPropertyValue("background-color").trim();
+                    console.log(backgroundColor);
+                    // Check if the background is neither transparent nor the main text color
+                    if (backgroundColor !== mainTextColor && backgroundColor !== "transparent" && backgroundColor !== "") {
                         gameState["hasDrawing"] = true;
                         break;
                     } else {
@@ -256,11 +304,39 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
         if (gameState["isDrawing"]) {
                 event.target.classList.add(gameState["currentDrawingColor"]);
                 gameState["hasDrawing"] = true;
-        } else if (gameState["isErasing"]) {
-                event.target.classList.remove(...allColors);
 
+                if (gameState["drawTool"]["etchPen"]) {
+                    const checkOpacity = function (event) {
+                        const initialCss = getComputedStyle(event.target).getPropertyValue("opacity");
+                        let toNumber = parseFloat(initialCss); 
+                        toNumber = Math.round(toNumber * 10) / 10;
+                        return toNumber;
+                    }
+                
+                    function changeOpacity(event) {
+                        let eventOpacity = checkOpacity(event);
+                        console.log(`event target opacity is ${eventOpacity}`)
+                        let newOpacity = Math.round((eventOpacity + 0.1)*10)/10;
+                        console.log(`event target opacity is ${newOpacity}`)
+                        return newOpacity;
+                    }
+
+                    event.target.style.setProperty("opacity", changeOpacity(event));
+                } else if (gameState["drawTool"]["rainbowPen"]) {
+                    applyRainbowPen(event);
+                }
+        } else if (gameState["isErasing"]) {
+                event.target.className = "innerCells";
+                event.target.style.backgroundColor = "";
+                event.target.removeAttribute("style")
+
+                const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
+                console.log("mainTextColor:", mainTextColor);
                 for (const div of allSketchFieldElements) {
-                    if ([...div.classList].some(className => allColors.includes(className))) {
+                    const backgroundColor = getComputedStyle(div).getPropertyValue("background-color").trim();
+                    console.log(backgroundColor);
+                    // Check if the background is neither transparent nor the main text color
+                    if (backgroundColor !== mainTextColor && backgroundColor !== "transparent" && backgroundColor !== "") {
                         gameState["hasDrawing"] = true;
                         break;
                     } else {
@@ -458,10 +534,6 @@ const removeButtonFocus = function () {
 const typeWriterSound = document.querySelector("#textbox-typing");
 const battleTheme = document.querySelector("#battle-theme")
 typeWriterSound.volume = sameVolume - 0.1;
-
-function randomize (arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-}
 
 function randomIndex (arr) {
     return Math.floor(Math.random() * arr.length)
@@ -1239,6 +1311,37 @@ const stick = function() {
     });
 }
 
+const checkTool = function (selectedTool) {
+    Object.keys(gameState["drawTool"]).forEach(tool => {
+        if (tool === selectedTool) {
+            gameState["drawTool"][tool] = true;
+        } else {
+            gameState["drawTool"][tool] = false;
+        }
+    })
+}
+
+const markers = function() {
+    successfulSelect();
+    checkTool("marker");
+
+    gameState["currentDrawingColor"] = allColors[7]; 
+}
+
+const etchPencil = function() {
+    successfulSelect();
+    checkTool("etchPen");
+
+    gameState["currentDrawingColor"] = "etchPen"; 
+};
+
+const rainbowPencil = function() {
+    successfulSelect();
+    checkTool("rainbowPen");
+
+    gameState["currentDrawingColor"] = "rainbowPen"
+}
+
 const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, checkedValue, comparator) { //comparator should be used like (a, b) => a (insert the needed check, like >= or === or what else) b)  example: (a, b) => a < b
     if (!gameState[checkOne] && comparator(checkTwo, checkedValue)) {
         functionOne.classList.add("gone");
@@ -1335,7 +1438,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         // there should be a separate check if too many points were deducted due to the player's bad behavior, then he will calculate their drawing score separately, but note that the player is an awful person 
                         
                         createMenuOption(menuOptions.check, "Check", checkOut);
-                        createMenuOption(menuOptions.flirt, "Flirt", flirting);
+                        createMenuOption(menuOptions.flirt, "Flirt", flirting); 
                         createMenuOption(menuOptions.perform, "Perform", performing);
                         createMenuOption(menuOptions.insult, "Insult", insulting);
 
@@ -1344,6 +1447,14 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                                 menuOptions[route].classList.add("gone");
                             }
                         })
+
+                        const allVisibleElements = Array.from(textField.children).filter(child => 
+                            child.classList.contains("gone")
+                        );
+                        console.log(`we have ${allVisibleElements.length} elements visible in the textfield now`);
+                        for (i = 0; i < allVisibleElements.length; i++) {
+                            console.log(`the visible element is ${allVisibleElements[i].textContent}`);
+                        }
     
                         //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
@@ -1351,6 +1462,15 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                     //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items? like a stick
                     let stickThrow = document.createElement("div");
                     createMenuOption(stickThrow, "Stick", stick);
+                    
+                    let markerBox = document.createElement("div");
+                    createMenuOption(markerBox, "MarkBox", markers);
+
+                    let etchPen = document.createElement("div");
+                    createMenuOption(etchPen, "EtchPen", etchPencil);
+
+                    let rainbowPen = document.createElement("div");
+                    createMenuOption(rainbowPen, "RnbwPen", rainbowPencil)
 
                 } else if (currentButton === "mercy") {
                     let spareOption = document.createElement("div");
