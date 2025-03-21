@@ -6,7 +6,7 @@ const battleStart = document.querySelector("#battle-start");
 const romanceTheme = document.querySelector("#flirt-route");
 romanceTheme.volume = sameVolume - 0.1;
 
-const allColors = ["red", "orange", "yellow", "green", "light-blue", "blue", "purple", "black", "grey"];
+const allColors = ["red", "orange", "yellow", "green", "lightBlue", "blue", "purple", "black", "grey"];
 
 const mettBody = document.querySelector(".top-part");
 const textBubble = document.querySelector("#text-bubble");
@@ -27,17 +27,6 @@ function applyRainbowPen(event) {
     event.target.style.backgroundColor = randomRGB();
 }
 
-/*
-const rgba1 = "rgba(0, 0, 0, 0.2)";
-const rgba2 = "rgba(0, 0, 0, 0.1)";
-
-const alpha1 = parseFloat(rgba1.split(',')[3]);  // Extracts the alpha value 0.2
-const alpha2 = parseFloat(rgba2.split(',')[3]);  // Extracts the alpha value 0.1
-
-if (alpha1 > alpha2) {
-    console.log("rgba(0, 0, 0, 0.2) is more opaque than rgba(0, 0, 0, 0.1)");
-*/
-
 const applyEtchPen = (event) => {
     const initialColor = `rgba(0, 0, 0, 0.1)`;
 
@@ -54,7 +43,7 @@ const applyEtchPen = (event) => {
     } else {
         event.target.style.background = initialColor;
     }
-    
+
 }
 
 
@@ -1321,11 +1310,57 @@ const checkTool = function (selectedTool) {
     })
 }
 
-const markers = function() {
-    successfulSelect();
-    checkTool("marker");
+// markerBox = {
+//     blue: document.createElement("div")
+// }
 
-    gameState["currentDrawingColor"] = allColors[7]; 
+const allMarkers = function() {
+    successfulSelect();
+    starSpace.classList.add("invisible");
+
+    // gameState["currentDrawingColor"] = allColors[7]; 
+    markerBox = {};
+    colorsApplied = {};
+    // checkTool("marker"); only should be applied when a specific marker color is applied 
+
+    function capitalizeFirstLetter(str) {
+        let firstCapWord = str[0].toUpperCase() + str.slice(1);
+        const vowelsToFilter = ['a', 'e', 'i', 'o', 'u'];
+
+        //concrete method for shortening specific color keywords
+        firstCapWord = firstCapWord.includes("Light") 
+        ? firstCapWord.replace("Light", "Lt") 
+        : firstCapWord.includes("Dark") 
+            ? firstCapWord.replace("Dark", "Dk")
+            : firstCapWord;
+
+        firstCapWord = firstCapWord.includes("Blue")
+        ? firstCapWord.replace("Blue", "Blu") 
+        : firstCapWord;
+
+        let firstCap = firstCapWord[0];
+        let restOfWord = firstCapWord.slice(1);
+
+        if (firstCapWord.length >= 4 && !firstCapWord.includes("Blu")) {
+            const deVoweled = restOfWord.split("").filter((letter) => !vowelsToFilter.includes(letter)).join('');
+            return firstCap + deVoweled;
+        } else {
+            return firstCapWord;
+        }
+      }
+
+    for (color of allColors) {
+        markerBox[color] = document.createElement("div");
+        colorsApplied[color] = allColors[allColors.indexOf(color)];
+
+        const drawThisColor = function () {
+            successfulSelect();
+            gameState["currentDrawingColor"] = colorsApplied[color];
+        }
+
+        createMenuOption(markerBox[color], `${capitalizeFirstLetter(`${color}`)}Mrk`, drawThisColor);
+    }
+    console.log(markerBox);
 }
 
 const etchPencil = function() {
@@ -1464,7 +1499,7 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                     createMenuOption(stickThrow, "Stick", stick);
                     
                     let markerBox = document.createElement("div");
-                    createMenuOption(markerBox, "MarkBox", markers);
+                    createMenuOption(markerBox, "MarkBox", allMarkers);
 
                     let etchPen = document.createElement("div");
                     createMenuOption(etchPen, "EtchPen", etchPencil);
