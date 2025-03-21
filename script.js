@@ -27,6 +27,37 @@ function applyRainbowPen(event) {
     event.target.style.backgroundColor = randomRGB();
 }
 
+/*
+const rgba1 = "rgba(0, 0, 0, 0.2)";
+const rgba2 = "rgba(0, 0, 0, 0.1)";
+
+const alpha1 = parseFloat(rgba1.split(',')[3]);  // Extracts the alpha value 0.2
+const alpha2 = parseFloat(rgba2.split(',')[3]);  // Extracts the alpha value 0.1
+
+if (alpha1 > alpha2) {
+    console.log("rgba(0, 0, 0, 0.2) is more opaque than rgba(0, 0, 0, 0.1)");
+*/
+
+const applyEtchPen = (event) => {
+    const initialColor = `rgba(0, 0, 0, 0.1)`;
+
+    const getColor = getComputedStyle(event.target).getPropertyValue("background");
+    const getCurrentAlphaValue = parseFloat(getColor.split(",")[3]);
+    
+    if (getCurrentAlphaValue >= 0.9) {
+        return; // Stop execution if alpha is already 0.99
+    }
+
+    if (getCurrentAlphaValue >= 0.1 && getCurrentAlphaValue <= 0.9) {
+        const newAlphaValue = Math.round((getCurrentAlphaValue + 0.1) * 10) / 10;
+        event.target.style.background = `rgba(0, 0, 0, ${newAlphaValue})`;
+    } else {
+        event.target.style.background = initialColor;
+    }
+    
+}
+
+
 const flirtRoute = function() {
     const petals = {
         max_amount: 120,
@@ -252,36 +283,20 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
                 event.target.classList.add(gameState["currentDrawingColor"]);
                 gameState["hasDrawing"] = true;
                 if (gameState["drawTool"]["etchPen"]) {
-                    const checkOpacity = function (event) {
-                        const initialCss = getComputedStyle(event.target).getPropertyValue("opacity");
-                        let toNumber = parseFloat(initialCss); 
-                        toNumber = Math.round(toNumber * 10) / 10;
-                        return toNumber;
-                    }
-                
-                    function changeOpacity(event) {
-                        let eventOpacity = checkOpacity(event);
-                        let newOpacity = Math.round((eventOpacity + 0.1)*10)/10;
-
-                        return newOpacity;
-                    }
-
-                    event.target.style.setProperty("opacity", changeOpacity(event));
+                    applyEtchPen(event);
                 } else if (gameState["drawTool"]["rainbowPen"]) {
                     applyRainbowPen(event);
                 }
             } else if (event.button === 2) {
                 gameState["isErasing"] = true;
-                // event.target.classList.remove(...allColors, "etchPen");
                 event.target.className = "innerCells";
                 event.target.style.backgroundColor = "";
                 event.target.removeAttribute("style")
 
                 const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
-                console.log("mainTextColor:", mainTextColor);
                 for (const div of allSketchFieldElements) {
                     const backgroundColor = getComputedStyle(div).getPropertyValue("background-color").trim();
-                    console.log(backgroundColor);
+        
                     // Check if the background is neither transparent nor the main text color
                     if (backgroundColor !== mainTextColor && backgroundColor !== "transparent" && backgroundColor !== "") {
                         gameState["hasDrawing"] = true;
@@ -306,22 +321,7 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
                 gameState["hasDrawing"] = true;
 
                 if (gameState["drawTool"]["etchPen"]) {
-                    const checkOpacity = function (event) {
-                        const initialCss = getComputedStyle(event.target).getPropertyValue("opacity");
-                        let toNumber = parseFloat(initialCss); 
-                        toNumber = Math.round(toNumber * 10) / 10;
-                        return toNumber;
-                    }
-                
-                    function changeOpacity(event) {
-                        let eventOpacity = checkOpacity(event);
-                        console.log(`event target opacity is ${eventOpacity}`)
-                        let newOpacity = Math.round((eventOpacity + 0.1)*10)/10;
-                        console.log(`event target opacity is ${newOpacity}`)
-                        return newOpacity;
-                    }
-
-                    event.target.style.setProperty("opacity", changeOpacity(event));
+                    applyEtchPen(event);
                 } else if (gameState["drawTool"]["rainbowPen"]) {
                     applyRainbowPen(event);
                 }
@@ -331,10 +331,8 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
                 event.target.removeAttribute("style");
 
                 const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
-                console.log("mainTextColor:", mainTextColor);
                 for (const div of allSketchFieldElements) {
                     const backgroundColor = getComputedStyle(div).getPropertyValue("background-color").trim();
-                    console.log(backgroundColor);
                     // Check if the background is neither transparent nor the main text color
                     if (backgroundColor !== mainTextColor && backgroundColor !== "transparent" && backgroundColor !== "") {
                         gameState["hasDrawing"] = true;

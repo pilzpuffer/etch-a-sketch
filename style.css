@@ -406,6 +406,7 @@ body {
 #mett-a-sketch {
     display: flex;
     flex-direction: row;
+    background: var(--main-text-color);
     height: 80%;
     width: 80%
 }
