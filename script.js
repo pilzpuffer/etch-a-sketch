@@ -1314,14 +1314,14 @@ const checkTool = function (selectedTool) {
 //     blue: document.createElement("div")
 // }
 
-const allMarkers = function() {
-    successfulSelect();
+const allMarkers = function () {
+    buttonConfirm.play();
+    textField.replaceChildren();
     starSpace.classList.add("invisible");
+    let currentMarkerColor;
 
-    // gameState["currentDrawingColor"] = allColors[7]; 
+    // gameState["currentDrawingColor"] = allColors[7]; <- example of assigning that should happen here
     markerBox = {};
-    colorsApplied = {};
-    // checkTool("marker"); only should be applied when a specific marker color is applied 
 
     function capitalizeFirstLetter(str) {
         let firstCapWord = str[0].toUpperCase() + str.slice(1);
@@ -1349,18 +1349,30 @@ const allMarkers = function() {
         }
       }
 
+    
+
     for (color of allColors) {
         markerBox[color] = document.createElement("div");
-        colorsApplied[color] = allColors[allColors.indexOf(color)];
+        markerBox[color].id = `marker-${color}`;
+
+        const getColor = function (event) {
+            currentMarkerColor = event.target.id;
+            return currentMarkerColor;
+        }
+        
+        markerBox[color].addEventListener("click", getColor);
 
         const drawThisColor = function () {
             successfulSelect();
-            gameState["currentDrawingColor"] = colorsApplied[color];
+            checkTool("marker");
+            console.log(currentMarkerColor);
+            console.log(currentMarkerColor.split("-")[1])
+
+            gameState["currentDrawingColor"] = allColors[`${allColors.indexOf(`${currentMarkerColor.split("-")[1]}`)}`];
         }
 
         createMenuOption(markerBox[color], `${capitalizeFirstLetter(`${color}`)}Mrk`, drawThisColor);
     }
-    console.log(markerBox);
 }
 
 const etchPencil = function() {
