@@ -46,6 +46,17 @@ const applyEtchPen = (event) => {
 
 }
 
+const erase = function (event) {
+    event.target.className = "innerCells";
+    event.target.style.backgroundColor = "";
+    event.target.removeAttribute("style");
+}
+
+const applyMarker = (event) => {
+    erase(event);
+    event.target.classList.add(gameState["currentDrawingColor"]);
+}
+
 
 const flirtRoute = function() {
     const petals = {
@@ -235,6 +246,7 @@ const gameState = {
     //button state
     actionButtonClicked: false,
     menuOptionConfirmed: false,
+    pageNavigationOn: false,
     currentActiveActionButton: {
         fight: 0,
         act: 0,
@@ -271,16 +283,16 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
                 gameState["isDrawing"] = true;
                 event.target.classList.add(gameState["currentDrawingColor"]);
                 gameState["hasDrawing"] = true;
-                if (gameState["drawTool"]["etchPen"]) {
+                if (gameState["drawTool"]["marker"]) {
+                    applyMarker(event);
+                } else if (gameState["drawTool"]["etchPen"]) {
                     applyEtchPen(event);
                 } else if (gameState["drawTool"]["rainbowPen"]) {
                     applyRainbowPen(event);
                 }
             } else if (event.button === 2) {
                 gameState["isErasing"] = true;
-                event.target.className = "innerCells";
-                event.target.style.backgroundColor = "";
-                event.target.removeAttribute("style")
+                erase(event);
 
                 const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
                 for (const div of allSketchFieldElements) {
@@ -309,15 +321,15 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
                 event.target.classList.add(gameState["currentDrawingColor"]);
                 gameState["hasDrawing"] = true;
 
-                if (gameState["drawTool"]["etchPen"]) {
+                if (gameState["drawTool"]["marker"]) {
+                    applyMarker(event);
+                } else if (gameState["drawTool"]["etchPen"]) {
                     applyEtchPen(event);
                 } else if (gameState["drawTool"]["rainbowPen"]) {
                     applyRainbowPen(event);
                 }
         } else if (gameState["isErasing"]) {
-                event.target.className = "innerCells";
-                event.target.style.backgroundColor = "";
-                event.target.removeAttribute("style");
+             erase(event);
 
                 const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
                 for (const div of allSketchFieldElements) {
@@ -1310,17 +1322,12 @@ const checkTool = function (selectedTool) {
     })
 }
 
-// markerBox = {
-//     blue: document.createElement("div")
-// }
-
 const allMarkers = function () {
     buttonConfirm.play();
     textField.replaceChildren();
     starSpace.classList.add("invisible");
     let currentMarkerColor;
 
-    // gameState["currentDrawingColor"] = allColors[7]; <- example of assigning that should happen here
     markerBox = {};
 
     function capitalizeFirstLetter(str) {
@@ -1365,8 +1372,6 @@ const allMarkers = function () {
         const drawThisColor = function () {
             successfulSelect();
             checkTool("marker");
-            console.log(currentMarkerColor);
-            console.log(currentMarkerColor.split("-")[1])
 
             gameState["currentDrawingColor"] = allColors[`${allColors.indexOf(`${currentMarkerColor.split("-")[1]}`)}`];
         }
@@ -1398,8 +1403,44 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
 
     functionTwo.classList.toggle("gone", gameState[checkOne] === true) //if true, adds the gone class - if false, removes it
 }
+
+const createPageNavigation = function(pageNumber, providedText) {
+
+    let heartSpace = document.createElement("div");
+    let textSpace = document.createElement("div");
+
+    pageNumber.classList.add("page-selection");
+    heartSpace.classList.add("heart-space");
+    textSpace.classList.add("page-text");
+
+    heartSpace.innerHTML = "<img id='stand-in-for-yellow-heart' src='./images/red-soul-hidden.png'></img>";
+    textSpace.textContent = providedText;
+
+    pageNumber.appendChild(heartSpace);
+    pageNumber.appendChild(textSpace);
+
+    console.log(pageNavigation.children.length, "before appending:", pageNumber);
+    pageNavigation.appendChild(pageNumber);
+
+    gameState["pageNavigationOn"] = true;
+
+    pageNumber.addEventListener("mouseover", () => {
+        buttonSelect.play();
+        heartSpace.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
+    })
+
+    pageNumber.addEventListener("mouseout", () => {
+        heartSpace.innerHTML = "<img id='stand-in-for-yellow-heart' src='./images/red-soul-hidden.png'></img>";
+    })
+
+    pageNumber.addEventListener("click", () => {
+        buttonConfirm.play();
+        actionApplied();
+    }) 
+}
  
     actionButtons.forEach((div) => {
+        
     
         div.addEventListener("mouseover", (event) => {
             if (gameState["actionButtonClicked"] === false && !event.currentTarget.classList.contains("button-highlight") && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
@@ -1427,6 +1468,28 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                         //change the density of the drawing field
                         //should be a "hit" minigame similar to one used in undertale for the fight action
                 } else if (currentButton === "act") {
+
+                    const optionCountObserver = new MutationObserver((mutationsList) => {
+                        console.log("DOM changed!", mutationsList);
+                    
+                        const count = textField.querySelectorAll(":scope > div:not(.gone)").length;
+                        pageOne = document.createElement("div");
+                        pageTwo = document.createElement("div");
+
+                        if (count > 6 && !gameState["pageNavigationOn"]) {
+                            optionCountObserver.disconnect();
+                            pageNavigation.classList.remove("gone");
+
+                            createPageNavigation(pageOne, "Page 1");
+                            createPageNavigation(pageTwo, "Page 2");
+
+                            pageOne.classList.add("invisible");
+                            //will need to check if there are too many elements, if that case flirt/perform/insult should be moved to the next page
+                        }
+                    });
+                    
+                    optionCountObserver.observe(textField, { childList: true, subtree: false });     
+                    
 
                     let menuOptions = {
                         //music
@@ -1494,14 +1557,8 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
                                 menuOptions[route].classList.add("gone");
                             }
                         })
-
-                        const allVisibleElements = Array.from(textField.children).filter(child => 
-                            child.classList.contains("gone")
-                        );
-                        console.log(`we have ${allVisibleElements.length} elements visible in the textfield now`);
-                        for (i = 0; i < allVisibleElements.length; i++) {
-                            console.log(`the visible element is ${allVisibleElements[i].textContent}`);
-                        }
+                        
+                        
     
                         //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
