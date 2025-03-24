@@ -426,7 +426,7 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
         }
     }
     
-    const jazzHands = setInterval(armsMotion, 40);
+    let jazzHands = setInterval(armsMotion, 40);
 
     const waveMotion = function() {
         if (gameState["waved"]) {
@@ -438,7 +438,7 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
         }
     }
     
-    const handWave = setInterval(waveMotion, 280);
+    let handWave = setInterval(waveMotion, 280);
     
     //if changed, left and right skews should be the same number - but the right skew should always be negative
     const bodyWiggle = {
@@ -987,12 +987,15 @@ const clearTextField = function () {
     removeButtonFocus();
 }
 
-let createMenuOption = function(containerName, providedText, actionApplied) {
+let createMenuOption = function(objectName, containerName, providedText, actionApplied) {
+    let menuElement = objectName[containerName].data; //to get the div info
+    menuElement.setAttribute("id", objectName[containerName].id)
+
     let heartSpace = document.createElement("div");
     let star = document.createElement("div");
-    let optionName = document.createElement("div");
+    let optionName = document.createElement("div"); 
 
-    containerName.classList.add("menu-element");
+    menuElement.classList.add("menu-element");
     heartSpace.classList.add("heart-space");
     star.classList.add("star");
     optionName.classList.add("option-name");
@@ -1001,22 +1004,22 @@ let createMenuOption = function(containerName, providedText, actionApplied) {
     heartSpace.innerHTML = "<img id='stand-in-for-yellow-heart' src='./images/red-soul-hidden.png'></img>";
     optionName.textContent = providedText;
 
-    containerName.appendChild(heartSpace);
-    containerName.appendChild(star);
-    containerName.appendChild(optionName);
+    menuElement.appendChild(heartSpace);
+    menuElement.appendChild(star);
+    menuElement.appendChild(optionName);
 
-    textField.appendChild(containerName);
+    textField.appendChild(menuElement);
 
-    containerName.addEventListener("mouseover", () => {
+    menuElement.addEventListener("mouseover", () => {
         buttonSelect.play();
         heartSpace.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
     })
 
-    containerName.addEventListener("mouseout", () => {
+    menuElement.addEventListener("mouseout", () => {
         heartSpace.innerHTML = "<img id='stand-in-for-yellow-heart' src='./images/red-soul-hidden.png'></img>";
     })
 
-    containerName.addEventListener("click", () => {
+    menuElement.addEventListener("click", () => {
         buttonConfirm.play();
         actionApplied();
     }) 
@@ -1432,11 +1435,6 @@ const createPageNavigation = function(pageNumber, providedText) {
     pageNumber.addEventListener("mouseout", () => {
         heartSpace.innerHTML = "<img id='stand-in-for-yellow-heart' src='./images/red-soul-hidden.png'></img>";
     })
-
-    pageNumber.addEventListener("click", () => {
-        buttonConfirm.play();
-        actionApplied();
-    }) 
 }
  
     actionButtons.forEach((div) => {
@@ -1452,6 +1450,7 @@ const createPageNavigation = function(pageNumber, providedText) {
 
         div.addEventListener("click", (event) => {
             let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
+            let count;
 
             if (gameState["actionButtonClicked"] === false && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
 
@@ -1469,22 +1468,37 @@ const createPageNavigation = function(pageNumber, providedText) {
                         //should be a "hit" minigame similar to one used in undertale for the fight action
                 } else if (currentButton === "act") {
 
-                    const optionCountObserver = new MutationObserver((mutationsList) => {
-                        console.log("DOM changed!", mutationsList);
-                    
-                        const count = textField.querySelectorAll(":scope > div:not(.gone)").length;
-                        pageOne = document.createElement("div");
-                        pageTwo = document.createElement("div");
+                    pageOne = document.createElement("div");
+                    pageTwo = document.createElement("div");
 
+                    const optionCountObserver = new MutationObserver((mutationsList) => {
+                        // console.log("DOM changed!", mutationsList);
+                    
+                        count = textField.querySelectorAll(":scope > div:not(.gone)").length;
+                        console.log(textField.querySelectorAll(":scope > div:not(.gone)"));
+                        let optionsToArray = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"))
+                        console.log(optionsToArray[0]);
+                        //when nodelist is pushed into an array, each element gets fully pushed into that array
+                        //we'll need to utilize that functionality to handle moving excessive elements to next page
+                        
                         if (count > 6 && !gameState["pageNavigationOn"]) {
                             optionCountObserver.disconnect();
                             pageNavigation.classList.remove("gone");
 
-                            createPageNavigation(pageOne, "Page 1");
-                            createPageNavigation(pageTwo, "Page 2");
+                            if (!pageNavigation.contains(pageOne)) {
+                                createPageNavigation(pageOne, "Page 1");
+                            }
+                            if (!pageNavigation.contains(pageTwo)) {
+                                createPageNavigation(pageTwo, "Page 2");
+                            }
 
                             pageOne.classList.add("invisible");
-                            //will need to check if there are too many elements, if that case flirt/perform/insult should be moved to the next page
+
+                            pageTwo.addEventListener("click", function(){
+                                textField.replaceChildren();
+                                pageOne.classList.remove("invisible");
+                                pageTwo.classList.add("invisible");
+                            })
                         }
                     });
                     
@@ -1493,46 +1507,83 @@ const createPageNavigation = function(pageNumber, providedText) {
 
                     let menuOptions = {
                         //music
-                        stopMusic: document.createElement("div"),
-                        restartMusic: document.createElement("div"),
+                        stopMusic: {
+                            id: "stopMusic",
+                            data: document.createElement("div")
+                        },
+                        restartMusic: {
+                            id: "restartMusic",
+                            data: document.createElement("div")
+                        },
 
                         //animation
-                        stopWiggle: document.createElement("div"),
-                        restartWiggle: document.createElement("div"),
+                        stopWiggle: {
+                            id: "stopWiggle",
+                            data: document.createElement("div")
+                        },
+                        restartWiggle: {
+                            id: "stopMusic",
+                            data: document.createElement("div")
+                        },
 
                         //dialogue
-                        check: document.createElement("div"),
-                        flirt: document.createElement("div"),
-                        insult: document.createElement("div"),
-                        perform: document.createElement("div"),
+                        check: {
+                            id: "check",
+                            data: document.createElement("div")
+                        },
+                        flirt: {
+                            id: "flirt",
+                            data: document.createElement("div")
+                        },
+                        insult: {
+                            id: "insult",
+                            data: document.createElement("div")
+                        },
+                        perform: {
+                            id: "perform",
+                            data: document.createElement("div")
+                        },
                     }
 
+                    let menuActions = {
+                        stopMusic: createMenuOption(menuOptions, "stopMusic", "Quiet", musicQuiet),
+                        restartMusic: createMenuOption(menuOptions, "restartMusic", "Music", musicBack),
+
+                        //animation
+                        stopWiggle: createMenuOption(menuOptions, "stopWiggle", "Freeze", stopMoving),
+                        restartWiggle: createMenuOption(menuOptions, "restartWiggle", "Dance", restartMoving),
+
+                        //dialogue
+                        check: createMenuOption(menuOptions, "check", "Check", checkOut),
+                        flirt: createMenuOption(menuOptions, "flirt", "Flirt", flirting),
+                        insult:  createMenuOption(menuOptions, "insult", "Insult", insulting),
+                        perform: createMenuOption(menuOptions, "perform", "Perform", performing),
+                    }
+
+                        hideAndShow(menuOptions.stopMusic.data, menuOptions.restartMusic.data, "musicOn", sameVolume, 0, (a, b) => a === b);
+                        hideAndShow(menuOptions.stopWiggle.data, menuOptions.restartWiggle.data, "animationOn", "stayStill", 2, (a, b) => a >= b);
+
                     //endgame
+                    // let obj = {'b': 2, 'c': 3};
+                    // const returnedTarget = Object.assign({a: 1}, obj);
+
+                    // Object {a: 1, b: 2, c: 3}
+
                     if (gameState["hasDrawing"]) {
                         if (!menuOptions["rate"]) {
-                            menuOptions["rate"] = document.createElement("div"); //will need to add some text if the user clicks rate while hasDrawing is false - MTT will be like! oh.. the drawing was just here. please stop messing around and submit an actual drawing instead of an empty screen
-                            createMenuOption(menuOptions.rate, "Rate", rating);
+                            const updatedOptions = Object.assign({rate: {
+                                id: "rate",
+                                data: document.createElement("div")
+                            }}, menuOptions)
+                            // menuOptions["rate"] = document.createElement("div"); //will need to add some text if the user clicks rate while hasDrawing is false - MTT will be like! oh.. the drawing was just here. please stop messing around and submit an actual drawing instead of an empty screen
+                            createMenuOption(menuOptions, "rate", "Rate", rating);
                             menuOptions["rate"].classList.add("yellow-text");
                         } else {
                             menuOptions["rate"].classList.remove("gone");
                         }
                     } else if (menuOptions["rate"]) {
                         menuOptions["rate"].classList.add("gone");
-                    }
-
-                        createMenuOption(menuOptions.stopMusic, "Quiet", musicQuiet);
-                        createMenuOption(menuOptions.restartMusic, "Music", musicBack)
-
-                        hideAndShow(menuOptions.stopMusic, menuOptions.restartMusic, "musicOn", sameVolume, 0, (a, b) => a === b);
-
-
-                        createMenuOption(menuOptions.stopWiggle, "Freeze", stopMoving); 
-                        createMenuOption(menuOptions.restartWiggle, "Dance", restartMoving);
-
-                        hideAndShow(menuOptions.stopWiggle, menuOptions.restartWiggle, "animationOn", "stayStill", 2, (a, b) => a >= b)
-
-
-                        
+                    }   
                         
                          //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
                         //rate will be the act function that will complete this game - MTT will ask if this drawing is final, player will need to confirm
@@ -1547,10 +1598,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                         //rainbow-colored drawing would automatically grant 5 points and the rest will depend on player's actions and the power of random
                         // there should be a separate check if too many points were deducted due to the player's bad behavior, then he will calculate their drawing score separately, but note that the player is an awful person 
                         
-                        createMenuOption(menuOptions.check, "Check", checkOut);
-                        createMenuOption(menuOptions.flirt, "Flirt", flirting); 
-                        createMenuOption(menuOptions.perform, "Perform", performing);
-                        createMenuOption(menuOptions.insult, "Insult", insulting);
 
                         Object.keys(gameState["routeFinished"]).forEach(route => {
                             if (gameState["routeFinished"][route] && menuOptions[route]) {
@@ -1563,18 +1610,18 @@ const createPageNavigation = function(pageNumber, providedText) {
                         //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
                 } else if (currentButton === "item") {
+                    const availableItems = {
+                        stickThrow: document.createElement("div"),
+                        markerBox: document.createElement("div"),
+                        etchPen: document.createElement("div"),
+                        rainbowPen: document.createElement("div")
+                    }
                     //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items? like a stick
-                    let stickThrow = document.createElement("div");
-                    createMenuOption(stickThrow, "Stick", stick);
-                    
-                    let markerBox = document.createElement("div");
-                    createMenuOption(markerBox, "MarkBox", allMarkers);
 
-                    let etchPen = document.createElement("div");
-                    createMenuOption(etchPen, "EtchPen", etchPencil);
-
-                    let rainbowPen = document.createElement("div");
-                    createMenuOption(rainbowPen, "RnbwPen", rainbowPencil)
+                    createMenuOption(availableItems["stickThrow"], "Stick", stick);
+                    createMenuOption(availableItems["markerBox"], "MarkBox", allMarkers);
+                    createMenuOption(availableItems["etchPen"], "EtchPen", etchPencil);
+                    createMenuOption(availableItems["rainbowPen"], "RnbwPen", rainbowPencil)
 
                 } else if (currentButton === "mercy") {
                     let spareOption = document.createElement("div");
