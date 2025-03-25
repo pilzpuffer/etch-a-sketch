@@ -1482,8 +1482,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                             for (let i = 0; i < Math.min(6, elementsToStay.length); i++) {
                                 storedNodes["nodesToStay"][elementsToStay[i].id] = elementsToStay[i];
                             }
-
-                            // console.log(`Stored nodes to save: `, storedNodes["nodesToStay"]);
                         }
 
                         if (elementsToStay.length > 6){
@@ -1493,9 +1491,8 @@ const createPageNavigation = function(pageNumber, providedText) {
                             for (let i = 0; i < elementsToMove.length; i++) {
                                 storedNodes["nodesToMove"][elementsToMove[i].id] = elementsToMove[i];
                                 document.getElementById(idOfMovedElements[i])?.remove();
+                                delete storedNodes["nodesToStay"][elementsToMove[i].id];
                             }
-                            
-                            // console.log(`Stored nodes to move: `, storedNodes["nodesToMove"]);
                         }
 
                         if (Object.keys(storedNodes["nodesToMove"]).length >= 1) {
@@ -1511,6 +1508,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                                 }
 
                                 pageOne.classList.add("invisible");
+                                console.log(storedNodes["nodesToStay"]);
                                     
                                 pageOne.addEventListener("click", function(){
                                     buttonConfirm.play();
