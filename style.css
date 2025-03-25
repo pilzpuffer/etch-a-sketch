@@ -330,10 +330,6 @@ body {
     align-content: center;
 }
 
-.gone {
-    display: none;
-}
-
 .heart-space,
 .star,
 .option-name {
@@ -606,6 +602,10 @@ body {
     background-color: rgba(0, 0, 0, 0.1) !important;
     border: 2px solid red !important;
     mix-blend-mode: darken;
+}
+
+.gone {
+    display: none;
 }
 
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 

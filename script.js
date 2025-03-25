@@ -1422,7 +1422,6 @@ const createPageNavigation = function(pageNumber, providedText) {
     pageNumber.appendChild(heartSpace);
     pageNumber.appendChild(textSpace);
 
-    console.log(pageNavigation.children.length, "before appending:", pageNumber);
     pageNavigation.appendChild(pageNumber);
 
     gameState["pageNavigationOn"] = true;
@@ -1451,6 +1450,8 @@ const createPageNavigation = function(pageNumber, providedText) {
         div.addEventListener("click", (event) => {
             let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
             let count;
+            let idOfStayingElements;
+            let idOfMovedElements;
 
             if (gameState["actionButtonClicked"] === false && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
 
@@ -1467,38 +1468,80 @@ const createPageNavigation = function(pageNumber, providedText) {
                         //change the density of the drawing field
                         //should be a "hit" minigame similar to one used in undertale for the fight action
                 } else if (currentButton === "act") {
+                    const storedNodes = {
+                        stayingNodes: {},
+                        movingNodes: {}
+                    };
 
                     pageOne = document.createElement("div");
                     pageTwo = document.createElement("div");
 
-                    const optionCountObserver = new MutationObserver((mutationsList) => {
-                        // console.log("DOM changed!", mutationsList);
-                    
-                        count = textField.querySelectorAll(":scope > div:not(.gone)").length;
-                        console.log(textField.querySelectorAll(":scope > div:not(.gone)"));
-                        let optionsToArray = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"))
-                        console.log(optionsToArray[0]);
-                        //when nodelist is pushed into an array, each element gets fully pushed into that array
-                        //we'll need to utilize that functionality to handle moving excessive elements to next page
+                    const optionCountObserver = new MutationObserver(() => {
+                        const elementsToStay = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
+                        idOfStayingElements = Array.from(elementsToStay, node => node.id);
+                        count = elementsToStay.length;
+                        console.log(`count is ${count}`);
+
+                        for (let node of elementsToStay) {
+                            storedNodes["stayingNodes"][node.id] = node; // Store the actual node
+                        }
+
+                        console.log(`Stored nodes to save: `, storedNodes["stayingNodes"]);
                         
-                        if (count > 6 && !gameState["pageNavigationOn"]) {
-                            optionCountObserver.disconnect();
-                            pageNavigation.classList.remove("gone");
-
-                            if (!pageNavigation.contains(pageOne)) {
-                                createPageNavigation(pageOne, "Page 1");
+                        if (count > 6) {
+                            const elementsToMove = elementsToStay.slice(6 - count); //should get into negative numbers to cut from the end
+                            idOfMovedElements = Array.from(elementsToMove, node => node.id);
+                            
+                            for (let node of elementsToMove) {
+                                storedNodes["movingNodes"][node.id] = node; // Store the actual node
+                                node.remove(); // Remove from DOM but keep in memory
+                                //!!also need to create logic to remove duplicates from storedNodes["stayingNodes"][duplicateElement] so that there won't be same values across those 2 objects
                             }
-                            if (!pageNavigation.contains(pageTwo)) {
-                                createPageNavigation(pageTwo, "Page 2");
+
+                            console.log(`Stored nodes to move: `, storedNodes["movingNodes"]);
+                        }
+
+                        if (Object.keys(storedNodes["movingNodes"]).length >= 1) {
+                            if (!gameState["pageNavigationOn"]) {
+                                optionCountObserver.disconnect();
+                                pageNavigation.classList.remove("gone");
+                                gameState["pageNavigationOn"] = true;
+    
+                                if (!pageNavigation.contains(pageOne)) {
+                                    createPageNavigation(pageOne, "Page 1");
+                                    if (!pageOne.classList.contains("invisible")) {
+                                        pageOne.classList.add("invisible");
+                                    }
+                                }
+                                if (!pageNavigation.contains(pageTwo)) {
+                                    createPageNavigation(pageTwo, "Page 2");
+                                }
+                                    
+                                pageOne.addEventListener("click", function(){
+                                    textField.replaceChildren();
+                                    pageOne.classList.add("invisible");
+                                    pageTwo.classList.remove("invisible");
+
+                                    for (let id of idOfStayingElements) {
+                                        if (storedNodes["stayingNodes"][id]) {
+                                        textField.appendChild(storedNodes["stayingNodes"][id]); // Move existing node back
+                                        }
+                                    } 
+                                })
+    
+                                pageTwo.addEventListener("click", function(){
+                                    textField.replaceChildren();
+                                    pageOne.classList.remove("invisible");
+                                    pageTwo.classList.add("invisible");
+    
+                                    for (let id of idOfMovedElements) {
+                                        if (storedNodes["movingNodes"][id]) {
+                                            textField.appendChild(storedNodes["movingNodes"][id]); // Move existing node back
+                                        }
+                                    } 
+                                })
                             }
-
-                            pageOne.classList.add("invisible");
-
-                            pageTwo.addEventListener("click", function(){
-                                textField.replaceChildren();
-                                pageOne.classList.remove("invisible");
-                                pageTwo.classList.add("invisible");
-                            })
+            
                         }
                     });
                     
@@ -1506,6 +1549,12 @@ const createPageNavigation = function(pageNumber, providedText) {
                     
 
                     let menuOptions = {
+                        //endgame
+                        rate: {
+                            id: "rate",
+                            data: document.createElement("div")
+                        },
+                        
                         //music
                         stopMusic: {
                             id: "stopMusic",
@@ -1542,47 +1591,42 @@ const createPageNavigation = function(pageNumber, providedText) {
                         perform: {
                             id: "perform",
                             data: document.createElement("div")
-                        },
+                        }
                     }
 
                     let menuActions = {
-                        stopMusic: createMenuOption(menuOptions, "stopMusic", "Quiet", musicQuiet),
-                        restartMusic: createMenuOption(menuOptions, "restartMusic", "Music", musicBack),
+                        //endgame
+                        rate: () => createMenuOption(menuOptions, "rate", "Rate", rating),
+
+                        //music
+                        stopMusic: () => createMenuOption(menuOptions, "stopMusic", "Quiet", musicQuiet),
+                        restartMusic: () => createMenuOption(menuOptions, "restartMusic", "Music", musicBack),
 
                         //animation
-                        stopWiggle: createMenuOption(menuOptions, "stopWiggle", "Freeze", stopMoving),
-                        restartWiggle: createMenuOption(menuOptions, "restartWiggle", "Dance", restartMoving),
+                        stopWiggle: () => createMenuOption(menuOptions, "stopWiggle", "Freeze", stopMoving),
+                        restartWiggle: () => createMenuOption(menuOptions, "restartWiggle", "Dance", restartMoving),
 
                         //dialogue
-                        check: createMenuOption(menuOptions, "check", "Check", checkOut),
-                        flirt: createMenuOption(menuOptions, "flirt", "Flirt", flirting),
-                        insult:  createMenuOption(menuOptions, "insult", "Insult", insulting),
-                        perform: createMenuOption(menuOptions, "perform", "Perform", performing),
+                        check: () => createMenuOption(menuOptions, "check", "Check", checkOut),
+                        flirt: () => createMenuOption(menuOptions, "flirt", "Flirt", flirting),
+                        insult:  () => createMenuOption(menuOptions, "insult", "Insult", insulting),
+                        perform: () => createMenuOption(menuOptions, "perform", "Perform", performing),
+
+                    }
+
+                    for (let key in menuActions) {
+                        menuActions[key]();
                     }
 
                         hideAndShow(menuOptions.stopMusic.data, menuOptions.restartMusic.data, "musicOn", sameVolume, 0, (a, b) => a === b);
                         hideAndShow(menuOptions.stopWiggle.data, menuOptions.restartWiggle.data, "animationOn", "stayStill", 2, (a, b) => a >= b);
 
-                    //endgame
-                    // let obj = {'b': 2, 'c': 3};
-                    // const returnedTarget = Object.assign({a: 1}, obj);
-
-                    // Object {a: 1, b: 2, c: 3}
 
                     if (gameState["hasDrawing"]) {
-                        if (!menuOptions["rate"]) {
-                            const updatedOptions = Object.assign({rate: {
-                                id: "rate",
-                                data: document.createElement("div")
-                            }}, menuOptions)
-                            // menuOptions["rate"] = document.createElement("div"); //will need to add some text if the user clicks rate while hasDrawing is false - MTT will be like! oh.. the drawing was just here. please stop messing around and submit an actual drawing instead of an empty screen
-                            createMenuOption(menuOptions, "rate", "Rate", rating);
-                            menuOptions["rate"].classList.add("yellow-text");
-                        } else {
-                            menuOptions["rate"].classList.remove("gone");
-                        }
-                    } else if (menuOptions["rate"]) {
-                        menuOptions["rate"].classList.add("gone");
+                            menuOptions["rate"]["data"].classList.add("yellow-text");
+                            menuOptions["rate"]["data"].classList.remove("gone");
+                    } else if (!gameState["hasDrawing"]) {
+                        menuOptions["rate"]["data"].classList.add("gone");
                     }   
                         
                          //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
@@ -1604,10 +1648,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                                 menuOptions[route].classList.add("gone");
                             }
                         })
-                        
-                        
-    
-                        //+ check function if there are more than 6 elements on screen - in that case, they need to be transferred to the next page (will also be used in the items section) + need to do smth for justify-content to 
 
                 } else if (currentButton === "item") {
                     const availableItems = {

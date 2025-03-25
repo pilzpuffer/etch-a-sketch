@@ -1,8 +1,18 @@
 # etch-a-sketch
+Current Roadmap to project finalization - as note to myself:
+1) Complete the page navigation for when there are more than 6 options available
+2) Work on "rate" endgame logic -> biggest task at the moment
+3) Add text for flirt/perform routes
+4) Add death screen for the end of the insult route
+5) Add flavor/Mett text for disabling animations
+6) Work on "fight" action to allow changing the size of the canvas
+7) Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality
+8) Add title to the load screen
+9) Work on scaling for lower screen resolutions
 
 Project notes:
 
-Initially, I've planned to add keyboard navigation as an option as well to better imitate Undertale's style of gameplay, but decided that logic required to implement that is a bit beyond me for the moment. Plus all this project already seems to be wayy beyond what the initial task required of it - thus, I wanted to complete it for now to be able to proceed with the course.
+Initially, I've planned to add keyboard navigation as an option as well to better imitate Undertale's style of gameplay, but decided that logic required to implement that is a bit beyond me for the moment. This project got a out of scope of the initial task requirements - and while things I've learned during its completion were really informative, I wanted to complete it for now to be able to proceed with the course.
 
 But in the future I plan to revisit this project and add that functionality. 
 
