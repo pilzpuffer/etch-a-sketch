@@ -119,11 +119,6 @@ body {
     font-size: 160%;
 }
 
-.invisible {
-    opacity: 0;
-    visibility: hidden;
-}
-
 .beat {
     transform: scale(1.4);
 }
@@ -602,6 +597,11 @@ body {
     background-color: rgba(0, 0, 0, 0.1) !important;
     border: 2px solid red !important;
     mix-blend-mode: darken;
+}
+
+.invisible {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .gone {

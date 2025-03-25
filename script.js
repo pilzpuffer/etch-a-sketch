@@ -1424,8 +1424,6 @@ const createPageNavigation = function(pageNumber, providedText) {
 
     pageNavigation.appendChild(pageNumber);
 
-    gameState["pageNavigationOn"] = true;
-
     pageNumber.addEventListener("mouseover", () => {
         buttonSelect.play();
         heartSpace.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
@@ -1469,8 +1467,8 @@ const createPageNavigation = function(pageNumber, providedText) {
                         //should be a "hit" minigame similar to one used in undertale for the fight action
                 } else if (currentButton === "act") {
                     const storedNodes = {
-                        stayingNodes: {},
-                        movingNodes: {}
+                        nodesToStay: {},
+                        nodesToMove: {}
                     };
 
                     pageOne = document.createElement("div");
@@ -1478,65 +1476,65 @@ const createPageNavigation = function(pageNumber, providedText) {
 
                     const optionCountObserver = new MutationObserver(() => {
                         const elementsToStay = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
-                        idOfStayingElements = Array.from(elementsToStay, node => node.id);
-                        count = elementsToStay.length;
-                        console.log(`count is ${count}`);
+                        idOfStayingElements = elementsToStay.map(node => node.id);
 
-                        for (let node of elementsToStay) {
-                            storedNodes["stayingNodes"][node.id] = node; // Store the actual node
-                        }
-
-                        console.log(`Stored nodes to save: `, storedNodes["stayingNodes"]);
-                        
-                        if (count > 6) {
-                            const elementsToMove = elementsToStay.slice(6 - count); //should get into negative numbers to cut from the end
-                            idOfMovedElements = Array.from(elementsToMove, node => node.id);
-                            
-                            for (let node of elementsToMove) {
-                                storedNodes["movingNodes"][node.id] = node; // Store the actual node
-                                node.remove(); // Remove from DOM but keep in memory
-                                //!!also need to create logic to remove duplicates from storedNodes["stayingNodes"][duplicateElement] so that there won't be same values across those 2 objects
+                        if (elementsToStay.length > 0) {
+                            for (let i = 0; i < Math.min(6, elementsToStay.length); i++) {
+                                storedNodes["nodesToStay"][elementsToStay[i].id] = elementsToStay[i];
                             }
 
-                            console.log(`Stored nodes to move: `, storedNodes["movingNodes"]);
+                            // console.log(`Stored nodes to save: `, storedNodes["nodesToStay"]);
                         }
 
-                        if (Object.keys(storedNodes["movingNodes"]).length >= 1) {
+                        if (elementsToStay.length > 6){
+                            const elementsToMove = elementsToStay.slice(6);
+                            idOfMovedElements = elementsToMove.map(node => node.id);
+
+                            for (let i = 0; i < elementsToMove.length; i++) {
+                                storedNodes["nodesToMove"][elementsToMove[i].id] = elementsToMove[i];
+                                document.getElementById(idOfMovedElements[i])?.remove();
+                            }
+                            
+                            // console.log(`Stored nodes to move: `, storedNodes["nodesToMove"]);
+                        }
+
+                        if (Object.keys(storedNodes["nodesToMove"]).length >= 1) {
                             if (!gameState["pageNavigationOn"]) {
-                                optionCountObserver.disconnect();
                                 pageNavigation.classList.remove("gone");
                                 gameState["pageNavigationOn"] = true;
     
                                 if (!pageNavigation.contains(pageOne)) {
                                     createPageNavigation(pageOne, "Page 1");
-                                    if (!pageOne.classList.contains("invisible")) {
-                                        pageOne.classList.add("invisible");
-                                    }
                                 }
                                 if (!pageNavigation.contains(pageTwo)) {
                                     createPageNavigation(pageTwo, "Page 2");
                                 }
+
+                                pageOne.classList.add("invisible");
                                     
                                 pageOne.addEventListener("click", function(){
+                                    buttonConfirm.play();
                                     textField.replaceChildren();
                                     pageOne.classList.add("invisible");
                                     pageTwo.classList.remove("invisible");
 
                                     for (let id of idOfStayingElements) {
-                                        if (storedNodes["stayingNodes"][id]) {
-                                        textField.appendChild(storedNodes["stayingNodes"][id]); // Move existing node back
+                                        if (storedNodes["nodesToStay"][id]) {
+                                        textField.appendChild(storedNodes["nodesToStay"][id]);
+                                        console.log(storedNodes["nodesToStay"][id]);
                                         }
                                     } 
                                 })
     
                                 pageTwo.addEventListener("click", function(){
+                                    buttonConfirm.play();
                                     textField.replaceChildren();
                                     pageOne.classList.remove("invisible");
                                     pageTwo.classList.add("invisible");
     
                                     for (let id of idOfMovedElements) {
-                                        if (storedNodes["movingNodes"][id]) {
-                                            textField.appendChild(storedNodes["movingNodes"][id]); // Move existing node back
+                                        if (storedNodes["nodesToMove"][id]) {
+                                            textField.appendChild(storedNodes["nodesToMove"][id]);
                                         }
                                     } 
                                 })
