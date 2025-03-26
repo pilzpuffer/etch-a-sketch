@@ -1447,10 +1447,6 @@ const createPageNavigation = function(pageNumber, providedText) {
 
         div.addEventListener("click", (event) => {
             let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
-            let count;
-            let idOfStayingElements;
-            let idOfMovedElements;
-
             if (gameState["actionButtonClicked"] === false && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
 
                 buttonConfirm.play();
@@ -1474,25 +1470,49 @@ const createPageNavigation = function(pageNumber, providedText) {
                     pageOne = document.createElement("div");
                     pageTwo = document.createElement("div");
 
+                    let currentPage = 1;
+                    let idOfStayingElements;
+                    let idOfMovedElements;   
+                    let allElements;
+                    
+
                     const optionCountObserver = new MutationObserver(() => {
-                        const elementsToStay = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
-                        idOfStayingElements = elementsToStay.map(node => node.id);
+                        allElements = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
 
-                        if (elementsToStay.length > 0) {
-                            for (let i = 0; i < Math.min(6, elementsToStay.length); i++) {
-                                storedNodes["nodesToStay"][elementsToStay[i].id] = elementsToStay[i];
-                            }
+                        if (currentPage === 1) {
+                            const elementsToStay = allElements.slice(0, Math.min(6, allElements.length));
+                            idOfStayingElements = elementsToStay.map(node => node.id);
+
+                                if (elementsToStay.length > 0) {
+                                    for (let i = 0; i < Math.min(6, elementsToStay.length); i++) {
+                                        storedNodes["nodesToStay"][elementsToStay[i].id] = elementsToStay[i];
+                                    }
+                                }
                         }
+                        
 
-                        if (elementsToStay.length > 6){
-                            const elementsToMove = elementsToStay.slice(6);
+                        if (allElements.length > 6){
+                            const elementsToMove = allElements.slice(6);
                             idOfMovedElements = elementsToMove.map(node => node.id);
 
                             for (let i = 0; i < elementsToMove.length; i++) {
-                                storedNodes["nodesToMove"][elementsToMove[i].id] = elementsToMove[i];
-                                document.getElementById(idOfMovedElements[i])?.remove();
-                                delete storedNodes["nodesToStay"][elementsToMove[i].id];
+                                const elementId = elementsToMove[i].id;
+
+                                storedNodes["nodesToMove"][elementId] = elementsToMove[i];
+                                document.getElementById(elementId)?.remove();
+
+                                delete storedNodes["nodesToStay"][elementId];
+                                idOfStayingElements = idOfStayingElements.filter(id => id !== elementId);
                             }
+                        }
+
+                        //delete all stored nodes when the amount of elements was reduced to 6 or less
+                        if (allElements.length <= 6 && Object.keys(storedNodes["nodesToMove"]).length >= 1 && currentPage === 1) {
+                            Object.keys(storedNodes["nodesToMove"]).forEach(key => {
+                                delete storedNodes["nodesToMove"][key]; 
+                            });
+                        
+                            idOfMovedElements = [];
                         }
 
                         if (Object.keys(storedNodes["nodesToMove"]).length >= 1) {
@@ -1506,11 +1526,12 @@ const createPageNavigation = function(pageNumber, providedText) {
                                 if (!pageNavigation.contains(pageTwo)) {
                                     createPageNavigation(pageTwo, "Page 2");
                                 }
+                            }
 
                                 pageOne.classList.add("invisible");
-                                console.log(storedNodes["nodesToStay"]);
-                                    
+                                
                                 pageOne.addEventListener("click", function(){
+                                    currentPage = 1;
                                     buttonConfirm.play();
                                     textField.replaceChildren();
                                     pageOne.classList.add("invisible");
@@ -1518,13 +1539,14 @@ const createPageNavigation = function(pageNumber, providedText) {
 
                                     for (let id of idOfStayingElements) {
                                         if (storedNodes["nodesToStay"][id]) {
-                                        textField.appendChild(storedNodes["nodesToStay"][id]);
-                                        console.log(storedNodes["nodesToStay"][id]);
+                                            textField.appendChild(storedNodes["nodesToStay"][id]);
                                         }
-                                    } 
+                                    }     
+                                   
                                 })
     
                                 pageTwo.addEventListener("click", function(){
+                                    currentPage = 2;
                                     buttonConfirm.play();
                                     textField.replaceChildren();
                                     pageOne.classList.remove("invisible");
@@ -1537,8 +1559,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                                     } 
                                 })
                             }
-            
-                        }
                     });
                     
                     optionCountObserver.observe(textField, { childList: true, subtree: false });     
