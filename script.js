@@ -1506,15 +1506,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                             }
                         }
 
-                        //delete all stored nodes when the amount of elements was reduced to 6 or less
-                        if (allElements.length <= 6 && Object.keys(storedNodes["nodesToMove"]).length >= 1 && currentPage === 1) {
-                            Object.keys(storedNodes["nodesToMove"]).forEach(key => {
-                                delete storedNodes["nodesToMove"][key]; 
-                            });
-                        
-                            idOfMovedElements = [];
-                        }
-
                         if (Object.keys(storedNodes["nodesToMove"]).length >= 1) {
                             if (!gameState["pageNavigationOn"]) {
                                 pageNavigation.classList.remove("gone");
@@ -1522,13 +1513,12 @@ const createPageNavigation = function(pageNumber, providedText) {
     
                                 if (!pageNavigation.contains(pageOne)) {
                                     createPageNavigation(pageOne, "Page 1");
+                                    pageOne.classList.add("invisible");
                                 }
                                 if (!pageNavigation.contains(pageTwo)) {
                                     createPageNavigation(pageTwo, "Page 2");
                                 }
-                            }
-
-                                pageOne.classList.add("invisible");
+                            }  
                                 
                                 pageOne.addEventListener("click", function(){
                                     currentPage = 1;
@@ -1551,6 +1541,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                                     textField.replaceChildren();
                                     pageOne.classList.remove("invisible");
                                     pageTwo.classList.add("invisible");
+
     
                                     for (let id of idOfMovedElements) {
                                         if (storedNodes["nodesToMove"][id]) {
