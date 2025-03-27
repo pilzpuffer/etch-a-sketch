@@ -1,11 +1,11 @@
 # etch-a-sketch
 Current Roadmap to project finalization - as note to myself:
-1) Complete the page navigation for when there are more than 6 options available - DONE!
+1) <s>Complete the page navigation for when there are more than 6 options available</s> - ALL DONE!
 2) Work on "rate" endgame logic -> biggest task at the moment
 3) Add text for flirt/perform routes
 4) Add death screen for the end of the insult route
 5) Add flavor/Mett text for disabling animations
-6) Work on "fight" action to allow changing the size of the canvas
+6) Work on "fight" action to allow changing the size of the canvas - another big task
 7) Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality
 8) Add title to the load screen
 9) Work on scaling for lower screen resolutions

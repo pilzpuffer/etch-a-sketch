@@ -13,6 +13,21 @@ window.addEventListener('load', () => {
     heartBreak.volume = sameVolume;
     battleStart.volume = sameVolume;
     battleTheme.volume = sameVolume - 0.1; //sadly, battle crusher theme is as loud as it is great
+
+    const titleTextBack = document.createElement("div");
+    titleTextBack.textContent = "Etch-A-Sketch: FabulOus ShOw!";
+    titleTextBack.classList.add("title-back");
+    load.appendChild(titleTextBack);
+
+    const titleTextCenter = document.createElement("div");
+    titleTextCenter.textContent = "Etch-A-Sketch: FabulOus ShOw!";
+    titleTextCenter.classList.add("title-center");
+    load.appendChild(titleTextCenter);
+
+    const titleTextFront = document.createElement("div");
+    titleTextFront.textContent = "Etch-A-Sketch: FabulOus ShOw!";
+    titleTextFront.classList.add("title-front");
+    load.appendChild(titleTextFront);
     
     const startText = document.createElement("div");
     startText.textContent = "[PRESS 2 OR ENTER TO START]";

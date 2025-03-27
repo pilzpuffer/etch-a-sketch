@@ -20,6 +20,22 @@
     font-weight: normal;
 }
 
+/*uppercase for letters with heart spaces*/
+@font-face {
+    font-family: "Undertale-Title-Back";
+    src: url('./fonts/Monster-Friend/MonsterFriend2Back.woff2'), format('woff2');
+}
+
+@font-face {
+    font-family: "Undertale-Title-Middle";
+    src: url('./fonts/Monster-Friend/MonsterFriend2Center.woff2'), format('woff2');
+}
+
+@font-face {
+    font-family: "Undertale-Title-Front";
+    src: url('./fonts/Monster-Friend/MonsterFriend2Fore.woff2'), format('woff2');
+}
+
 /*  
 Glyph Cheatsheet
 @ = Double Sans
@@ -111,6 +127,34 @@ body {
     width: 1.8%;
     height: auto;
     transition: all 0.5s ease-in-out;
+}
+
+.title-back,
+.title-center,
+.title-front {
+    font-size: 400%;
+    position: absolute;
+    align-self: center;
+
+    margin-top: -15%;
+}
+
+.title-back {
+    font-family: "Undertale-Title-Back";
+    color: var(--background-text-color);
+    z-index: 6;
+}
+
+.title-center {
+    font-family: "Undertale-Title-Middle";
+    color: var(--red);
+    z-index: 7;
+}
+
+.title-front {
+    font-family: "Undertale-Title-Front";
+    color: var(--main-text-color);
+    z-index: 8;
 }
 
 .start-text {
