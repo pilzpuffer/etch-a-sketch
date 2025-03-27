@@ -1029,7 +1029,7 @@ const pageNavigation = document.querySelector("#page-navigation");
 
 battleStart.addEventListener("ended", function() {
     textBubble.classList.add("gone");
-    pageNavigation.classList.add("gone");
+    pageNavigation.classList.add("invisible");
 
     const allCells = document.querySelectorAll(".innerCells");
 
@@ -1060,6 +1060,12 @@ const successfulSelect = function() {
     clearTextField();
     buttonConfirm.play();
     gameState["pageNavigationOn"] = false;
+
+    Object.keys(gameState.currentActiveActionButton).forEach(function (key) {
+        gameState.currentActiveActionButton[key] = 0;
+    });
+
+    pageNavigation.replaceChildren();
 }
 
 const musicQuiet = function () {
@@ -1515,11 +1521,11 @@ const createPageNavigation = function(pageNumber, providedText) {
                         if (currentPage === 1) {
                             elementsToStay = allElements.slice(0, Math.min(6, allElements.length));
                             idOfStayingElements = elementsToStay.map(node => node.id);
+                            console.log(`ids of staying elements are `+ idOfStayingElements);
 
                                 if (elementsToStay.length > 0) {
                                     for (let i = 0; i < Math.min(6, elementsToStay.length); i++) {
                                         storedNodes["nodesToStay"][elementsToStay[i].id] = elementsToStay[i];
-                                        console.log(storedNodes["nodesToStay"]);
                                     }
                                 }
                         }
@@ -1537,6 +1543,7 @@ const createPageNavigation = function(pageNumber, providedText) {
 
                                 delete storedNodes["nodesToStay"][elementId];
                                 idOfStayingElements = idOfStayingElements.filter(id => id !== elementId);
+                                console.log(`ids of staying elements are after removal are`+ idOfStayingElements);
                             }
                         }
 
@@ -1544,7 +1551,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                             gameState["pageNavigationOn"] = true;
 
                             if (gameState["pageNavigationOn"]) {
-                                pageNavigation.classList.remove("gone");
+                                pageNavigation.classList.remove("invisible");
                                 if (!pageNavigation.contains(pageOne)) {
                                     createPageNavigation(pageOne, "Page 1");
                                     pageOne.classList.add("invisible");
@@ -1557,11 +1564,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                                 pageOne.addEventListener("click", handleFirstPageClick);
                                 pageTwo.addEventListener("click", handleSecondPageClick);
                             }
-
-                        if (!gameState["pageNavigationOn"]) {
-                            pageOne.removeEventListener("click", handleFirstPageClick);
-                            pageTwo.removeEventListener("click", handleSecondPageClick);
-                        }
                     });
                     
                     optionCountObserver.observe(textField, { childList: true, subtree: false });     
@@ -1590,7 +1592,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                             data: document.createElement("div")
                         },
                         restartWiggle: {
-                            id: "stopMusic",
+                            id: "restartWiggle",
                             data: document.createElement("div")
                         },
 
@@ -1692,8 +1694,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                 buttonConfirm.play();
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
                 gameState["pageNavigationOn"] = false;
-                pageOne.remove();
-                pageTwo.remove();
+                pageNavigation.replaceChildren();
             }
         })
             
