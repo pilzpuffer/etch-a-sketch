@@ -1059,6 +1059,7 @@ const allAudio = document.querySelectorAll("audio")
 const successfulSelect = function() {
     clearTextField();
     buttonConfirm.play();
+    gameState["pageNavigationOn"] = false;
 }
 
 const musicQuiet = function () {
@@ -1471,28 +1472,61 @@ const createPageNavigation = function(pageNumber, providedText) {
                     pageTwo = document.createElement("div");
 
                     let currentPage = 1;
+                    let elementsToStay;
                     let idOfStayingElements;
-                    let idOfMovedElements;   
+                    let idOfMovedElements;  
+                    let elementsToMove;
+
                     let allElements;
+
+                    const handleFirstPageClick = function() {
+                        currentPage = 1;
+                        buttonConfirm.play();
+                        textField.replaceChildren();
+                        pageOne.classList.add("invisible");
+                        pageTwo.classList.remove("invisible");
+
+                        for (let id of idOfStayingElements) {
+                            if (storedNodes["nodesToStay"][id]) {
+                                textField.appendChild(storedNodes["nodesToStay"][id]);
+                            }
+                        } 
+                    }
+
+                    const handleSecondPageClick = function() {
+                        currentPage = 2;
+                                    buttonConfirm.play();
+                                    textField.replaceChildren();
+                                    pageOne.classList.remove("invisible");
+                                    pageTwo.classList.add("invisible");
+
+    
+                                    for (let id of idOfMovedElements) {
+                                        if (storedNodes["nodesToMove"][id]) {
+                                            textField.appendChild(storedNodes["nodesToMove"][id]);
+                                        }
+                                    } 
+                    }
                     
 
                     const optionCountObserver = new MutationObserver(() => {
                         allElements = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
 
                         if (currentPage === 1) {
-                            const elementsToStay = allElements.slice(0, Math.min(6, allElements.length));
+                            elementsToStay = allElements.slice(0, Math.min(6, allElements.length));
                             idOfStayingElements = elementsToStay.map(node => node.id);
 
                                 if (elementsToStay.length > 0) {
                                     for (let i = 0; i < Math.min(6, elementsToStay.length); i++) {
                                         storedNodes["nodesToStay"][elementsToStay[i].id] = elementsToStay[i];
+                                        console.log(storedNodes["nodesToStay"]);
                                     }
                                 }
                         }
                         
 
                         if (allElements.length > 6){
-                            const elementsToMove = allElements.slice(6);
+                            elementsToMove = allElements.slice(6);
                             idOfMovedElements = elementsToMove.map(node => node.id);
 
                             for (let i = 0; i < elementsToMove.length; i++) {
@@ -1506,11 +1540,11 @@ const createPageNavigation = function(pageNumber, providedText) {
                             }
                         }
 
-                        if (Object.keys(storedNodes["nodesToMove"]).length >= 1) {
-                            if (!gameState["pageNavigationOn"]) {
+                        if (Object.keys(storedNodes["nodesToMove"]).length >= 1 && (gameState["currentActiveActionButton"]["act"] > 0 || gameState["currentActiveActionButton"]["item"] > 0)) {
+                            gameState["pageNavigationOn"] = true;
+
+                            if (gameState["pageNavigationOn"]) {
                                 pageNavigation.classList.remove("gone");
-                                gameState["pageNavigationOn"] = true;
-    
                                 if (!pageNavigation.contains(pageOne)) {
                                     createPageNavigation(pageOne, "Page 1");
                                     pageOne.classList.add("invisible");
@@ -1520,36 +1554,14 @@ const createPageNavigation = function(pageNumber, providedText) {
                                 }
                             }  
                                 
-                                pageOne.addEventListener("click", function(){
-                                    currentPage = 1;
-                                    buttonConfirm.play();
-                                    textField.replaceChildren();
-                                    pageOne.classList.add("invisible");
-                                    pageTwo.classList.remove("invisible");
-
-                                    for (let id of idOfStayingElements) {
-                                        if (storedNodes["nodesToStay"][id]) {
-                                            textField.appendChild(storedNodes["nodesToStay"][id]);
-                                        }
-                                    }     
-                                   
-                                })
-    
-                                pageTwo.addEventListener("click", function(){
-                                    currentPage = 2;
-                                    buttonConfirm.play();
-                                    textField.replaceChildren();
-                                    pageOne.classList.remove("invisible");
-                                    pageTwo.classList.add("invisible");
-
-    
-                                    for (let id of idOfMovedElements) {
-                                        if (storedNodes["nodesToMove"][id]) {
-                                            textField.appendChild(storedNodes["nodesToMove"][id]);
-                                        }
-                                    } 
-                                })
+                                pageOne.addEventListener("click", handleFirstPageClick);
+                                pageTwo.addEventListener("click", handleSecondPageClick);
                             }
+
+                        if (!gameState["pageNavigationOn"]) {
+                            pageOne.removeEventListener("click", handleFirstPageClick);
+                            pageTwo.removeEventListener("click", handleSecondPageClick);
+                        }
                     });
                     
                     optionCountObserver.observe(textField, { childList: true, subtree: false });     
@@ -1679,6 +1691,9 @@ const createPageNavigation = function(pageNumber, providedText) {
                 clearTextField();
                 buttonConfirm.play();
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
+                gameState["pageNavigationOn"] = false;
+                pageOne.remove();
+                pageTwo.remove();
             }
         })
             
