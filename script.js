@@ -201,6 +201,7 @@ const gameState = {
     isDrawing: false,
     isErasing: false,
     hasDrawing: false,
+    markerBoxOpen: false,
     fieldSize: 16, //gets kinda laggy at 64 when animation is enabled
     currentDrawingColor: allColors[7],
     drawTool: {
@@ -1381,6 +1382,7 @@ const allMarkers = function () {
 
         const getColor = function (event) {
             currentMarkerColor = event.target.id;
+            gameState["markerBoxOpen"] = false;
             return currentMarkerColor;
         }
         
@@ -1395,6 +1397,8 @@ const allMarkers = function () {
 
         createMenuOption(markerBox, `${color}`, `${capitalizeFirstLetter(`${color}`)}Mrk`, drawThisColor);
     }
+
+    gameState["markerBoxOpen"] = true;
 }
 
 const etchPencil = function() {
@@ -1460,13 +1464,19 @@ const createPageNavigation = function(pageNumber, providedText) {
         })
 
         div.addEventListener("click", (event) => {
-            const storedNodes = {
-                nodesToStay: {},
-                nodesToMove: {}
-            };
-
             pageOne = document.createElement("div");
             pageTwo = document.createElement("div");
+            
+            const storedNodes = {
+                act: {
+                    nodesToStay: {},
+                    nodesToMove: {}
+                },
+                items: {
+                    nodesToStay: {},
+                    nodesToMove: {}
+                },
+            };
 
             const observerVariables = {
                 act: {
@@ -1486,75 +1496,66 @@ const createPageNavigation = function(pageNumber, providedText) {
                     allElements: []
                 }
             }
-            let currentPage = 1;
-            let elementsToStay;
-            let idOfStayingElements;
-            let idOfMovedElements;  
-            let elementsToMove;
 
-            let allElements;
-
-            const handleFirstPageClick = function() {
-                currentPage = 1;
+            const handleFirstPageClick = function(correctAction, correctObject) {
+                observerVariables[correctAction]["currentPage"] = 1;
                 buttonConfirm.play();
                 textField.replaceChildren();
                 pageOne.classList.add("invisible");
                 pageTwo.classList.remove("invisible");
 
-                for (let id of idOfStayingElements) {
-                    if (storedNodes["nodesToStay"][id]) {
-                        textField.appendChild(storedNodes["nodesToStay"][id]);
+                for (let id of observerVariables[correctAction]["idOfStayingElements"]) { //staying
+                    if (storedNodes[correctObject]["nodesToStay"][id]) {
+                        textField.appendChild(storedNodes[correctObject]["nodesToStay"][id]);
                     }
                 } 
             }
 
-            const handleSecondPageClick = function() {
-                currentPage = 2;
-                            buttonConfirm.play();
-                            textField.replaceChildren();
-                            pageOne.classList.remove("invisible");
-                            pageTwo.classList.add("invisible");
+            const handleSecondPageClick = function(correctAction, correctObject) {
+                observerVariables[correctAction]["currentPage"] = 2;
+                buttonConfirm.play();
+                textField.replaceChildren();
+                pageOne.classList.remove("invisible");
+                pageTwo.classList.add("invisible");
 
 
-                            for (let id of idOfMovedElements) {
-                                if (storedNodes["nodesToMove"][id]) {
-                                    textField.appendChild(storedNodes["nodesToMove"][id]);
-                                }
-                            } 
+                for (let id of observerVariables[correctAction]["idOfMovedElements"]) { //moving
+                    if (storedNodes[correctObject]["nodesToMove"][id]) {
+                        textField.appendChild(storedNodes[correctObject]["nodesToMove"][id]);
+                        }
+                    } 
             }
             
+            const actOptionCountObserver = new MutationObserver(() => {
+                const actVars = observerVariables.act;
 
-            const optionCountObserver = new MutationObserver(() => {
-                allElements = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
+                actVars.allElements = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
 
-                if (currentPage === 1) {
-                    elementsToStay = allElements.slice(0, Math.min(6, allElements.length));
-                    idOfStayingElements = elementsToStay.map(node => node.id);
+                if (actVars.currentPage === 1) {
+                    actVars.elementsToStay = actVars.allElements.slice(0, Math.min(6, actVars.allElements.length));
+                    actVars.idOfStayingElements = actVars.elementsToStay.map(node => node.id);
 
-                        if (elementsToStay.length > 0) {
-                            for (let i = 0; i < Math.min(6, elementsToStay.length); i++) {
-                                storedNodes["nodesToStay"][elementsToStay[i].id] = elementsToStay[i];
+                        if (actVars.elementsToStay.length > 0) {
+                            for (let i = 0; i < Math.min(6, actVars.elementsToStay.length); i++) {
+                                storedNodes["act"]["nodesToStay"][actVars.elementsToStay[i].id] = actVars.elementsToStay[i];
                             }
                         }
                 }
                 
 
-                if (allElements.length > 6){
-                    elementsToMove = allElements.slice(6);
-                    idOfMovedElements = elementsToMove.map(node => node.id);
+                if (actVars.allElements.length > 6){
+                    actVars.elementsToMove = actVars.allElements.slice(6);
+                    actVars.idOfMovedElements = actVars.elementsToMove.map(node => node.id);
 
-                    for (let i = 0; i < elementsToMove.length; i++) {
-                        const elementId = elementsToMove[i].id;
+                    for (let i = 0; i < actVars.elementsToMove.length; i++) {
+                        const elementId = actVars.elementsToMove[i].id;
 
-                        storedNodes["nodesToMove"][elementId] = elementsToMove[i];
+                        storedNodes["act"]["nodesToMove"][elementId] = actVars.elementsToMove[i];
                         document.getElementById(elementId)?.remove();
-
-                        // delete storedNodes["nodesToStay"][elementId];
-                        // idOfStayingElements = idOfStayingElements.filter(id => id !== elementId); 
                     }
                 }
 
-                if (Object.keys(storedNodes["nodesToMove"]).length >= 1 && (gameState["currentActiveActionButton"]["act"] > 0 || gameState["currentActiveActionButton"]["item"] > 0)) {
+                if (Object.keys(storedNodes["act"]["nodesToMove"]).length >= 1 && (gameState["currentActiveActionButton"]["act"] > 0 || gameState["currentActiveActionButton"]["item"] > 0)) {
                     gameState["pageNavigationOn"] = true;
 
                     if (gameState["pageNavigationOn"]) {
@@ -1568,9 +1569,59 @@ const createPageNavigation = function(pageNumber, providedText) {
                         }
                     }  
                         
-                        pageOne.addEventListener("click", handleFirstPageClick);
-                        pageTwo.addEventListener("click", handleSecondPageClick);
+                        pageOne.addEventListener("click", () => handleFirstPageClick("act", "act")); //need to reference correct page object + correct object with IDs
+                        pageTwo.addEventListener("click", () => handleSecondPageClick("act", "act"));
                     }
+            });
+
+            const itemsOptionCountObserver = new MutationObserver(() => {
+                if (gameState["markerBoxOpen"] === true) {
+                const actVars = observerVariables.items;
+
+                actVars.allElements = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
+
+                if (actVars.currentPage === 1) {
+                    actVars.elementsToStay = actVars.allElements.slice(0, Math.min(6, actVars.allElements.length));
+                    actVars.idOfStayingElements = actVars.elementsToStay.map(node => node.id);
+
+                        if (actVars.elementsToStay.length > 0) {
+                            for (let i = 0; i < Math.min(6, actVars.elementsToStay.length); i++) {
+                                storedNodes["items"]["nodesToStay"][actVars.elementsToStay[i].id] = actVars.elementsToStay[i];
+                            }
+                        }
+                }
+                
+
+                if (actVars.allElements.length > 6){
+                    actVars.elementsToMove = actVars.allElements.slice(6);
+                    actVars.idOfMovedElements = actVars.elementsToMove.map(node => node.id);
+
+                    for (let i = 0; i < actVars.elementsToMove.length; i++) {
+                        const elementId = actVars.elementsToMove[i].id;
+
+                        storedNodes["items"]["nodesToMove"][elementId] = actVars.elementsToMove[i];
+                        document.getElementById(elementId)?.remove();
+                    }
+                }
+
+                if (Object.keys(storedNodes["items"]["nodesToMove"]).length >= 1 && (gameState["currentActiveActionButton"]["act"] > 0 || gameState["currentActiveActionButton"]["item"] > 0)) {
+                    gameState["pageNavigationOn"] = true;
+
+                    if (gameState["pageNavigationOn"]) {
+                        pageNavigation.classList.remove("invisible");
+                        if (!pageNavigation.contains(pageOne)) {
+                            createPageNavigation(pageOne, "Page 1");
+                            pageOne.classList.add("invisible");
+                        }
+                        if (!pageNavigation.contains(pageTwo)) {
+                            createPageNavigation(pageTwo, "Page 2");
+                        }
+                    }  
+                        
+                        pageOne.addEventListener("click", () => handleFirstPageClick("items", "items")); //need to reference correct page object + correct object with IDs
+                        pageTwo.addEventListener("click", () => handleSecondPageClick("items", "items"));
+                    }
+                }
             });
 
             let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
@@ -1589,7 +1640,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                         //change the density of the drawing field
                         //should be a "hit" minigame similar to one used in undertale for the fight action
                 } else if (currentButton === "act") {      
-                    optionCountObserver.observe(textField, { childList: true, subtree: false });     
+                    actOptionCountObserver.observe(textField, { childList: true, subtree: false });     
 
                     let menuOptions = {
                         //endgame
@@ -1693,7 +1744,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                         })
 
                 } else if (currentButton === "item") {
-                optionCountObserver.observe(textField, { childList: true, subtree: false });
+                    itemsOptionCountObserver.observe(textField, { childList: true, subtree: false });  
 
                     const availableItems = {
                         stickThrow: {
@@ -1709,7 +1760,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                             id: "rainbowPen",
                             data: document.createElement("div")}
                     }
-                    //will need to add a rainbow pen, pencil, box of markers (colors for allColors array will be used there) + maybe some funny items? like a stick
 
                     createMenuOption(availableItems, "stickThrow", "Stick", stick);
                     createMenuOption(availableItems, "markerBox", "MarkBox", allMarkers);
@@ -1731,6 +1781,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                 buttonConfirm.play();
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
                 gameState["pageNavigationOn"] = false;
+                gameState["markerBoxOpen"] = false;
                 pageNavigation.replaceChildren();
             }
         })
