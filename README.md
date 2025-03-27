@@ -1,6 +1,6 @@
 # etch-a-sketch
 Current Roadmap to project finalization - as note to myself:
-1) Complete the page navigation for when there are more than 6 options available
+1) Complete the page navigation for when there are more than 6 options available - DONE!
 2) Work on "rate" endgame logic -> biggest task at the moment
 3) Add text for flirt/perform routes
 4) Add death screen for the end of the insult route
