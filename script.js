@@ -1179,10 +1179,10 @@ const flavorText = function(lines) {
         }
 
         if (lines.length === 2) { 
-            starSpace.textContent = `*
-            *`
             const secondLine = async () => {
                 await firstLine();
+                starSpace.textContent = `*
+                *`
                 await typeWriter(lineTwo, textLineTwo);
             }
 

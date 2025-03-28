@@ -1,7 +1,6 @@
 # etch-a-sketch
 Current Roadmap to project finalization - as note to myself:
 1) <s>Complete the page navigation for when there are more than 6 options available</s> - ALL DONE!
-1.5) Minor bug - if page navigation already exists for the ACT menu, it will show up on the main page of the items menu as well (and it will lead to the second page of ACT items). If go into marker box - page navigation updates properly, and applies for item navigation. I need to figure out how to hide that second page button when items are just opened. I've tried to create separte divs for items (like, dedicate Page 1 div to just act, and set up a separate div for items, and tied all events to it) - but that didn't resolve this issue. 
 2) Work on "rate" endgame logic -> biggest task at the moment
 3) Add text for flirt/perform routes
 4) Add death screen for the end of the insult route
