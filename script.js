@@ -240,6 +240,8 @@ const gameState = {
     stayStill: 0,
     musicOn: true,
     animationOn: true,
+    moveArms: true,
+    moveBody: true,
     isAnimating: true,
     waved: true,
     wentLeft: false,
@@ -427,24 +429,28 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
         }
     }
     async function jazzHands() {
-        armsMotion();
-        await new Promise((resolve) => setTimeout(resolve, 40));
+        if (gameState["moveArms"]) {
+            armsMotion();
+            await new Promise((resolve) => setTimeout(resolve, 40));
 
-        requestAnimationFrame(jazzHands);
+            requestAnimationFrame(jazzHands);
+        }
     }
 
     async function handWave() {
-        if (gameState["waved"]) {
-            rightArm.src = "./images/mett-sprite/arm-right-1.png";
-            gameState["waved"] = !gameState["waved"];
-        } else {
-            rightArm.src = "./images/mett-sprite/arm-right-2.png";
-            gameState["waved"] = true;
+        if (gameState["moveArms"]) {
+            if (gameState["waved"]) {
+                rightArm.src = "./images/mett-sprite/arm-right-1.png";
+                gameState["waved"] = !gameState["waved"];
+            } else {
+                rightArm.src = "./images/mett-sprite/arm-right-2.png";
+                gameState["waved"] = true;
+            }
+
+            await new Promise((resolve) => setTimeout(resolve, 280));
+
+            requestAnimationFrame(handWave);
         }
-
-        await new Promise((resolve) => setTimeout(resolve, 280));
-
-        requestAnimationFrame(handWave);
     }
 
     requestAnimationFrame(jazzHands);
@@ -488,35 +494,36 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
     }
 
     async function swingingMotion() {
-
-        let rotation = getNumber('--rotate-value');
-        let skew = getNumber('--skew-value');
-        let bodySwing = swingAmountBody(swingTimes);
-    
-       
-        if (!mettBody.classList.contains("body-wiggle") && !leftArm.classList.contains("correct-arm") && !rightArm.classList.contains("correct-arm")) {
-            mettBody.classList.add("body-wiggle");
-            leftArm.classList.add("correct-arm") ;
-            rightArm.classList.add("correct-arm");
-            document.documentElement.style.setProperty('--arm-scaling', 1.5);
-        }
-    
-            if (!gameState["wentLeft"] && rotation >= bodyWiggle["left"]["rotate"] && skew <= bodyWiggle["left"]["skew"]) {
-            if (rotation === bodyWiggle["left"]["rotate"] && skew === bodyWiggle["left"]["skew"]) {
-                gameState["wentLeft"] = true;
+        if (gameState["moveBody"]) {
+            let rotation = getNumber('--rotate-value');
+            let skew = getNumber('--skew-value');
+            let bodySwing = swingAmountBody(swingTimes);
+        
+        
+            if (!mettBody.classList.contains("body-wiggle") && !leftArm.classList.contains("correct-arm") && !rightArm.classList.contains("correct-arm")) {
+                mettBody.classList.add("body-wiggle");
+                leftArm.classList.add("correct-arm") ;
+                rightArm.classList.add("correct-arm");
+                document.documentElement.style.setProperty('--arm-scaling', 1.5);
             }
-            swingBody("reduce", bodySwing);
-            
-        } else if (gameState["wentLeft"] && rotation <= bodyWiggle["right"]["rotate"] && skew >= bodyWiggle["right"]["skew"]) {
-            if (rotation === bodyWiggle["right"]["rotate"] && skew === bodyWiggle["right"]["skew"]) {
-                gameState["wentLeft"] = false;
+        
+                if (!gameState["wentLeft"] && rotation >= bodyWiggle["left"]["rotate"] && skew <= bodyWiggle["left"]["skew"]) {
+                if (rotation === bodyWiggle["left"]["rotate"] && skew === bodyWiggle["left"]["skew"]) {
+                    gameState["wentLeft"] = true;
+                }
+                swingBody("reduce", bodySwing);
+                
+            } else if (gameState["wentLeft"] && rotation <= bodyWiggle["right"]["rotate"] && skew >= bodyWiggle["right"]["skew"]) {
+                if (rotation === bodyWiggle["right"]["rotate"] && skew === bodyWiggle["right"]["skew"]) {
+                    gameState["wentLeft"] = false;
+                }
+                swingBody("increase", bodySwing);
+        
             }
-            swingBody("increase", bodySwing);
-    
-        }
 
-        await new Promise((resolve) => setTimeout(resolve, 25));
-        requestAnimationFrame(swingingMotion);
+            await new Promise((resolve) => setTimeout(resolve, 25));
+            requestAnimationFrame(swingingMotion);
+        }
     }
 
 requestAnimationFrame(swingingMotion);
@@ -1114,35 +1121,33 @@ const musicBack = function () {
 }
 
 const stopMoving = function () {
-    if (gameState["stayStill"] === 0) {
-        clearInterval(sideSwing);
-        
+    if (gameState["stayStill"] === 0) {        
         document.documentElement.style.setProperty('--rotate-value', "0deg");
         document.documentElement.style.setProperty('--skew-value', "0deg");
 
+        gameState["moveBody"] = false;
         gameState["animationOn"] = false;
     } else if (gameState["stayStill"] >= 1) {
-        clearInterval(handWave)
-        clearInterval(jazzHands)
+        gameState["moveArms"] = false;
     }
-
+    
     gameState["stayStill"]++;
- 
     successfulSelect();
 }
 
 const restartMoving = function () {
-    if (!gameState["animationOn"]) {
-        sideSwing = setInterval(swingingMotion, 40);
+    if (!gameState["moveBody"]) {
+        gameState["moveBody"] = true;
+        requestAnimationFrame(swingingMotion);
 
-        if (gameState["stayStill"] >= 1) {
-            handWave = setInterval(waveMotion, 280)
-            jazzHands = setInterval(armsMotion, 40);
+        if (gameState["stayStill"] > 1) {
+            gameState["moveArms"] = true;
+            requestAnimationFrame(jazzHands);
+            requestAnimationFrame(handWave);
         }
-        
+ 
         gameState["animationOn"] = true;
         gameState["stayStill"] = 0;
-
         successfulSelect();
     }
 }
@@ -1686,6 +1691,8 @@ const createPageNavigation = function(pageNumber, providedText) {
                 if (currentButton === "fight") {
                         //change the density of the drawing field
                         //should be a "hit" minigame similar to one used in undertale for the fight action
+                        //i will place an image of the "eye" and player will be able to drag a line over it to "hit" it
+                        //its y axis should change based on the position of player's mouse (only within the image)
                 } else if (currentButton === "act") {    
                     itemsOptionCountObserver.disconnect();  
                     actOptionCountObserver.observe(textField, { childList: true, subtree: false });  
