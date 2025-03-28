@@ -6,9 +6,10 @@ Current Roadmap to project finalization - as note to myself:
 4) Add death screen for the end of the insult route
 5) Add flavor/Mett text for disabling animations
 6) Work on "fight" action to allow changing the size of the canvas - another big task
-7) Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality
-8) Add title to the load screen
+7) <s>Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality</s> - Done!
+8) <s>Add title to the load screen</s> - DONE!
 9) Work on scaling for lower screen resolutions
+10) Work on the intro sequence for this game - Mett text, some flavor text, maybe more sounds might be needed
 
 Project notes:
 

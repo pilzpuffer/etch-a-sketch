@@ -202,7 +202,7 @@ const gameState = {
     isErasing: false,
     hasDrawing: false,
     markerBoxOpen: false,
-    fieldSize: 16, //gets kinda laggy at 64 when animation is enabled
+    fieldSize: 16, //16 is standard, gets kinda laggy at 64 when animation is enabled
     currentDrawingColor: allColors[7],
     drawTool: {
         marker: true,
@@ -426,10 +426,14 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
             moveArms("increase", moveSpeed);
         }
     }
-    
-    let jazzHands = setInterval(armsMotion, 40);
+    async function jazzHands() {
+        armsMotion();
+        await new Promise((resolve) => setTimeout(resolve, 40));
 
-    const waveMotion = function() {
+        requestAnimationFrame(jazzHands);
+    }
+
+    async function handWave() {
         if (gameState["waved"]) {
             rightArm.src = "./images/mett-sprite/arm-right-1.png";
             gameState["waved"] = !gameState["waved"];
@@ -437,9 +441,14 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
             rightArm.src = "./images/mett-sprite/arm-right-2.png";
             gameState["waved"] = true;
         }
+
+        await new Promise((resolve) => setTimeout(resolve, 280));
+
+        requestAnimationFrame(handWave);
     }
-    
-    let handWave = setInterval(waveMotion, 280);
+
+    requestAnimationFrame(jazzHands);
+    requestAnimationFrame(handWave);
     
     //if changed, left and right skews should be the same number - but the right skew should always be negative
     const bodyWiggle = {
@@ -466,16 +475,19 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
     
     //left and skew are not selected for a particular reason - since the values in that object are basically the same, it doesn't really make a difference
     function swingAmountBody (swingTimes) {
-        let result = Math.round(((bodyWiggle["left"]["skew"])/swingTimes)*100)/100; 
-        return Math.abs(result);
+        return Math.abs(Math.round(((bodyWiggle["left"]["skew"]) / swingTimes) * 100) / 100);
     }
     
     function swingBody(direction, swingTimes) {
-        document.documentElement.style.setProperty('--rotate-value', adjustValue('--rotate-value', direction, swingTimes));
-        document.documentElement.style.setProperty('--skew-value', adjustValue('--skew-value', direction, -swingTimes));
+    let rotateValue = adjustValue('--rotate-value', direction, swingTimes);
+    let skewValue = adjustValue('--skew-value', direction, -swingTimes);
+
+    // Batch updates to minimize reflows
+    document.documentElement.style.setProperty('--rotate-value', rotateValue);
+    document.documentElement.style.setProperty('--skew-value', skewValue);
     }
 
-    const swingingMotion = function () {
+    async function swingingMotion() {
 
         let rotation = getNumber('--rotate-value');
         let skew = getNumber('--skew-value');
@@ -502,9 +514,12 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
             swingBody("increase", bodySwing);
     
         }
+
+        await new Promise((resolve) => setTimeout(resolve, 25));
+        requestAnimationFrame(swingingMotion);
     }
 
-let sideSwing = setInterval(swingingMotion, 40);
+requestAnimationFrame(swingingMotion);
 
 const actionButtons = document.querySelectorAll(".action-button");
 const textField = document.querySelector("#text-field");
@@ -1485,7 +1500,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                     idOfStayingElements: [],
                     idOfMovedElements: [],  
                     elementsToMove: [],
-                    allElements: []
+                    allElements: [],
                 },
                 items: {
                     currentPage: 1,
@@ -1578,6 +1593,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                 if (gameState["markerBoxOpen"] === true) {
                 const actVars = observerVariables.items;
 
+
                 actVars.allElements = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
 
                 if (actVars.currentPage === 1) {
@@ -1617,11 +1633,11 @@ const createPageNavigation = function(pageNumber, providedText) {
                             createPageNavigation(pageTwo, "Page 2");
                         }
                     }  
-                        
+                    
                         pageOne.addEventListener("click", () => handleFirstPageClick("items", "items")); //need to reference correct page object + correct object with IDs
                         pageTwo.addEventListener("click", () => handleSecondPageClick("items", "items"));
                     }
-                }
+                } 
             });
 
             let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
@@ -1639,7 +1655,8 @@ const createPageNavigation = function(pageNumber, providedText) {
                 if (currentButton === "fight") {
                         //change the density of the drawing field
                         //should be a "hit" minigame similar to one used in undertale for the fight action
-                } else if (currentButton === "act") {      
+                } else if (currentButton === "act") {    
+                    itemsOptionCountObserver.disconnect();  
                     actOptionCountObserver.observe(textField, { childList: true, subtree: false });     
 
                     let menuOptions = {
@@ -1744,6 +1761,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                         })
 
                 } else if (currentButton === "item") {
+                    actOptionCountObserver.disconnect();
                     itemsOptionCountObserver.observe(textField, { childList: true, subtree: false });  
 
                     const availableItems = {

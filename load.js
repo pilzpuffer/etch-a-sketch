@@ -58,15 +58,20 @@ window.addEventListener('load', () => {
                     heart.style.position = "absolute";
                     battleStart.play();
 
-                    setInterval(() => {
+                    async function heartBeat() {
                         if (beat) {
                             heart.src = "./images/red-soul-hidden.png";
                             beat = !beat;
                         } else {
                             heart.src = "./images/red-soul-sprite.png";
                             beat = true;
-                        }
-                    }, 120);
+                            }
+
+                        await new Promise((resolve) => setTimeout(resolve, 120));
+                        requestAnimationFrame(heartBeat);
+                    }
+
+                    requestAnimationFrame(heartBeat);
 
                     heart.animate(
                         [
