@@ -1466,7 +1466,7 @@ const createPageNavigation = function(pageNumber, providedText) {
         heartSpace.innerHTML = "<img id='stand-in-for-yellow-heart' src='./images/red-soul-hidden.png'></img>";
     })
 }
- 
+
     actionButtons.forEach((div) => {
         
     
@@ -1570,7 +1570,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                             document.getElementById(elementId)?.remove();
                         }
                     }
-                    
+
                     // Check if any elements on page 2 already exist on page 1
                     const pageOneIds = new Set(actVars.elementsToStay.map(node => node.id));
                     
@@ -1579,7 +1579,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                             delete storedNodes["act"]["nodesToMove"][element.id];
                             return false; // Remove duplicate from elementsToMove
                         }
-                        return true;
+                        return true; //if an element is not a duplicate, it will remain in elementsToMove
                     });
                 
                     // Update the idOfMovedElements to reflect the filtered list
@@ -1606,53 +1606,68 @@ const createPageNavigation = function(pageNumber, providedText) {
             });
 
             const itemsOptionCountObserver = new MutationObserver(() => {
-                if (gameState["markerBoxOpen"] === true) {
                 const actVars = observerVariables.items;
-
-
                 actVars.allElements = Array.from(textField.querySelectorAll(":scope > div:not(.gone)"));
+                
+                if (actVars.allElements.length < 6 && !gameState["markerBoxOpen"]) {
+                    pageNavigation.classList.add("invisible");
+                }
 
-                if (actVars.currentPage === 1) {
-                    actVars.elementsToStay = actVars.allElements.slice(0, Math.min(6, actVars.allElements.length));
-                    actVars.idOfStayingElements = actVars.elementsToStay.map(node => node.id);
+                if (gameState["markerBoxOpen"] === true) {
+                    if (actVars.currentPage === 1) {
+                        actVars.elementsToStay = actVars.allElements.slice(0, Math.min(6, actVars.allElements.length));
+                        actVars.idOfStayingElements = actVars.elementsToStay.map(node => node.id);
 
-                        if (actVars.elementsToStay.length > 0) {
-                            for (let i = 0; i < Math.min(6, actVars.elementsToStay.length); i++) {
-                                storedNodes["items"]["nodesToStay"][actVars.elementsToStay[i].id] = actVars.elementsToStay[i];
+                            if (actVars.elementsToStay.length > 0) {
+                                for (let i = 0; i < Math.min(6, actVars.elementsToStay.length); i++) {
+                                    storedNodes["items"]["nodesToStay"][actVars.elementsToStay[i].id] = actVars.elementsToStay[i];
+                                }
+                            }
+                    }
+
+                    if (actVars.allElements.length >= 6) {
+                        if (actVars.allElements.length > 6) {
+                            actVars.elementsToMove = actVars.allElements.slice(6);
+                            actVars.idOfMovedElements = actVars.elementsToMove.map(node => node.id);
+                        
+                            for (let i = 0; i < actVars.elementsToMove.length; i++) {
+                                const elementId = actVars.elementsToMove[i].id;
+                        
+                                storedNodes["items"]["nodesToMove"][elementId] = actVars.elementsToMove[i];
+                                document.getElementById(elementId)?.remove();
                             }
                         }
-                }
-                
-
-                if (actVars.allElements.length > 6){
-                    actVars.elementsToMove = actVars.allElements.slice(6);
-                    actVars.idOfMovedElements = actVars.elementsToMove.map(node => node.id);
-
-                    for (let i = 0; i < actVars.elementsToMove.length; i++) {
-                        const elementId = actVars.elementsToMove[i].id;
-
-                        storedNodes["items"]["nodesToMove"][elementId] = actVars.elementsToMove[i];
-                        document.getElementById(elementId)?.remove();
+                        
+                        const pageOneIds = new Set(actVars.elementsToStay.map(node => node.id));
+                        
+                        actVars.elementsToMove = actVars.elementsToMove.filter(element => {
+                            if (pageOneIds.has(element.id)) {
+                                delete storedNodes["items"]["nodesToMove"][element.id];
+                                return false; 
+                            }
+                            return true; 
+                        });
+                        
+                        actVars.idOfMovedElements = actVars.elementsToMove.map(node => node.id);
                     }
-                }
 
-                if (Object.keys(storedNodes["items"]["nodesToMove"]).length >= 1 && (gameState["currentActiveActionButton"]["act"] > 0 || gameState["currentActiveActionButton"]["item"] > 0)) {
-                    gameState["pageNavigationOn"] = true;
+                    if (Object.keys(storedNodes["items"]["nodesToMove"]).length >= 1 && (gameState["currentActiveActionButton"]["act"] > 0 || gameState["currentActiveActionButton"]["item"] > 0)) {
+                        gameState["pageNavigationOn"] = true;
 
-                    if (gameState["pageNavigationOn"]) {
-                        pageNavigation.classList.remove("invisible");
-                        if (!pageNavigation.contains(pageOne)) {
-                            createPageNavigation(pageOne, "Page 1");
-                            pageOne.classList.add("invisible");
+                        if (gameState["pageNavigationOn"]) {
+                            pageNavigation.classList.remove("invisible");
+                            if (!pageNavigation.contains(pageOne)) {
+                                createPageNavigation(pageOne, "Page 1");
+                                pageOne.classList.add("invisible");
+                            }
+                            if (!pageNavigation.contains(pageTwo)) {
+                                createPageNavigation(pageTwo, "Page 2");
+                            }
+                        }  
+                        
+                            pageOne.addEventListener("click", () => handleFirstPageClick("items", "items")); //need to reference correct page object + correct object with IDs
+                            pageTwo.addEventListener("click", () => handleSecondPageClick("items", "items"));
                         }
-                        if (!pageNavigation.contains(pageTwo)) {
-                            createPageNavigation(pageTwo, "Page 2");
-                        }
-                    }  
-                    
-                        pageOne.addEventListener("click", () => handleFirstPageClick("items", "items")); //need to reference correct page object + correct object with IDs
-                        pageTwo.addEventListener("click", () => handleSecondPageClick("items", "items"));
-                    }
                 } 
             });
 
@@ -1673,7 +1688,8 @@ const createPageNavigation = function(pageNumber, providedText) {
                         //should be a "hit" minigame similar to one used in undertale for the fight action
                 } else if (currentButton === "act") {    
                     itemsOptionCountObserver.disconnect();  
-                    actOptionCountObserver.observe(textField, { childList: true, subtree: false });     
+                    actOptionCountObserver.observe(textField, { childList: true, subtree: false });  
+                    actMenu = true;  
 
                     let menuOptions = {
                         //endgame
