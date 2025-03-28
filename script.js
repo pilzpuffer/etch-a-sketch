@@ -1558,16 +1558,32 @@ const createPageNavigation = function(pageNumber, providedText) {
                 }
                 
 
-                if (actVars.allElements.length > 6){
-                    actVars.elementsToMove = actVars.allElements.slice(6);
-                    actVars.idOfMovedElements = actVars.elementsToMove.map(node => node.id);
-
-                    for (let i = 0; i < actVars.elementsToMove.length; i++) {
-                        const elementId = actVars.elementsToMove[i].id;
-
-                        storedNodes["act"]["nodesToMove"][elementId] = actVars.elementsToMove[i];
-                        document.getElementById(elementId)?.remove();
+                if (actVars.allElements.length >= 6) {
+                    if (actVars.allElements.length > 6) {
+                        actVars.elementsToMove = actVars.allElements.slice(6);
+                        actVars.idOfMovedElements = actVars.elementsToMove.map(node => node.id);
+                    
+                        for (let i = 0; i < actVars.elementsToMove.length; i++) {
+                            const elementId = actVars.elementsToMove[i].id;
+                    
+                            storedNodes["act"]["nodesToMove"][elementId] = actVars.elementsToMove[i];
+                            document.getElementById(elementId)?.remove();
+                        }
                     }
+                    
+                    // Check if any elements on page 2 already exist on page 1
+                    const pageOneIds = new Set(actVars.elementsToStay.map(node => node.id));
+                    
+                    actVars.elementsToMove = actVars.elementsToMove.filter(element => {
+                        if (pageOneIds.has(element.id)) {
+                            delete storedNodes["act"]["nodesToMove"][element.id];
+                            return false; // Remove duplicate from elementsToMove
+                        }
+                        return true;
+                    });
+                
+                    // Update the idOfMovedElements to reflect the filtered list
+                    actVars.idOfMovedElements = actVars.elementsToMove.map(node => node.id);
                 }
 
                 if (Object.keys(storedNodes["act"]["nodesToMove"]).length >= 1 && (gameState["currentActiveActionButton"]["act"] > 0 || gameState["currentActiveActionButton"]["item"] > 0)) {
