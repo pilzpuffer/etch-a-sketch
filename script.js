@@ -264,19 +264,23 @@ const gameState = {
     }
 }
 
-for (let i = 0; i < gameState["fieldSize"]; i++) {
-    let newRow = document.createElement('div');
-    newRow.classList.add("newRow");
+const drawField = function() {
+    for (let i = 0; i < gameState["fieldSize"]; i++) {
+        let newRow = document.createElement('div');
+        newRow.classList.add("newRow");
+        
+        sketchField.appendChild(newRow);
     
-    sketchField.appendChild(newRow);
-
-        for(let j = 0; j < gameState["fieldSize"]; j++) {
-            let innerCells = document.createElement('div');
-            innerCells.classList.add("innerCells");
-            newRow.appendChild(innerCells);
-        }
-
+            for(let j = 0; j < gameState["fieldSize"]; j++) {
+                let innerCells = document.createElement('div');
+                innerCells.classList.add("innerCells");
+                newRow.appendChild(innerCells);
+            }
+    
+    }
 }
+
+drawField();
 
 const allSketchFieldElements = document.querySelectorAll("div.innerCells");
 
@@ -1312,6 +1316,76 @@ const defaultConversation = async function (topic, checkToIncrement) {
     } 
 }
 
+// const textBox = document.querySelector("#textbox");
+
+const fightMett = function() {
+    clearTextField(); 
+    starSpace.classList.add("gone")
+
+    const fightHits = {
+        one:  { fieldSize: 16 },
+        two:  { fieldSize: 32 }, 
+        three: { fieldSize: 48 }, 
+        four: { fieldSize: 64 }, 
+        five: { fieldSize: 48 }, 
+        six: { fieldSize: 32 }, 
+        seven: { fieldSize: 16 }
+    }
+
+    const mousedBox = document.createElement("div");
+    mousedBox.setAttribute("id", "mousedBox");
+
+    const fightBar = document.createElement("div");
+    fightBar.setAttribute("id", "fightBar");
+
+    let createButton = function() {
+        for (let button in fightHits) {
+            let newButton = document.createElement("div");
+            
+            if (fightHits[button].fieldSize === 64) {
+                newButton.classList.add("sun");
+            } else if (fightHits[button].fieldSize === 48) {
+                newButton.classList.add("mercury");
+            } else if (fightHits[button].fieldSize === 32) {
+                newButton.classList.add("venus");
+            } else if (fightHits[button].fieldSize === 16) {
+                newButton.classList.add("earth");
+            }
+
+            newButton.addEventListener("click", function() {
+                sketchField.replaceChildren();
+                gameState["fieldSize"] = fightHits[button].fieldSize;
+                drawField();
+                clearTextField();
+                starSpace.classList.remove("gone");
+            });
+
+            mousedBox.appendChild(newButton);
+        }   
+    };   
+
+    textField.appendChild(mousedBox);
+    createButton();
+
+    textField.appendChild(fightBar);
+
+    mousedBox.addEventListener("mousemove", (event) => {
+        let x = event.clientX;
+
+        let boxRect = mousedBox.getBoundingClientRect(); // Get position and size of mousedBox
+        let boxCenter = boxRect.width / 2;
+
+        let barStyles = window.getComputedStyle(fightBar);
+        let thickness = parseFloat(barStyles.getPropertyValue("width").split("px")[0]);
+
+        if (x > boxCenter) {
+            fightBar.style.left = `${x - thickness}px`
+        } else {
+            fightBar.style.left = `${x}px`;
+        }
+    });
+}
+
 
 const checkOut = async function() {
     checkConversation("check", "checkOutTimes");
@@ -1333,7 +1407,7 @@ const rating = function() {
     console.log("testing");
 }
 
-const stick = function() {
+const stick = function() { //should re-do using the checkConversation template. first time, MTT will just catch the stick, on second, the previous convo flow will play out
     successfulSelect();
 
     let selectedIndex = randomIndex(allText["flavor"]["stick"]);
@@ -1670,7 +1744,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                             }
                         }  
                         
-                            pageOne.addEventListener("click", () => handleFirstPageClick("items", "items")); //need to reference correct page object + correct object with IDs
+                            pageOne.addEventListener("click", () => handleFirstPageClick("items", "items")); 
                             pageTwo.addEventListener("click", () => handleSecondPageClick("items", "items"));
                         }
                 } 
@@ -1693,6 +1767,17 @@ const createPageNavigation = function(pageNumber, providedText) {
                         //should be a "hit" minigame similar to one used in undertale for the fight action
                         //i will place an image of the "eye" and player will be able to drag a line over it to "hit" it
                         //its y axis should change based on the position of player's mouse (only within the image)
+                        //if in fight, player shouldn't be able to draw or click on anything else
+                        //changing the resolution should also clear the sketchfield
+
+                        const figthMenu = {
+                            fightOption: {
+                                id: "fight",
+                                data: document.createElement("div")}
+                        }
+    
+                        createMenuOption(figthMenu, "fightOption", "Mettaton", fightMett);
+
                 } else if (currentButton === "act") {    
                     itemsOptionCountObserver.disconnect();  
                     actOptionCountObserver.observe(textField, { childList: true, subtree: false });  

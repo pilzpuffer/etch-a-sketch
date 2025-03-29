@@ -31,3 +31,5 @@ DotumChe Pixel is made by William Costello - https://fontstruct.com/fontstructor
 
 
 all music/sound effects used within this project are made by Toby Fox and come from his game "Undertale" - if you haven't played it before, I highly recommend checking it out - https://store.steampowered.com/app/391540/Undertale/
+
+The Fight menu slider was made by Clar @Clar1nettist (https://www.pixilart.com/art/undertale-fight-slider-fa94b6712500d0c)

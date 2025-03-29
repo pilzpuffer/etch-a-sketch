@@ -643,6 +643,74 @@ body {
     mix-blend-mode: darken;
 }
 
+/* #fight-slider {
+    position: relative;
+    width: 220%;
+    height: 135%;
+    pointer-events: none;
+
+    align-self: center;
+} */
+
+#mousedBox {
+    position: absolute;
+    box-sizing:content-box;
+    align-self: center;
+
+    background-image: url(./images/fight-slider.png);
+    background-origin: border-box;
+    background-size: 100% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -1.5%;
+    margin-bottom: -1.8%;
+
+    width: 59.5%;
+    border: 2px pink solid;
+    height: 19%;
+    cursor: none;
+}
+
+#mousedBox > div {
+    height: 100%;
+    z-index: 1;
+    cursor: none;
+    border: 2px yellowgreen solid;
+}
+
+#fightBar {
+    position: absolute;
+    align-self: flex-start;
+    height: 18%;
+    width: 0.9%;
+    margin-top: -0.5%;
+
+    border: solid var(--background-color) 4px;
+    background: var(--main-text-color);
+    cursor: none;
+    pointer-events: none;
+}
+
+.sun {
+    width: 9%;
+}
+
+.mercury {
+    width: 12.5%;
+}
+
+.venus {
+    width: 21%;
+}
+
+.earth {
+    width: 12.2%;
+}
+
 .invisible {
     opacity: 0;
     visibility: hidden;
@@ -655,7 +723,9 @@ body {
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 
 add breakpoints for that resolution and anything lower 
 
-also I REALLY need to work on button scaling*/
+also I REALLY need to work on button scaling
+
+!!don't forget scaling for mousedBox!!*/
 
 @media screen and (max-height: 1000px){
     .top-part {
