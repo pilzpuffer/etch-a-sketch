@@ -643,15 +643,6 @@ body {
     mix-blend-mode: darken;
 }
 
-/* #fight-slider {
-    position: relative;
-    width: 220%;
-    height: 135%;
-    pointer-events: none;
-
-    align-self: center;
-} */
-
 #mousedBox {
     position: absolute;
     box-sizing:content-box;
@@ -659,7 +650,7 @@ body {
 
     background-image: url(./images/fight-slider.png);
     background-origin: border-box;
-    background-size: 100% 75%;
+    background-size: 100% 76%;
     background-repeat: no-repeat;
     background-position: center;
 
@@ -669,8 +660,7 @@ body {
     margin-left: -1.5%;
     margin-bottom: -1.8%;
 
-    width: 59.5%;
-    border: 2px pink solid;
+    width: 59.6%;
     height: 19%;
     cursor: none;
 }
@@ -679,7 +669,6 @@ body {
     height: 100%;
     z-index: 1;
     cursor: none;
-    border: 2px yellowgreen solid;
 }
 
 #fightBar {
