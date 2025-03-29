@@ -247,6 +247,7 @@ const gameState = {
     wentLeft: false,
 
     //button state
+    fightActive: false,
     actionButtonClicked: false,
     menuOptionConfirmed: false,
     pageNavigationOn: false,
@@ -285,7 +286,7 @@ drawField();
 const allSketchFieldElements = document.querySelectorAll("div.innerCells");
 
     mettBody.addEventListener("mousedown", (event) => {
-        if (event.target.classList.contains("innerCells")) {
+        if (event.target.classList.contains("innerCells") && !gameState["fightActive"]) {
             if (event.button === 0) {
                 gameState["isDrawing"] = true;
                 event.target.classList.add(gameState["currentDrawingColor"]);
@@ -324,31 +325,33 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
     })
 
     sketchField.addEventListener("mouseover", (event) => {
-        if (gameState["isDrawing"]) {
-                event.target.classList.add(gameState["currentDrawingColor"]);
-                gameState["hasDrawing"] = true;
+        if(!gameState["fightActive"]) {
+            if (gameState["isDrawing"]) {
+                    event.target.classList.add(gameState["currentDrawingColor"]);
+                    gameState["hasDrawing"] = true;
 
-                if (gameState["drawTool"]["marker"]) {
-                    applyMarker(event);
-                } else if (gameState["drawTool"]["etchPen"]) {
-                    applyEtchPen(event);
-                } else if (gameState["drawTool"]["rainbowPen"]) {
-                    applyRainbowPen(event);
-                }
-        } else if (gameState["isErasing"]) {
-             erase(event);
-
-                const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
-                for (const div of allSketchFieldElements) {
-                    const backgroundColor = getComputedStyle(div).getPropertyValue("background-color").trim();
-                    // Check if the background is neither transparent nor the main text color
-                    if (backgroundColor !== mainTextColor && backgroundColor !== "transparent" && backgroundColor !== "") {
-                        gameState["hasDrawing"] = true;
-                        break;
-                    } else {
-                        gameState["hasDrawing"] = false;
+                    if (gameState["drawTool"]["marker"]) {
+                        applyMarker(event);
+                    } else if (gameState["drawTool"]["etchPen"]) {
+                        applyEtchPen(event);
+                    } else if (gameState["drawTool"]["rainbowPen"]) {
+                        applyRainbowPen(event);
                     }
-                }
+            } else if (gameState["isErasing"]) {
+                erase(event);
+
+                    const mainTextColor = getComputedStyle(document.documentElement).getPropertyValue("--main-text-color").trim();
+                    for (const div of allSketchFieldElements) {
+                        const backgroundColor = getComputedStyle(div).getPropertyValue("background-color").trim();
+                        // Check if the background is neither transparent nor the main text color
+                        if (backgroundColor !== mainTextColor && backgroundColor !== "transparent" && backgroundColor !== "") {
+                            gameState["hasDrawing"] = true;
+                            break;
+                        } else {
+                            gameState["hasDrawing"] = false;
+                        }
+                    }
+            }
         }
     })
 
@@ -1321,6 +1324,7 @@ const defaultConversation = async function (topic, checkToIncrement) {
 const fightMett = function() {
     clearTextField(); 
     starSpace.classList.add("gone")
+    gameState["fightActive"] = true;
 
     const fightHits = {
         one:  { fieldSize: 16 },
@@ -1357,6 +1361,8 @@ const fightMett = function() {
                 gameState["fieldSize"] = fightHits[button].fieldSize;
                 drawField();
                 clearTextField();
+                buttonConfirm.play(); //maybe can play a random computer noise instead? + need some text for this
+                gameState["fightActive"] = false;
                 starSpace.classList.remove("gone");
             });
 
@@ -1372,7 +1378,7 @@ const fightMett = function() {
     mousedBox.addEventListener("mousemove", (event) => {
         let x = event.clientX;
 
-        let boxRect = mousedBox.getBoundingClientRect(); // Get position and size of mousedBox
+        let boxRect = mousedBox.getBoundingClientRect(); 
         let boxCenter = boxRect.width / 2;
 
         let barStyles = window.getComputedStyle(fightBar);
@@ -1776,8 +1782,13 @@ const createPageNavigation = function(pageNumber, providedText) {
                                 data: document.createElement("div")}
                         }
     
-                        createMenuOption(figthMenu, "fightOption", "Mettaton", fightMett);
-
+                        if (gameState["currentActiveActionButton"][`${currentButton}`] <= 1) {
+                            createMenuOption(figthMenu, "fightOption", "Mettaton", fightMett);
+                        } else {
+                            clearTextField();
+                            gameState["currentActiveActionButton"][`${currentButton}`] = 0;
+                        }
+                        
                 } else if (currentButton === "act") {    
                     itemsOptionCountObserver.disconnect();  
                     actOptionCountObserver.observe(textField, { childList: true, subtree: false });  
@@ -1924,6 +1935,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                 gameState["currentActiveActionButton"][`${currentButton}`] = 0;
                 gameState["pageNavigationOn"] = false;
                 gameState["markerBoxOpen"] = false;
+                gameState["fightActive"] = false;
                 pageNavigation.replaceChildren();
             }
         })
