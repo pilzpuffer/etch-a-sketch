@@ -171,7 +171,6 @@ const flirtRoute = function() {
             requestAnimationFrame(animate);
         }
 
-        // **Delay animation slightly to ensure positioning is correct**
         setTimeout(() => {
             animate();
         }, 50);
@@ -1326,14 +1325,20 @@ const fightMett = function() {
     starSpace.classList.add("gone")
     gameState["fightActive"] = true;
 
+    const step = 8;
+    const smallestSize = 16;
+    const slightlyBiggerSize = smallestSize + step;
+    const secondBiggestSize = slightlyBiggerSize + step;
+    const biggestSize = secondBiggestSize + step;
+
     const fightHits = {
-        one:  { fieldSize: 16 },
-        two:  { fieldSize: 32 }, 
-        three: { fieldSize: 48 }, 
-        four: { fieldSize: 64 }, 
-        five: { fieldSize: 48 }, 
-        six: { fieldSize: 32 }, 
-        seven: { fieldSize: 16 }
+        one:  { fieldSize: smallestSize },
+        two:  { fieldSize: slightlyBiggerSize }, 
+        three: { fieldSize: secondBiggestSize }, 
+        four: { fieldSize: biggestSize }, 
+        five: { fieldSize: secondBiggestSize }, 
+        six: { fieldSize: slightlyBiggerSize }, 
+        seven: { fieldSize: smallestSize }
     }
 
     const mousedBox = document.createElement("div");
@@ -1346,13 +1351,13 @@ const fightMett = function() {
         for (let button in fightHits) {
             let newButton = document.createElement("div");
             
-            if (fightHits[button].fieldSize === 64) {
+            if (fightHits[button].fieldSize === biggestSize) {
                 newButton.classList.add("sun");
-            } else if (fightHits[button].fieldSize === 48) {
+            } else if (fightHits[button].fieldSize === secondBiggestSize) {
                 newButton.classList.add("mercury");
-            } else if (fightHits[button].fieldSize === 32) {
+            } else if (fightHits[button].fieldSize === slightlyBiggerSize) {
                 newButton.classList.add("venus");
-            } else if (fightHits[button].fieldSize === 16) {
+            } else if (fightHits[button].fieldSize === smallestSize) {
                 newButton.classList.add("earth");
             }
 
@@ -1410,7 +1415,48 @@ const insulting = function() {
 }
 
 const rating = function() {
-    console.log("testing");
+    //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent)
+    //rate will be the act function that will complete this game - MTT will ask if this drawing is final, player will need to confirm
+    //need to make a div with two selection options here, similiar with how "respond" screens work in some dialogues in Undertale
+    //after that, mettaton will "appraise" the drawing
+    //he will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares (if just a few are colored in (less than 10%) or all of them)
+    //and then the drawing will be rated randomly. yeah. maybe I can add some extra checks, like, if the drawing contains more than a few colors, the amount of squares colored in + numbers can be deducted based on user's behavior
+    //like, insults would deduct points, but flirts will increase them
+    //once rated, it will be possible to fully spare MTT (his name will become yellow) - and the game will end!!!! -> I'll need to make something similiar to the death screen, but with "winning" sounds and other text
+    //if the rating will be lower than 7, MTT will initially threaten the player that he will kill them, but at the end will just tell that there's the show is on an ad break as there were not enough viewers - so he will have to save killing the player
+    //for the grand finale
+    //if the rating is somewhere around 1-3, MTT will be appalled at the player's lack of artistry - and tell them that they're too pathetic/not inspiring enough to be killed. 
+    //rainbow-colored drawing would automatically grant 5 points and the rest will depend on player's actions and the power of random
+    // there should be a separate check if too many points were deducted due to the player's bad behavior, then he will calculate their drawing score separately, but note that the player is an awful person 
+     
+    const allCells = document.querySelectorAll(".innerCells");
+
+    const allColored = [...allCells].filter(el => el.classList.length > 1); //check for standard marker colors, separate checks will need to be applied for rainbowpen/pencil
+    const percentage = Math.floor((allColored.length / allCells.length)*100);
+    const allColorsApplied = new Set([...allColored].map(el => el.classList.item(1)));
+    console.log(allColorsApplied);
+    console.log(allColorsApplied.size)
+    console.log(`we have ${allCells.length} cells in total`);
+    console.log(`and ${allColored.length} of them have any coloring applied`);
+    console.log(`so ${percentage} percents of all canvas is colored in now`)
+    if (percentage >= 1) {
+    // if biggest size canvas was chosen, mettaton should comment on this amout of drawing
+    } else if (percentage >= 2 && percentage <= 10) {
+        //now we need checks for when there's more than 1 color utilized, so we'll have three sets of phrases:
+        //1 - just one color is used
+        //2 - 2-3 colors are used
+        //3 - more than 3 colors are used
+        //this set of checks should be implemented for each of the scores below
+    } else if (percentage >= 11 && percentage <= 29) {
+
+    } else if (percentage >= 30 && percentage <= 79) {
+
+    } else if (percentage >= 80 && percentage < 99) {
+        
+    } else if (percentage >= 99) {
+        //filling out the entire thing in one color will result in the lowest score
+    }
+    
 }
 
 const stick = function() { //should re-do using the checkConversation template. first time, MTT will just catch the stick, on second, the previous convo flow will play out
@@ -1769,13 +1815,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                 starSpace.classList.add("invisible");
                     
                 if (currentButton === "fight") {
-                        //change the density of the drawing field
-                        //should be a "hit" minigame similar to one used in undertale for the fight action
-                        //i will place an image of the "eye" and player will be able to drag a line over it to "hit" it
-                        //its y axis should change based on the position of player's mouse (only within the image)
-                        //if in fight, player shouldn't be able to draw or click on anything else
-                        //changing the resolution should also clear the sketchfield
-
                         const figthMenu = {
                             fightOption: {
                                 id: "fight",
@@ -1792,7 +1831,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                 } else if (currentButton === "act") {    
                     itemsOptionCountObserver.disconnect();  
                     actOptionCountObserver.observe(textField, { childList: true, subtree: false });  
-                    actMenu = true;  
 
                     let menuOptions = {
                         //endgame
@@ -1874,20 +1912,6 @@ const createPageNavigation = function(pageNumber, providedText) {
                     } else if (!gameState["hasDrawing"]) {
                         menuOptions["rate"]["data"].classList.add("gone");
                     }   
-                        
-                         //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent -> show a line based on that + maybe depending on the drawing tool)
-                        //rate will be the act function that will complete this game - MTT will ask if this drawing is final, player will need to confirm
-                        //after that, mettaton will "appraise" the drawing
-                        //he will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares
-                        //and then the drawing will be rated randomly. yeah. maybe I can add some extra checks, like, if the drawing contains more than a few colors, the amount of squares colored in + numbers can be deducted based on user's behavior
-                        //like, insults would deduct points, but flirts will increase them
-                        //once rated, it will be possible to fully spare MTT (his name will become yellow) - and the game will end!!!!
-                        //if the rating will be lower than 8, MTT will initially threaten the player that he will kill them, but at the end will just tell that there's the show is on an ad break as there were not enough viewers - so he will have to save killing the player
-                        //for the grand finale
-                        //if the rating is somewhere around 1-3, MTT will be appalled at the player's lack of artistry - and tell them that they're too pathetic/not inspiring enough to be killed. 
-                        //rainbow-colored drawing would automatically grant 5 points and the rest will depend on player's actions and the power of random
-                        // there should be a separate check if too many points were deducted due to the player's bad behavior, then he will calculate their drawing score separately, but note that the player is an awful person 
-                        
 
                         Object.keys(gameState["routeFinished"]).forEach(route => {
                             if (gameState["routeFinished"][route] && menuOptions[route]) {
