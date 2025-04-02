@@ -1431,22 +1431,69 @@ const rating = function() {
      
     const allCells = document.querySelectorAll(".innerCells");
 
+    const colorsPresent = {};
     const allColored = [...allCells].filter(el => el.classList.length > 1); //check for standard marker colors, separate checks will need to be applied for rainbowpen/pencil
     const percentage = Math.floor((allColored.length / allCells.length)*100);
-    const allColorsApplied = new Set([...allColored].map(el => el.classList.item(1)));
-    console.log(allColorsApplied);
-    console.log(allColorsApplied.size)
+    const allUniqueColors = new Set([...allColored].map(el => el.classList.item(1)));
+
+    const allColorsApplied = [...allColored].map(el => el.classList.item(1)); 
+    
+    allUniqueColors.forEach(element => {
+        colorsPresent[`${element}`] = allColorsApplied.filter((color) => color === element);
+
+        
+    })
+
+    //maybe it would be best to put all values into one array and then process it as acc -> reduce?? will need to check
+    let allColorNames = [];
+    let allColorLength = [];
+
+    Object.keys(colorsPresent).forEach(color => {
+        allColorNames.push(color);
+        allColorLength.push(colorsPresent[color].length);
+    })
+
+    let mostColor = Math.max(...allColorLength);
+    let mostFrequentColor = [];
+    let checkIfMultiple = [];
+
+    for (i = 0; i < allColorLength.length; i++) {
+        if (allColorLength[i] === mostColor) {
+            checkIfMultiple.push(allColorLength[i])
+        }
+    }
+
+    if (checkIfMultiple.length === 1) {
+        mostFrequentColor.push(allColorNames[allColorLength.indexOf(mostColor)]);
+        console.log(`most frequent color is ${mostFrequentColor}`);
+    } else {
+        for (i = 0; i < allColorLength.length; i++) {
+            if (allColorLength[i] === mostColor) {
+                mostFrequentColor.push(allColorNames[i])
+            }  
+        }  
+        console.log(`our most frequent colors are ${mostFrequentColor}`)  
+    }
+
+    if (mostFrequentColor.includes("purple")) {
+        console.log("you sure like purple!") //mett's favorite color, need to include an extra phrase for that
+    }
+
+    console.log(colorsPresent);
+    console.log(allUniqueColors);
+    console.log(allUniqueColors.size)
     console.log(`we have ${allCells.length} cells in total`);
     console.log(`and ${allColored.length} of them have any coloring applied`);
     console.log(`so ${percentage} percents of all canvas is colored in now`)
     if (percentage >= 1) {
-    // if biggest size canvas was chosen, mettaton should comment on this amout of drawing
-    } else if (percentage >= 2 && percentage <= 10) {
         //now we need checks for when there's more than 1 color utilized, so we'll have three sets of phrases:
         //1 - just one color is used
         //2 - 2-3 colors are used
         //3 - more than 3 colors are used
         //this set of checks should be implemented for each of the scores below
+    // if biggest size canvas was chosen, mettaton should comment on this amout of drawing (this will also result in lowest score)
+    } else if (percentage >= 2 && percentage <= 10) {
+        
     } else if (percentage >= 11 && percentage <= 29) {
 
     } else if (percentage >= 30 && percentage <= 79) {
