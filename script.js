@@ -1432,7 +1432,8 @@ const rating = function() {
     const allCells = document.querySelectorAll(".innerCells");
 
     const colorsPresent = {};
-    const allColored = [...allCells].filter(el => el.classList.length > 1); //check for standard marker colors, separate checks will need to be applied for rainbowpen/pencil
+    const allColored = [...allCells].filter(el => el.classList.length > 1); //this check works for all drawing tools, as all of them apply a class to their cells
+
     const percentage = Math.floor((allColored.length / allCells.length)*100);
     const allUniqueColors = new Set([...allColored].map(el => el.classList.item(1)));
 
@@ -1444,7 +1445,6 @@ const rating = function() {
         
     })
 
-    //maybe it would be best to put all values into one array and then process it as acc -> reduce?? will need to check
     let allColorNames = [];
     let allColorLength = [];
 
@@ -1452,56 +1452,79 @@ const rating = function() {
         allColorNames.push(color);
         allColorLength.push(colorsPresent[color].length);
     })
-
-    let mostColor = Math.max(...allColorLength);
-    let mostFrequentColor = [];
-    let checkIfMultiple = [];
-
-    for (i = 0; i < allColorLength.length; i++) {
-        if (allColorLength[i] === mostColor) {
-            checkIfMultiple.push(allColorLength[i])
-        }
-    }
-
-    if (checkIfMultiple.length === 1) {
-        mostFrequentColor.push(allColorNames[allColorLength.indexOf(mostColor)]);
-        console.log(`most frequent color is ${mostFrequentColor}`);
+    
+    if (allColorLength.length === 0) {
+        console.log("you think you're clever, huh...");
+        //this is a check if user erased their drawing after clicking on rate
+        return 
     } else {
+        let mostColor = allColorLength.reduce((a, b) => { return (a < b) ? a : b})
+        let mostFrequentColor = [];
+        let checkIfMultiple = [];
+
         for (i = 0; i < allColorLength.length; i++) {
             if (allColorLength[i] === mostColor) {
-                mostFrequentColor.push(allColorNames[i])
+                checkIfMultiple.push(allColorLength[i])
+            }
+        }
+
+        if (checkIfMultiple.length === 1) {
+            mostFrequentColor.push(allColorNames[allColorLength.indexOf(mostColor)]);
+            if (mostFrequentColor.includes("rainbowPen")) {
+                console.log("rainbow time")
+            } else if (mostFrequentColor.includes("etchPen")) {
+
+            } else {
+                console.log(`our most frequent color is ${mostFrequentColor}`)
+            }
+        } else {
+            for (i = 0; i < allColorLength.length; i++) {
+                if (allColorLength[i] === mostColor) {
+                    mostFrequentColor.push(allColorNames[i])
+                }  
             }  
-        }  
-        console.log(`our most frequent colors are ${mostFrequentColor}`)  
-    }
 
-    if (mostFrequentColor.includes("purple")) {
-        console.log("you sure like purple!") //mett's favorite color, need to include an extra phrase for that
-    }
+            if (checkIfMultiple.length === 2 && mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen")) {
+                console.log("you're using both??");
+            } else if (checkIfMultiple.length >= 2 && ((!mostFrequentColor.includes("etchPen") && mostFrequentColor.includes("rainbowPen")) || (mostFrequentColor.includes("etchPen") && !mostFrequentColor.includes("rainbowPen")))) {
+                console.log("markers AND something else?? ya must be mad")
+            } else if (mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen") && checkIfMultiple.length >= 3) {
+                console.log("you're using ALL possilble options??");
+            } else if (!mostFrequentColor.includes("rainbowPen", "etchPen")) {
+            console.log(`our most frequent colors are ${mostFrequentColor}`);  
+            }
+        }
 
-    console.log(colorsPresent);
-    console.log(allUniqueColors);
-    console.log(allUniqueColors.size)
-    console.log(`we have ${allCells.length} cells in total`);
-    console.log(`and ${allColored.length} of them have any coloring applied`);
-    console.log(`so ${percentage} percents of all canvas is colored in now`)
-    if (percentage >= 1) {
-        //now we need checks for when there's more than 1 color utilized, so we'll have three sets of phrases:
-        //1 - just one color is used
-        //2 - 2-3 colors are used
-        //3 - more than 3 colors are used
-        //this set of checks should be implemented for each of the scores below
-    // if biggest size canvas was chosen, mettaton should comment on this amout of drawing (this will also result in lowest score)
-    } else if (percentage >= 2 && percentage <= 10) {
-        
-    } else if (percentage >= 11 && percentage <= 29) {
+        if (mostFrequentColor.includes("purple")) {
+            console.log("you sure like purple!") //mett's favorite color, need to include an extra phrase for that
+        } else if (mostFrequentColor.includes("lightBlue")) {
+            console.log("light blue time")
+        }
 
-    } else if (percentage >= 30 && percentage <= 79) {
+        console.log(colorsPresent);
+        console.log(allUniqueColors);
+        console.log(allUniqueColors.size)
+        console.log(`we have ${allCells.length} cells in total`);
+        console.log(`and ${allColored.length} of them have any coloring applied`);
+        console.log(`so ${percentage} percents of all canvas is colored in now`)
+        if (percentage >= 1) {
+            //now we need checks for when there's more than 1 color utilized, so we'll have three sets of phrases:
+            //1 - just one color is used
+            //2 - 2-3 colors are used
+            //3 - more than 3 colors are used
+            //this set of checks should be implemented for each of the scores below
+        // if biggest size canvas was chosen, mettaton should comment on this amout of drawing (this will also result in lowest score)
+        } else if (percentage >= 2 && percentage <= 10) {
+            
+        } else if (percentage >= 11 && percentage <= 29) {
 
-    } else if (percentage >= 80 && percentage < 99) {
-        
-    } else if (percentage >= 99) {
-        //filling out the entire thing in one color will result in the lowest score
+        } else if (percentage >= 30 && percentage <= 79) {
+
+        } else if (percentage >= 80 && percentage < 99) {
+            
+        } else if (percentage >= 99) {
+            //filling out the entire thing in one color will result in the lowest score
+        }
     }
     
 }
