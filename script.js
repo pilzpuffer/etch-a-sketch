@@ -1416,10 +1416,8 @@ const insulting = function() {
 
 const rating = function() {
     //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent)
-    //rate will be the act function that will complete this game - MTT will ask if this drawing is final, player will need to confirm
-    //need to make a div with two selection options here, similiar with how "respond" screens work in some dialogues in Undertale
-    //after that, mettaton will "appraise" the drawing
-    //he will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares (if just a few are colored in (less than 10%) or all of them)
+    //rate will be the act function that will complete this game
+    //MTT will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares
     //and then the drawing will be rated randomly. yeah. maybe I can add some extra checks, like, if the drawing contains more than a few colors, the amount of squares colored in + numbers can be deducted based on user's behavior
     //like, insults would deduct points, but flirts will increase them
     //once rated, it will be possible to fully spare MTT (his name will become yellow) - and the game will end!!!! -> I'll need to make something similiar to the death screen, but with "winning" sounds and other text
@@ -1462,7 +1460,7 @@ const rating = function() {
         let mostFrequentColor = [];
         let checkIfMultiple = [];
 
-        for (i = 0; i < allColorLength.length; i++) {
+        for (i = 0; i < allColorLength.length; i++) { //mostColor finds a color that shows up most frequently - and checkIfMultiple finds if any other colors show up as often 
             if (allColorLength[i] === mostColor) {
                 checkIfMultiple.push(allColorLength[i])
             }
@@ -1473,7 +1471,7 @@ const rating = function() {
             if (mostFrequentColor.includes("rainbowPen")) {
                 console.log("rainbow time")
             } else if (mostFrequentColor.includes("etchPen")) {
-
+                console.log("pencil time")
             } else {
                 console.log(`our most frequent color is ${mostFrequentColor}`)
             }
@@ -1490,7 +1488,7 @@ const rating = function() {
                 console.log("markers AND something else?? ya must be mad")
             } else if (mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen") && checkIfMultiple.length >= 3) {
                 console.log("you're using ALL possilble options??");
-            } else if (!mostFrequentColor.includes("rainbowPen", "etchPen")) {
+            } else if (!mostFrequentColor.includes("rainbowPen") && !mostFrequentColor.includes("etchPen")) {
             console.log(`our most frequent colors are ${mostFrequentColor}`);  
             }
         }
@@ -1498,12 +1496,9 @@ const rating = function() {
         if (mostFrequentColor.includes("purple")) {
             console.log("you sure like purple!") //mett's favorite color, need to include an extra phrase for that
         } else if (mostFrequentColor.includes("lightBlue")) {
-            console.log("light blue time")
+            console.log("light blue time") //same here, both options will increase the total score
         }
 
-        console.log(colorsPresent);
-        console.log(allUniqueColors);
-        console.log(allUniqueColors.size)
         console.log(`we have ${allCells.length} cells in total`);
         console.log(`and ${allColored.length} of them have any coloring applied`);
         console.log(`so ${percentage} percents of all canvas is colored in now`)
@@ -1511,7 +1506,7 @@ const rating = function() {
             //now we need checks for when there's more than 1 color utilized, so we'll have three sets of phrases:
             //1 - just one color is used
             //2 - 2-3 colors are used
-            //3 - more than 3 colors are used
+            //3 - more than 3 colors are used (all of them would be a "common" set among all percentage, as otherwise I'll have to make up a fuckton of text)
             //this set of checks should be implemented for each of the scores below
         // if biggest size canvas was chosen, mettaton should comment on this amout of drawing (this will also result in lowest score)
         } else if (percentage >= 2 && percentage <= 10) {
@@ -1527,6 +1522,9 @@ const rating = function() {
         }
     }
     
+    const finalScoreCount = function () {
+
+    }
 }
 
 const stick = function() { //should re-do using the checkConversation template. first time, MTT will just catch the stick, on second, the previous convo flow will play out
