@@ -261,6 +261,16 @@ const gameState = {
         act: "$",
         item: "%",
         mercy: "&"
+    },
+
+    rate: {
+        colorScore: 0,
+        densityScore: 0,
+        mannersScore: 0,
+        pencilComment: false,
+        rainbowComment: false,
+        dotComment: false,
+        bucketComment: false
     }
 }
 
@@ -1318,18 +1328,16 @@ const defaultConversation = async function (topic, checkToIncrement) {
     } 
 }
 
-// const textBox = document.querySelector("#textbox");
+const step = 8;
+    const smallestSize = 16;
+    const slightlyBiggerSize = smallestSize + step;
+    const secondBiggestSize = slightlyBiggerSize + step;
+    const biggestSize = secondBiggestSize + step;
 
 const fightMett = function() {
     clearTextField(); 
     starSpace.classList.add("gone")
     gameState["fightActive"] = true;
-
-    const step = 8;
-    const smallestSize = 16;
-    const slightlyBiggerSize = smallestSize + step;
-    const secondBiggestSize = slightlyBiggerSize + step;
-    const biggestSize = secondBiggestSize + step;
 
     const fightHits = {
         one:  { fieldSize: smallestSize },
@@ -1414,6 +1422,19 @@ const insulting = function() {
     defaultConversation("insult", "insultTimes");
 }
 
+function randomNumber (number) {
+    return Math.round((Math.random() * number) * 10) / 10;
+}
+
+const finalScoreCount = function () {
+    //first, colors will be appraised
+    //then - drawing density
+    //then - player's demeanor
+    //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
+    //there will be an ending sequence and game will be over
+    console.log(`your total score is ${gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"]}`);
+}
+
 const rating = function() {
     //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent)
     //rate will be the act function that will complete this game
@@ -1460,6 +1481,17 @@ const rating = function() {
         let mostFrequentColor = [];
         let checkIfMultiple = [];
 
+        if (allColorLength.length === 1) {
+            gameState["rate"]["colorScore"] = randomNumber(2);
+            console.log(`just one color used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+        } else if (allColorLength.length >= 2 && allColorLength.length <= 3) {
+            gameState["rate"]["colorScore"] = randomNumber(4);
+            console.log(`a few colors were used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+        } else if (allColorLength.length < 3) {
+            gameState["rate"]["colorScore"] = randomNumber(5);
+            console.log(`a lot of colors used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+        }
+
         for (i = 0; i < allColorLength.length; i++) { //mostColor finds a color that shows up most frequently - and checkIfMultiple finds if any other colors show up as often 
             if (allColorLength[i] === mostColor) {
                 checkIfMultiple.push(allColorLength[i])
@@ -1468,36 +1500,32 @@ const rating = function() {
 
         if (checkIfMultiple.length === 1) {
             mostFrequentColor.push(allColorNames[allColorLength.indexOf(mostColor)]);
-            if (mostFrequentColor.includes("rainbowPen")) {
-                console.log("rainbow time")
-            } else if (mostFrequentColor.includes("etchPen")) {
-                console.log("pencil time")
-            } else {
-                console.log(`our most frequent color is ${mostFrequentColor}`)
-            }
+            // a colorScore can result in a max of 5, density - 5 (can be negative), behavior - 5 (but can get into negatives), maximum achievable score will still be 10 (even though the possible sum of those elements CAN be more, the score will still be capped at 10 - this overhang is needed to make it so that achieveing a high score will be more probable)
         } else {
             for (i = 0; i < allColorLength.length; i++) {
                 if (allColorLength[i] === mostColor) {
                     mostFrequentColor.push(allColorNames[i])
                 }  
-            }  
-
-            if (checkIfMultiple.length === 2 && mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen")) {
-                console.log("you're using both??");
-            } else if (checkIfMultiple.length >= 2 && ((!mostFrequentColor.includes("etchPen") && mostFrequentColor.includes("rainbowPen")) || (mostFrequentColor.includes("etchPen") && !mostFrequentColor.includes("rainbowPen")))) {
-                console.log("markers AND something else?? ya must be mad")
-            } else if (mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen") && checkIfMultiple.length >= 3) {
-                console.log("you're using ALL possilble options??");
-            } else if (!mostFrequentColor.includes("rainbowPen") && !mostFrequentColor.includes("etchPen")) {
-            console.log(`our most frequent colors are ${mostFrequentColor}`);  
-            }
+            } 
         }
+
+        if (mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen")) {
+            gameState["rate"]["rainbowComment"] = true;
+            gameState["rate"]["pencilComment"] = true;
+        } else if (mostFrequentColor.includes("rainbowPen")) {
+            gameState["rate"]["rainbowComment"] = true;
+        } else if (mostFrequentColor.includes("etchPen")) {
+            gameState["rate"]["pencilComment"] = true;
+        } 
+
 
         if (mostFrequentColor.includes("purple")) {
+            gameState["rate"]["colorScore"] += 1;
             console.log("you sure like purple!") //mett's favorite color, need to include an extra phrase for that
         } else if (mostFrequentColor.includes("lightBlue")) {
+            gameState["rate"]["colorScore"] += 1;
             console.log("light blue time") //same here, both options will increase the total score
-        }
+        }  
 
         console.log(`we have ${allCells.length} cells in total`);
         console.log(`and ${allColored.length} of them have any coloring applied`);
@@ -1508,24 +1536,33 @@ const rating = function() {
             //2 - 2-3 colors are used
             //3 - more than 3 colors are used (all of them would be a "common" set among all percentage, as otherwise I'll have to make up a fuckton of text)
             //this set of checks should be implemented for each of the scores below
-        // if biggest size canvas was chosen, mettaton should comment on this amout of drawing (this will also result in lowest score)
+        // if biggest size canvas was chosen, mettaton should comment on this amount of drawing (this will also result in lowest score)
+            if (gameState["fieldSize"] === biggestSize) {
+                gameState["rate"]["densityScore"] = -2
+            } else {
+                gameState["rate"]["densityScore"] = randomNumber(2)
+            }     
         } else if (percentage >= 2 && percentage <= 10) {
-            
+            gameState["rate"]["densityScore"] = randomNumber(3) 
         } else if (percentage >= 11 && percentage <= 29) {
-
+            gameState["rate"]["densityScore"] = randomNumber(4)
         } else if (percentage >= 30 && percentage <= 79) {
-
+            gameState["rate"]["densityScore"] = randomNumber(5)
         } else if (percentage >= 80 && percentage < 99) {
-            
+            gameState["rate"]["densityScore"] = randomNumber(5)
         } else if (percentage >= 99) {
             //filling out the entire thing in one color will result in the lowest score
+            if (allColorLength.length === 1) {
+                gameState["rate"]["densityScore"] = -2;
+                gameState["rate"]["bucketComment"] = true;
+            } else {
+                gameState["rate"]["densityScore"] = randomNumber(5)
+            }
         }
-    }
-    
-    const finalScoreCount = function () {
 
+        finalScoreCount();
     }
-}
+        }
 
 const stick = function() { //should re-do using the checkConversation template. first time, MTT will just catch the stick, on second, the previous convo flow will play out
     successfulSelect();
