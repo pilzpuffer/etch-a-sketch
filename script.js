@@ -215,6 +215,7 @@ const gameState = {
 
     //dialogue variables
     checkOutTimes: 0,
+    stickTimes: 0,
     flirtTimes: 0,
     performTimes: 0,
     insultTimes: 0,
@@ -890,20 +891,83 @@ const mettInsultTooMuch = [
     ["That’s it.", "You’ve earned yourself a one-way ticket out of here.", " You want to keep insulting me?", "Well, let’s see how much you enjoy your final act."]
 ];
 
-
-const mettStick = [
-    ["Darling, I am not a fetching machine!"], 
-    ["Ah, a gift? How touching.", "But try roses next time!"], 
-    ["Scandalous!", "Is this an attack or an avant-garde performance?!"], 
-    ["…Darling, I hope that wasn’t an attempt at modern art."]
+const mettThrowOnceDrawn = [
+    ["A mixed-media attempt, I see. Tragically unrefined, but amusing!"],
+    ["Chaotic, but I must admit, I’m intrigued.", "You’re not a master, but I see potential in this.", "Just… not with that stick."],
+    ["I admire the passion, but props were not part of the program. Let the art speak for itself!"],
+    ["A bold new brushstroke!", "…Oh wait, it’s just a stick.", "Still, you’ve got gumption, darling."]
 ];
 
-const stickText = [
-    ["You throw the stick.","It bounces off Mettaton’s screen with a loud clunk."], 
-    ["You throw the stick.", "It lands on top of Mettaton with a soft plonk."], 
-    ["You throw the stick.", "Mettaton dodges, dramatically."], 
-    ["You toss the stick onto Mettaton's screen.", "Somehow it just stays there. He doesn’t react, but he is not impressed by you now."]
+const mettThrowMoreDrawn = [
+    ["This isn’t slapstick, darling. It’s barely art at this point."],
+    ["Darling! If you're trying to ruin your own work, you're doing splendidly."],
+    ["This is a drawing show, not a stick fight. Get it together, darling."],
+    ["Do I look like a dartboard to you, darling?"]
+    ["Oh, darling, this is not how we make art!", "If you’re trying to ruin your own masterpiece, you’re doing an excellent job."]
 ];
+
+const mettThrowOnceEmpty = [
+    ["Charmed, darling...", "...but I do hope this isn’t the whole act."],
+    ["A dramatic start! Now let’s hope your talent matches your timing."],
+    ["Ah, a gift? How touching.", "But do try roses next time, darling!"],
+    ["Ooh! A prop! How bold.", "Shall I juggle it or just strike a pose?"],
+    ["Impressive! But darling, we can do better than sticks, can’t we?"]
+];
+
+const mettThrowMoreEmpty = [
+    ["Darling, you had one chance to be cute. Now you’re just... disruptive."],
+    ["How quaint. Is stick-throwing your entire repertoire?"],
+    ["Darling... this is an art show, not fetch night at the park."],
+    ["Not the response I was hoping for, darling. You’re starting to bore me."],
+    ["Is this really all that you’re bringing to the table?", "The novelty’s wearing off quickly, darling."]
+];
+
+const flavorThrowOnceDrawn = [
+    ["You toss the stick mid-sketch.", "Mettaton snatches it and dramatically inspects your art."],
+    ["You toss the stick.", "Mettaton snatches it mid-air and strikes a pose, examining your art piece."],
+    ["You throw the stick at Mettaton, right after finishing your art.", "He catches it, hesitates, then drops it like it’s beneath him."],
+    ["You throw the stick.", "It bounces off Mettaton’s screen, right below the doodle you just made."]
+];
+
+const flavorThrowMoreDrawn = [
+    ["You send your stick flying again.", "Mettaton flinches this time — but not from fear."],
+    ["You lob a stick mid-drawing.", "Mettaton dodges it with a sharp metallic clink."],
+    ["You toss the stick yet again.", "Mettaton’s screen glows red for a split second as he avoids it."],
+    ["You throw the stick once again.", "Mettaton rolls out of its path."],
+    ["You throw your stick again.", "Mettaton’s wheel spins sharply to the side, dodging it with style."]
+];
+
+const flavorThrowOnceEmpty = [
+    ["You offer the stick like a ceremonial tribute", "Mettaton takes it with suspicious elegance."],
+    ["You throw the stick.", "Mettaton intercepts it effortlessly, like this was rehearsed."],
+    ["You toss the stick gently.", "Mettaton snatches it from the air with a practiced flick."],
+    ["You throw the stick.", "Mettaton raises an arm and catches it with a magician's flourish."],
+    ["You throw the stick.", "Mettaton grabs it, his screen lighting up in what seems to be a playful wink."]
+];
+
+const flavorThrowMoreEmpty = [
+    ["You toss the stick again.", "Mettaton sighs and elegantly rolls away to avoid it."],
+    ["You hurl your stick again.", "Mettaton pivots around it, unimpressed."],
+    ["You fling the stick again.", "Mettaton sighs and lets it hit the floor."],
+    ["You throw the stick again.", "Mettaton’s screen flickers briefly in annoyance as he avoids it."],
+    ["You throw the stick again.", "Mettaton glides out of the way, his screen flickering in annoyance as he spins around."]
+];
+
+
+
+// const mettStick = [
+//     ["Darling, I am not a fetching machine!"], 
+//     ["Ah, a gift? How touching.", "But try roses next time!"], 
+//     ["Scandalous!", "Is this an attack or an avant-garde performance?!"], 
+//     ["…Darling, I hope that wasn’t an attempt at modern art."]
+// ];
+
+// const stickText = [
+//     ["You throw the stick.","It bounces off Mettaton’s screen with a loud clunk."], 
+//     ["You throw the stick.", "It lands on top of Mettaton with a soft plonk."], 
+//     ["You throw the stick.", "Mettaton dodges, dramatically."], 
+//     ["You toss the stick onto Mettaton's screen.", "Somehow it just stays there. He doesn’t react, but he is not impressed by you now."]
+// ];
 
 
 
@@ -920,7 +984,16 @@ allText = {
             secondChange: flavorStopTwice,
             changeToDefault: flavorStopDisabled
         },
-        stick: stickText,
+        stick: {
+            none: {
+                firstThrow: flavorThrowOnceEmpty,
+                anotherThrow: flavorThrowMoreEmpty
+            },
+            drawn: {
+                firstThrow: flavorThrowOnceDrawn,
+                anotherThrow: flavorThrowMoreDrawn
+            }
+        },
         check: checkOut,
         flirt: {
             none: flavorFlirtNone,
@@ -949,7 +1022,16 @@ allText = {
             secondChange: mettStopTwice,
             changeToDefault: mettStopDisabled
         },
-        stick: mettStick,
+        stick: {
+            none: {
+                firstThrow: mettThrowOnceEmpty,
+                anotherThrow: mettThrowMoreEmpty
+            },
+            drawn: {
+                firstThrow: mettThrowOnceDrawn,
+                anotherThrow: mettThrowMoreDrawn
+            }
+        },
         check: {
             none: mettCheckNone,
             drawn: mettCheckDrawn
@@ -1565,19 +1647,35 @@ const rating = function() {
             }
         }
 
-        console.log(``);
         finalScoreCount();
     }
         }
 
-const stick = function() { //should re-do using the checkConversation template. first time, MTT will just catch the stick, on second, the previous convo flow will play out
+const stick = async function() { 
     successfulSelect();
 
-    let selectedIndex = randomIndex(allText["flavor"]["stick"]);
+    let correctKey = gameState["hasDrawing"] ? "drawn" : "none";
+    let thrownState = gameState["stickTimes"] === 0 ? "firstThrow" : "anotherThrow";
+    let selectedIndex = randomIndex(allText["mettaton"]["stick"][correctKey][thrownState]);
 
-    flavorText(allText["flavor"]["stick"][selectedIndex]).then(() => {
-        mettTalking(allText["mettaton"]["stick"][selectedIndex]);
-    });
+    const flavorLine = async () => {
+        await flavorText(allText["flavor"]["stick"][correctKey][thrownState][selectedIndex]);
+    }
+
+    const mettResponding = async() => {
+        await flavorLine();
+        await mettTalking(allText["mettaton"]["stick"][correctKey][thrownState][selectedIndex]);
+    }
+
+    mettResponding();
+    
+    if (gameState["stickTimes"] === 0) {
+        gameState["rate"]["mannersScore"] += 0.5;
+    } else {
+        gameState["rate"]["mannersScore"] -= 0.5;
+    }
+
+    gameState["stickTimes"]++;
 }
 
 const checkTool = function (selectedTool) {

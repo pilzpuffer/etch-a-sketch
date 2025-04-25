@@ -1,20 +1,29 @@
 # etch-a-sketch
-Current Roadmap to project finalization - as note to myself:
+Roadmap to project finalization - as note to myself:
 1) <s>Complete the page navigation for when there are more than 6 options available</s> - ALL DONE!
 2) Work on "rate" endgame logic -> biggest task at the moment
      1) Create rate function
+          1) Make up the 'skeleton' of function
+               1) <s>Logic for color rating</s>
+               2) <s>Logic for density rating</s>
+               3) Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function
+          2) Compose the 'final' rate function
+               1) Logic for how Mett's rating phrases show up
+               2) Logic/structure for how "mini-judge's" ratings show up and disappear
+               3) Logic for final score declaration and endgame
      2) Compose relevant text
-     3) Make animation for mini-Metts/logic for how their scores show up
-     4) Create ending
+     3) Make animation for mini-Metts
+     4) Create ending (just css, html mostly)
 3) Add text for flirt/perform routes
-4) Add death screen for the end of the insult route
+4) Add death screen for the end of the insult route (similiar to endgame one, different sound and text - so can be mostly reused)
 5) Add flavor/Mett text for disabling animations
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!
      1) - add some flavor/mett text for "fight" action as well 
 7) <s>Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality</s> - Done!
 8) <s>Add title to the load screen</s> - DONE!
-9) Work on scaling for different/smaller screen resolutions
+9) Work on scaling for different/smaller screen resolutions - another intensive task
 10) Work on the intro sequence for this game - Mett text, some flavor text, maybe more sounds might be needed
+11) <s>Rework the "stick" function, add text</s> - DONE!
 
 Project notes:
 This concept really inspired me to try to make a cohesive mini-game - and while this REALLY goes beyond the initial task requirements, I'm glad that I've decided to undertake this in the end. This taught me a few valuable things on how to work on "bigger" projects. The biggest mistake of this project was how much time initially I've spent working on CSS, it was basically the first thing I've started to work on in this project. While yes, I did need to search for specific fonts and such to get the needed "aesthetic", I had to considerably rework a lot of styling down the way as the project grew. So now I'll know not to do that in the future x)
