@@ -1422,8 +1422,12 @@ const insulting = function() {
     defaultConversation("insult", "insultTimes");
 }
 
-function randomNumber (number) {
-    return Math.round((Math.random() * number) * 10) / 10;
+function randomNumber (number, modificator) {
+    console.log("number:", number, typeof number);
+    console.log("modificator:", modificator, typeof modificator);
+
+    let rand = (Math.random() * number) + modificator;
+    return Math.round(rand * 10) / 10;
 }
 
 const finalScoreCount = function () {
@@ -1432,7 +1436,8 @@ const finalScoreCount = function () {
     //then - player's demeanor
     //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
     //there will be an ending sequence and game will be over
-    console.log(`your total score is ${gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"]}`);
+    console.log(`the colorScore is ${gameState["rate"]["colorScore"]} and the gameScore is ${gameState["rate"]["densityScore"]}`)
+    console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"]) * 10) / 10}`);
 }
 
 const rating = function() {
@@ -1482,13 +1487,13 @@ const rating = function() {
         let checkIfMultiple = [];
 
         if (allColorLength.length === 1) {
-            gameState["rate"]["colorScore"] = randomNumber(2);
+            gameState["rate"]["colorScore"] = randomNumber(2, 0);
             console.log(`just one color used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
         } else if (allColorLength.length >= 2 && allColorLength.length <= 3) {
-            gameState["rate"]["colorScore"] = randomNumber(4);
+            gameState["rate"]["colorScore"] = Math.min(randomNumber(4, 0.5), 4);
             console.log(`a few colors were used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
-        } else if (allColorLength.length < 3) {
-            gameState["rate"]["colorScore"] = randomNumber(5);
+        } else if (allColorLength.length > 3) {
+            gameState["rate"]["colorScore"] = Math.min(randomNumber(5, 1), 4);
             console.log(`a lot of colors used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
         }
 
@@ -1530,7 +1535,7 @@ const rating = function() {
         console.log(`we have ${allCells.length} cells in total`);
         console.log(`and ${allColored.length} of them have any coloring applied`);
         console.log(`so ${percentage} percents of all canvas is colored in now`)
-        if (percentage >= 1) {
+        if (percentage <= 1) {
             //now we need checks for when there's more than 1 color utilized, so we'll have three sets of phrases:
             //1 - just one color is used
             //2 - 2-3 colors are used
@@ -1540,26 +1545,27 @@ const rating = function() {
             if (gameState["fieldSize"] === biggestSize) {
                 gameState["rate"]["densityScore"] = -2
             } else {
-                gameState["rate"]["densityScore"] = randomNumber(2)
+                gameState["rate"]["densityScore"] = randomNumber(2, 0)
             }     
         } else if (percentage >= 2 && percentage <= 10) {
-            gameState["rate"]["densityScore"] = randomNumber(3) 
+            gameState["rate"]["densityScore"] = Math.min(randomNumber(3, 0.5), 3)
         } else if (percentage >= 11 && percentage <= 29) {
-            gameState["rate"]["densityScore"] = randomNumber(4)
+            gameState["rate"]["densityScore"] = Math.min(randomNumber(4, 1), 4)
         } else if (percentage >= 30 && percentage <= 79) {
-            gameState["rate"]["densityScore"] = randomNumber(5)
+            gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 0.5), 5)
         } else if (percentage >= 80 && percentage < 99) {
-            gameState["rate"]["densityScore"] = randomNumber(5)
+            gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1), 5)
         } else if (percentage >= 99) {
             //filling out the entire thing in one color will result in the lowest score
             if (allColorLength.length === 1) {
                 gameState["rate"]["densityScore"] = -2;
                 gameState["rate"]["bucketComment"] = true;
             } else {
-                gameState["rate"]["densityScore"] = randomNumber(5)
+                gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1.5), 5)
             }
         }
 
+        console.log(``);
         finalScoreCount();
     }
         }
