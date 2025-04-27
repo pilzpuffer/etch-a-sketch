@@ -200,6 +200,7 @@ const insultRoute = async function() {
         battleTheme.pause();
         insultTheme.play()
     }
+
     if (gameState["routeFinished"]['insult'] === true) {
         setTimeout(function() {
             body.replaceChildren();
@@ -913,6 +914,86 @@ const mettInsultTooMuch = [
     ["That’s it.", "You’ve earned yourself a one-way ticket out of here.", " You want to keep insulting me?", "Well, let’s see how much you enjoy your final act.", "The show is over."]
 ];
 
+//alt phrases for flirt/perform actions when insults were used before
+
+//flirt
+const flavorFlirtInsult = [
+    ["You toss a desperate compliment into the fraying air between you."],
+    ["You try to spin your insults into charm.", "It’s not very convincing."],
+    ["You attempt a flirtatious smile", "It feels brittle."],
+    ["You offer a compliment, clumsy and clattering."],
+    ["You toss another half-hearted flirt Mettaton's way."],
+];
+
+const flavorFlirtDisgrace = [
+    ["You toss out a flirt with a crooked smile.", "Mettaton barely spares you a glance."],
+    ["You bat your lashes, desperate", "Mettaton’s wheel screeches slightly as he turns away."],
+    ["You offer a syrupy compliment.", "It sours the moment it leaves your mouth."],
+    ["You murmur another sweet nothing.", "It evaporates between you."],
+    ["You try to flirt yet again.", "Mettaton’s screen flickers with disdain."]
+];
+
+const flavorFlirtLock = [
+    ["You reach for one last desperate flirt.", "Mettaton’s wheel grinds to a halt."],
+    ["You offer a trembling compliment.", "Mettaton’s arms cross firmly over his screen."],
+    ["You toss out another sweet line.", "It sinks like a stone."],
+    ["You blow a kiss.", "Mettaton doesn't even spare you a glance."],
+    ["You toss out another sweet line.", "It sinks like a stone."],
+    ["You blow a kiss.", "Mettaton doesn't even spare you a glance."],
+    ["You try to charm your way back.", "The silence is deafening."]
+]
+
+const mettFlirtInsult = [
+    ["Darling, you can't wound my heart and then expect to kiss it better!"],
+    ["Such passion!", "Such venom!", "I'm almost flattered, in a tragic sort of way."],
+    ["If this is your idea of courtship, darling... it needs serious revision."],
+    ["Wounds don't heal with sweet words, especially not from you."],
+    ["Save your sweet nothings — I heard your true voice already."]
+];
+
+const mettFlirtDisgrace = [
+    ["Keep your silver tongue to yourself, darling. It's tarnished beyond repair."],
+    ["You think a wink will fix fix betrayal? How quaint."],
+    ["Save your tired tricks for someone who still cares."],
+    ["A kiss from a snake is still a bite, no matter how sweet the hiss."],
+    ["You spit venom, then offer roses? Watch them wither, darling."]
+];
+
+const mettFlirtLock = [
+    ["Flirting? From you? Hilarious. Pathetic."],
+    ["Enough. You lost this audience, and I don't do reruns."],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""]
+]
+
+//perform
+const flavorPerformInsult = [
+
+];
+
+const flavorPerformDisgrace = [
+
+];
+
+const flavorPerformLock = {
+    
+}
+
+const mettPerformInsult = [
+
+];
+
+const mettPerformDisgrace = [
+
+];
+
+const mettPerformLock = {
+
+}
+
 //phrases for the stick action
 const flavorThrowOnceDrawn = [
     ["You toss the stick mid-sketch.", "Mettaton snatches it and dramatically inspects your art."],
@@ -1003,7 +1084,12 @@ allText = {
         flirt: {
             none: flavorFlirtNone,
             drawn:flavorFlirtDrawn,
-            tooMuch: flavorFlirtTooMuch
+            tooMuch: flavorFlirtTooMuch,
+            wasInsulted: {
+                rude: flavorFlirtInsult,
+                moreRude: flavorFlirtDisgrace, 
+                tooMuch: flavorFlirtLock
+            }
         },
         perform: {
             none: flavorPerformNone,
@@ -1044,7 +1130,12 @@ allText = {
         flirt: {
             none: mettFlirtNone,
             drawn: mettFlirtDrawn,
-            tooMuch: mettFlirtTooMuch
+            tooMuch: mettFlirtTooMuch,
+            wasInsulted: {
+                rude: mettFlirtInsult,
+                moreRude: mettFlirtDisgrace, 
+                tooMuch: mettFlirtLock
+            }
         },
         perform: {
             none: mettPerformNone,
@@ -1384,13 +1475,41 @@ const restoreDefaults = async function(topic, checkToDefaultOne, checkToDefaultT
     });
 }
 
-
+//used for flirt, perform and insult functions
 const defaultConversation = async function (topic, checkToIncrement) {
     successfulSelect();
     let correctKey = gameState["hasDrawing"] ? "drawn" : "none";
     let selectedIndex = randomIndex(allText["mettaton"][topic][correctKey]);
 
-    if (gameState[checkToIncrement] < 2) {
+    
+
+    if (topic !== "insult" && gameState["insultTimes"] >= 1) {
+        let setAmount;
+        let insultIndex;
+
+        if (gameState["insultTimes"] >= 1 && gameState["routeStages"]["insultRouteStage"] === 0) {
+            setAmount = "rude";
+            insultIndex = randomIndex(allText["mettaton"][topic]["wasInsulted"][setAmount]);
+
+            await flavorText(allText["flavor"][topic]["wasInsulted"][setAmount][insultIndex]);
+            await mettTalking(allText["mettaton"][topic]["wasInsulted"][setAmount][insultIndex])
+
+        } else if (gameState["routeStages"]["insultRouteStage"] > 0 && gameState["routeStages"]["insultRouteStage"] <= 3) {
+            setAmount = "moreRude";
+            insultIndex = randomIndex(allText["mettaton"][topic]["wasInsulted"][setAmount]);
+
+            await flavorText(allText["flavor"][topic]["wasInsulted"][setAmount][insultIndex]);
+            await mettTalking(allText["mettaton"][topic]["wasInsulted"][setAmount][insultIndex])
+
+        } else if (gameState["routeStages"]["insultRouteStage"] === 4) {
+            setAmount = "tooMuch";
+            insultIndex = randomIndex(allText["mettaton"][topic]["wasInsulted"][setAmount]);
+
+            gameState["routeBlocked"]["rejectionSeen"] = true;
+            await flavorText(allText["flavor"][topic]["wasInsulted"][setAmount][insultIndex]);
+            await mettTalking(allText["mettaton"][topic]["wasInsulted"][setAmount][insultIndex]);  
+        }
+    } else if (gameState[checkToIncrement] < 2) {
         await flavorText(allText["flavor"][topic][correctKey][selectedIndex]);
         await mettTalking(allText["mettaton"][topic][correctKey][selectedIndex]).then(() => gameState[checkToIncrement]++);
         
@@ -1497,31 +1616,50 @@ const checkOut = async function() {
     checkConversation("check", "checkOutTimes");
 };
 
+let addInsult = 1;
+let addFlirt = 1;
+
 const flirting = function() {
     defaultConversation("flirt", "flirtTimes");
+
+    if (gameState["insultTimes"] === 0) {
+        if (gameState["flirtTimes"] === 2) {
+            addFlirt += 0.5;
+        }
+        gameState["rate"]["mannersScore"] += addFlirt;
+
+    } else {
+        if (gameState["insultTimes"] >= 1 && gameState["routeStages"]["insultRouteStage"] === 0) {
+            addFlirt -= 1;
+        } else if (gameState["routeStages"]["insultRouteStage"] > 0 && gameState["routeStages"]["insultRouteStage"] <= 3) {
+            addFlirt -= 2;
+        } else if (gameState["routeStages"]["insultRouteStage"] === 4) {
+            addFlirt -= 5;
+        }
+
+        gameState["rate"]["mannersScore"] += addFlirt;
+    }
+
+    console.log(`flirt score is ${addFlirt} and the total score is ${gameState["rate"]["mannersScore"]}`)
+    
 }
 
 const performing = function() {
     defaultConversation("perform", "performTimes");
 }
 
-let addInsult = 1;
+
 
 const insulting = function() {
     defaultConversation("insult", "insultTimes");
 
-    if (gameState["insultTimes"] < 2) {
-        gameState["rate"]["mannersScore"] -= addInsult;
-    } else {
-        if (addInsult === 3) {
-            //max amount before end route, need to add alt phrases for flirt/route (won't be possible to progress through them)
-        }
+    if (gameState["insultTimes"] === 2) {
         addInsult += 0.5;
-        gameState["rate"]["mannersScore"] -= addInsult;
-    }
+    }  
+    
+    gameState["rate"]["mannersScore"] -= addInsult;
 
-    console.log(`current insult deduction is ${addInsult}`);
-    console.log(`and manners score is now ${gameState["rate"]["mannersScore"]}`)
+    console.log(`flirt score is ${addInsult} and the total score is ${gameState["rate"]["mannersScore"]}`)
 }
 
 function randomNumber (number, modificator) {
@@ -1638,12 +1776,7 @@ const rating = function() {
         console.log(`and ${allColored.length} of them have any coloring applied`);
         console.log(`so ${percentage} percents of all canvas is colored in now`)
         if (percentage <= 1) {
-            //now we need checks for when there's more than 1 color utilized, so we'll have three sets of phrases:
-            //1 - just one color is used
-            //2 - 2-3 colors are used
-            //3 - more than 3 colors are used (all of them would be a "common" set among all percentage, as otherwise I'll have to make up a fuckton of text)
-            //this set of checks should be implemented for each of the scores below
-        // if biggest size canvas was chosen, mettaton should comment on this amount of drawing (this will also result in lowest score)
+        
             if (gameState["fieldSize"] === biggestSize) {
                 gameState["rate"]["densityScore"] = -2
             } else {
@@ -2128,6 +2261,11 @@ const createPageNavigation = function(pageNumber, providedText) {
 
                     }
 
+                    if (gameState["routeBlocked"]["rejectionSeen"]) {
+                        menuOptions["flirt"]["data"].classList.add("gone");
+                        menuOptions["perform"]["data"].classList.add("gone");
+                    }
+
                     for (let key in menuActions) {
                         menuActions[key]();
                     }
@@ -2144,7 +2282,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                     }   
 
                         Object.keys(gameState["routeFinished"]).forEach(route => {
-                            if ((gameState["routeFinished"][route] && menuOptions[route]) || (gameState["routeBlocked"][route] && menuOptions[route] && gameState["routeBlocked"]["rejectionSeen"])) {
+                            if (menuOptions[route] && gameState["routeFinished"][route]) {
                                 menuOptions[route].classList.add("gone");
                             }
                         })
