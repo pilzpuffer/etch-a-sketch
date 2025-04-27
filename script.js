@@ -73,7 +73,7 @@ const flirtRoute = function() {
         let petalsBackground = document.querySelector("#petals-canvas");
         const leftSideWidth = window.innerWidth * 0.2;
 
-        // **If the canvas does not exist, create it**
+        //If the canvas does not exist, create it
         if (!petalsBackground) {
             petalsBackground = document.createElement("canvas");
             petalsBackground.style.position = "fixed";
@@ -186,9 +186,27 @@ const flirtRoute = function() {
         }
 };
 
+const body = document.querySelector("body");
+const insultTheme = document.querySelector("#insult-route");
+insultTheme.volume = sameVolume - 0.1;
 
-const insultRoute = function() {
+const insultRoute = async function() {
+    if (gameState["routeStages"]["insultRouteStage"] === 3) {
+        gameState["routeBlocked"]["flirt"] = true;
+        gameState["routeBlocked"]["perform"] = true;
+    }
+    if (gameState["routeStages"]["insultRouteStage"] === 4) {
+        leftArm.src = "./images/mett-sprite/arm-left-gun.png"
+        battleTheme.pause();
+        insultTheme.play()
+    }
+    if (gameState["routeFinished"]['insult'] === true) {
+        setTimeout(function() {
+            body.replaceChildren();
+        }, 300).then(() => {
 
+        })   
+    }
 }
 
 const performRoute = function() {
@@ -226,13 +244,19 @@ const gameState = {
     },
     routeFunctions: {
         flirt: flirtRoute,
-        perform: insultRoute,
-        insult: performRoute
+        perform: performRoute, 
+        insult: insultRoute
     },
     routeFinished: {
         flirt: false,
         perform: false,
         insult: false
+    },
+    routeBlocked: {
+        flirt: false,
+        perform: false,
+        insult: false,
+        rejectionSeen: false
     },
 
     //for animation/sound tracking
@@ -880,15 +904,47 @@ const flavorInsultTooMuch = [
     ["You throw out an insult that cuts through the air.", "The sound team quickly blurs the words with a loud, abrupt beep."],
     ["You push further, your words becoming sharper.", "Mettaton’s dazzling screen flickers, just a hint of irritation seeping through his cool composure."],
     ["You get bolder, throwing insults that make even the production team uneasy."],
-    ["Your insults have gone too far, and the crew looks nervous.", "Mettaton’s usually vibrant shine seems to dull for a split second."],
+    ["Your insults go too far, and the crew looks nervous.", "Mettaton’s usually vibrant shine seems to dull for a split second."],
     ["You call Mettaton something unthinkable.", "The production crew frantically cuts to a commercial break, but it’s too late."]
 ];
 const mettInsultTooMuch = [
     ["Oh, darling, you’re really digging yourself a hole, aren’t you?", "Keep this up, and I may stop gracing you with my attention."],
     ["You’re testing my patience, aren’t you?", "Keep going, and I’ll have no sympathy left for you.", "Rudeness isn’t wit, darling — it’s a death sentence."],
-    ["You’re really pushing it, darling", "If you’re not careful, you’ll find yourself in a much worse position than you realize.", "Not everyone takes insults lightly."],
+    ["You’re really pushing it, darling.", "If you’re not careful, you’ll find yourself in a much worse position than you realize.", "Not everyone takes insults lightly."],
     ["You’ve crossed a line now, darling.", "One more word, and you’ll regret ever uttering my name.", "You’ve lost the privilege of my attention."],
-    ["That’s it.", "You’ve earned yourself a one-way ticket out of here.", " You want to keep insulting me?", "Well, let’s see how much you enjoy your final act."]
+    ["That’s it.", "You’ve earned yourself a one-way ticket out of here.", " You want to keep insulting me?", "Well, let’s see how much you enjoy your final act.", "The show is over."]
+];
+
+//phrases for the stick action
+const flavorThrowOnceDrawn = [
+    ["You toss the stick mid-sketch.", "Mettaton snatches it and dramatically inspects your art."],
+    ["You toss the stick.", "Mettaton snatches it mid-air and strikes a pose, examining your art piece."],
+    ["You throw the stick at Mettaton, right after finishing your art.", "He catches it, hesitates, then drops it like it’s beneath him."],
+    ["You throw the stick.", "It bounces off Mettaton’s screen, right below the doodle you just made."]
+];
+
+const flavorThrowMoreDrawn = [
+    ["You send your stick flying again.", "Mettaton flinches this time — but not from fear."],
+    ["You lob a stick mid-drawing.", "Mettaton dodges it with a sharp metallic clink."],
+    ["You toss the stick yet again.", "Mettaton’s screen glows red for a split second as he avoids it."],
+    ["You throw the stick once again.", "Mettaton rolls out of its path."],
+    ["You throw your stick again.", "Mettaton’s wheel spins sharply to the side, dodging it with style."]
+];
+
+const flavorThrowOnceEmpty = [
+    ["You offer the stick like a ceremonial tribute", "Mettaton takes it with suspicious elegance."],
+    ["You throw the stick.", "Mettaton intercepts it effortlessly, like this was rehearsed."],
+    ["You toss the stick gently.", "Mettaton snatches it from the air with a practiced flick."],
+    ["You throw the stick.", "Mettaton raises an arm and catches it with a magician's flourish."],
+    ["You throw the stick.", "Mettaton grabs it, his screen lighting up in what seems to be a playful wink."]
+];
+
+const flavorThrowMoreEmpty = [
+    ["You toss the stick again.", "Mettaton sighs and elegantly rolls away to avoid it."],
+    ["You hurl your stick again.", "Mettaton pivots around it, unimpressed."],
+    ["You fling the stick again.", "Mettaton sighs and lets it hit the floor."],
+    ["You throw the stick again.", "Mettaton’s screen flickers briefly in annoyance as he avoids it."],
+    ["You throw the stick again.", "Mettaton glides out of the way, his screen flickering in annoyance as he spins around."]
 ];
 
 const mettThrowOnceDrawn = [
@@ -921,55 +977,6 @@ const mettThrowMoreEmpty = [
     ["Not the response I was hoping for, darling. You’re starting to bore me."],
     ["Is this really all that you’re bringing to the table?", "The novelty’s wearing off quickly, darling."]
 ];
-
-const flavorThrowOnceDrawn = [
-    ["You toss the stick mid-sketch.", "Mettaton snatches it and dramatically inspects your art."],
-    ["You toss the stick.", "Mettaton snatches it mid-air and strikes a pose, examining your art piece."],
-    ["You throw the stick at Mettaton, right after finishing your art.", "He catches it, hesitates, then drops it like it’s beneath him."],
-    ["You throw the stick.", "It bounces off Mettaton’s screen, right below the doodle you just made."]
-];
-
-const flavorThrowMoreDrawn = [
-    ["You send your stick flying again.", "Mettaton flinches this time — but not from fear."],
-    ["You lob a stick mid-drawing.", "Mettaton dodges it with a sharp metallic clink."],
-    ["You toss the stick yet again.", "Mettaton’s screen glows red for a split second as he avoids it."],
-    ["You throw the stick once again.", "Mettaton rolls out of its path."],
-    ["You throw your stick again.", "Mettaton’s wheel spins sharply to the side, dodging it with style."]
-];
-
-const flavorThrowOnceEmpty = [
-    ["You offer the stick like a ceremonial tribute", "Mettaton takes it with suspicious elegance."],
-    ["You throw the stick.", "Mettaton intercepts it effortlessly, like this was rehearsed."],
-    ["You toss the stick gently.", "Mettaton snatches it from the air with a practiced flick."],
-    ["You throw the stick.", "Mettaton raises an arm and catches it with a magician's flourish."],
-    ["You throw the stick.", "Mettaton grabs it, his screen lighting up in what seems to be a playful wink."]
-];
-
-const flavorThrowMoreEmpty = [
-    ["You toss the stick again.", "Mettaton sighs and elegantly rolls away to avoid it."],
-    ["You hurl your stick again.", "Mettaton pivots around it, unimpressed."],
-    ["You fling the stick again.", "Mettaton sighs and lets it hit the floor."],
-    ["You throw the stick again.", "Mettaton’s screen flickers briefly in annoyance as he avoids it."],
-    ["You throw the stick again.", "Mettaton glides out of the way, his screen flickering in annoyance as he spins around."]
-];
-
-
-
-// const mettStick = [
-//     ["Darling, I am not a fetching machine!"], 
-//     ["Ah, a gift? How touching.", "But try roses next time!"], 
-//     ["Scandalous!", "Is this an attack or an avant-garde performance?!"], 
-//     ["…Darling, I hope that wasn’t an attempt at modern art."]
-// ];
-
-// const stickText = [
-//     ["You throw the stick.","It bounces off Mettaton’s screen with a loud clunk."], 
-//     ["You throw the stick.", "It lands on top of Mettaton with a soft plonk."], 
-//     ["You throw the stick.", "Mettaton dodges, dramatically."], 
-//     ["You toss the stick onto Mettaton's screen.", "Somehow it just stays there. He doesn’t react, but he is not impressed by you now."]
-// ];
-
-
 
 
 allText = {
@@ -1500,8 +1507,23 @@ const performing = function() {
     defaultConversation("perform", "performTimes");
 }
 
+let addInsult = 1;
+
 const insulting = function() {
     defaultConversation("insult", "insultTimes");
+
+    if (gameState["insultTimes"] < 2) {
+        gameState["rate"]["mannersScore"] -= addInsult;
+    } else {
+        if (addInsult === 3) {
+            //max amount before end route, need to add alt phrases for flirt/route (won't be possible to progress through them)
+        }
+        addInsult += 0.5;
+        gameState["rate"]["mannersScore"] -= addInsult;
+    }
+
+    console.log(`current insult deduction is ${addInsult}`);
+    console.log(`and manners score is now ${gameState["rate"]["mannersScore"]}`)
 }
 
 function randomNumber (number, modificator) {
@@ -1667,8 +1689,9 @@ const stick = async function() {
         await mettTalking(allText["mettaton"]["stick"][correctKey][thrownState][selectedIndex]);
     }
 
+
     mettResponding();
-    
+
     if (gameState["stickTimes"] === 0) {
         gameState["rate"]["mannersScore"] += 0.5;
     } else {
@@ -2123,7 +2146,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                     }   
 
                         Object.keys(gameState["routeFinished"]).forEach(route => {
-                            if (gameState["routeFinished"][route] && menuOptions[route]) {
+                            if ((gameState["routeFinished"][route] && menuOptions[route]) || (gameState["routeBlocked"][route] && menuOptions[route] && gameState["routeBlocked"]["rejectionSeen"])) {
                                 menuOptions[route].classList.add("gone");
                             }
                         })

@@ -6,7 +6,7 @@ Roadmap to project finalization - as note to myself:
           1) Make up the 'skeleton' of function
                1) <s>Logic for color rating</s>
                2) <s>Logic for density rating</s>
-               3) Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function
+               3) Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function. so need to work on route progression first
           2) Compose the 'final' rate function
                1) Logic for how Mett's rating phrases show up
                2) Logic/structure for how "mini-judge's" ratings show up and disappear
@@ -15,6 +15,9 @@ Roadmap to project finalization - as note to myself:
      3) Make animation for mini-Metts
      4) Create ending (just css, html mostly)
 3) Add text for flirt/perform routes
+     1) Add text for main routes
+     2) Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))
+     3) Add alt text to insult route if either flirt or perform routes were in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes
 4) Add death screen for the end of the insult route (similiar to endgame one, different sound and text - so can be mostly reused)
 5) Add flavor/Mett text for disabling animations
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!
