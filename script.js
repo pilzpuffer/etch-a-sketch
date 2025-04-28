@@ -794,19 +794,6 @@ const mettPerformDrawn = [
     ['Oh, a true visionary! But darling, why not dazzle the public now?']
 ];
 
-const flavorPerformTooMuch = [
-    ["test"],
-    ["test2"],
-    ["flavorThree"],
-    ["flavorFour"],
-    ["flavorFive"]
-]
-
-const mettPerformTooMuch = [
-    ["test"],
-    ["test"]
-]
-
 const flavorFlirtNone = [
     ['You declare that Mettaton is already the ultimate work of art.'],
     ['You lean in and call Mettaton the Ultimate Muse.'],
@@ -1094,7 +1081,6 @@ allText = {
         perform: {
             none: flavorPerformNone,
             drawn: flavorPerformDrawn,
-            tooMuch: flavorPerformTooMuch
         },
         insult: {
             none: flavorInsultNone,
@@ -1140,7 +1126,6 @@ allText = {
         perform: {
             none: mettPerformNone,
             drawn: mettPerformDrawn,
-            tooMuch: mettPerformTooMuch
         },
         insult: {
             none: mettInsultNone,
@@ -1509,11 +1494,11 @@ const defaultConversation = async function (topic, checkToIncrement) {
             await flavorText(allText["flavor"][topic]["wasInsulted"][setAmount][insultIndex]);
             await mettTalking(allText["mettaton"][topic]["wasInsulted"][setAmount][insultIndex]);  
         }
-    } else if (gameState[checkToIncrement] < 2) {
+    } else if (gameState[checkToIncrement] < 2 || topic === "perform") {
         await flavorText(allText["flavor"][topic][correctKey][selectedIndex]);
         await mettTalking(allText["mettaton"][topic][correctKey][selectedIndex]).then(() => gameState[checkToIncrement]++);
         
-    } else {
+    } else if (topic !== "perform") {
         let tooMuchFlavor = allText["flavor"][topic]["tooMuch"];
         let tooMuchMett = allText["mettaton"][topic]["tooMuch"];
         let routeFunction = gameState["routeFunctions"][`${topic}`];
@@ -1618,6 +1603,7 @@ const checkOut = async function() {
 
 let addInsult = 1;
 let addFlirt = 1;
+let addPerform = 1;
 
 const flirting = function() {
     defaultConversation("flirt", "flirtTimes");
@@ -1646,6 +1632,28 @@ const flirting = function() {
 
 const performing = function() {
     defaultConversation("perform", "performTimes");
+
+    //need to think on a more varied point progression for this route
+    if (gameState["insultTimes"] === 0) {
+        if (gameState["performTimes"] === 2) {
+            addPerform += 0.5;
+        }
+        gameState["rate"]["mannersScore"] += addPerform;
+
+    } else {
+        if (gameState["insultTimes"] >= 1 && gameState["routeStages"]["insultRouteStage"] === 0) {
+            addPerform -= 1;
+        } else if (gameState["routeStages"]["insultRouteStage"] > 0 && gameState["routeStages"]["insultRouteStage"] <= 3) {
+            addPerform -= 2;
+        } else if (gameState["routeStages"]["insultRouteStage"] === 4) {
+            addPerform -= 5;
+        }
+
+        gameState["rate"]["mannersScore"] += addPerform;
+    }
+
+    console.log(`flirt score is ${addPerform} and the total score is ${gameState["rate"]["mannersScore"]}`)
+    
 }
 
 
