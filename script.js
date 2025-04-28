@@ -691,41 +691,41 @@ const mettQuietDisabled = [
 ]
 
 const flavorStopOnce = [
-    [""],
-    [""],
-    [""]
+    ["You raise a single finger, demanding absolute poise.", "The music hesitates, as if holding its breath with you."],
+    ["You wave a hand sharply.", "Somewhere backstage, the orchestra falters, unsure whether to continue without their star's rhythm."],
+    ["You pinch your fingers together, indicating 'just a little less'.", "Mettaton responds by locking into a pose with dramatic flair."]
 ];
 
 const flavorStopTwice = [
-    [""],
-    [""],
-    [""]
+    ["You make a T shape with your hands.", "Offstage, a spotlight snaps onto Mettaton’s frozen form."],
+    ["You raise your hand grandly, commanding complete stillness.", "Even the audience seems to lean forward, holding their breath"],
+    ["You clasp your hands in front of you solemnly.", "Mettaton catches the cue and freezes, a perfect monument to lost motion."]
 
 ];
 
 const flavorStopDisabled = [
-    [""],
-    [""],
-    [""]
+    ["You wave your hand dismissively.", "Mettaton takes it as royal permission - and moves like a star reborn."],
+    ["You nod, almost imperceptibly.", "Mettaton instantly seizes the moment, filling the silence with grand, graceful motion."],
+    ["You release a long breath.", "The lights seem to shimmer in approval as Mettaton bursts back to life."]
 ]
 
 const mettStopOnce = [
-    [""],
-    [""],
-    [""]
+    ["Not even a little sway?", "Fine, I’ll hold my fabulous pose.", "But I must say, you’re depriving the world of pure spectacle!"],
+    ["Oh, darling, I do hope you’re not planning to make this masterpiece in complete stillness.", "Art flows, just like my fabulous self!"],
+    ["A little stillness, hm?", "Not so easy to create when my dazzling presence is moving, is it?", "But fine, I’ll endure your perfectionist whims."]
 ];
 
 const mettStopTwice = [
-    [""],
-    [""],
-    [""]
+    ["Oh, so now I’m supposed to be a mannequin?", "Very well, darling, I shall stand tall and let you focus.", "No waving, no gesturing - only cold, cruel stillness!"],
+    ["It's said that an artist must suffer for their craft...", "But truly, darling, you will suffer too much - deprived of basking in my endless grace!"],
+    ["Completely still? You wound me, darling!", "A moving star shines so much brighter - but fine, let your canvas miss out on a little sparkle."]
 
 ];
 
 const mettStopDisabled = [
-    [""],
-    [""],
-    [""]
+    ["You’re allowing me to move again, darling? How kind!", "Let’s see if you can capture my essence while I work my charm!"],
+    ["Now we’re talking! Back in action, darling!", "A true masterpiece demands motion - and nobody moves like Mettaton!"],
+    ["Finally! My full glory returns!", "Let’s not waste a second — there’s beauty to unleash and legends to create, darling!"]
 ]
 
 const checkOut = [
@@ -840,6 +840,7 @@ const mettFlirtDrawn = [
     ['']
 ];
 
+//flirt route
 const flavorFlirtTooMuch = [
     ["flavorOne"],
     ["flavorTwo"],
@@ -1310,8 +1311,8 @@ const stopMoving = function () {
         gameState["moveArms"] = false;
     }
     
-    gameState["stayStill"]++;
     successfulSelect();
+    twoStepConversation("motion", "stayStill");
 }
 
 const restartMoving = function () {
@@ -1325,9 +1326,8 @@ const restartMoving = function () {
             requestAnimationFrame(handWave);
         }
  
-        gameState["animationOn"] = true;
-        gameState["stayStill"] = 0;
         successfulSelect();
+        restoreDefaults("motion", "animationOn", "stayStill");
     }
 }
 
@@ -1603,7 +1603,7 @@ const checkOut = async function() {
 
 let addInsult = 1;
 let addFlirt = 1;
-let addPerform = 1;
+let addPerform;
 
 const flirting = function() {
     defaultConversation("flirt", "flirtTimes");
@@ -1633,11 +1633,15 @@ const flirting = function() {
 const performing = function() {
     defaultConversation("perform", "performTimes");
 
-    //need to think on a more varied point progression for this route
     if (gameState["insultTimes"] === 0) {
-        if (gameState["performTimes"] === 2) {
-            addPerform += 0.5;
+        if (gameState["performTimes"] > 3) {
+            if (gameState["performTimes"] % 2 === 0) {
+                addPerform = -1;
+            } else {
+                addPerform = 1;
+            }
         }
+        
         gameState["rate"]["mannersScore"] += addPerform;
 
     } else {
