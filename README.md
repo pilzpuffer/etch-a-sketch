@@ -7,7 +7,8 @@ Roadmap to project finalization - as note to myself:
                1) <s>Logic for color rating</s>
                2) <s>Logic for density rating</s>
                3) <s>Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function. so need to work on route progression first</s>
-               4) Need to add an interaction for a rose item (with changes to mannersScore) + interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)
+               4) <s>Need to add an interaction for a rose item (with changes to mannersScore)</s>
+               5) Add an interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)
           2) Compose the 'final' rate function
                1) Logic for how Mett's rating phrases show up
                2) Logic/structure for how "mini-judge's" ratings show up and disappear
@@ -31,8 +32,7 @@ Roadmap to project finalization - as note to myself:
 
 Debugging Roadmap:
 1) check why hideAndShow doesn't work for properly for motion actions now.
-2) check line 1601, gives an error if a few flirts were attempted before insult is clicked (this issue is with defaultConversation - review)
-3) check line 2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with)
+2) check line 1601\2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with). basically, currently there's an issue with insult progression and its interaction with other functions - it works fine by itself, start to finish
 
 Project notes:
 This concept really inspired me to try to make a cohesive mini-game - and while this REALLY goes beyond the initial task requirements, I'm glad that I've decided to undertake this in the end. This taught me a few valuable things on how to work on "bigger" projects. The biggest mistake of this project was how much time initially I've spent working on CSS, it was basically the first thing I've started to work on in this project. While yes, I did need to search for specific fonts and such to get the needed "aesthetic", I had to considerably rework a lot of styling down the way as the project grew. So now I'll know not to do that in the future x)

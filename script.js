@@ -1082,27 +1082,63 @@ const mettThrowMoreEmpty = [
 //phrases for rose
 
 const flavorRoseRude = [
-
+    ["You hold out the rose like a shield — but your eyes falter before his glow."],
+    ["You raise it gently, but the warmth behind the gesture is gone.", "Something’s broken - and you know it."],
+    ["You offer the rose again, but there’s tension in your grip.", "What once bloomed now feels like an apology."],
+    ["You try to steady your hand, holding the rose like a memory — but the petals feel heavier than before."],
+    ["You lift it high, as if to rewind time - but Mettaton’s gaze stays fixed on what you've become."],
+    ["You flash the rose between acts of cruelty, pretending it still means something."],
+    ["You bring it forward, but not even the lights believe the gesture anymore."]
 ];
 
 const flavorRoseMaxInsult = [
-
+    ["You shove the rose forward like an excuse, hoping it’ll say what your actions can’t."],
+    ["You try to wave it off - the insults, the betrayal.", "It only makes the silence louder."],
+    ["You hold it out, but your words still linger in the air, sharp and unforgivable."],
+    ["You clutch the rose like a mask — but it can’t hide what you’ve already done."],
+    ["You present it again, but the petals have curled.", "It no longer suits the one holding it."],
+    ["You raise it once more, desperate for it to mean something.", "But you’ve burned every line in the script."],
+    ["You dare to show it, even now.", "The gesture is crueler than silence."]
 ];
 
 const flavorRosePos = [
-
+    ["You bring out the rose with a smile.", "The cameras seem to sparkle in approval."],
+    ["You hold the rose with quiet pride, offering it like a secret only the two of you still understand."],
+    ["You raise it playfully, and Mettaton actually falters in his next pose."],
+    ["You flourish the rose in a gentle arc, as though presenting a treasured prop - not for the audience, but just for him."],
+    ["You lift it slowly, the bloom still bright - a quiet echo of something real blooming between stage lights and stolen glances."],
+    ["You draw the rose close to your heart before showing it to Mettaton again - like a bashful confession."],
+    ["You tease him with a rose gently.", "Even the audience lets out a collective swoon."]
 ];
 
 const mettRoseRude = [
-
+    ["Clutching at old glories, are we? How tragic.", "Roses are beautiful, darling… but even they wither when neglected."],
+    ["Clinging to memories won't save you, darling.", "Not after the cracks you've made."],
+    ["How bittersweet... You parade my gift even as you tarnish what we built."],
+    ["A flower given in trust, now held by trembling hands. How poetic."],
+    ["You can wave it all you want, dear.", "But no amount of nostalgia can rewind the show."],
+    ["Darling… is this guilt I see?", "Or is that just a prop for your next performance?"],
+    ["Even stars dim, I suppose. Just like the meaning behind that gift."]
 ];
 
 const mettRoseMaxInsult = [
-
+    ["Is that supposed to soften your cruelty?", "Pathetic.", "Even the prettiest gift can’t hide an ugly heart, darling."],
+    ["You thought that sentiment would save you?", "It only makes your fall more pitiful."],
+    ["Even a rose that beautiful can't mask the stench of betrayal, sweetheart."],
+    ["Pathetic. Flowers wilt, trust dies — and you, darling, are withering faster than both."],
+    ["A wilted rose for a withered heart. How fitting."],
+    ["Touching. Tragic. Tiresome.", "I hope you enjoy your finale, because there won’t be a curtain call."],
+    ["You still have that thing? Darling, that’s not nostalgia — that’s mockery."]
 ];
 
 const mettRosePos = [
-
+    ["Seeing you cherish it... well, even I must admit, it makes this performance truly unforgettable!"],
+    ["Oh, you sentimental thing!", "Always knowing just how to stir my circuits."],
+    ["Be still, my heart!", "If you keep this up, I’ll have to write you into my autobiography!"],
+    ["Oh! Still carrying that little token? You do know how to make a star swoon."],
+    ["Still blooming… just like my affection for you.", "Oh, this is too romantic!"],
+    ["Oh my! You kept it!", "You’re either hopelessly sentimental… or hopelessly in love!"],
+    ["My processors are overheating, darling!", "How am I supposed to keep on with this show when you do things like this?!"]
 ];
 
 
@@ -1924,8 +1960,34 @@ const rating = function() {
 
 const rose = async function() {
     successfulSelect();
-    console.log("oh, you flirt!");
-    //need to create interactions based on insult status + negative rating and a positive interaction (so 3 variations in total, 1 for negative rating, 2 for when stage 4 of insult is reached, 1 positive)
+    let mannerState;
+
+    if (gameState["insultTimes"] === 0) {
+        mannerState = "positive";
+    } else {
+        if (gameState["routeStages"]["insultRouteStage"] === 4) {
+            mannerState = "tooMuch";
+        } else {
+            mannerState = "rude";
+        }
+    }
+    
+    let selectedIndex = randomIndex(allText["mettaton"]["rose"][mannerState]);
+
+    const flavorLine = async () => {
+        await flavorText(allText["flavor"]["rose"][mannerState][selectedIndex]);
+    }
+
+    const mettResponding = async() => {
+        await flavorLine();
+        await mettTalking(allText["mettaton"]["rose"][mannerState][selectedIndex]);
+    }
+
+    mettResponding();
+
+    if (gameState["routeStages"]["insultRouteStage"] === 4) {
+        gameState["routeBlocked"]["rejectionSeen"] = true;
+    }
 }
 
 const stick = async function() { 
