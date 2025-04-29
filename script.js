@@ -993,28 +993,48 @@ const mettFlirtLock = [
 
 //perform
 const flavorPerformInsult = [
-
+    ["You spin with practiced flair, the lights catching you just right - if only the mood could follow suit."],
+    ["You break into a pose that once got cheers.", "Now, it earns only silence and raised brows."],
+    ["You stretch your arms toward the heavens, hoping drama might salvage the mood."],
+    ["You give a deep, theatrical bow.", "The gesture trembles under the weight of what came before."],
+    ["You sweep your cape behind you and strike a pose.", "There’s a tension in the air that stage lights can’t dispel."]
 ];
 
 const flavorPerformDisgrace = [
-
+    ["You strike a dramatic pose.", "The lights dim slightly… almost like they’re embarrassed for you."],
+    ["You belt a line, full voice, full commitment.", "The echo is louder than the response."],
+    ["You bow with a flourish, sweat clinging to your brow like shame."],
+    ["You pirouette across the stage.", "But the rhythm feels off - and the connection is gone."],
+    ["You spin like a puppet who forgot who pulled the strings."]
 ];
 
-const flavorPerformLock = {
-    
-}
+const flavorPerformLock = [
+    ["You throw yourself into a passionate performance.", "But the cameras don’t follow - you’re out of frame."],
+    ["You begin your act, but the spotlight doesn’t turn on.", "It knows when a story’s over."],
+    ["You give your all.", "The room watches silently, unmoved."]
+]
 
 const mettPerformInsult = [
-
+    ["A bold attempt, darling. But glitter can’t cover bruises, no matter how you throw it."],
+    ["Oh, trying to win back your audience?", "Points for effort… minus ten for emotional whiplash."],
+    ["Darling, theatrics are lovely - until they start smelling like desperation."],
+    ["A little late for humility, don’t you think?", "But hey - audience loves a redemption arc."],
+    ["Trying to distract from your words, dear? At least your transitions are smooth."]
 ];
 
 const mettPerformDisgrace = [
-
+    ["Oh please. If you wanted to be a clown, darling, all you had to do was ask."],
+    ["Stunning, truly.", "Shame it's coming from someone who already flubbed their character arc."],
+    ["Bravo. A standing ovation - if only I had legs to walk out with."],
+    ["Such poise, such elegance… such misplaced effort."],
+    ["Still rehearsing lines, I see. But this script’s past saving."]
 ];
 
-const mettPerformLock = {
-
-}
+const mettPerformLock = [
+    [""],
+    [""],
+    [""]
+]
 
 //phrases for the stick action
 const flavorThrowOnceDrawn = [

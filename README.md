@@ -20,7 +20,7 @@ Roadmap to project finalization - as note to myself:
      1) Add text for main routes
      2) <s>Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))</s>
      3) <s>Add alt text to insult route if flirt route was in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes</s>
-4) Add death screen for the end of the insult route (similiar to endgame one, different sound and text - so can be mostly reused)
+4) Add death screen for the end of the insult route - can use a TV static effect for this, like the TV show was cut short (as it happens in that route)
 5) <s>Add flavor/Mett text for disabling animations</s> - DONE! 
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!
      1) - add some flavor/mett text for "fight" action as well 
