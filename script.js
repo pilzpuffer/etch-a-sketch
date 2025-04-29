@@ -188,7 +188,9 @@ const flirtRoute = function() {
 
 const body = document.querySelector("body");
 const insultTheme = document.querySelector("#insult-route");
+const betrayTheme = document.querySelector("#insult-route-betrayal")
 insultTheme.volume = sameVolume - 0.1;
+betrayTheme.volume = sameVolume - 0.1;
 
 const insultRoute = async function() {
     if (gameState["routeStages"]["insultRouteStage"] === 3) {
@@ -198,7 +200,12 @@ const insultRoute = async function() {
     if (gameState["routeStages"]["insultRouteStage"] === 4) {
         leftArm.src = "./images/mett-sprite/arm-left-gun.png"
         battleTheme.pause();
-        insultTheme.play()
+
+        if (gameState["routeFinished"]["flirt"]) {
+            betrayTheme.play()
+        } else {
+            insultTheme.play()
+        } 
     }
 
     if (gameState["routeFinished"]['insult'] === true) {
@@ -208,10 +215,6 @@ const insultRoute = async function() {
 
         })   
     }
-}
-
-const performRoute = function() {
-
 }
 
 const gameState = {
@@ -240,17 +243,14 @@ const gameState = {
     insultTimes: 0,
     routeStages: {
         flirtRouteStage: 0,
-        performRouteStage: 0,
         insultRouteStage: 0,
     },
     routeFunctions: {
         flirt: flirtRoute,
-        perform: performRoute, 
         insult: insultRoute
     },
     routeFinished: {
         flirt: false,
-        perform: false,
         insult: false
     },
     routeBlocked: {
@@ -902,6 +902,40 @@ const mettInsultTooMuch = [
     ["That’s it.", "You’ve earned yourself a one-way ticket out of here.", " You want to keep insulting me?", "Well, let’s see how much you enjoy your final act.", "The show is over."]
 ];
 
+//alt insult route progression
+
+const flavorBetrayal = [
+    ["You toss out a cutting remark.", "The lights above dim by a fraction - almost as if the stage itself flinched."],
+    ["You push further.", "The background music falters, skipping a beat, as if uncertain whether to continue."],
+    ["You press on, lashing out sharper than before.", "The stagehands exchange worried glances. You can feel it - something beautiful starting to rot."],
+    ["You throw another insult, cold and deliberate.", "The warmth drains from the stage lights, leaving Mettaton framed in a halo of something merciless."],
+    ["You hurl the final blow without hesitation.", "The world tilts, the cameras cut - and then the world slams shut around you, and your story ends mid-sentence."]
+];
+
+const mettBetrayal = [
+    ["Oh, darling... Is this really the path you want to take?", "I thought you had better taste than this."],
+    ["It’s easy to tear things down, isn't it?", "I suppose I expected a little more brilliance... or at least originality."],
+    ["You're not just wasting your potential, darling...", "You're tarnishing mine by association."],
+    ["This was your chance. A chance to shine alongside me.", "Now? You’ll be lucky if anyone even remembers your name.", "Not a word shall be uttered by you."],
+    ["No more chances, darling.", "No second takes. No forgiveness.", "Your final act... ends now."]
+];
+
+const flavorFullBetrayal = [
+    ["You throw out an insult that cuts through the air.", "You mock something Mettaton clearly once took pride in. The lighting team hesitates - this isn’t just banter anymore."],
+    ["You push further, your words becoming sharper.", "The flirtation you once shared curdles in the air. Mettaton's screen flickers with static."],
+    ["You get bolder, and the tone shifts completely.", "A member of production crew steps backward. You’re not sparring - you’re stabbing."],
+    ["Your insults go too far.", "The stage lights flicker once, then hold steady, sterile and cold. Whatever connection you had is gone - and something worse has taken its place."],
+    ["You call Mettaton something unthinkable.", "The crew scrambles to kill the feed. The broadcast freezes on Mettaton’s silhouette - motionless and menacing."]
+];
+
+const mettFullBetrayal = [
+    ["...Is this a new bit, darling?", "A little edge for the ratings?", "Surely, someone as charming as you wouldn't truly mean that."],
+    ["You seemed so sincere when you called me dazzling.", "Tell me — were you just rehearsing that, too?"],
+    ["So that’s it. I was a tool, a toy for your amusement.", "How poetic. The star, burned out by their own spotlight"],
+    ["You had the spotlight, darling. You had me.", "And now?", "Another word - and you’ll see what happens when the lights go out for you."],
+    ["You made a fool of me.", "You turned affection into ammunition.", "So let me return the favor.", "You wanted a brutal show?", "Then die knowing… you were the climax."]
+];
+
 //alt phrases for flirt/perform actions when insults were used before
 
 //flirt
@@ -1045,6 +1079,33 @@ const mettThrowMoreEmpty = [
     ["Is this really all that you’re bringing to the table?", "The novelty’s wearing off quickly, darling."]
 ];
 
+//phrases for rose
+
+const flavorRoseRude = [
+
+];
+
+const flavorRoseMaxInsult = [
+
+];
+
+const flavorRosePos = [
+
+];
+
+const mettRoseRude = [
+
+];
+
+const mettRoseMaxInsult = [
+
+];
+
+const mettRosePos = [
+
+];
+
+
 
 allText = {
     flavor: {
@@ -1057,6 +1118,13 @@ allText = {
             firstChange: flavorStopOnce,
             secondChange: flavorStopTwice,
             changeToDefault: flavorStopDisabled
+        },
+        rose: {
+            positive: flavorRosePos,
+            wasInsulted: {
+                rude: flavorRoseRude,
+                tooMuch: flavorRoseMaxInsult
+            }
         },
         stick: {
             none: {
@@ -1086,7 +1154,11 @@ allText = {
         insult: {
             none: flavorInsultNone,
             drawn: flavorInsultDrawn,
-            tooMuch: flavorInsultTooMuch
+            tooMuch: flavorInsultTooMuch,
+            wasFlirtedWith: {
+                part: flavorBetrayal,
+                full: flavorFullBetrayal
+            }
         }
     },
     mettaton: {
@@ -1099,6 +1171,13 @@ allText = {
             firstChange: mettStopOnce,
             secondChange: mettStopTwice,
             changeToDefault: mettStopDisabled
+        },
+        rose: {
+            positive: mettRosePos,
+            wasInsulted: {
+                rude: mettRoseRude,
+                tooMuch: mettRoseMaxInsult
+            }
         },
         stick: {
             none: {
@@ -1131,7 +1210,11 @@ allText = {
         insult: {
             none: mettInsultNone,
             drawn: mettInsultDrawn,
-            tooMuch: mettInsultTooMuch
+            tooMuch: mettInsultTooMuch,
+            wasFlirtedWith: {
+                part: mettBetrayal,
+                full: mettFullBetrayal
+            }
         }
     },
 }
@@ -1460,6 +1543,14 @@ const restoreDefaults = async function(topic, checkToDefaultOne, checkToDefaultT
     });
 }
 
+// check line 1601, gives an error if a few flirts were attempted before insult is clicked (this issue is with defaultConversation - reiew)
+// check on insult progression, as the lines don't show up as they should (in case if Mettaton was already flirted with), line 2395 - Uncaught TypeError: Cannot read properties of undefined (reading 'add')
+// it's this code: "Object.keys(gameState["routeFinished"]).forEach(route => {
+//                             if (menuOptions[route] && gameState["routeFinished"][route]) {
+//                                 menuOptions[route].classList.add("gone");
+//                             }
+//                         })"
+
 //used for flirt, perform and insult functions
 const defaultConversation = async function (topic, checkToIncrement) {
     successfulSelect();
@@ -1502,6 +1593,16 @@ const defaultConversation = async function (topic, checkToIncrement) {
         let tooMuchFlavor = allText["flavor"][topic]["tooMuch"];
         let tooMuchMett = allText["mettaton"][topic]["tooMuch"];
         let routeFunction = gameState["routeFunctions"][`${topic}`];
+
+        if (topic === "insult" && gameState["flirtTimes"] >= 1) {
+            if (gameState["routeFinished"]["flirt"]) {
+                tooMuchFlavor = allText["flavor"][topic]["wasFlirtedWith"]["flavorFullBetrayal"];
+                tooMuchMett = allText["mettaton"][topic]["wasFlirtedWith"]["mettFullBetrayal"];
+            } else {
+                tooMuchFlavor = allText["flavor"][topic]["wasFlirtedWith"]["flavorBetrayal"];
+                tooMuchMett = allText["mettaton"][topic]["wasFlirtedWith"]["mettBetrayal"];
+            }
+        }
 
         await routeFunction();
 
@@ -1603,7 +1704,7 @@ const checkOut = async function() {
 
 let addInsult = 1;
 let addFlirt = 1;
-let addPerform;
+let addPerform = 1;
 
 const flirting = function() {
     defaultConversation("flirt", "flirtTimes");
@@ -1656,40 +1757,44 @@ const performing = function() {
         gameState["rate"]["mannersScore"] += addPerform;
     }
 
-    console.log(`flirt score is ${addPerform} and the total score is ${gameState["rate"]["mannersScore"]}`)
+    console.log(`perform score is ${addPerform} and the total score is ${gameState["rate"]["mannersScore"]}`)
     
 }
-
-
 
 const insulting = function() {
     defaultConversation("insult", "insultTimes");
 
-    if (gameState["insultTimes"] === 2) {
+    if (gameState["insultTimes"] === 2 && (gameState["flirtTimes"] === 0 || gameState["performTimes"] === 0 || gameState["stickTimes"] === 0)) {
         addInsult += 0.5;
-    }  
+    }  else if (gameState["flirtTimes"] > 0 || gameState["performTimes"] > 0 || gameState["stickTimes"] > 0) {
+        if (gameState["routeFinished"]["flirt"]) {
+            addInsult += 2;
+        } else {
+            addInsult += 1;
+        }
+    }
     
     gameState["rate"]["mannersScore"] -= addInsult;
 
-    console.log(`flirt score is ${addInsult} and the total score is ${gameState["rate"]["mannersScore"]}`)
+    console.log(`insult score is ${addInsult} and the total score is ${gameState["rate"]["mannersScore"]}`)
 }
 
 function randomNumber (number, modificator) {
-    console.log("number:", number, typeof number);
-    console.log("modificator:", modificator, typeof modificator);
-
     let rand = (Math.random() * number) + modificator;
     return Math.round(rand * 10) / 10;
 }
 
-const finalScoreCount = function () {
+const finalRateCount = function () {
     //first, colors will be appraised
     //then - drawing density
     //then - player's demeanor
     //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
     //there will be an ending sequence and game will be over
-    console.log(`the colorScore is ${gameState["rate"]["colorScore"]} and the gameScore is ${gameState["rate"]["densityScore"]}`)
-    console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"]) * 10) / 10}`);
+    console.log(`the colorScore is ${gameState["rate"]["colorScore"]}, the gameScore is ${gameState["rate"]["densityScore"]} and manners score is ${gameState["rate"]["mannersScore"]}`)
+    console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"]) * 10) / 10}`);
+
+    // max possible score for manners is 18, minimum is -15, though it potentially can get much lower if player keeps throwing a stick, but that deducts just 0.5 points at a time, so that's not too much (and will get boring quickly)
+    // max score for density is 5, minimum is -2. max score for colors is 5 and min is 0
 }
 
 const rating = function() {
@@ -1745,7 +1850,7 @@ const rating = function() {
             gameState["rate"]["colorScore"] = Math.min(randomNumber(4, 0.5), 4);
             console.log(`a few colors were used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
         } else if (allColorLength.length > 3) {
-            gameState["rate"]["colorScore"] = Math.min(randomNumber(5, 1), 4);
+            gameState["rate"]["colorScore"] = Math.min(randomNumber(5, 1), 5);
             console.log(`a lot of colors used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
         }
 
@@ -1790,7 +1895,8 @@ const rating = function() {
         if (percentage <= 1) {
         
             if (gameState["fieldSize"] === biggestSize) {
-                gameState["rate"]["densityScore"] = -2
+                gameState["rate"]["densityScore"] = -2;
+                gameState["rate"]["dotComment"] = true;
             } else {
                 gameState["rate"]["densityScore"] = randomNumber(2, 0)
             }     
@@ -1812,9 +1918,15 @@ const rating = function() {
             }
         }
 
-        finalScoreCount();
+        finalRateCount();
     }
         }
+
+const rose = async function() {
+    successfulSelect();
+    console.log("oh, you flirt!");
+    //need to create interactions based on insult status + negative rating and a positive interaction (so 3 variations in total, 1 for negative rating, 2 for when stage 4 of insult is reached, 1 positive)
+}
 
 const stick = async function() { 
     successfulSelect();
@@ -1831,7 +1943,6 @@ const stick = async function() {
         await flavorLine();
         await mettTalking(allText["mettaton"]["stick"][correctKey][thrownState][selectedIndex]);
     }
-
 
     mettResponding();
 
@@ -2304,6 +2415,9 @@ const createPageNavigation = function(pageNumber, providedText) {
                     itemsOptionCountObserver.observe(textField, { childList: true, subtree: false });  
 
                     const availableItems = {
+                        rose: {
+                            id: "rose",
+                            data: document.createElement("div")},
                         stickThrow: {
                             id: "stick",
                             data: document.createElement("div")},
@@ -2318,10 +2432,17 @@ const createPageNavigation = function(pageNumber, providedText) {
                             data: document.createElement("div")}
                     }
 
+                    createMenuOption(availableItems, "rose", "Rose", rose);
                     createMenuOption(availableItems, "stickThrow", "Stick", stick);
                     createMenuOption(availableItems, "markerBox", "MarkBox", allMarkers);
                     createMenuOption(availableItems, "etchPen", "EtchPen", etchPencil);
-                    createMenuOption(availableItems, "rainbowPen", "RnbwPen", rainbowPencil)
+                    createMenuOption(availableItems, "rainbowPen", "RnbwPen", rainbowPencil)      
+
+                    if (gameState["routeFinished"]["flirt"] && !gameState[rejectionSeen]) {
+                        availableItems["rose"]["data"].classList.remove("gone");
+                    } else {
+                        availableItems["rose"]["data"].classList.add("gone");   
+                    }
 
                 } else if (currentButton === "mercy") {
                     const spareMenu = {

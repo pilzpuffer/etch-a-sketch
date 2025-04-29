@@ -6,7 +6,8 @@ Roadmap to project finalization - as note to myself:
           1) Make up the 'skeleton' of function
                1) <s>Logic for color rating</s>
                2) <s>Logic for density rating</s>
-               3) Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function. so need to work on route progression first
+               3) <s>Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function. so need to work on route progression first</s>
+               4) Need to add an interaction for a rose item (with changes to mannersScore) + interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)
           2) Compose the 'final' rate function
                1) Logic for how Mett's rating phrases show up
                2) Logic/structure for how "mini-judge's" ratings show up and disappear
@@ -16,10 +17,12 @@ Roadmap to project finalization - as note to myself:
      4) Create ending (just css, html mostly)
 3) Add text for flirt/perform routes
      1) Add text for main routes
-     2) Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))
-     3) Add alt text to insult route if either flirt or perform routes were in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes
+     2) <s>Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))</s>
+     3) <s>Add alt text to insult route if flirt route was in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes</s>
+     4) Add text for post-flirt item - rose
 4) Add death screen for the end of the insult route (similiar to endgame one, different sound and text - so can be mostly reused)
-5) Add flavor/Mett text for disabling animations
+5) <s>Add flavor/Mett text for disabling animations</s> - DONE! 
+     1) SUB-TASK - check why hideAndShow doesn't work for this properly now.
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!
      1) - add some flavor/mett text for "fight" action as well 
 7) <s>Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality</s> - Done!
