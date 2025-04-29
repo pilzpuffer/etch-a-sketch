@@ -19,10 +19,8 @@ Roadmap to project finalization - as note to myself:
      1) Add text for main routes
      2) <s>Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))</s>
      3) <s>Add alt text to insult route if flirt route was in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes</s>
-     4) Add text for post-flirt item - rose
 4) Add death screen for the end of the insult route (similiar to endgame one, different sound and text - so can be mostly reused)
 5) <s>Add flavor/Mett text for disabling animations</s> - DONE! 
-     1) SUB-TASK - check why hideAndShow doesn't work for this properly now.
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!
      1) - add some flavor/mett text for "fight" action as well 
 7) <s>Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality</s> - Done!
@@ -30,6 +28,11 @@ Roadmap to project finalization - as note to myself:
 9) Work on scaling for different/smaller screen resolutions - another intensive task
 10) Work on the intro sequence for this game - Mett text, some flavor text, maybe more sounds might be needed
 11) <s>Rework the "stick" function, add text</s> - DONE!
+
+Debugging Roadmap:
+1) check why hideAndShow doesn't work for properly for motion actions now.
+2) check line 1601, gives an error if a few flirts were attempted before insult is clicked (this issue is with defaultConversation - review)
+3) check line 2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with)
 
 Project notes:
 This concept really inspired me to try to make a cohesive mini-game - and while this REALLY goes beyond the initial task requirements, I'm glad that I've decided to undertake this in the end. This taught me a few valuable things on how to work on "bigger" projects. The biggest mistake of this project was how much time initially I've spent working on CSS, it was basically the first thing I've started to work on in this project. While yes, I did need to search for specific fonts and such to get the needed "aesthetic", I had to considerably rework a lot of styling down the way as the project grew. So now I'll know not to do that in the future x)
