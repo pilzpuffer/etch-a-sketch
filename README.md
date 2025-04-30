@@ -3,7 +3,7 @@ Roadmap to project finalization - as note to myself:
 1) <s>Complete the page navigation for when there are more than 6 options available</s> - ALL DONE!
 2) Work on "rate" endgame logic -> biggest task at the moment
      1) Create rate function
-          1) Make up the 'skeleton' of function
+          1) <s>Make up the 'skeleton' of function</s>
                1) <s>Logic for color rating</s>
                2) <s>Logic for density rating</s>
                3) <s>Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function. so need to work on route progression first</s>

@@ -293,6 +293,7 @@ const gameState = {
         colorScore: 0,
         densityScore: 0,
         mannersScore: 0,
+        baitAndSwitch: 0,
         pencilComment: false,
         rainbowComment: false,
         dotComment: false,
@@ -1161,10 +1162,220 @@ const mettRosePos = [
     ["My processors are overheating, darling!", "How am I supposed to keep on with this show when you do things like this?!"]
 ];
 
+//rate interaction when an empty drawing is submitted
+
+const flavorBlankPositiveOnce = [
+    ["You bat your eyes and gesture to the screen from which you've jsut erased your drawing."],
+    ["You glance at the space where your masterpiece once was, lips pursed like a tragic artist."],
+    ["You tilt your head with a knowing smile, as if the mystery is more valuable than the piece itself."],
+    ["You flourish a hand toward the canvas like you’re unveiling brilliance."],
+    ["You flash a mischievous smile as the screen stays blank."]
+];
+
+const flavorBlankPositiveMore = [
+    ["The empty canvas reflects your own reflection."],
+    ["The screen flickers. His tone is soft - not amused."],
+    ["You offer nothing but a playful smile."]
+];
+
+const flavorBlankNeutralOnce = [
+    ["You strike a dramatic stance. The canvas behind you is blank."],
+    ["You strike a pose and gesture at your empty canvas with flair."],
+    ["You try to pass off the absence of content as a daring statement."],
+    ["You dramatically request a review."],
+    ["You pretend to bask in applause for the art you just erased."]
+];
+
+const flavorBlankNeutralMore = [
+    ["You submit another blank canvas"],
+    ["You request to rate your just-erased drawing.", "Mettaton sighs. It’s almost dramatic."],
+    ["Another rating request. Another blank canvas."]
+];
+
+const flavorBlankNegativeOnce = [
+    ["You submit a perfectly blank canvas, unblinking."],
+    ["You fold your arms and stare at the empty canvas like that is your statement."],
+    ["You offer emptiness and wait for praise."],
+    ["You straighten your posture as if presenting a grand finale, then reveal... nothing."],
+    ["You leave a blank canvas hanging like a missed cue."]
+];
+
+const flavorBlankGegativeMore = [
+    ["Again?"],
+    ["Mettaton’s voice drops cold."],
+    ["Mettaton doesn’t even feign surprise."]
+];
+
+const mettBlankPositiveOnce = [
+    ["You erased it? How coy!", "Was it too dazzling to see... or just too sweet to share?", "Don’t be shy - I can handle brilliance."],
+    ["Gone before its time... a tragedy!", "But even your vanishing act has flair, sweetheart.", "Still, a masterpiece left unwitnessed is a performance half-lived."],
+    ["A bold move - leaving me to imagine what could’ve been.", "Dangerous. I like it.", "But next time, darling... give me something real to crave."],
+    ["You erased it? Tch, and I was ready to shower you in praise!", "What a flirt.", "Now stop teasing - I want the full production."],
+    ["Even when you leave me with nothing, I find myself intrigued.", "Truly, you’re impossible to ignore.", "But the audience is calling - give them your all!"]
+];
+
+const mettBlankPositiveMore = [
+    ["I’m beginning to think you’re afraid to impress me.", "Afraid I’d fall too hard?"],
+    ["It was cute the first time.", "Now it just feels like you're avoiding sincerity."],
+    ["Erased, again? Darling... are you flirting or stalling?"]
+];
+
+const mettBlankNeutralOnce = [
+    ["I call this piece ‘Nothing to See Here’.", "A bold move, but I was promised a show.", "Maybe next time, include the art with the attitude."],
+    ["Bravo! Truly, a piece that challenges the very concept of visual media!...", "...Now quit playing and actually draw something that judges will be able to rate."],
+    ["A blank canvas speaks volumes - but unfortunately, none of it is good.", "One point for audacity!", "And minus ten for messing around like this.", "But if you'll actually submit something, i can forget that deduction."],
+    ["Oh my! The gall to demand a rating for nothing!", "You truly are a provocateur... or a prankster.", "Either way, I’m entertained.", "Let’s aim for provocative and visible next time, darling."],
+    ["Is this... perfomance art?", "Or are you just hoping I wouldn’t notice how you wiped your drawing clean?", "Cute.", "But points aren’t handed out for disappearing acts on this show - so chop-chop!."]
+];
+
+const mettBlankNeutralMore = [
+    ["Ah. A series. Minimalist… and utterly empty. Again.", "Maybe you could try a different theme for your actual piece?"],
+    ["We get it, darling. You’re deep. Now draw something."],
+    ["I see you’re dedicated to your craft - the craft of wasting everyone's time."]
+];
+
+const mettBlankNegativeOnce = [
+    ["White on white with a touch of 'I gave up.' Exquisite.", "Try again - this time with effort."],
+    ["If your goal was to waste both our time - congratulations, you've done just that.", "Come back with art, not excuses."],
+    ["This isn’t enigmatic. It’s lazy.", "You’re capable of more. Show it."],
+    ["Submit actual work, or don't submit at all. Stardom demands effort.", "And right now, you’re just phoning it in."],
+    ["A blank submission?", "How brave. How bold. How thoroughly unimpressive.", "If you're going to command my attention, darling, earn it."]
+];
+
+const mettBlankGegativeMore = [
+    ["You’re confusing minimalism with mediocrity."],
+    ["If you have nothing to say… then stop trying to speak."],
+    ["You’ve submitted nothing. Again. And yet you demand attention."]
+];
 
 
 allText = {
     flavor: {
+        rate: {
+            blank: {
+                positive: { once: flavorBlankPositiveOnce, more: flavorBlankPositiveMore },
+                neutral: { once: flavorBlankNeutralOnce, more: flavorBlankNeutralMore },
+                negative: { once: flavorBlankNegativeOnce, more: flavorBlankGegativeMore },
+            },
+            // colorComments: {
+            //     positive: {
+            //         lightBlue: ,
+            //         purple: ,
+            //         bothColorsComment: ,
+
+            //         pencilComment: ,
+            //         rainbowComment: ,
+            //         bothInstrumentsComment: ,
+
+            //         one: ,
+            //         few: ,
+            //         many:
+            //     },
+            //     neutral: {
+            //         lightBlue: ,
+            //         purple: ,
+            //         bothColorsComment: ,
+
+            //         pencilComment: ,
+            //         rainbowComment: ,
+            //         bothInstrumentsComment: ,
+
+            //         one: ,
+            //         few: ,
+            //         many:
+            //     },
+            //     negative: {
+            //         lightBlue: ,
+            //         purple: ,
+            //         bothColorsComment: ,
+
+            //         pencilComment: ,
+            //         rainbowComment: ,
+            //         bothInstrumentsComment: ,
+
+            //         one: ,
+            //         few: ,
+            //         many:
+            //     },
+            // },
+            // densityComments: {
+            //     positive: {
+            //         bucketComment:
+            //         dotComment:
+
+            //         sparse: ,
+            //         little: ,
+            //         some: ,
+            //         filledOut: ,
+            //         lots: ,
+            //         full: 
+            //     },
+            //     neutral: {
+            //         bucketComment:
+            //         dotComment:
+
+            //         sparse: ,
+            //         little: ,
+            //         some: ,
+            //         filledOut: ,
+            //         lots: ,
+            //         full: 
+            //     },
+            //     negative: {
+            //         bucketComment:
+            //         dotComment:
+
+            //         sparse: ,
+            //         little: ,
+            //         some: ,
+            //         filledOut: ,
+            //         lots: ,
+            //         full: 
+            //     },
+            // },
+            // mannersComments: {
+            //     ifHighFlirty: ,
+            //     ifHighFriendly: ,
+            //     ifNeutral: ,
+            //     ifNegative: ,
+            //     ifVeryNegative: ,
+            //     ifBetrayal:
+            // },
+
+            // finalScore: {
+            //     start: {
+            //         positive: ,
+            //         neutral: ,
+            //         negative: ,
+            //     },
+            //     endFinal: {
+            //         positive: {
+            //             low: 
+            //             lowMiddle:
+            //             middle:
+            //             highMiddle:
+            //             high:
+            //             veryHigh:
+            //         },
+            //         neutral: {
+            //             low: 
+            //             lowMiddle:
+            //             middle:
+            //             highMiddle:
+            //             high:
+            //             veryHigh:
+            //         },
+            //         negative: {
+            //             low: 
+            //             lowMiddle:
+            //             middle:
+            //             highMiddle:
+            //             high:
+            //             veryHigh:
+            //         }
+            //     }
+            // }
+        },
         sound: {
             firstChange: flavorQuietOnce,
             secondChange: flavorQuietTwice,
@@ -1218,6 +1429,131 @@ allText = {
         }
     },
     mettaton: {
+        rate: {
+            blank: {
+                positive: {once: mettBlankPositiveOnce, more: mettBlankPositiveMore},
+                neutral: {once: mettBlankNeutralOnce, more: mettBlankNeutralMore},
+                negative: {once: mettBlankNegativeOnce, more: mettBlankGegativeMore},
+            },
+            // colorComments: {
+            //     positive: {
+            //         lightBlue: ,
+            //         purple: ,
+            //         bothColorsComment: ,
+
+            //         pencilComment: ,
+            //         rainbowComment: ,
+            //         bothInstrumentsComment: ,
+
+            //         one: ,
+            //         few: ,
+            //         many:
+            //     },
+            //     neutral: {
+            //         lightBlue: ,
+            //         purple: ,
+            //         bothColorsComment: ,
+
+            //         pencilComment: ,
+            //         rainbowComment: ,
+            //         bothInstrumentsComment: ,
+
+            //         one: ,
+            //         few: ,
+            //         many:
+            //     },
+            //     negative: {
+            //         lightBlue: ,
+            //         purple: ,
+            //         bothColorsComment: ,
+
+            //         pencilComment: ,
+            //         rainbowComment: ,
+            //         bothInstrumentsComment: ,
+
+            //         one: ,
+            //         few: ,
+            //         many:
+            //     },
+            // },
+            // densityComments: {
+            //     positive: {
+            //         bucketComment:
+            //         dotComment:
+
+            //         sparse: ,
+            //         little: ,
+            //         some: ,
+            //         filledOut: ,
+            //         lots: ,
+            //         full: 
+            //     },
+            //     neutral: {
+            //         bucketComment:
+            //         dotComment:
+
+            //         sparse: ,
+            //         little: ,
+            //         some: ,
+            //         filledOut: ,
+            //         lots: ,
+            //         full: 
+            //     },
+            //     negative: {
+            //         bucketComment:
+            //         dotComment:
+
+            //         sparse: ,
+            //         little: ,
+            //         some: ,
+            //         filledOut: ,
+            //         lots: ,
+            //         full: 
+            //     },
+            // },
+            // mannersComments: {
+            //     ifHighFlirty: ,
+            //     ifHighFriendly: ,
+            //     ifNeutral: ,
+            //     ifNegative: ,
+            //     ifVeryNegative: ,
+            //     ifBetrayal:
+            // },
+
+            // finalScore: {
+            //     start: {
+            //         positive: ,
+            //         neutral: ,
+            //         negative: ,
+            //     },
+            //     endFinal: {
+            //         positive: {
+            //             low: 
+            //             lowMiddle:
+            //             middle:
+            //             highMiddle:
+            //             high:
+            //             veryHigh:
+            //         },
+            //         neutral: {
+            //             low: 
+            //             lowMiddle:
+            //             middle:
+            //             highMiddle:
+            //             high:
+            //             veryHigh:
+            //         },
+            //         negative: {
+            //             low: 
+            //             lowMiddle:
+            //             middle:
+            //             highMiddle:
+            //             high:
+            //             veryHigh:
+            //         }
+            //     }
+            // }
+        },
         sound: {
             firstChange: mettQuietOnce,
             secondChange: mettQuietTwice,
@@ -1646,9 +1982,9 @@ const defaultConversation = async function (topic, checkToIncrement) {
         await mettTalking(allText["mettaton"][topic][correctKey][selectedIndex]).then(() => gameState[checkToIncrement]++);
         
     } else if (topic !== "perform") {
-        let tooMuchFlavor = allText["flavor"][topic]["tooMuch"];
-        let tooMuchMett = allText["mettaton"][topic]["tooMuch"];
-        let routeFunction = gameState["routeFunctions"][`${topic}`];
+        let tooMuchFlavor;
+        let tooMuchMett;
+        let routeFunction = gameState["routeFunctions"][`${topic}`];;
 
         if (topic === "insult" && gameState["flirtTimes"] >= 1) {
             if (gameState["routeFinished"]["flirt"]) {
@@ -1658,6 +1994,9 @@ const defaultConversation = async function (topic, checkToIncrement) {
                 tooMuchFlavor = allText["flavor"][topic]["wasFlirtedWith"]["flavorBetrayal"];
                 tooMuchMett = allText["mettaton"][topic]["wasFlirtedWith"]["mettBetrayal"];
             }
+        } else {
+            tooMuchFlavor = allText["flavor"][topic]["tooMuch"];
+            tooMuchMett = allText["mettaton"][topic]["tooMuch"];
         }
 
         await routeFunction();
@@ -1853,7 +2192,8 @@ const finalRateCount = function () {
     // max score for density is 5, minimum is -2. max score for colors is 5 and min is 0
 }
 
-const rating = function() {
+const rating = async function() {
+    successfulSelect();
     //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent)
     //rate will be the act function that will complete this game
     //MTT will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares
@@ -1884,6 +2224,7 @@ const rating = function() {
 
     let allColorNames = [];
     let allColorLength = [];
+    
 
     Object.keys(colorsPresent).forEach(color => {
         allColorNames.push(color);
@@ -1891,8 +2232,26 @@ const rating = function() {
     })
     
     if (allColorLength.length === 0) {
-        console.log("you think you're clever, huh...");
-        //this is a check if user erased their drawing after clicking on rate
+        gameState["rate"]["baitAndSwitch"] += 1;
+        
+        let times = gameState["rate"]["baitAndSwitch"] === 0 ? "once" : "more";
+        let attitude;
+         
+        if (gameState["insultTimes"] === 0) {
+            if (gameState["routeFinished"]["flirt"]) {
+                attitude = "positive";
+            } else {
+                attitude = "neutral";
+            }    
+        } else {
+            attitude = "negative";
+        }
+
+        blankIndex = randomIndex(allText["mettaton"]["rate"]["blank"][attitude][times]);
+
+            await flavorText(allText["flavor"]["rate"]["blank"][attitude][times][blankIndex]);
+            await mettTalking(allText["mettaton"]["rate"]["blank"][attitude][times][blankIndex]);
+
         return 
     } else {
         let mostColor = allColorLength.reduce((a, b) => { return (a < b) ? a : b})
@@ -1984,11 +2343,14 @@ const rose = async function() {
 
     if (gameState["insultTimes"] === 0) {
         mannerState = "positive";
+        gameState["rate"][mannersScore] += 0.5;
     } else {
         if (gameState["routeStages"]["insultRouteStage"] === 4) {
             mannerState = "tooMuch";
+            gameState["rate"][mannersScore] -= 5;
         } else {
             mannerState = "rude";
+            gameState["rate"][mannersScore] -= 3;
         }
     }
     
