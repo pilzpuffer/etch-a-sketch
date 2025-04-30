@@ -8,18 +8,19 @@ Roadmap to project finalization - as note to myself:
                2) <s>Logic for density rating</s>
                3) <s>Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function. so need to work on route progression first</s>
                4) <s>Need to add an interaction for a rose item (with changes to mannersScore)</s>
-               5) Add an interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)
+               5) <s>Add an interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)</s>
           2) Compose the 'final' rate function
                1) Logic for how Mett's rating phrases show up
                2) Logic/structure for how "mini-judge's" ratings show up and disappear
                3) Logic for final score declaration and endgame
-     2) Compose relevant text
+     2) Compose relevant text for rating
      3) Make animation for mini-Metts
-     4) Create ending (just css, html mostly)
+     4) Create ending sequence
 3) Add text for flirt/perform routes
-     1) Add text for main routes
+     1) Add text for the flirt route
      2) <s>Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))</s>
      3) <s>Add alt text to insult route if flirt route was in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes</s>
+     4) Add alternative ending sequence if user "lost" the flirt route (if they go through it while earning negative points (either for submitting blanks or endlessly throwing sticks - so if they're being annoying) or if they don't draw at least something first)
 4) Add death screen for the end of the insult route - can use a TV static effect for this, like the TV show was cut short (as it happens in that route)
 5) <s>Add flavor/Mett text for disabling animations</s> - DONE! 
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!

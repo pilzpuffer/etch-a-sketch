@@ -2240,11 +2240,14 @@ const rating = async function() {
         if (gameState["insultTimes"] === 0) {
             if (gameState["routeFinished"]["flirt"]) {
                 attitude = "positive";
+                gameState["rate"]["mannersScore"] += (times === "once" ? 0.5 : -0.5);
             } else {
                 attitude = "neutral";
+                gameState["rate"]["mannersScore"] -= (times === "once" ? 0 : 0.5);
             }    
         } else {
             attitude = "negative";
+            gameState["rate"]["mannersScore"] -= (times === "once" ? 0.5 : 1);
         }
 
         blankIndex = randomIndex(allText["mettaton"]["rate"]["blank"][attitude][times]);
