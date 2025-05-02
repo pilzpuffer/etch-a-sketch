@@ -843,20 +843,44 @@ const mettFlirtDrawn = [
 
 //flirt route
 const flavorFlirtTooMuch = [
-    ["flavorOne"],
-    ["flavorTwo"],
-    ["flavorThree"],
-    ["flavorFour"],
-    ["flavorFive"]
-]
+    ["You wink at cameras, making a heart shape with your hands.", "A few audience members seem to gasp."],
+    ["You sweep into an elegant, exaggerated bow - one hand extended as if inviting Mettaton to a dance."],
+    ["You hum a love song - off-key, but painfully heartfelt.", "Audience gasps, someone faints in the back."],
+    ["You unveil a sketch of Mettaton alluringly reclining atop a velvet chaise, draped in strategically placed roses and absolutely nothing else."],
+    ["Spotlights dim. Romantic music swells. The background becomes starry and golden. For a moment, the atmosphere feels unusually personal."]
+];
 
 const mettFlirtTooMuch = [
-    ["mettOne"],
-    ["mettTwo"],
-    ["mettThree"],
-    ["mettFour"],
-    ["mettFive"]
-]
+    ["Oho, darling! Starting with the charm already?", "I’m flattered, really.", "But let's see if you can back it up with some talent!"],
+    ["Ooh!", "Such gallantry!", "If you’re auditioning for a leading role in my life, darling... you have my attention."],
+    ["It was dreadful! Chaotic! A total mess!", "You’ve hummed your heart out with all the grace of a collapsing chandelier...", "Darling, if this is what love sounds like, then I never want to hear silence again."],
+    ["Darling, please! You’re scandalizing the sponsors!", "If they faint, it’ll be your fault - you've captured my likeness a little too well.", "Every angle, every tiny flourish — it’s like you know me better than my own mirror.", "But tell me, sweetheart...", "...can you really handle what you’ve dreamed up?"],
+    ["Tonight... you’ve bared your heart beneath these blinding lights.", "Not with perfect notes or polished lines… but with something far rarer: sincerity.", "I’ve had suitors — brilliant, breathtaking, but ultimately forgettable.", "But you? You've lingered - too dazzling to forget, too foolish to let go.", "And persistence like that? Darling, it’s almost criminal.", "So this is it - the final rose. My last flourish, and perhaps… my first real offer.", "Will you take your place in the spotlight beside me? Or vanish into the wings, one breath short of forever?"]
+];
+
+const flavorFlirtTooMuchEndingWin = [
+    ["The lights shift - softer now, more intimate. The clamor of the crowd fades to a hush as Mettaton glides toward you, his screen aglow with something gentler than before."],
+    ["He slows to a stop, voice losing its usual performative sharpness.", "For a moment, the glitter fades - just a little."],
+    ["His arm extends - precise, delicate - and he lifts your hand in his cold, carefully calibrated fingers. The gesture is practiced, yet the pause that follows is not."],
+    ["As Mettaton brings your hand closer to his screen, a faint buzz of static vibrates through the air - like the soft hum you’d feel from touching an old television. The cool surface pulses with an electric warmth, almost as if it’s alive."],
+    ["With elegant care, he presses your knuckles gently to the screen. The static buzz, subtle yet undeniable, passes through your touch - soft, tender, a quiet connection. The contact lingers, meaningful and sincere"],
+    ["The moment lingers - longer than it should - but eventually, he draws back. His screen flickers, bright with energy. The crowd’s murmurs swell into a cacophony of anticipation."],
+    ["He leans forward, one hand extending with theatrical flourish, presenting the final rose to you."],
+    ["With a flourish, he twirls on his wheel, scattering glittering confetti from compartments you didn’t even know existed. The music swells, a triumphant, sparkling melody."],
+    ["He strikes a pose, one hand over his 'chest', the other extended upwards as though reaching for the stars."];
+];
+
+const mettFlirtTooMuchEndingWin = [
+    ["...Tonight, you bared your heart beneath these lights - and maybe, just maybe, I did too."],
+    ["I’ve played a thousand roles. Lived a thousand perfect scenes.", "But none quite like this. None quite like you."],
+    ["You’ve earned something most never even dare to dream of…"],
+    ["...A fragment of perfection. From me, no less."],
+    [""],
+    ["But don’t cue the credits just yet, darling... we're only at intermission!"],
+    ["Take it, darling. A token of this fabulous, fleeting moment."],
+    ["The stage is set, darling - the spotlight’s on you!", "Now, paint with passion, with fire, and let the world see the masterpiece you’re meant to create!"],
+    ["Because this love story?", "It’s only just beginning... and darling, it's going to be a showstopper!"]
+];
 
 const flavorInsultNone = [
     ["You tell Mettaton his design is dated.", "He twirls dismissively in response."],
@@ -1187,7 +1211,7 @@ const flavorBlankNeutralOnce = [
 ];
 
 const flavorBlankNeutralMore = [
-    ["You submit another blank canvas"],
+    ["You submit another blank canvas."],
     ["You request to rate your just-erased drawing.", "Mettaton sighs. It’s almost dramatic."],
     ["Another rating request. Another blank canvas."]
 ];
