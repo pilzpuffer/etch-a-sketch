@@ -867,7 +867,7 @@ const flavorFlirtTooMuchEndingWin = [
     ["The moment lingers - longer than it should - but eventually, he draws back. His screen flickers, bright with energy. The crowd’s murmurs swell into a cacophony of anticipation."],
     ["He leans forward, one hand extending with theatrical flourish, presenting the final rose to you."],
     ["With a flourish, he twirls on his wheel, scattering glittering confetti from compartments you didn’t even know existed. The music swells, a triumphant, sparkling melody."],
-    ["He strikes a pose, one hand over his 'chest', the other extended upwards as though reaching for the stars."];
+    ["He strikes a pose, one hand over his 'chest', the other extended upwards as though reaching for the stars."]
 ];
 
 const mettFlirtTooMuchEndingWin = [
@@ -881,6 +881,32 @@ const mettFlirtTooMuchEndingWin = [
     ["The stage is set, darling - the spotlight’s on you!", "Now, paint with passion, with fire, and let the world see the masterpiece you’re meant to create!"],
     ["Because this love story?", "It’s only just beginning... and darling, it's going to be a showstopper!"]
 ];
+
+const flavorFlirtTooMuchEndingLose = [
+    ["The lights dim to a soft, tragic hue.", "Mettaton glides toward you, rose in hand, the crowd breathless with anticipation."],
+    ["He stops.", "Slowly... dramatically... he lowers the rose."],
+    ["He sighs deeply, placing a gloved hand to where a heart might be."],
+    ["He turns his back with a sharp, practiced spin.", "A single spotlight catches the glint of the rose as he clutches it to his chest like a fallen star."],
+    ["A sudden lurch - a trapdoor beneath your feet creaks ominously."],
+    ["Cue dramatic gasp from the audience.", "Somewhere, a production intern sobs into a headset."],
+    ["With a flick of his wrist, Mettaton pulls a hidden lever.", "You drop - theatrically - into a pit filled with oversized pink heart pillows marked “FRIEND ZONE”."],
+    ["Mettaton peers over the edge, striking a sorrowful pose, one hand extended downward."],
+    ["He tosses down a glittery envelope."],
+    ["He spins back to the crowd", "Music exploded into an over-the-top, bittersweet finale. Confetti rains. Cameras zoom."]
+];
+
+const mettFlirtTooMuchEndingLose = [
+    [""],
+    ["Ah... love.", "Sometimes, it’s grand.", "Transcendent.", "Worth a thousand encores..."],
+    ["And sometimes...", "It’s just good television."],
+    ["You dazzled, darling. You tried.", "But my heart is a five-star venue...", "And tonight?", "You didn’t quite make the guest list."],
+    ["Don’t take it personally!", "I simply must keep my options open for future shows!"],
+    [""],
+    [""],
+    ["You’re still one of my favorites, darling... just not THE one."],
+    ["As a consolation prize: a lifetime membership to my fan club!", "Signed, sealed, and sparkled - by yours truly!"],
+    ["Because even when hearts break—", "The show must go on!"]
+]
 
 const flavorInsultNone = [
     ["You tell Mettaton his design is dated.", "He twirls dismissively in response."],
