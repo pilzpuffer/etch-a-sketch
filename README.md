@@ -11,7 +11,7 @@ Roadmap to project finalization - as note to myself:
                5) <s>Add an interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)</s>
           2) Compose the 'final' rate function
                1) Logic for how Mett's rating phrases show up
-               2) Logic/structure for how "mini-judge's" ratings show up and disappear
+               2) Logic/structure for how "mini-judges'" ratings show up and disappear
                3) Logic for final score declaration and endgame
      2) Compose relevant text for rating
      3) Make animation for mini-Metts

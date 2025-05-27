@@ -197,7 +197,7 @@ const insultRoute = async function() {
         gameState["routeBlocked"]["flirt"] = true;
         gameState["routeBlocked"]["perform"] = true;
     }
-    if (gameState["routeStages"]["insultRouteStage"] === 4) {
+    if (gameState["routeStages"]["insultRouteStage"] >= 4) {
         leftArm.src = "./images/mett-sprite/arm-left-gun.png"
         battleTheme.pause();
 
@@ -289,6 +289,8 @@ const gameState = {
         mercy: "&"
     },
 
+    //ending
+    flirtLoseEnd: false,
     rate: {
         colorScore: 0,
         densityScore: 0,
@@ -843,7 +845,7 @@ const mettFlirtDrawn = [
 
 //flirt route
 const flavorFlirtTooMuch = [
-    ["You wink at cameras, making a heart shape with your hands.", "A few audience members seem to gasp."],
+    ["You wink, hands shaping into a heart on cue.", "A few audience members seem to gasp."],
     ["You sweep into an elegant, exaggerated bow - one hand extended as if inviting Mettaton to a dance."],
     ["You hum a love song - off-key, but painfully heartfelt.", "Audience gasps, someone faints in the back."],
     ["You unveil a sketch of Mettaton alluringly reclining atop a velvet chaise, draped in strategically placed roses and absolutely nothing else."],
@@ -906,7 +908,7 @@ const mettFlirtTooMuchEndingLose = [
     ["You’re still one of my favorites, darling... just not THE one."],
     ["As a consolation prize: a lifetime membership to my fan club!", "Signed, sealed, and sparkled - by yours truly!"],
     ["Because even when hearts break—", "The show must go on!"]
-]
+];
 
 const flavorInsultNone = [
     ["You tell Mettaton his design is dated.", "He twirls dismissively in response."],
@@ -1458,6 +1460,10 @@ allText = {
             none: flavorFlirtNone,
             drawn:flavorFlirtDrawn,
             tooMuch: flavorFlirtTooMuch,
+            ending: {
+                win: flavorFlirtTooMuchEndingWin,
+                lose: flavorFlirtTooMuchEndingLose
+            },
             wasInsulted: {
                 rude: flavorFlirtInsult,
                 moreRude: flavorFlirtDisgrace, 
@@ -1639,6 +1645,10 @@ allText = {
             none: mettFlirtNone,
             drawn: mettFlirtDrawn,
             tooMuch: mettFlirtTooMuch,
+            ending: {
+                win: mettFlirtTooMuchEndingWin,
+                lose: mettFlirtTooMuchEndingLose
+            },
             wasInsulted: {
                 rude: mettFlirtInsult,
                 moreRude: mettFlirtDisgrace, 
@@ -2034,7 +2044,7 @@ const defaultConversation = async function (topic, checkToIncrement) {
     } else if (topic !== "perform") {
         let tooMuchFlavor;
         let tooMuchMett;
-        let routeFunction = gameState["routeFunctions"][`${topic}`];;
+        let routeFunction = gameState["routeFunctions"][`${topic}`];
 
         if (topic === "insult" && gameState["flirtTimes"] >= 1) {
             if (gameState["routeFinished"]["flirt"]) {
@@ -2051,15 +2061,44 @@ const defaultConversation = async function (topic, checkToIncrement) {
 
         await routeFunction();
 
-        await flavorText(tooMuchFlavor[gameState["routeStages"][`${topic}RouteStage`]]);
-        if (gameState["routeStages"][`${topic}RouteStage`] >= 4) {
-            await mettTalking(tooMuchMett[gameState["routeStages"][`${topic}RouteStage`]]).then(() => {
-                gameState["routeFinished"][topic] = true;
-            })
-        } else {
+        
+
+        if (gameState["routeStages"][`${topic}RouteStage`] <= 4 ) {
+            await flavorText(tooMuchFlavor[gameState["routeStages"][`${topic}RouteStage`]]);
             await mettTalking(tooMuchMett[gameState["routeStages"][`${topic}RouteStage`]]);
         }
 
+            if (gameState["routeStages"]["insultRouteStage"] === 4) {
+                gameState["routeFinished"][topic] = true;
+            }
+
+            if (gameState["routeStages"]["flirtRouteStage"] === 5) {
+                if (gameState["stickTimes"] > 2 || gameState["hasDrawing"] === false || gameState["animationOn"] === false || gameState["musicOn"] === false) {
+                    gameState["flirtLoseEnd"] = true;
+                    tooMuchFlavor = allText["flavor"]["flirt"]["ending"]["lose"];
+                    tooMuchMett = allText["mettaton"]["flirt"]["ending"]["lose"];
+                   } else {
+                    tooMuchFlavor = allText["flavor"]["flirt"]["ending"]["win"];
+                    tooMuchMett = allText["mettaton"]["flirt"]["ending"]["win"];
+                   }
+                   
+                   console.log("flavor ending win", allText["flavor"]["flirt"]["ending"]["win"]);
+                    console.log("flavor ending lose", allText["flavor"]["flirt"]["ending"]["lose"]);
+                    console.log("Final tooMuchFlavor:", tooMuchFlavor);
+                    console.log("Final tooMuchMett:", tooMuchMett);
+                    console.log("First flavor entry:", tooMuchFlavor?.[0]);
+                    
+
+                    for (let i = 0; i < tooMuchFlavor.length; i++) {
+                        await flavorText(tooMuchFlavor[i]);
+                        await mettTalking(tooMuchMett[i]);
+                    }
+                    
+                    if (!gameState["flirtLoseEnd"]) {
+                        gameState["routeFinished"][topic] = true;
+                    }   
+            }
+        
         await routeFunction();
         gameState["routeStages"][`${topic}RouteStage`]++;
     } 
@@ -2165,7 +2204,7 @@ const flirting = function() {
             addFlirt -= 1;
         } else if (gameState["routeStages"]["insultRouteStage"] > 0 && gameState["routeStages"]["insultRouteStage"] <= 3) {
             addFlirt -= 2;
-        } else if (gameState["routeStages"]["insultRouteStage"] === 4) {
+        } else if (gameState["routeStages"]["insultRouteStage"] >= 4) {
             addFlirt -= 5;
         }
 
@@ -2195,7 +2234,7 @@ const performing = function() {
             addPerform -= 1;
         } else if (gameState["routeStages"]["insultRouteStage"] > 0 && gameState["routeStages"]["insultRouteStage"] <= 3) {
             addPerform -= 2;
-        } else if (gameState["routeStages"]["insultRouteStage"] === 4) {
+        } else if (gameState["routeStages"]["insultRouteStage"] >= 4) {
             addPerform -= 5;
         }
 
