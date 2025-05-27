@@ -894,7 +894,7 @@ const flavorFlirtTooMuchEndingLose = [
     ["With a flick of his wrist, Mettaton pulls a hidden lever.", "You drop - theatrically - into a pit filled with oversized pink heart pillows marked “FRIEND ZONE”."],
     ["Mettaton peers over the edge, striking a sorrowful pose, one hand extended downward."],
     ["He tosses down a glittery envelope."],
-    ["He spins back to the crowd", "Music exploded into an over-the-top, bittersweet finale. Confetti rains. Cameras zoom."]
+    ["He spins back to the crowd", "Music explodes into an over-the-top, bittersweet finale. Confetti rains. Cameras zoom."]
 ];
 
 const mettFlirtTooMuchEndingLose = [
@@ -2061,8 +2061,6 @@ const defaultConversation = async function (topic, checkToIncrement) {
 
         await routeFunction();
 
-        
-
         if (gameState["routeStages"][`${topic}RouteStage`] <= 4 ) {
             await flavorText(tooMuchFlavor[gameState["routeStages"][`${topic}RouteStage`]]);
             await mettTalking(tooMuchMett[gameState["routeStages"][`${topic}RouteStage`]]);
@@ -2080,23 +2078,14 @@ const defaultConversation = async function (topic, checkToIncrement) {
                    } else {
                     tooMuchFlavor = allText["flavor"]["flirt"]["ending"]["win"];
                     tooMuchMett = allText["mettaton"]["flirt"]["ending"]["win"];
-                   }
-                   
-                   console.log("flavor ending win", allText["flavor"]["flirt"]["ending"]["win"]);
-                    console.log("flavor ending lose", allText["flavor"]["flirt"]["ending"]["lose"]);
-                    console.log("Final tooMuchFlavor:", tooMuchFlavor);
-                    console.log("Final tooMuchMett:", tooMuchMett);
-                    console.log("First flavor entry:", tooMuchFlavor?.[0]);
-                    
+                   }     
 
                     for (let i = 0; i < tooMuchFlavor.length; i++) {
                         await flavorText(tooMuchFlavor[i]);
                         await mettTalking(tooMuchMett[i]);
                     }
                     
-                    if (!gameState["flirtLoseEnd"]) {
-                        gameState["routeFinished"][topic] = true;
-                    }   
+                    gameState["routeFinished"][topic] = true;
             }
         
         await routeFunction();
