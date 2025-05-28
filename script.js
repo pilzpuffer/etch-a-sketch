@@ -191,6 +191,7 @@ const insultTheme = document.querySelector("#insult-route");
 const betrayTheme = document.querySelector("#insult-route-betrayal")
 insultTheme.volume = sameVolume - 0.1;
 betrayTheme.volume = sameVolume - 0.1;
+const unRatedEnd = document.querySelector("#premature-end");
 
 const insultRoute = async function() {
     if (gameState["routeStages"]["insultRouteStage"] === 3) {
@@ -210,9 +211,9 @@ const insultRoute = async function() {
 
     if (gameState["routeFinished"]['insult'] === true) {
         setTimeout(function() {
-            body.replaceChildren();
-        }, 300).then(() => {
-
+            
+        }, 100).then(() => {
+            body.replaceChildren(unRatedEnd);
         })   
     }
 }

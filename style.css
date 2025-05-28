@@ -94,6 +94,7 @@ html,
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 * {
@@ -107,6 +108,35 @@ body {
     background-color: var(--background-color);
 
     user-select: none;
+}
+
+#premature-end {
+    position: relative;
+    overflow: hidden;
+
+    height: 100vh;
+    width: 100vw;
+    pointer-events: none;
+}
+
+.fuzzy-overlay {
+    position: absolute;
+    inset: -200%;
+    background-image: url("./images/static.jpg");
+    opacity: 50%;
+
+    animation: shift 0.2s linear infinite both;
+    pointer-events: none;
+}
+
+@keyframes shift {
+    0% {
+        transform: translateX(10%) translateY(10%);
+    }
+
+    100% {
+        transform: translateX(-10%) translateY(-10%);
+    }
 }
 
 #load {
