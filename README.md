@@ -23,9 +23,11 @@ Roadmap to project finalization - as note to myself:
      4) Add alternative ending sequence if user "lost" the flirt route (if they go through it while earning negative points (either for submitting blanks or endlessly throwing sticks - so if they're being annoying) or if they don't draw at least something first) - in this case, the user will see a tv static screen with credits rolling down - with various TV-related jobs and Mettaton's name next to them - and some sitcom-like music should play then
           1) <s>Add flavor/mett lines</s>
           2) <s>Add logic for flirt ending</s>
-          3) Set up a screen with "static" effect (will be used for the end of the Insult route as well)
+          3) <s>Set up a screen with "static" effect (will be used for the end of the Insult route as well)</s>
           4) Add music + scrolling effect for ending text for this route
-4) Add death screen for the end of the insult route - use a TV static effect for this, like the TV show was cut short (as it happens in that route)
+4) <s>Add death screen for the end of the insult route - use a TV static effect for this, like the TV show was cut short (as it happens in that route)</s> 
+     1) polish the soul appearance a bit
+     2) add text to the static screen for this ending
 5) <s>Add flavor/Mett text for disabling animations</s> - DONE! 
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!
      1) add some flavor/mett text for "fight" action as well 

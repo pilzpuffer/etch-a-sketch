@@ -192,6 +192,10 @@ const betrayTheme = document.querySelector("#insult-route-betrayal")
 insultTheme.volume = sameVolume - 0.1;
 betrayTheme.volume = sameVolume - 0.1;
 const unRatedEnd = document.querySelector("#premature-end");
+const laserShot = document.querySelector("#laser");
+const heartShatter = document.querySelector("#heart-shatter");
+const heartExplode = document.querySelector("#heart-explode");
+const heartHurt = document.querySelector("#heart-hurt");
 
 const insultRoute = async function() {
     if (gameState["routeStages"]["insultRouteStage"] === 3) {
@@ -211,10 +215,57 @@ const insultRoute = async function() {
 
     if (gameState["routeFinished"]['insult'] === true) {
         setTimeout(function() {
-            
-        }, 100).then(() => {
-            body.replaceChildren(unRatedEnd);
-        })   
+            function laser() {
+                const flash = document.createElement('div');
+                flash.classList.add('flash-effect');
+                document.body.appendChild(flash);
+                starSpace.classList.add("invisible");
+
+                const soul = document.createElement("img");
+                soul.id = "soul";
+                soul.src = "./images/red-soul-sprite.png";
+                // soul.src = "./images/red-soul-broken.png";
+
+                textField.appendChild(soul);
+                
+                requestAnimationFrame(() => {
+                    flash.style.opacity = '0.85'; 
+                    laserShot.play();
+                    setTimeout(() => {
+                        heartHurt.play();
+                    }, 50)
+
+                    laserShot.addEventListener("ended", function() {
+                        flash.style.opacity = '0';
+                        flash.remove()
+                        insultTheme.volume -= 0.1;
+                        betrayTheme.volume -= 0.1;
+
+                        setTimeout(() => {
+                            document.querySelector(".hp-numbers").textContent = "0 / 20";
+                            document.getElementById("red").style.width = "100%";
+                            document.getElementById("yellow").style.width = "0%";
+                            soul.src = "./images/red-soul-broken.png"
+                            heartShatter.play();
+                        }, 15)
+                    })
+
+                    heartShatter.addEventListener("ended", function() {
+                        setTimeout(() => {
+                            heartExplode.play()
+                        }, 10)
+                    })
+
+                    heartExplode.addEventListener("ended", function() {
+                        setTimeout(() => {
+                        body.replaceChildren(unRatedEnd); 
+                        }, 15)
+                    })
+                });
+              }
+
+              laser();
+        }, 50)
     }
 }
 
