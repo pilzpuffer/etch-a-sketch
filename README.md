@@ -36,21 +36,23 @@ Roadmap to project finalization
 9) Work on scaling for different/smaller screen resolutions - another intensive task
 10) Work on the intro sequence for this game - Mett text, some flavor text, maybe more sounds might be needed
 11) <s>Rework the "stick" function, add text</s> - DONE!
-12) Change font for Mettaton's dialogue
+12) <s>Change font for Mettaton's dialogue</s>
 13) Move the gun arm a bit up and to the right for the end of the insult route
 
 Debugging Roadmap:
 1) check why hideAndShow doesn't work for properly for motion actions now.
 2) <s>check line 1601\2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with). basically, currently there's an issue with insult progression and its interaction with other functions - it works fine by itself, start to finish</s>
-3) check on perform progression when insults were used - moreRude/tooMuch phrases don't play out correctly
+3) check on perform progression when insults were used - moreRude/tooMuch phrases don't play out
 
 Project notes:
 This concept really inspired me to try to make a cohesive mini-game - and while this REALLY goes beyond the initial task requirements, I'm glad that I've decided to undertake this in the end. This taught me a few valuable things on how to work on "bigger" projects. The biggest mistake of this project was how much time initially I've spent working on CSS, it was basically the first thing I've started to work on in this project. While yes, I did need to search for specific fonts and such to get the needed "aesthetic", I had to considerably rework a lot of styling down the way as the project grew. So now I'll know not to do that in the future x)
+Another thing - it's best to plan out such big projects in advance, instead of winging it as they go and making up new goal after goal - as that results in such projects taking forever to complete.
 
 There were a few ideas I've scrapped down the way:
 1) I wanted to add keyboard controls, just like in the Undertale itself - but I wasn't sure how to properly implement this. In the end, I've decided that it'll be best to make all controls pointer-based - as the main focus here should be drawing. IF this project also had "bullet hell" fight sequences, then yes, it would make sense to add keyboard controls - but there's little sense in adding that for a purely drawing/talking game
 2) I wanted to create a heart shattering animation for the end of the Insult route - but I've already used external help for figuring out the petal logic in the Flirt route, so adding another animation like that didn't seem quite fair - so I've decided against that (and I'm not proficient enough in JS animations to truly work on that by myself)
 3) I thought about adding an option for player to reply (similiar to how occasionally player in Undertale can select one of the 2 replies in certain battle sequences), but decided against that - as that would only additionally complicate the "rate" logic, and replying mechanic wouldn't be used anywhere else in this game - all interaction is done by player ACTing instead.
+4) I've missed out on the fact that only when Mettaton is in his "EX" form he doesn't speak in all uppercase. But I've taken note of that only at the very ending of this project, so I've just decided to leave the text capitalization as-is. After all, this is not a complete replica of the original game. 
 
 
 Acknowledgements/Thank-Yous:
