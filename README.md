@@ -1,5 +1,5 @@
 # etch-a-sketch
-Roadmap to project finalization - as note to myself:
+Roadmap to project finalization
 1) <s>Complete the page navigation for when there are more than 6 options available</s> - ALL DONE!
 2) Work on "rate" endgame logic -> biggest task at the moment
      1) Create rate function
@@ -17,7 +17,7 @@ Roadmap to project finalization - as note to myself:
      3) Make animation for mini-Metts
      4) Create ending sequence
 3) Add text for flirt/perform routes
-     1) Add text for the flirt route
+     1) <s>Add text for the flirt route</s>
      2) <s>Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))</s>
      3) <s>Add alt text to insult route if flirt route was in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes</s>
      4) Add alternative ending sequence if user "lost" the flirt route (if they go through it while earning negative points (either for submitting blanks or endlessly throwing sticks - so if they're being annoying) or if they don't draw at least something first) - in this case, the user will see a tv static screen with credits rolling down - with various TV-related jobs and Mettaton's name next to them - and some sitcom-like music should play then
@@ -26,8 +26,7 @@ Roadmap to project finalization - as note to myself:
           3) <s>Set up a screen with "static" effect (will be used for the end of the Insult route as well)</s>
           4) Add music + scrolling effect for ending text for this route
 4) <s>Add death screen for the end of the insult route - use a TV static effect for this, like the TV show was cut short (as it happens in that route)</s> 
-     1) polish the soul appearance a bit
-     2) add text to the static screen for this ending
+     1) <s>polish the soul appearance a bit</s>
 5) <s>Add flavor/Mett text for disabling animations</s> - DONE! 
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!
      1) add some flavor/mett text for "fight" action as well 
@@ -37,10 +36,13 @@ Roadmap to project finalization - as note to myself:
 9) Work on scaling for different/smaller screen resolutions - another intensive task
 10) Work on the intro sequence for this game - Mett text, some flavor text, maybe more sounds might be needed
 11) <s>Rework the "stick" function, add text</s> - DONE!
+12) Change font for Mettaton's dialogue
+13) Move the gun arm a bit up and to the right for the end of the insult route
 
 Debugging Roadmap:
 1) check why hideAndShow doesn't work for properly for motion actions now.
-2) check line 1601\2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with). basically, currently there's an issue with insult progression and its interaction with other functions - it works fine by itself, start to finish
+2) <s>check line 1601\2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with). basically, currently there's an issue with insult progression and its interaction with other functions - it works fine by itself, start to finish</s>
+3) check on perform progression when insults were used - moreRude/tooMuch phrases don't play out correctly
 
 Project notes:
 This concept really inspired me to try to make a cohesive mini-game - and while this REALLY goes beyond the initial task requirements, I'm glad that I've decided to undertake this in the end. This taught me a few valuable things on how to work on "bigger" projects. The biggest mistake of this project was how much time initially I've spent working on CSS, it was basically the first thing I've started to work on in this project. While yes, I did need to search for specific fonts and such to get the needed "aesthetic", I had to considerably rework a lot of styling down the way as the project grew. So now I'll know not to do that in the future x)
@@ -63,6 +65,10 @@ Pixelated font comes from Auntie Pixelante (? I couldn't locate author's current
 DotumChe Pixel is made by William Costello - https://fontstruct.com/fontstructors/1389119/fab-william1729
 
 
-all music/sound effects used within this project are made by Toby Fox and come from his game "Undertale" - if you haven't played it before, I highly recommend checking it out - https://store.steampowered.com/app/391540/Undertale/
+almost all music/sound effects used within this project are made by Toby Fox and come from his game "Undertale" - if you haven't played it before, I highly recommend checking it out - https://store.steampowered.com/app/391540/Undertale/
+
+one of the ending tracks ("I Got a Stick Arr Bryan Teoh") was made by Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
 
 The Fight menu slider was made by Clar @Clar1nettist (https://www.pixilart.com/art/undertale-fight-slider-fa94b6712500d0c)

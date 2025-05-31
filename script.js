@@ -224,7 +224,7 @@ const insultRoute = async function() {
                 const soul = document.createElement("img");
                 soul.id = "soul";
                 soul.src = "./images/red-soul-sprite.png";
-                // soul.src = "./images/red-soul-broken.png";
+                textField.style.justifyContent = "center";
 
                 textField.appendChild(soul);
                 
@@ -252,15 +252,24 @@ const insultRoute = async function() {
 
                     heartShatter.addEventListener("ended", function() {
                         setTimeout(() => {
-                            heartExplode.play()
-                        }, 10)
-                    })
+                            heartExplode.play();
 
-                    heartExplode.addEventListener("ended", function() {
-                        setTimeout(() => {
-                        body.replaceChildren(unRatedEnd); 
+                            body.replaceChildren(unRatedEnd); 
+
+                            const static = document.createElement("audio");
+                            static.src = "./music/static-sound.mp3";
+                            static.setAttribute("loop", "loop");
+                            static.volume = sameVolume - 0.1;
+
+                            body.appendChild(static);
+                            static.play();
+
+                            setTimeout(() => {
+                                body.replaceChildren();
+                            }, 3000)
+
                         }, 15)
-                    })
+                    })            
                 });
               }
 
@@ -997,7 +1006,7 @@ const flavorInsultTooMuch = [
     ["You push further, your words becoming sharper.", "Mettaton’s dazzling screen flickers, just a hint of irritation seeping through his cool composure."],
     ["You get bolder, throwing insults that make even the production team uneasy."],
     ["Your insults go too far, and the crew looks nervous.", "Mettaton’s usually vibrant shine seems to dull for a split second."],
-    ["You call Mettaton something unthinkable.", "The production crew frantically cuts to a commercial break, but it’s too late."]
+    ["You call Mettaton something unthinkable.", "The production crew frantically cuts to a commercial break and live audience scatters, but it’s too late."]
 ];
 const mettInsultTooMuch = [
     ["Oh, darling, you’re really digging yourself a hole, aren’t you?", "Keep this up, and I may stop gracing you with my attention."],
