@@ -67,10 +67,6 @@ Pixelated font comes from Auntie Pixelante (? I couldn't locate author's current
 DotumChe Pixel is made by William Costello - https://fontstruct.com/fontstructors/1389119/fab-william1729
 
 
-almost all music/sound effects used within this project are made by Toby Fox and come from his game "Undertale" - if you haven't played it before, I highly recommend checking it out - https://store.steampowered.com/app/391540/Undertale/
-
-one of the ending tracks ("I Got a Stick Arr Bryan Teoh") was made by Kevin MacLeod (incompetech.com)
-Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/
+all music/sound effects used within this project were made by Toby Fox and come from his game "Undertale" - if you haven't played it before, I highly recommend checking it out - https://store.steampowered.com/app/391540/Undertale/
 
 The Fight menu slider was made by Clar @Clar1nettist (https://www.pixilart.com/art/undertale-fight-slider-fa94b6712500d0c)

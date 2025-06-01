@@ -57,6 +57,22 @@ const applyMarker = (event) => {
     event.target.classList.add(gameState["currentDrawingColor"]);
 }
 
+const body = document.querySelector("body");
+const unRatedEnd = document.querySelector("#premature-end");
+
+const transmissionEnd = function() {
+    const static = document.createElement("audio");
+    static.src = "./music/static-sound.mp3";
+    static.setAttribute("loop", "loop");
+    static.volume = sameVolume - 0.1;
+
+    body.appendChild(static);
+    static.play();
+
+    setTimeout(() => {
+        body.replaceChildren();
+    }, 3000)
+}
 
 const flirtRoute = function() {
     const petals = {
@@ -176,22 +192,27 @@ const flirtRoute = function() {
         }, 50);
     }
 
-        if (gameState["routeFinished"]['flirt'] === true) {
-            setTimeout(function() {
-                leftArm.src = "./images/mett-sprite/arm-left.png";
-                romanceTheme.pause();
-                battleTheme.play();
-                gameState["isAnimating"] = false;
-            }, 150)    
+        if (gameState["routeFinished"]['flirt'] === true ) {
+            if (gameState["flirtLoseEnd"]) {
+                body.replaceChild(unRatedEnd);
+
+                //can use a method similiar to this to set up rolling credits https://codepen.io/pilzpuffer/pen/PwqNPBo
+            } else {
+                setTimeout(function() {
+                    leftArm.src = "./images/mett-sprite/arm-left.png";
+                    romanceTheme.pause();
+                    battleTheme.play();
+                    gameState["isAnimating"] = false;
+                }, 150)  
+            }  
         }
 };
 
-const body = document.querySelector("body");
 const insultTheme = document.querySelector("#insult-route");
 const betrayTheme = document.querySelector("#insult-route-betrayal")
 insultTheme.volume = sameVolume - 0.1;
 betrayTheme.volume = sameVolume - 0.1;
-const unRatedEnd = document.querySelector("#premature-end");
+
 const laserShot = document.querySelector("#laser");
 const heartShatter = document.querySelector("#heart-shatter");
 const heartExplode = document.querySelector("#heart-explode");
@@ -253,21 +274,8 @@ const insultRoute = async function() {
                     heartShatter.addEventListener("ended", function() {
                         setTimeout(() => {
                             heartExplode.play();
-
                             body.replaceChildren(unRatedEnd); 
-
-                            const static = document.createElement("audio");
-                            static.src = "./music/static-sound.mp3";
-                            static.setAttribute("loop", "loop");
-                            static.volume = sameVolume - 0.1;
-
-                            body.appendChild(static);
-                            static.play();
-
-                            setTimeout(() => {
-                                body.replaceChildren();
-                            }, 3000)
-
+                            transmissionEnd();
                         }, 15)
                     })            
                 });
@@ -2056,15 +2064,6 @@ const restoreDefaults = async function(topic, checkToDefaultOne, checkToDefaultT
     });
 }
 
-// check line 1601, gives an error if a few flirts were attempted before insult is clicked (this issue is with defaultConversation - reiew)
-// check on insult progression, as the lines don't show up as they should (in case if Mettaton was already flirted with), line 2395 - Uncaught TypeError: Cannot read properties of undefined (reading 'add')
-// it's this code: "Object.keys(gameState["routeFinished"]).forEach(route => {
-//                             if (menuOptions[route] && gameState["routeFinished"][route]) {
-//                                 menuOptions[route].classList.add("gone");
-//                             }
-//                         })"
-
-//used for flirt, perform and insult functions
 const defaultConversation = async function (topic, checkToIncrement) {
     successfulSelect();
     let correctKey = gameState["hasDrawing"] ? "drawn" : "none";
