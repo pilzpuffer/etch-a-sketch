@@ -758,7 +758,41 @@ body {
     pointer-events: none;
     z-index: 10;
     transition: opacity 100ms ease-out;
-  }
+}
+
+#end-text {
+    width: 20%;
+    margin: 0 0 0 10%;
+    top: auto;
+    bottom: 0;
+    height: 50%;
+    font-size: 350%;
+    text-align: justify;
+    overflow: hidden;
+    transform-origin: 50% 100%;
+
+    > div {
+       position: absolute;
+       top: 100;
+       animation: end-text 30s linear 13s;
+    }
+}
+
+@keyframes end-text {
+    0% {
+        top: 100%;
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 20%;
+        opacity: 0; 
+    }
+}
 
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 
 add breakpoints for that resolution and anything lower 

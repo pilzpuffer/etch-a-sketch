@@ -196,6 +196,7 @@ const flirtRoute = function() {
             if (gameState["flirtLoseEnd"]) {
                 body.replaceChild(unRatedEnd);
 
+
                 //can use a method similiar to this to set up rolling credits https://codepen.io/pilzpuffer/pen/PwqNPBo
             } else {
                 setTimeout(function() {
@@ -1344,7 +1345,7 @@ const mettBlankPositiveMore = [
 const mettBlankNeutralOnce = [
     ["I call this piece ‘Nothing to See Here’.", "A bold move, but I was promised a show.", "Maybe next time, include the art with the attitude."],
     ["Bravo! Truly, a piece that challenges the very concept of visual media!...", "...Now quit playing and actually draw something that judges will be able to rate."],
-    ["A blank canvas speaks volumes - but unfortunately, none of it is good.", "One point for audacity!", "And minus ten for messing around like this.", "But if you'll actually submit something, i can forget that deduction."],
+    ["A blank canvas speaks volumes - but unfortunately, none of it is good.", "One point for audacity!", "And minus ten for messing around like this.", "But if you'll actually submit something, I can forget that deduction."],
     ["Oh my! The gall to demand a rating for nothing!", "You truly are a provocateur... or a prankster.", "Either way, I’m entertained.", "Let’s aim for provocative and visible next time, darling."],
     ["Is this... perfomance art?", "Or are you just hoping I wouldn’t notice how you wiped your drawing clean?", "Cute.", "But points aren’t handed out for disappearing acts on this show - so chop-chop!."]
 ];
@@ -1365,9 +1366,14 @@ const mettBlankNegativeOnce = [
 
 const mettBlankGegativeMore = [
     ["You’re confusing minimalism with mediocrity."],
-    ["If you have nothing to say… then stop trying to speak."],
+    ["If you have nothing to say... then stop trying to speak."],
     ["You’ve submitted nothing. Again. And yet you demand attention."]
 ];
+
+const creditsText = [
+    ["best of the best!"],
+    ["thanks for reading this"]
+]
 
 
 allText = {
@@ -2131,7 +2137,7 @@ const defaultConversation = async function (topic, checkToIncrement) {
             }
 
             if (gameState["routeStages"]["flirtRouteStage"] === 5) {
-                if (gameState["stickTimes"] > 2 || gameState["hasDrawing"] === false || gameState["animationOn"] === false || gameState["musicOn"] === false) {
+                if (gameState["rate"]["baitAndSwitch"] > 0 || gameState["stickTimes"] > 2 || gameState["hasDrawing"] === false || gameState["animationOn"] === false || gameState["musicOn"] === false) {
                     gameState["flirtLoseEnd"] = true;
                     tooMuchFlavor = allText["flavor"]["flirt"]["ending"]["lose"];
                     tooMuchMett = allText["mettaton"]["flirt"]["ending"]["lose"];
@@ -2370,8 +2376,6 @@ const rating = async function() {
     })
     
     if (allColorLength.length === 0) {
-        gameState["rate"]["baitAndSwitch"] += 1;
-        
         let times = gameState["rate"]["baitAndSwitch"] === 0 ? "once" : "more";
         let attitude;
          
@@ -2390,10 +2394,12 @@ const rating = async function() {
 
         blankIndex = randomIndex(allText["mettaton"]["rate"]["blank"][attitude][times]);
 
-            await flavorText(allText["flavor"]["rate"]["blank"][attitude][times][blankIndex]);
-            await mettTalking(allText["mettaton"]["rate"]["blank"][attitude][times][blankIndex]);
+        await flavorText(allText["flavor"]["rate"]["blank"][attitude][times][blankIndex]);
+        await mettTalking(allText["mettaton"]["rate"]["blank"][attitude][times][blankIndex]);
 
-        return 
+        gameState["rate"]["baitAndSwitch"] += 1;
+
+        return;
     } else {
         let mostColor = allColorLength.reduce((a, b) => { return (a < b) ? a : b})
         let mostFrequentColor = [];

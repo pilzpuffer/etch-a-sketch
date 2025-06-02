@@ -7,7 +7,7 @@ Roadmap to project finalization
                1) <s>Logic for color rating</s>
                2) <s>Logic for density rating</s>
                3) <s>Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function. so need to work on route progression first</s>
-               4) <s>Need to add an interaction for a rose item (with changes to mannersScore)</s>
+               4) <s>Need to add an interaction for the rose item (with changes to mannersScore)</s>
                5) <s>Add an interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)</s>
           2) Compose the 'final' rate function
                1) Logic for how Mett's rating phrases show up
