@@ -5,7 +5,8 @@ window.addEventListener('load', () => {
     const load = document.querySelector("#load");
     const heart = document.querySelector("#heart");
     const fightSymbol = document.querySelector("#fight-symbol");
-    const unRatedEnd = document.querySelector("#premature-end");
+    const unRatedEnd = document.querySelector("#premature-end-noised");
+    const creditsRoll = document.querySelector("#premature-end");
     
     const heartBreak = document.querySelector("#battle-start-heartbreak");
     const battleStart = document.querySelector("#battle-start");
@@ -16,6 +17,7 @@ window.addEventListener('load', () => {
     battleTheme.volume = sameVolume - 0.1; //sadly, battle crusher theme is as loud as it is great
 
     unRatedEnd.remove();
+    creditsRoll.remove();
     const titleTextBack = document.createElement("div");
     titleTextBack.textContent = "Etch-A-Sketch: FabulOus ShOw!";
     titleTextBack.classList.add("title-back");

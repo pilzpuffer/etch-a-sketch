@@ -58,7 +58,8 @@ const applyMarker = (event) => {
 }
 
 const body = document.querySelector("body");
-const unRatedEnd = document.querySelector("#premature-end");
+const unRatedEnd = document.querySelector("#premature-end-noised");
+const creditsRoll = document.querySelector("#premature-end");
 
 const transmissionEnd = function() {
     const static = document.createElement("audio");
@@ -194,10 +195,7 @@ const flirtRoute = function() {
 
         if (gameState["routeFinished"]['flirt'] === true ) {
             if (gameState["flirtLoseEnd"]) {
-                body.replaceChild(unRatedEnd);
-
-
-                //can use a method similiar to this to set up rolling credits https://codepen.io/pilzpuffer/pen/PwqNPBo
+                body.replaceChildren(creditsRoll);
             } else {
                 setTimeout(function() {
                     leftArm.src = "./images/mett-sprite/arm-left.png";
@@ -238,10 +236,10 @@ const insultRoute = async function() {
     if (gameState["routeFinished"]['insult'] === true) {
         setTimeout(function() {
             function laser() {
+                starSpace.classList.add("invisible");
                 const flash = document.createElement('div');
                 flash.classList.add('flash-effect');
                 document.body.appendChild(flash);
-                starSpace.classList.add("invisible");
 
                 const soul = document.createElement("img");
                 soul.id = "soul";
@@ -275,6 +273,7 @@ const insultRoute = async function() {
                     heartShatter.addEventListener("ended", function() {
                         setTimeout(() => {
                             heartExplode.play();
+
                             body.replaceChildren(unRatedEnd); 
                             transmissionEnd();
                         }, 15)
@@ -1015,7 +1014,7 @@ const flavorInsultTooMuch = [
     ["You push further, your words becoming sharper.", "Mettaton’s dazzling screen flickers, just a hint of irritation seeping through his cool composure."],
     ["You get bolder, throwing insults that make even the production team uneasy."],
     ["Your insults go too far, and the crew looks nervous.", "Mettaton’s usually vibrant shine seems to dull for a split second."],
-    ["You call Mettaton something unthinkable.", "The production crew frantically cuts to a commercial break and live audience scatters, but it’s too late."]
+    ["You call Mettaton something unthinkable.", "The production crew frantically cuts to a commercial break, and live audience scatters - but it’s too late."]
 ];
 const mettInsultTooMuch = [
     ["Oh, darling, you’re really digging yourself a hole, aren’t you?", "Keep this up, and I may stop gracing you with my attention."],
@@ -1347,7 +1346,7 @@ const mettBlankNeutralOnce = [
     ["Bravo! Truly, a piece that challenges the very concept of visual media!...", "...Now quit playing and actually draw something that judges will be able to rate."],
     ["A blank canvas speaks volumes - but unfortunately, none of it is good.", "One point for audacity!", "And minus ten for messing around like this.", "But if you'll actually submit something, I can forget that deduction."],
     ["Oh my! The gall to demand a rating for nothing!", "You truly are a provocateur... or a prankster.", "Either way, I’m entertained.", "Let’s aim for provocative and visible next time, darling."],
-    ["Is this... perfomance art?", "Or are you just hoping I wouldn’t notice how you wiped your drawing clean?", "Cute.", "But points aren’t handed out for disappearing acts on this show - so chop-chop!."]
+    ["Is this... perfomance art?", "Or are you just hoping I wouldn’t notice how you wiped your drawing clean?", "Cute.", "But points aren’t handed out for disappearing acts on this show - so chop-chop!"]
 ];
 
 const mettBlankNeutralMore = [
@@ -2127,32 +2126,32 @@ const defaultConversation = async function (topic, checkToIncrement) {
 
         await routeFunction();
 
-        if (gameState["routeStages"][`${topic}RouteStage`] <= 4 ) {
+        if (gameState["routeStages"][`${topic}RouteStage`] <= 4 || topic === "insult") {
             await flavorText(tooMuchFlavor[gameState["routeStages"][`${topic}RouteStage`]]);
             await mettTalking(tooMuchMett[gameState["routeStages"][`${topic}RouteStage`]]);
-        }
 
             if (gameState["routeStages"]["insultRouteStage"] === 4) {
                 gameState["routeFinished"][topic] = true;
             }
+        }
 
-            if (gameState["routeStages"]["flirtRouteStage"] === 5) {
-                if (gameState["rate"]["baitAndSwitch"] > 0 || gameState["stickTimes"] > 2 || gameState["hasDrawing"] === false || gameState["animationOn"] === false || gameState["musicOn"] === false) {
-                    gameState["flirtLoseEnd"] = true;
-                    tooMuchFlavor = allText["flavor"]["flirt"]["ending"]["lose"];
-                    tooMuchMett = allText["mettaton"]["flirt"]["ending"]["lose"];
-                   } else {
+        if (gameState["routeStages"]["flirtRouteStage"] === 4) {
+            if (gameState["rate"]["baitAndSwitch"] > 0 || gameState["stickTimes"] > 2 || gameState["hasDrawing"] === false || gameState["animationOn"] === false || gameState["musicOn"] === false) {
+                gameState["flirtLoseEnd"] = true;
+                tooMuchFlavor = allText["flavor"]["flirt"]["ending"]["lose"];
+                tooMuchMett = allText["mettaton"]["flirt"]["ending"]["lose"];
+                } else {
                     tooMuchFlavor = allText["flavor"]["flirt"]["ending"]["win"];
                     tooMuchMett = allText["mettaton"]["flirt"]["ending"]["win"];
-                   }     
+                }     
 
-                    for (let i = 0; i < tooMuchFlavor.length; i++) {
-                        await flavorText(tooMuchFlavor[i]);
-                        await mettTalking(tooMuchMett[i]);
-                    }
+                for (let i = 0; i < tooMuchFlavor.length; i++) {
+                    await flavorText(tooMuchFlavor[i]);
+                    await mettTalking(tooMuchMett[i]);
+                }
                     
-                    gameState["routeFinished"][topic] = true;
-            }
+                gameState["routeFinished"][topic] = true;
+        }     
         
         await routeFunction();
         gameState["routeStages"][`${topic}RouteStage`]++;
