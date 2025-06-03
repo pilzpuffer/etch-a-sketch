@@ -130,16 +130,19 @@ body {
 
 #end-text {
        position: relative;
+       visibility: hidden;
        animation: end-text 20s linear 1s;
        animation-fill-mode: forwards;
 }
 
 @keyframes end-text {
     0% {
-        transform: translateY(150%)
+        visibility: visible;
+        transform: translateY(100%)
     }
 
     100% {
+        visibility: visible;
         transform: translateY(-100%);
     }
 }

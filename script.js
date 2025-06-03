@@ -976,7 +976,7 @@ const mettFlirtTooMuchEndingLose = [
     [""],
     ["You’re still one of my favorites, darling... just not THE one."],
     ["As a consolation prize: a lifetime membership to my fan club!", "Signed, sealed, and sparkled - by yours truly!"],
-    ["Because even when hearts break—", "The show must go on!"]
+    ["Because even when hearts break—", "-THE SHOW MUST GO ON!"]
 ];
 
 const flavorInsultNone = [
