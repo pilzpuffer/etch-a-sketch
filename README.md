@@ -38,6 +38,7 @@ Roadmap to project finalization
 11) <s>Rework the "stick" function, add text</s> - DONE!
 12) <s>Change font for Mettaton's dialogue</s>
 13) Move the gun arm a bit up and to the right for the end of the insult route
+14) Replace all sounds - they need to be 50% more quiet
 
 Debugging Roadmap:
 1) check why hideAndShow doesn't work for properly for motion actions now.
