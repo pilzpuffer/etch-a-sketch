@@ -20,11 +20,11 @@ Roadmap to project finalization
      1) <s>Add text for the flirt route</s>
      2) <s>Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))</s>
      3) <s>Add alt text to insult route if flirt route was in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes</s>
-     4) Add alternative ending sequence if user "lost" the flirt route (if they go through it while earning negative points (either for submitting blanks or endlessly throwing sticks - so if they're being annoying) or if they don't draw at least something first) - in this case, the user will see a tv static screen with credits rolling down - with various TV-related jobs and Mettaton's name next to them - and some sitcom-like music should play then
+     4) <s>Add alternative ending sequence if user "lost" the flirt route (if they go through it while earning negative points (either for submitting blanks or endlessly throwing sticks - so if they're being annoying) or if they don't draw at least something first) - in this case, the user will see a tv static screen with credits rolling down - with various TV-related jobs and Mettaton's name next to them - and some sitcom-like music should play then</s>
           1) <s>Add flavor/mett lines</s>
           2) <s>Add logic for flirt ending</s>
           3) <s>Set up a screen with "static" effect (will be used for the end of the Insult route as well)</s>
-          4) Add music + scrolling effect for ending text for this route
+          4) <s>Add music + scrolling effect for ending text for this route</s>
 4) <s>Add death screen for the end of the insult route - use a TV static effect for this, like the TV show was cut short (as it happens in that route)</s> 
      1) <s>polish the soul appearance a bit</s>
 5) <s>Add flavor/Mett text for disabling animations</s> - DONE! 

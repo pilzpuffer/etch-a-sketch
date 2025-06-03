@@ -131,19 +131,24 @@ body {
 #end-text {
        position: relative;
        visibility: hidden;
-       animation: end-text 20s linear 1s;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       transform: translateY(300%);
+       animation: end-text 45s linear 2s;
        animation-fill-mode: forwards;
 }
 
 @keyframes end-text {
     0% {
         visibility: visible;
-        transform: translateY(100%)
+        transform: translateY(300%)
     }
 
     100% {
         visibility: visible;
-        transform: translateY(-100%);
+        transform: translateY(-500%);
     }
 }
 

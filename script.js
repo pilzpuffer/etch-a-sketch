@@ -60,6 +60,7 @@ const applyMarker = (event) => {
 const body = document.querySelector("body");
 const unRatedEnd = document.querySelector("#premature-end-noised");
 const creditsRoll = document.querySelector("#premature-end");
+const creditsTextBox = document.querySelector("#end-text");
 
 const transmissionEnd = function() {
     const static = document.createElement("audio");
@@ -200,6 +201,13 @@ const flirtRoute = function() {
                 creditsMusic.src = "./music/Undertale OST : 025 - Dating Start!.mp3"
                 creditsMusic.setAttribute("loop", "loop");
                 creditsMusic.volume = sameVolume - 0.1;
+
+                for (let i = 0; i < creditsText.length; i++) {
+                    const newLine = document.createElement("p");
+                    newLine.textContent = creditsText[i];
+
+                    creditsTextBox.appendChild(newLine);
+                }
 
                 creditsMusic.play();
             } else {
@@ -1376,50 +1384,48 @@ const mettBlankGegativeMore = [
 ];
 
 const creditsText = [
-    ["METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS"],
-    [""]
-    ["Production Team"],
-    ["Directed by: Mettaton"],
-    ["Camera Operator: Aaron"],
-    ["Sound Effects & Music: Napstablook"],
-    ["Lighting Technician: Glowstick Jerry"],
-    ["Robotics Specialist: Alphys"],
-    ["Makeup Artist: Alphys"],
-    ["Cue/Applause Sign Holder: Mettabot Model CLAP-TRAP"],
-    ["On-Set Catering: Muffet"],
-    [""],
-    ["Romantic Operations Department"],
-    ["Romantic Tension Consultant: Burgerpants (intern)"],
-    ["Breakup Scene Consultants: Bratty & Catty"],
-    ["Post-Rejection Recovery Counselor: Papyrus (Certified Encouragement Expert)"],
-    ["Heartbreak Stunt Double: A cardboard box with lipstick"],
-    ["Romantic Lighting Designer: Tsunderplane"],
-    ["Flirt Line Editor: Temmie"],
-    [""],
-    ["Stage & Set Crew"],
-    ["Stage Pyrotechnics & Fog Machine Operator: Vulkin"],
-    ["Glitter Effects Supervisor: A swarm of Tsunderplanes"],
-    ["Rose Deployment Technician: Lesser Dog"],
-    ["Confetti Safety Officer: Napstablook"],
-    [""],
-    ["Award Segment"],
-    ["Best Improvised Monologue While Rejecting a Suitor (Gracefully): Mettaton"],
-    ["Best Performance by a Leading Role in a Romance Drama: Also Mettaton"],
-    [""],
-    ["This show was made possible by:"],
-    ["GlamGal Grease – For when your gears need to glow."],
-    ["RoboRomance Magazine – Now 99% Mettaton!"],
-    ["Hotland Heartbreakers Hotline – “Now 30% less judgment!”"],
-    ["The Official Mettaton Body Pillow – “For lonely nights... or all of them.”"],
-    ["Annoying Dog’s Anti-Flirt Spray – “Stops awkwardness in its tracks!” (Now with actual barking)"],
-    ["Dramatone Eyeliner – Cries with you."],
-    [""],
-    ["No monsters were emotionally harmed during the making of this episode."],
-    ["Any resemblance to your love life is purely coincidental... probably."],
-    ["Viewer discretion advised: contains emotional turbulence and excessive sparkle."],
-    ["Use sparkle responsibly."],
-    [""],
-    ["Tune in next time for more drama, more sparkle, and maybe, just maybe... more love."]
+    "METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS",
+    "",
+    "Production Team",
+    "Directed by: Mettaton",
+    "Camera Operator: Aaron",
+    "Sound Effects & Music: Napstablook",
+    "Lighting Technician: Glowstick Jerry",
+    "Robotics Specialist: Alphys",
+    "Makeup Artist: Alphys",
+    "Cue/Applause Sign Holder: Mettabot Model CLAP-TRAP",
+    "On-Set Catering: Muffet",
+    "",
+    "Romantic Operations Department",
+    "Romantic Tension Consultant: Burgerpants (intern)",
+    "Breakup Scene Consultants: Bratty & Catty",
+    "Post-Rejection Recovery Counselor: Papyrus (Certified Encouragement Expert)",
+    "Heartbreak Stunt Double: A cardboard box with lipstick",
+    "Romantic Lighting Designer: Tsunderplane",
+    "Flirt Line Editor: Temmie",
+    "",
+    "Stage & Set Crew",
+    "Stage Pyrotechnics & Fog Machine Operator: Vulkin",
+    "Glitter Effects Supervisor: A swarm of Tsunderplanes",
+    "Rose Deployment Technician: Lesser Dog",
+    "",
+    "Award Segment",
+    "Best Improvised Monologue While Rejecting a Suitor (Gracefully): Mettaton",
+    "Best Performance by a Leading Role in a Romance Drama: Also Mettaton",
+    "",
+    "This show was made possible by:",
+    "GlamGal Grease – For when your gears need to glow.",
+    "RoboRomance Magazine – Now 99% Mettaton!",
+    "Hotland Heartbreakers Hotline – “Now 30% less judgment!”",
+    "The Official Mettaton Body Pillow – “For lonely nights... or all of them.”",
+    "Dramatone Eyeliner – Cries with you.",
+    "",
+    "No monsters were emotionally harmed during the making of this episode.",
+    "Any resemblance to your love life is purely coincidental... probably.",
+    "Viewer discretion advised: contains emotional turbulence and excessive sparkle.",
+    "Use sparkle responsibly.",
+    "",
+    "Tune in next time for more drama, more sparkle, and maybe, just maybe... more love." 
 ]
 
 
