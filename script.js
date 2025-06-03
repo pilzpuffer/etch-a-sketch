@@ -237,7 +237,13 @@ const insultRoute = async function() {
         gameState["routeBlocked"]["perform"] = true;
     }
     if (gameState["routeStages"]["insultRouteStage"] >= 4) {
-        leftArm.src = "./images/mett-sprite/arm-left-gun.png"
+        leftArm.src = "./images/mett-sprite/arm-left-gun.png";
+        arms["leftY"]["upperLimit"] = 31;
+        arms["leftX"]["upperLimit"] = 4.5;
+        document.documentElement.style.setProperty('--left-hand-position-Y', `31%`);
+        document.documentElement.style.setProperty('--left-hand-position-X', `4.5%`);
+
+
         battleTheme.pause();
 
         if (gameState["routeFinished"]["flirt"]) {
@@ -476,94 +482,98 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
         }
     })
 
-    function getNumber(element){
-        const initialCss = getComputedStyle(document.documentElement).getPropertyValue(element);
-        let prepare = initialCss.slice(0, -1);
-        let toNumber = parseFloat(prepare); 
-        toNumber = Math.round(toNumber * 10) / 10;
-        return toNumber;
-    };
+    // function getNumber(element){
+    //     const initialCss = getComputedStyle(document.documentElement).getPropertyValue(element);
+    //     let prepare = initialCss.slice(0, -1);
+    //     let toNumber = parseFloat(prepare); 
+    //     toNumber = Math.round(toNumber * 10) / 10;
+    //     return toNumber;
+    // };
     
-    function adjustValue(element, operation, amount){
+    // function adjustValue(element, operation, amount){
     
-        let properNumber = getNumber(element);
+    //     let properNumber = getNumber(element);
         
-        let result;
+    //     let result;
          
-        if (operation === "reduce") {
-            result = Math.round((properNumber - amount)*10) / 10;
-        } else if (operation === "increase") {
-            result = Math.round((properNumber + amount)*10) / 10;
-        } else {
-            console.log("Invalid operation");
-            return;
-        }
+    //     if (operation === "reduce") {
+    //         result = Math.round((properNumber - amount)*10) / 10;
+    //     } else if (operation === "increase") {
+    //         result = Math.round((properNumber + amount)*10) / 10;
+    //     } else {
+    //         console.log("Invalid operation");
+    //         return;
+    //     }
     
-        if(element === "--rotate-value" || element === "--skew-value") {
-            return `${result}deg`
-        }
+    //     if(element === "--rotate-value" || element === "--skew-value") {
+    //         return `${result}deg`
+    //     }
         
-        return `${result}%`;
-        }
+    //     return `${result}%`;
+    //     }
     
-        wentUp = false;
+    //     wentUp = false;
     
-        const arms = {
-            leftY: {
-                upperLimit: 6.5,
-                get lowerLimit() {
-                    return (this.upperLimit + 1);
-                }
-            },
+    //     const arms = {
+    //         leftY: {
+    //             upperLimit: 6.5,
+    //             get lowerLimit() {
+    //                 return (this.upperLimit + 1);
+    //             }
+    //         },
     
-            rightY: {
-                upperLimit: -3,
-                get lowerLimit() {
-                    return (this.upperLimit + 1);
-                }
-            },
+    //         rightY: {
+    //             upperLimit: -3,
+    //             get lowerLimit() {
+    //                 return (this.upperLimit + 1);
+    //             }
+    //         },
     
-            leftX: {
-                upperLimit: 27,
-                lowerLimit: 15
-            },
+    //         leftX: {
+    //             upperLimit: 30,
+    //             get lowerLimit() {
+    //                 return (this.upperLimit - 11);
+    //             }
+    //         },
     
-            rightX: {
-                upperLimit: -18,
-                lowerLimit: -11
-            },
-        }
+    //         rightX: {
+    //             upperLimit: -19,
+    //             get lowerLimit() {
+    //                 return (this.upperLimit + 11);
+    //             }
+    //         },
+    //     }
        
-    function moveArms(direction, moveSpeed) {
-        document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', direction, moveSpeed));
-        document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', direction, moveSpeed));
-    }
+    // function moveArms(direction, moveSpeed) {
+    //     document.documentElement.style.setProperty('--left-hand-position-Y', adjustValue('--left-hand-position-Y', direction, moveSpeed));
+    //     document.documentElement.style.setProperty('--right-hand-position-Y', adjustValue('--right-hand-position-Y', direction, moveSpeed));
+    // }
 
-    const armsMotion = function () {
-        let leftPositionY = getNumber('--left-hand-position-Y');
-        let rightPositionY = getNumber('--right-hand-position-Y');
-        let moveSpeed = 0.1;
+    // const armsMotion = function () {
+    //     let leftPositionY = getNumber('--left-hand-position-Y');
+    //     let rightPositionY = getNumber('--right-hand-position-Y');
+    //     let moveSpeed = 0.1;
     
-        if (!wentUp && leftPositionY >= arms["leftY"]["upperLimit"] && rightPositionY >= arms["rightY"]["upperLimit"]) {
-            if (leftPositionY === arms["leftY"]["upperLimit"] && rightPositionY === arms["rightY"]["upperLimit"]) {
-                wentUp = true;
-            }
-            moveArms("reduce", moveSpeed);
-        } else if (wentUp && leftPositionY <= arms["leftY"]["lowerLimit"] && rightPositionY <= arms["rightY"]["lowerLimit"]){
-            if (leftPositionY === arms["leftY"]["lowerLimit"] && rightPositionY === arms["rightY"]["lowerLimit"]) {
-                wentUp = false;
-            }
-            moveArms("increase", moveSpeed);
-        }
-    }
-    async function jazzHands() {
-        if (gameState["moveArms"]) {
-            armsMotion();
-            await new Promise((resolve) => setTimeout(resolve, 40));
+    //     if (!wentUp && leftPositionY >= arms["leftY"]["upperLimit"] && rightPositionY >= arms["rightY"]["upperLimit"]) {
+    //         if (leftPositionY === arms["leftY"]["upperLimit"] && rightPositionY === arms["rightY"]["upperLimit"]) {
+    //             wentUp = true;
+    //         }
+    //         moveArms("reduce", moveSpeed);
+    //     } else if (wentUp && leftPositionY <= arms["leftY"]["lowerLimit"] && rightPositionY <= arms["rightY"]["lowerLimit"]){
+    //         if (leftPositionY === arms["leftY"]["lowerLimit"] && rightPositionY === arms["rightY"]["lowerLimit"]) {
+    //             wentUp = false;
+    //         }
+    //         moveArms("increase", moveSpeed);
+    //     }
+    // }
+    // async function jazzHands() {
+    //     if (gameState["moveArms"]) {
+    //         armsMotion();
+    //         await new Promise((resolve) => setTimeout(resolve, 40));
 
-            requestAnimationFrame(jazzHands);
-        }
-    }
+    //         requestAnimationFrame(jazzHands);
+    //     }
+    // }
 
     async function handWave() {
         if (gameState["moveArms"]) {
@@ -581,7 +591,7 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
         }
     }
 
-    requestAnimationFrame(jazzHands);
+    // requestAnimationFrame(jazzHands);
     requestAnimationFrame(handWave);
     
     //if changed, left and right skews should be the same number - but the right skew should always be negative
@@ -608,53 +618,53 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
     let swingTimes = 5; 
     
     //left and skew are not selected for a particular reason - since the values in that object are basically the same, it doesn't really make a difference
-    function swingAmountBody (swingTimes) {
-        return Math.abs(Math.round(((bodyWiggle["left"]["skew"]) / swingTimes) * 100) / 100);
-    }
+    // function swingAmountBody (swingTimes) {
+    //     return Math.abs(Math.round(((bodyWiggle["left"]["skew"]) / swingTimes) * 100) / 100);
+    // }
     
-    function swingBody(direction, swingTimes) {
-    let rotateValue = adjustValue('--rotate-value', direction, swingTimes);
-    let skewValue = adjustValue('--skew-value', direction, -swingTimes);
+    // function swingBody(direction, swingTimes) {
+    // let rotateValue = adjustValue('--rotate-value', direction, swingTimes);
+    // let skewValue = adjustValue('--skew-value', direction, -swingTimes);
 
     // Batch updates to minimize reflows
-    document.documentElement.style.setProperty('--rotate-value', rotateValue);
-    document.documentElement.style.setProperty('--skew-value', skewValue);
-    }
+    // document.documentElement.style.setProperty('--rotate-value', rotateValue);
+    // document.documentElement.style.setProperty('--skew-value', skewValue);
+    // }
 
-    async function swingingMotion() {
-        if (gameState["moveBody"]) {
-            let rotation = getNumber('--rotate-value');
-            let skew = getNumber('--skew-value');
-            let bodySwing = swingAmountBody(swingTimes);
+//     async function swingingMotion() {
+//         if (gameState["moveBody"]) {
+//             let rotation = getNumber('--rotate-value');
+//             let skew = getNumber('--skew-value');
+//             let bodySwing = swingAmountBody(swingTimes);
         
         
-            if (!mettBody.classList.contains("body-wiggle") && !leftArm.classList.contains("correct-arm") && !rightArm.classList.contains("correct-arm")) {
-                mettBody.classList.add("body-wiggle");
-                leftArm.classList.add("correct-arm") ;
-                rightArm.classList.add("correct-arm");
-                document.documentElement.style.setProperty('--arm-scaling', 1.5);
-            }
+//             if (!mettBody.classList.contains("body-wiggle") && !leftArm.classList.contains("correct-arm") && !rightArm.classList.contains("correct-arm")) {
+//                 mettBody.classList.add("body-wiggle");
+//                 leftArm.classList.add("correct-arm") ;
+//                 rightArm.classList.add("correct-arm");
+//                 document.documentElement.style.setProperty('--arm-scaling', 1.5);
+//             }
         
-                if (!gameState["wentLeft"] && rotation >= bodyWiggle["left"]["rotate"] && skew <= bodyWiggle["left"]["skew"]) {
-                if (rotation === bodyWiggle["left"]["rotate"] && skew === bodyWiggle["left"]["skew"]) {
-                    gameState["wentLeft"] = true;
-                }
-                swingBody("reduce", bodySwing);
+//                 if (!gameState["wentLeft"] && rotation >= bodyWiggle["left"]["rotate"] && skew <= bodyWiggle["left"]["skew"]) {
+//                 if (rotation === bodyWiggle["left"]["rotate"] && skew === bodyWiggle["left"]["skew"]) {
+//                     gameState["wentLeft"] = true;
+//                 }
+//                 swingBody("reduce", bodySwing);
                 
-            } else if (gameState["wentLeft"] && rotation <= bodyWiggle["right"]["rotate"] && skew >= bodyWiggle["right"]["skew"]) {
-                if (rotation === bodyWiggle["right"]["rotate"] && skew === bodyWiggle["right"]["skew"]) {
-                    gameState["wentLeft"] = false;
-                }
-                swingBody("increase", bodySwing);
+//             } else if (gameState["wentLeft"] && rotation <= bodyWiggle["right"]["rotate"] && skew >= bodyWiggle["right"]["skew"]) {
+//                 if (rotation === bodyWiggle["right"]["rotate"] && skew === bodyWiggle["right"]["skew"]) {
+//                     gameState["wentLeft"] = false;
+//                 }
+//                 swingBody("increase", bodySwing);
         
-            }
+//             }
 
-            await new Promise((resolve) => setTimeout(resolve, 25));
-            requestAnimationFrame(swingingMotion);
-        }
-    }
+//             await new Promise((resolve) => setTimeout(resolve, 25));
+//             requestAnimationFrame(swingingMotion);
+//         }
+//     }
 
-requestAnimationFrame(swingingMotion);
+// requestAnimationFrame(swingingMotion);
 
 const actionButtons = document.querySelectorAll(".action-button");
 const textField = document.querySelector("#text-field");
@@ -1396,13 +1406,18 @@ const creditsText = [
     "Cue/Applause Sign Holder: Mettabot Model CLAP-TRAP",
     "On-Set Catering: Muffet",
     "",
+    "Art Department",
+    "Head Illustrator & Artistic Panic Manager: So Sorry",
+    "Mettaton Face Model Reference: Mettaton (of course)",
+    "Live Sketch Recovery Team: Temmie",
+    "Face Canvas Maintenance Crew: Woshua",
+    "",
     "Romantic Operations Department",
-    "Romantic Tension Consultant: Burgerpants (intern)",
+    "Romantic Tension Consultant: Burgerpants (unpaid intern)",
     "Breakup Scene Consultants: Bratty & Catty",
     "Post-Rejection Recovery Counselor: Papyrus (Certified Encouragement Expert)",
     "Heartbreak Stunt Double: A cardboard box with lipstick",
     "Romantic Lighting Designer: Tsunderplane",
-    "Flirt Line Editor: Temmie",
     "",
     "Stage & Set Crew",
     "Stage Pyrotechnics & Fog Machine Operator: Vulkin",

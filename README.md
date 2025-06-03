@@ -16,7 +16,7 @@ Roadmap to project finalization
      2) Compose relevant text for rating
      3) Make animation for mini-Metts
      4) Create ending sequence
-3) Add text for flirt/perform routes
+3) <s>Add text for flirt/perform routes</s>
      1) <s>Add text for the flirt route</s>
      2) <s>Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))</s>
      3) <s>Add alt text to insult route if flirt route was in the "too much" phase - point deductions will be bigger in this case so that user will lose what was gained for those routes</s>
@@ -45,6 +45,7 @@ Debugging Roadmap:
 2) <s>check line 1601\2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with). basically, currently there's an issue with insult progression and its interaction with other functions - it works fine by itself, start to finish</s>
 3) check on perform progression when insults were used - moreRude/tooMuch phrases don't play out
 4) related to the problem above - there's an issue when insult is initiated on stage 4 of flirting, check on that as well
+5) verify if the option to flirt gets properly hidden after the route is finished successfully
 
 Project notes:
 This concept really inspired me to try to make a cohesive mini-game - and while this REALLY goes beyond the initial task requirements, I'm glad that I've decided to undertake this in the end. This taught me a few valuable things on how to work on "bigger" projects. The biggest mistake of this project was how much time initially I've spent working on CSS, it was basically the first thing I've started to work on in this project. While yes, I did need to search for specific fonts and such to get the needed "aesthetic", I had to considerably rework a lot of styling down the way as the project grew. So now I'll know not to do that in the future x)
