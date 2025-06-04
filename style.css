@@ -828,6 +828,13 @@ body {
     transition: opacity 100ms ease-out;
 }
 
+.paused {
+    -webkit-animation-play-state: paused !important;
+    -moz-animation-play-state: paused !important; 
+    -o-animation-play-state: paused !important; 
+    animation-play-state: paused !important;
+}
+
 /* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 
 add breakpoints for that resolution and anything lower 
 

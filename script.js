@@ -625,7 +625,7 @@ const flavorStopOnce = [
 
 const flavorStopTwice = [
     ["You make a T shape with your hands.", "Offstage, a spotlight snaps onto Mettaton’s frozen form."],
-    ["You raise your hand grandly, commanding complete stillness.", "Even the audience seems to lean forward, holding their breath"],
+    ["You raise your hand, commanding complete stillness.", "Even the audience seems to lean forward, holding their breath."],
     ["You clasp your hands in front of you solemnly.", "Mettaton catches the cue and freezes, a perfect monument to lost motion."]
 
 ];
@@ -1811,15 +1811,19 @@ const musicBack = function () {
 
 const stopMoving = function () {
     if (gameState["stayStill"] === 0) {        
-        document.documentElement.style.setProperty('--rotate-value', "0deg");
-        document.documentElement.style.setProperty('--skew-value', "0deg");
+        mettBody.classList.add("paused");
+        mettBody.style.transform = `skew(0deg)`; 
 
         gameState["moveBody"] = false;
         gameState["animationOn"] = false;
-    } else if (gameState["stayStill"] >= 1) {
+    } else if (gameState["stayStill"] > 1) {
         gameState["moveArms"] = false;
+
+        leftArm.classList.add("paused");
+        rightArm.classList.add("paused");
     }
     
+    gameState["stayStill"]++;
     successfulSelect();
     twoStepConversation("motion", "stayStill");
 }
@@ -1827,16 +1831,20 @@ const stopMoving = function () {
 const restartMoving = function () {
     if (!gameState["moveBody"]) {
         gameState["moveBody"] = true;
-        requestAnimationFrame(swingingMotion);
+        mettBody.classList.remove("paused");
 
         if (gameState["stayStill"] > 1) {
             gameState["moveArms"] = true;
-            requestAnimationFrame(jazzHands);
+
+            leftArm.classList.remove("paused");
+            rightArm.classList.remove("paused");
+
             requestAnimationFrame(handWave);
+            gameState["stayStill"] = 0;
         }
  
         successfulSelect();
-        restoreDefaults("motion", "animationOn", "stayStill");
+        restoreDefaults("motion", "animationOn", "stayStill"); //check if this is still needed
     }
 }
 

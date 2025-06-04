@@ -38,6 +38,7 @@ Roadmap to project finalization
 11) <s>Rework the "stick" function, add text</s> - DONE!
 12) <s>Change font for Mettaton's dialogue</s>
 13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
+     1) As consequence of this, I need to fix up the functions for pausing/unpausing those animations
 14) Replace all sounds - they need to be 50% more quiet
 
 Debugging Roadmap:
