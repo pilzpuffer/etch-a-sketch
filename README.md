@@ -37,7 +37,7 @@ Roadmap to project finalization
 10) Work on the intro sequence for this game - Mett text, some flavor text, maybe more sounds might be needed
 11) <s>Rework the "stick" function, add text</s> - DONE!
 12) <s>Change font for Mettaton's dialogue</s>
-13) Move the gun arm a bit up and to the right for the end of the insult route
+13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
 14) Replace all sounds - they need to be 50% more quiet
 
 Debugging Roadmap:
@@ -48,8 +48,14 @@ Debugging Roadmap:
 5) verify if the option to flirt gets properly hidden after the route is finished successfully
 
 Project notes:
-This concept really inspired me to try to make a cohesive mini-game - and while this REALLY goes beyond the initial task requirements, I'm glad that I've decided to undertake this in the end. This taught me a few valuable things on how to work on "bigger" projects. The biggest mistake of this project was how much time initially I've spent working on CSS, it was basically the first thing I've started to work on in this project. While yes, I did need to search for specific fonts and such to get the needed "aesthetic", I had to considerably rework a lot of styling down the way as the project grew. So now I'll know not to do that in the future x)
-Another thing - it's best to plan out such big projects in advance, instead of winging it as they go and making up new goal after goal - as that results in such projects taking forever to complete.
+This concept really inspired me to try building a cohesive mini-game - and while it REALLY went far beyond the original task requirements, I’m glad I decided to pursue it. It ended up teaching me some valuable lessons about handling larger-scale projects.
+
+One of my biggest missteps was diving into the CSS right away. I spent a lot of time early on styling things - hunting down the perfect fonts and crafting the visual aesthetic - only ending up having to rework much of it later as I kept tinkering on this project. While some of that work was necessary to keep this game close to Undertale style, I’ve learned that it’s better to hold off on final styling until the structure and logic are more settled.
+
+Another takeaway: don’t wing big projects. Having a plan (even a loose one) really helps. Adding new goals on the fly felt exciting, but it also made the project drag on way longer than it needed to - sure, life got a bit in the way of this project, but still, this took me two months or so to actually complete. 
+
+One of the biggest revelation of this project were CSS keyframes. When I've just started working on this project, I've written a bulky 170-line JavaScript function to handle a repeating animation for arms and body swaying, only to realize I could achieve the same effect using about 20 lines of CSS. And the result was also INCREDIBLY faster, more stable, and easier to tweak. I'm still shocked by how easy this actually was to set up!
+
 
 There were a few ideas I've scrapped down the way:
 1) I wanted to add keyboard controls, just like in the Undertale itself - but I wasn't sure how to properly implement this. In the end, I've decided that it'll be best to make all controls pointer-based - as the main focus here should be drawing. IF this project also had "bullet hell" fight sequences, then yes, it would make sense to add keyboard controls - but there's little sense in adding that for a purely drawing/talking game

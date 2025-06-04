@@ -75,17 +75,12 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     /* topmost position - animation will bring them down and then back to this position */
     --left-hand-position-Y: 5.4%; 
     --right-hand-position-Y: -2.4%;
-    
 
-    /* left-arm     center: 15% (without scaling) 30% (with scaling)
-       right-arm    center:-11%; (without scaling) -19% (with scaling)*/
     --left-hand-position-X: 29.5%;
     --right-hand-position-X: -19.5%;
     
-    --arm-scaling: 1.344;
-
-    --rotate-value: 0deg;
-    --skew-value: 0deg;
+    --left-arm-scaling: 1.344;
+    --right-arm-scaling: 1.344;
 
     --heart-size: 44px;
 }
@@ -272,12 +267,12 @@ body {
     height: 70%;
     z-index: 1;
 
-    animation: bodyWiggle 1s linear infinite alternate; 
+    animation: bodyWiggle 0.7s linear infinite alternate; 
 }
 
 @keyframes bodyWiggle {
     0% {
-        transform: rotate(5deg) skew(-5deg)
+        transform: rotate(3deg) skew(-3deg)
     }
 
     50% {
@@ -285,7 +280,7 @@ body {
     }
 
     100% {
-        transform: rotate(-5deg) skew(5deg)
+        transform: rotate(-3deg) skew(3deg)
     }
 }
 
@@ -598,7 +593,7 @@ body {
     width: auto;
     height: 18%;
     z-index: 2;
-    scale: var(--arm-scaling);
+    scale: var(--right-arm-scaling);
 
     animation: jazzHands linear 0.5s infinite alternate;
 }
@@ -607,7 +602,7 @@ body {
     position: absolute;
     margin-left: var(--left-hand-position-X); 
     margin-top: var(--left-hand-position-Y);
-    scale: var(--arm-scaling);
+    scale: var(--left-arm-scaling);
 
     width: auto;
     height: 20%;
@@ -625,13 +620,11 @@ body {
     }
 }
 
-.body-wiggle {
+/* .body-wiggle {
     transform: rotate(var(--rotate-value)) skew(var(--skew-value));
-}
 
-.correct-arm {
-    transform: scale(var(--arm-scaling)); 
-}
+    was set to 0
+} */
 
 .action-button {
     display: flex;
