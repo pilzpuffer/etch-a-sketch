@@ -1810,12 +1810,16 @@ const musicBack = function () {
 }
 
 const stopMoving = function () {
-    if (gameState["stayStill"] === 0) {        
+    successfulSelect();
+    gameState["stayStill"]++;
+
+    if (gameState["stayStill"] === 1) {        
         mettBody.classList.add("paused");
         mettBody.style.transform = `skew(0deg)`; 
 
         gameState["moveBody"] = false;
         gameState["animationOn"] = false;
+
     } else if (gameState["stayStill"] > 1) {
         gameState["moveArms"] = false;
 
@@ -1823,8 +1827,6 @@ const stopMoving = function () {
         rightArm.classList.add("paused");
     }
     
-    gameState["stayStill"]++;
-    successfulSelect();
     twoStepConversation("motion", "stayStill");
 }
 
@@ -1842,9 +1844,9 @@ const restartMoving = function () {
             requestAnimationFrame(handWave);
             gameState["stayStill"] = 0;
         }
- 
+        
         successfulSelect();
-        restoreDefaults("motion", "animationOn", "stayStill"); //check if this is still needed
+        restoreDefaults("motion", "animationOn", "stayStill"); 
     }
 }
 
@@ -1953,7 +1955,7 @@ const twoStepConversation = async function (topic, checkToIncrement) {
         
     }
     
-    mettResponding().then(() => gameState[checkToIncrement]++);
+    mettResponding(); 
 }
 
 //used for music/animation handling
@@ -2546,9 +2548,16 @@ const rainbowPencil = function() {
 }
 
 const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, checkedValue, comparator) { //comparator should be used like (a, b) => a (insert the needed check, like >= or === or what else) b)  example: (a, b) => a < b
-    if (!gameState[checkOne] && comparator(checkTwo, checkedValue)) {
+    if (!gameState[checkOne] && comparator(checkTwo, checkedValue)) { 
+        console.log(!gameState[checkOne]);
+        console.log(comparator(checkTwo, checkedValue));
+
         functionOne.classList.add("gone");
     } else {
+        console.log(!gameState[checkOne]);
+        console.log(gameState["stayStill"]);
+        console.log(`does ${checkTwo} equal ${checkedValue}? ${comparator(checkTwo, checkedValue)}` )
+        console.log("check above wasn't met so that's why toggling off option is not hidden!")
         functionOne.classList.remove("gone");
     }
 
@@ -2892,7 +2901,7 @@ const createPageNavigation = function(pageNumber, providedText) {
                     }
 
                         hideAndShow(menuOptions.stopMusic.data, menuOptions.restartMusic.data, "musicOn", sameVolume, 0, (a, b) => a === b);
-                        hideAndShow(menuOptions.stopWiggle.data, menuOptions.restartWiggle.data, "animationOn", "stayStill", 2, (a, b) => a >= b);
+                        hideAndShow(menuOptions.stopWiggle.data, menuOptions.restartWiggle.data, "animationOn", gameState.stayStill, 2, (a, b) => a === b);
 
 
                     if (gameState["hasDrawing"]) {

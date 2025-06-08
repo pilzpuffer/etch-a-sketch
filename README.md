@@ -38,11 +38,11 @@ Roadmap to project finalization
 11) <s>Rework the "stick" function, add text</s> - DONE!
 12) <s>Change font for Mettaton's dialogue</s>
 13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
-     1) As consequence of this, I need to fix up the functions for pausing/unpausing those animations
+     1) <s>As consequence of this, I need to fix up the functions for pausing/unpausing those animations</s>
 14) Replace all sounds - they need to be 50% more quiet
 
 Debugging Roadmap:
-1) check why hideAndShow doesn't work for properly for motion actions now.
+1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>
 2) <s>check line 1601\2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with). basically, currently there's an issue with insult progression and its interaction with other functions - it works fine by itself, start to finish</s>
 3) check on perform progression when insults were used - moreRude/tooMuch phrases don't play out
 4) related to the problem above - there's an issue when insult is initiated on stage 4 of flirting, check on that as well
