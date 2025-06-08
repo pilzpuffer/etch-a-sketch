@@ -1224,6 +1224,337 @@ const mettBlankGegativeMore = [
     ["You’ve submitted nothing. Again. And yet you demand attention."]
 ];
 
+
+//all color-related phrases for rating
+const flavorRatePositiveColorOne = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveColorOne = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRatePositiveColorFew = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveColorFew = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRatePositiveColorMany = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveColorMany = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRatePositiveColorBlue = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveColorBlue = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRatePositiveColorPurple = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveColorPurple = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRatePositiveColorBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveColorBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRatePositiveInstrumentPencil = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveInstrumentPencil = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRatePositiveInstrumentRainbow = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveInstrumentRainbow = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRatePositiveInstrumentBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRatePositiveInstrumentBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+//neutral
+
+const flavorRateNeutralColorOne = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralColorOne = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNeutralColorFew = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralColorFew = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNeutralColorMany = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralColorMany = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNeutralColorBlue = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralColorBlue = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNeutralColorPurple = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralColorPurple = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNeutralColorBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralColorBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNeutralInstrumentPencil = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralInstrumentPencil = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNeutralInstrumentRainbow = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralInstrumentRainbow = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNeutralInstrumentBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNeutralInstrumentBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+//negative
+
+const flavorRateNegativeColorOne = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeColorOne = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeColorFew = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeColorFew = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeColorMany = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeColorMany = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeColorBlue = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeColorBlue = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeColorPurple = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeColorPurple = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeColorBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeColorBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeInstrumentPencil = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeInstrumentPencil = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeInstrumentRainbow = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeInstrumentRainbow = [
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeInstrumentBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+const mettRateNegativeInstrumentBoth = [
+    [""],
+    [""],
+    [""]
+];
+
+
 const creditsText = [
     "METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS",
     "",
@@ -1283,47 +1614,47 @@ allText = {
                 neutral: { once: flavorBlankNeutralOnce, more: flavorBlankNeutralMore },
                 negative: { once: flavorBlankNegativeOnce, more: flavorBlankGegativeMore },
             },
-            // colorComments: {
-            //     positive: {
-            //         lightBlue: ,
-            //         purple: ,
-            //         bothColorsComment: ,
+            colorComments: {
+                positive: {
+                    lightBlue: flavorRatePositiveColorBlue,
+                    purple: flavorRatePositiveColorPurple,
+                    bothColorsComment: flavorRatePositiveColorBoth,
 
-            //         pencilComment: ,
-            //         rainbowComment: ,
-            //         bothInstrumentsComment: ,
+                    pencilComment: flavorRatePositiveInstrumentPencil,
+                    rainbowComment: flavorRatePositiveInstrumentRainbow,
+                    bothInstrumentsComment: flavorRatePositiveInstrumentBoth,
 
-            //         one: ,
-            //         few: ,
-            //         many:
-            //     },
-            //     neutral: {
-            //         lightBlue: ,
-            //         purple: ,
-            //         bothColorsComment: ,
+                    one: flavorRatePositiveColorOne,
+                    few: flavorRatePositiveColorFew,
+                    many: flavorRatePositiveColorMany
+                },
+                neutral: {
+                    lightBlue: flavorRateNeutralColorBlue,
+                    purple: flavorRateNeutralColorPurple,
+                    bothColorsComment: flavorRateNeutralColorBoth,
 
-            //         pencilComment: ,
-            //         rainbowComment: ,
-            //         bothInstrumentsComment: ,
+                    pencilComment: flavorRateNeutralInstrumentPencil,
+                    rainbowComment: flavorRateNeutralInstrumentRainbow,
+                    bothInstrumentsComment: flavorRateNeutralInstrumentBoth,
 
-            //         one: ,
-            //         few: ,
-            //         many:
-            //     },
-            //     negative: {
-            //         lightBlue: ,
-            //         purple: ,
-            //         bothColorsComment: ,
+                    one: flavorRateNeutralColorOne,
+                    few: flavorRateNeutralColorFew,
+                    many: flavorRateNeutralColorMany
+                },
+                negative: {
+                    lightBlue: flavorRateNegativeColorBlue,
+                    purple: flavorRateNegativeColorPurple,
+                    bothColorsComment: flavorRateNegativeColorBoth,
 
-            //         pencilComment: ,
-            //         rainbowComment: ,
-            //         bothInstrumentsComment: ,
+                    pencilComment: flavorRateNegativeInstrumentPencil,
+                    rainbowComment: flavorRateNegativeInstrumentRainbow,
+                    bothInstrumentsComment: flavorRateNegativeInstrumentBoth,
 
-            //         one: ,
-            //         few: ,
-            //         many:
-            //     },
-            // },
+                    one: flavorRateNegativeColorOne,
+                    few: flavorRateNegativeColorFew,
+                    many: flavorRateNegativeColorMany
+                },
+            },
             // densityComments: {
             //     positive: {
             //         bucketComment:
@@ -1465,47 +1796,47 @@ allText = {
                 neutral: {once: mettBlankNeutralOnce, more: mettBlankNeutralMore},
                 negative: {once: mettBlankNegativeOnce, more: mettBlankGegativeMore},
             },
-            // colorComments: {
-            //     positive: {
-            //         lightBlue: ,
-            //         purple: ,
-            //         bothColorsComment: ,
+            colorComments: {
+                positive: {
+                    lightBlue: mettRatePositiveColorBlue,
+                    purple: mettRatePositiveColorPurple,
+                    bothColorsComment: mettRatePositiveColorBoth,
 
-            //         pencilComment: ,
-            //         rainbowComment: ,
-            //         bothInstrumentsComment: ,
+                    pencilComment: mettRatePositiveInstrumentPencil,
+                    rainbowComment: mettRatePositiveInstrumentRainbow,
+                    bothInstrumentsComment: mettRatePositiveInstrumentBoth,
 
-            //         one: ,
-            //         few: ,
-            //         many:
-            //     },
-            //     neutral: {
-            //         lightBlue: ,
-            //         purple: ,
-            //         bothColorsComment: ,
+                    one: mettRatePositiveColorOne,
+                    few: mettRatePositiveColorFew,
+                    many: mettRatePositiveColorMany
+                },
+                neutral: {
+                    lightBlue: mettRateNeutralColorBlue,
+                    purple: mettRateNeutralColorPurple,
+                    bothColorsComment: mettRateNeutralColorBoth,
 
-            //         pencilComment: ,
-            //         rainbowComment: ,
-            //         bothInstrumentsComment: ,
+                    pencilComment: mettRateNeutralInstrumentPencil,
+                    rainbowComment: mettRateNeutralInstrumentRainbow,
+                    bothInstrumentsComment: mettRateNeutralInstrumentBoth,
 
-            //         one: ,
-            //         few: ,
-            //         many:
-            //     },
-            //     negative: {
-            //         lightBlue: ,
-            //         purple: ,
-            //         bothColorsComment: ,
+                    one: mettRateNeutralColorOne,
+                    few: mettRateNeutralColorFew,
+                    many: mettRateNeutralColorMany
+                },
+                negative: {
+                    lightBlue: mettRateNegativeColorBlue,
+                    purple: mettRateNegativeColorPurple,
+                    bothColorsComment: mettRateNegativeColorBoth,
 
-            //         pencilComment: ,
-            //         rainbowComment: ,
-            //         bothInstrumentsComment: ,
+                    pencilComment: mettRateNegativeInstrumentPencil,
+                    rainbowComment: mettRateNegativeInstrumentRainbow,
+                    bothInstrumentsComment: mettRateNegativeInstrumentBoth,
 
-            //         one: ,
-            //         few: ,
-            //         many:
-            //     },
-            // },
+                    one: mettRateNegativeColorOne,
+                    few: mettRateNegativeColorFew,
+                    many: mettRateNegativeColorMany
+                },
+            },
             // densityComments: {
             //     positive: {
             //         bucketComment:
@@ -2114,7 +2445,7 @@ const fightMett = function() {
                 gameState["fieldSize"] = fightHits[button].fieldSize;
                 drawField();
                 clearTextField();
-                buttonConfirm.play(); //maybe can play a random computer noise instead? + need some text for this
+                buttonConfirm.play(); //need some text for this
                 gameState["fightActive"] = false;
                 starSpace.classList.remove("gone");
             });
@@ -2554,14 +2885,10 @@ const hideAndShow = function (functionOne, functionTwo, checkOne, checkTwo, chec
 
         functionOne.classList.add("gone");
     } else {
-        console.log(!gameState[checkOne]);
-        console.log(gameState["stayStill"]);
-        console.log(`does ${checkTwo} equal ${checkedValue}? ${comparator(checkTwo, checkedValue)}` )
-        console.log("check above wasn't met so that's why toggling off option is not hidden!")
         functionOne.classList.remove("gone");
     }
 
-    functionTwo.classList.toggle("gone", gameState[checkOne] === true) //if true, adds the gone class - if false, removes it
+    functionTwo.classList.toggle("gone", gameState[checkOne] === true)
 }
 
 const createPageNavigation = function(pageNumber, providedText) {
