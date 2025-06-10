@@ -1555,6 +1555,205 @@ const mettRateNegativeInstrumentBoth = [
 ];
 
 
+//now it's time for density
+
+//positive
+const flavorRatePositiveBucket = [
+    [""]
+];
+
+const flavorRatePositiveDot = [
+    [""]
+];
+
+const flavorRatePositiveSparse = [
+    [""]
+];
+
+const flavorRatePositiveLittle = [
+    [""]
+];
+
+const flavorRatePositiveSome = [
+    [""]
+];
+
+const flavorRatePositiveFilledOut = [
+    [""]
+];
+
+const flavorRatePositiveLots = [
+    [""]
+];
+
+const flavorRatePositiveFull = [
+    [""]
+];
+
+const mettRatePositiveBucket = [
+    [""]
+];
+
+const mettRatePositiveDot = [
+    [""]
+];
+
+const mettRatePositiveSparse = [
+    [""]
+];
+
+const mettRatePositiveLittle = [
+    [""]
+];
+
+const mettRatePositiveSome = [
+    [""]
+];
+
+const mettRatePositiveFilledOut = [
+    [""]
+];
+
+const mettRatePositiveLots = [
+    [""]
+];
+
+const mettRatePositiveFull = [
+    [""]
+];
+
+//neutral
+const flavorRateNeutralBucket = [
+    [""]
+];
+
+const flavorRateNeutralDot = [
+    [""]
+];
+
+const flavorRateNeutralSparse = [
+    [""]
+];
+
+const flavorRateNeutralLittle = [
+    [""]
+];
+
+const flavorRateNeutralSome = [
+    [""]
+];
+
+const flavorRateNeutralFilledOut = [
+    [""]
+];
+
+const flavorRateNeutralLots = [
+    [""]
+];
+
+const flavorRateNeutralFull = [
+    [""]
+];
+
+const mettRateNeutralBucket = [
+    [""]
+];
+
+const mettRateNeutralDot = [
+    [""]
+];
+
+const mettRateNeutralSparse = [
+    [""]
+];
+
+const mettRateNeutralLittle = [
+    [""]
+];
+
+const mettRateNeutralSome = [
+    [""]
+];
+
+const mettRateNeutralFilledOut = [
+    [""]
+];
+
+const mettRateNeutralLots = [
+    [""]
+];
+
+const mettRateNeutralFull = [
+    [""]
+];
+
+//negative
+
+const flavorRateNegativeBucket = [
+    [""]
+];
+
+const flavorRateNegativeDot = [
+    [""]
+];
+
+const flavorRateNegativeSparse = [
+    [""]
+];
+
+const flavorRateNegativeLittle = [
+    [""]
+];
+
+const flavorRateNegativeSome = [
+    [""]
+];
+
+const flavorRateNegativeFilledOut = [
+    [""]
+];
+
+const flavorRateNegativeLots = [
+    [""]
+];
+
+const flavorRateNegativeFull = [
+    [""]
+];
+
+const mettRateNegativeBucket = [
+    [""]
+];
+
+const mettRateNegativeDot = [
+    [""]
+];
+
+const mettRateNegativeSparse = [
+    [""]
+];
+
+const mettRateNegativeLittle = [
+    [""]
+];
+
+const mettRateNegativeSome = [
+    [""]
+];
+
+const mettRateNegativeFilledOut = [
+    [""]
+];
+
+const mettRateNegativeLots = [
+    [""]
+];
+
+const mettRateNegativeFull = [
+    [""]
+];
+
+
 const creditsText = [
     "METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS",
     "",
@@ -1562,7 +1761,7 @@ const creditsText = [
     "Directed by: Mettaton",
     "Camera Operator: Aaron",
     "Sound Effects & Music: Napstablook",
-    "Lighting Technician: Glowstick Jerry",
+    "Lighting Technician: Jerry",
     "Robotics Specialist: Alphys",
     "Makeup Artist: Alphys",
     "Cue/Applause Sign Holder: Mettabot Model CLAP-TRAP",
@@ -1655,41 +1854,41 @@ allText = {
                     many: flavorRateNegativeColorMany
                 },
             },
-            // densityComments: {
-            //     positive: {
-            //         bucketComment:
-            //         dotComment:
+            densityComments: {
+                positive: {
+                    bucketComment: flavorRatePositiveBucket,
+                    dotComment: flavorRatePositiveDot,
 
-            //         sparse: ,
-            //         little: ,
-            //         some: ,
-            //         filledOut: ,
-            //         lots: ,
-            //         full: 
-            //     },
-            //     neutral: {
-            //         bucketComment:
-            //         dotComment:
+                    sparse: flavorRatePositiveSparse,
+                    little: flavorRatePositiveLittle,
+                    some: flavorRatePositiveSome,
+                    filledOut: flavorRatePositiveFilledOut,
+                    lots: flavorRatePositiveLots,
+                    full: flavorRatePositiveFull
+                },
+                neutral: {
+                    bucketComment: flavorRateNeutralBucket,
+                    dotComment: flavorRateNeutralDot,
 
-            //         sparse: ,
-            //         little: ,
-            //         some: ,
-            //         filledOut: ,
-            //         lots: ,
-            //         full: 
-            //     },
-            //     negative: {
-            //         bucketComment:
-            //         dotComment:
+                    sparse: flavorRateNeutralSparse,
+                    little: flavorRateNeutralLittle,
+                    some: flavorRateNeutralSome,
+                    filledOut: flavorRateNeutralFilledOut,
+                    lots: flavorRateNeutralLots,
+                    full: flavorRateNeutralFull
+                },
+                negative: {
+                    bucketComment: flavorRateNegativeBucket,
+                    dotComment: flavorRateNegativeDot,
 
-            //         sparse: ,
-            //         little: ,
-            //         some: ,
-            //         filledOut: ,
-            //         lots: ,
-            //         full: 
-            //     },
-            // },
+                    sparse: flavorRateNegativeSparse,
+                    little: flavorRateNegativeLittle,
+                    some: flavorRateNegativeSome,
+                    filledOut: flavorRateNegativeFilledOut,
+                    lots: flavorRateNegativeLots,
+                    full: flavorRateNegativeFull
+                },
+            },
             // mannersComments: {
             //     ifHighFlirty: ,
             //     ifHighFriendly: ,
@@ -1837,41 +2036,41 @@ allText = {
                     many: mettRateNegativeColorMany
                 },
             },
-            // densityComments: {
-            //     positive: {
-            //         bucketComment:
-            //         dotComment:
+            densityComments: {
+                positive: {
+                    bucketComment: mettRatePositiveBucket,
+                    dotComment: mettRatePositiveDot,
 
-            //         sparse: ,
-            //         little: ,
-            //         some: ,
-            //         filledOut: ,
-            //         lots: ,
-            //         full: 
-            //     },
-            //     neutral: {
-            //         bucketComment:
-            //         dotComment:
+                    sparse: mettRatePositiveSparse,
+                    little: mettRatePositiveLittle,
+                    some: mettRatePositiveSome,
+                    filledOut: mettRatePositiveFilledOut,
+                    lots: mettRatePositiveLots,
+                    full: mettRatePositiveFull
+                },
+                neutral: {
+                    bucketComment: mettRateNeutralBucket,
+                    dotComment: mettRateNeutralDot,
 
-            //         sparse: ,
-            //         little: ,
-            //         some: ,
-            //         filledOut: ,
-            //         lots: ,
-            //         full: 
-            //     },
-            //     negative: {
-            //         bucketComment:
-            //         dotComment:
+                    sparse: mettRateNeutralSparse,
+                    little: mettRateNeutralLittle,
+                    some: mettRateNeutralSome,
+                    filledOut: mettRateNeutralFilledOut,
+                    lots: mettRateNeutralLots,
+                    full: mettRateNeutralFull
+                },
+                negative: {
+                    bucketComment: mettRateNegativeBucket,
+                    dotComment: mettRateNegativeDot,
 
-            //         sparse: ,
-            //         little: ,
-            //         some: ,
-            //         filledOut: ,
-            //         lots: ,
-            //         full: 
-            //     },
-            // },
+                    sparse: mettRateNegativeSparse,
+                    little: mettRateNegativeLittle,
+                    some: mettRateNegativeSome,
+                    filledOut: mettRateNegativeFilledOut,
+                    lots: mettRateNegativeLots,
+                    full: mettRateNegativeFull
+                },
+            },
             // mannersComments: {
             //     ifHighFlirty: ,
             //     ifHighFriendly: ,
