@@ -1753,6 +1753,57 @@ const mettRateNegativeFull = [
     [""]
 ];
 
+//manners 
+
+const flavorRateMannersHighFlirty = [
+    [""]
+];
+
+const flavorRateMannersHighFriendly = [
+    [""]
+];
+
+const flavorRateMannersNeutral = [
+    [""]
+];
+
+const flavorRateMannersnegative = [
+    [""]
+];
+
+const flavorRateMannersVeryNegative = [
+    [""]
+];
+
+const flavorRateMannersBetrayal = [
+    [""]
+];
+
+const mettRateMannersHighFlirty = [
+    [""]
+];
+
+const mettRateMannersHighFriendly = [
+    [""]
+];
+
+const mettRateMannersNeutral = [
+    [""]
+];
+
+const mettRateMannersnegative = [
+    [""]
+];
+
+const mettRateMannersVeryNegative = [
+    [""]
+];
+
+const mettRateMannersBetrayal = [
+    [""]
+];
+
+
 
 const creditsText = [
     "METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS",
@@ -1889,14 +1940,14 @@ allText = {
                     full: flavorRateNegativeFull
                 },
             },
-            // mannersComments: {
-            //     ifHighFlirty: ,
-            //     ifHighFriendly: ,
-            //     ifNeutral: ,
-            //     ifNegative: ,
-            //     ifVeryNegative: ,
-            //     ifBetrayal:
-            // },
+            mannersComments: {
+                ifHighFlirty: flavorRateMannersHighFlirty,
+                ifHighFriendly: flavorRateMannersHighFriendly,
+                ifNeutral: flavorRateMannersNeutral,
+                ifNegative: flavorRateMannersnegative,
+                ifVeryNegative: flavorRateMannersVeryNegative,
+                ifBetrayal: flavorRateMannersBetrayal
+            },
 
             // finalScore: {
             //     start: {
@@ -2071,14 +2122,18 @@ allText = {
                     full: mettRateNegativeFull
                 },
             },
-            // mannersComments: {
-            //     ifHighFlirty: ,
-            //     ifHighFriendly: ,
-            //     ifNeutral: ,
-            //     ifNegative: ,
-            //     ifVeryNegative: ,
-            //     ifBetrayal:
-            // },
+
+            //"neutral" path of other phrases will apply for highfriendly/neutral/negative paths. 
+            // explicitly negative phrases would apply only for the lest 2 options
+
+            mannersComments: {
+                ifHighFlirty: mettRateMannersHighFlirty,
+                ifHighFriendly: mettRateMannersHighFriendly,
+                ifNeutral: mettRateMannersNeutral,
+                ifNegative: mettRateMannersnegative,
+                ifVeryNegative: mettRateMannersVeryNegative,
+                ifBetrayal: mettRateMannersBetrayal
+            },
 
             // finalScore: {
             //     start: {
