@@ -1804,6 +1804,186 @@ const mettRateMannersBetrayal = [
 ];
 
 
+//final!!
+
+
+//start
+
+const flavorRateFinalStartPositive = [
+    [""]
+];
+
+const flavorRateFinalStartNeutral = [
+    [""]
+];
+
+const flavorRateFinalStartNegative = [
+    [""]
+];
+
+const mettRateFinalStartPositive = [
+    [""]
+];
+
+const mettRateFinalStartNeutral = [
+    [""]
+];
+
+const mettRateFinalStartNegative = [
+    [""]
+];
+
+//end
+
+//positive
+const flavorRateFinalEndPositiveLow = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveLowMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveHighMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveHigh = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveVeryHigh = [
+    [""]
+];
+
+const mettRateFinalEndPositiveLow = [
+    [""]
+];
+
+const mettRateFinalEndPositiveLowMiddle = [
+    [""]
+];
+
+const mettRateFinalEndPositiveMiddle = [
+    [""]
+];
+
+const mettRateFinalEndPositiveHighMiddle = [
+    [""]
+];
+
+const mettRateFinalEndPositiveHigh = [
+    [""]
+];
+
+const mettRateFinalEndPositiveVeryHigh = [
+    [""]
+];
+
+//neutral
+const flavorRateFinalEndNeutralLow = [
+    [""]
+];
+
+const flavorRateFinalEndNeutralLowMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndNeutralMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndNeutralHighMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndNeutralHigh = [
+    [""]
+];
+
+const flavorRateFinalEndNeutralVeryHigh = [
+    [""]
+];
+
+const mettRateFinalEndNeutralLow = [
+    [""]
+];
+
+const mettRateFinalEndNeutralLowMiddle = [
+    [""]
+];
+
+const mettRateFinalEndNeutralMiddle = [
+    [""]
+];
+
+const mettRateFinalEndNeutralHighMiddle = [
+    [""]
+];
+
+const mettRateFinalEndNeutralHigh = [
+    [""]
+];
+
+const mettRateFinalEndNeutralVeryHigh = [
+    [""]
+];
+
+//negative
+
+const flavorRateFinalEndNegativeLow = [
+    [""]
+];
+
+const flavorRateFinalEndNegativeLowMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndNegativeMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndNegativeHighMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndNegativeHigh = [
+    [""]
+];
+
+const flavorRateFinalEndNegativeVeryHigh = [
+    [""]
+];
+
+const mettRateFinalEndNegativeLow = [
+    [""]
+];
+
+const mettRateFinalEndNegativeLowMiddle = [
+    [""]
+];
+
+const mettRateFinalEndNegativeMiddle = [
+    [""]
+];
+
+const mettRateFinalEndNegativeHighMiddle = [
+    [""]
+];
+
+const mettRateFinalEndNegativeHigh = [
+    [""]
+];
+
+const mettRateFinalEndNegativeVeryHigh = [
+    [""]
+];
+
+
 
 const creditsText = [
     "METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS",
@@ -1949,39 +2129,39 @@ allText = {
                 ifBetrayal: flavorRateMannersBetrayal
             },
 
-            // finalScore: {
-            //     start: {
-            //         positive: ,
-            //         neutral: ,
-            //         negative: ,
-            //     },
-            //     endFinal: {
-            //         positive: {
-            //             low: 
-            //             lowMiddle:
-            //             middle:
-            //             highMiddle:
-            //             high:
-            //             veryHigh:
-            //         },
-            //         neutral: {
-            //             low: 
-            //             lowMiddle:
-            //             middle:
-            //             highMiddle:
-            //             high:
-            //             veryHigh:
-            //         },
-            //         negative: {
-            //             low: 
-            //             lowMiddle:
-            //             middle:
-            //             highMiddle:
-            //             high:
-            //             veryHigh:
-            //         }
-            //     }
-            // }
+            finalScore: {
+                start: {
+                    positive: flavorRateFinalStartPositive,
+                    neutral: flavorRateFinalStartNeutral,
+                    negative: flavorRateFinalStartNegative,
+                },
+                endFinal: {
+                    positive: {
+                        low: flavorRateFinalEndPositiveLow,
+                        lowMiddle: flavorRateFinalEndPositiveLowMiddle,
+                        middle: flavorRateFinalEndPositiveMiddle,
+                        highMiddle: flavorRateFinalEndPositiveHighMiddle,
+                        high: flavorRateFinalEndPositiveHigh,
+                        veryHigh: flavorRateFinalEndPositiveVeryHigh
+                    },
+                    neutral: {
+                        low: flavorRateFinalEndNeutralLow,
+                        lowMiddle: flavorRateFinalEndNeutralLowMiddle,
+                        middle: flavorRateFinalEndNeutralMiddle,
+                        highMiddle: flavorRateFinalEndNeutralHighMiddle,
+                        high: flavorRateFinalEndNeutralHigh,
+                        veryHigh: flavorRateFinalEndNeutralVeryHigh
+                    },
+                    negative: {
+                        low: flavorRateFinalEndNegativeLow,
+                        lowMiddle: flavorRateFinalEndNegativeLowMiddle,
+                        middle: flavorRateFinalEndNegativeMiddle,
+                        highMiddle: flavorRateFinalEndNegativeHighMiddle,
+                        high: flavorRateFinalEndNegativeHigh,
+                        veryHigh: flavorRateFinalEndNegativeVeryHigh
+                    }
+                }
+            }
         },
         sound: {
             firstChange: flavorQuietOnce,
@@ -2135,39 +2315,39 @@ allText = {
                 ifBetrayal: mettRateMannersBetrayal
             },
 
-            // finalScore: {
-            //     start: {
-            //         positive: ,
-            //         neutral: ,
-            //         negative: ,
-            //     },
-            //     endFinal: {
-            //         positive: {
-            //             low: 
-            //             lowMiddle:
-            //             middle:
-            //             highMiddle:
-            //             high:
-            //             veryHigh:
-            //         },
-            //         neutral: {
-            //             low: 
-            //             lowMiddle:
-            //             middle:
-            //             highMiddle:
-            //             high:
-            //             veryHigh:
-            //         },
-            //         negative: {
-            //             low: 
-            //             lowMiddle:
-            //             middle:
-            //             highMiddle:
-            //             high:
-            //             veryHigh:
-            //         }
-            //     }
-            // }
+            finalScore: {
+                start: {
+                    positive: mettRateFinalStartPositive,
+                    neutral: mettRateFinalStartNeutral,
+                    negative: mettRateFinalStartNegative,
+                },
+                endFinal: {
+                    positive: {
+                        low: mettRateFinalEndPositiveLow,
+                        lowMiddle: mettRateFinalEndPositiveLowMiddle,
+                        middle: mettRateFinalEndPositiveMiddle,
+                        highMiddle: mettRateFinalEndPositiveHighMiddle,
+                        high: mettRateFinalEndPositiveHigh,
+                        veryHigh: mettRateFinalEndPositiveVeryHigh
+                    },
+                    neutral: {
+                        low: mettRateFinalEndNeutralLow,
+                        lowMiddle: mettRateFinalEndNeutralLowMiddle,
+                        middle: mettRateFinalEndNeutralMiddle,
+                        highMiddle: mettRateFinalEndNeutralHighMiddle,
+                        high: mettRateFinalEndNeutralHigh,
+                        veryHigh: mettRateFinalEndNeutralVeryHigh
+                    },
+                    negative: {
+                        low: mettRateFinalEndNegativeLow,
+                        lowMiddle: mettRateFinalEndNegativeLowMiddle,
+                        middle: mettRateFinalEndNegativeMiddle,
+                        highMiddle: mettRateFinalEndNegativeHighMiddle,
+                        high: mettRateFinalEndNegativeHigh,
+                        veryHigh: mettRateFinalEndNegativeVeryHigh
+                    }
+                }
+            }
         },
         sound: {
             firstChange: mettQuietOnce,
