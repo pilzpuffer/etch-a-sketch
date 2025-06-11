@@ -799,7 +799,7 @@ const flavorFlirtTooMuchEndingWin = [
 const mettFlirtTooMuchEndingWin = [
     ["...Tonight, you bared your heart beneath these lights - and maybe, just maybe, I did too."],
     ["I’ve played a thousand roles. Lived a thousand perfect scenes.", "But none quite like this. None quite like you."],
-    ["You’ve earned something most never even dare to dream of…"],
+    ["You’ve earned something most never even dare to dream of..."],
     ["...A fragment of perfection. From me, no less."],
     [""],
     ["But don’t cue the credits just yet, darling... we're only at intermission!"],
@@ -1808,8 +1808,11 @@ const mettRateMannersBetrayal = [
 
 
 //start
+const flavorRateFinalStartPositiveFlirty = [
+    [""]
+];
 
-const flavorRateFinalStartPositive = [
+const flavorRateFinalStartPositiveFriendly = [
     [""]
 ];
 
@@ -1820,8 +1823,15 @@ const flavorRateFinalStartNeutral = [
 const flavorRateFinalStartNegative = [
     [""]
 ];
+const flavorRateFinalStartFullBetrayal = [
+    [""]
+];
 
-const mettRateFinalStartPositive = [
+const mettRateFinalStartPositiveFlirty = [
+    [""]
+];
+
+const mettRateFinalStartPositiveFriendly = [
     [""]
 ];
 
@@ -1833,56 +1843,109 @@ const mettRateFinalStartNegative = [
     [""]
 ];
 
+const mettRateFinalStartFullBetrayal = [
+    [""]
+];
 //end
 
-//positive
-const flavorRateFinalEndPositiveLow = [
+//positive flirty
+const flavorRateFinalEndPositiveFlirtyLow = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveLowMiddle = [
+const flavorRateFinalEndPositiveFlirtyLowMiddle = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveMiddle = [
+const flavorRateFinalEndPositiveFlirtyMiddle = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveHighMiddle = [
+const flavorRateFinalEndPositiveFlirtyHighMiddle = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveHigh = [
+const flavorRateFinalEndPositiveFlirtyHigh = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveVeryHigh = [
+const flavorRateFinalEndPositiveFlirtyVeryHigh = [
     [""]
 ];
 
-const mettRateFinalEndPositiveLow = [
+const mettRateFinalEndPositiveFlirtyLow = [
     [""]
 ];
 
-const mettRateFinalEndPositiveLowMiddle = [
+const mettRateFinalEndPositiveFlirtyLowMiddle = [
     [""]
 ];
 
-const mettRateFinalEndPositiveMiddle = [
+const mettRateFinalEndPositiveFlirtyMiddle = [
     [""]
 ];
 
-const mettRateFinalEndPositiveHighMiddle = [
+const mettRateFinalEndPositiveFlirtyHighMiddle = [
     [""]
 ];
 
-const mettRateFinalEndPositiveHigh = [
+const mettRateFinalEndPositiveFlirtyHigh = [
     [""]
 ];
 
-const mettRateFinalEndPositiveVeryHigh = [
+const mettRateFinalEndPositiveFlirtyVeryHigh = [
     [""]
 ];
+
+// positive friendly
+const flavorRateFinalEndPositiveFriendlyLow = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveFriendlyLowMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveFriendlyMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveFriendlyHighMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveFriendlyHigh = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveFriendlyVeryHigh = [
+    [""]
+];
+
+const mettRateFinalEndPositiveFriendlyLow = [
+    [""]
+];
+
+const mettRateFinalEndPositiveFriendlyLowMiddle = [
+    [""]
+];
+
+const mettRateFinalEndPositiveFriendlyMiddle = [
+    [""]
+];
+
+const mettRateFinalEndPositiveFriendlyHighMiddle = [
+    [""]
+];
+
+const mettRateFinalEndPositiveFriendlyHigh = [
+    [""]
+];
+
+const mettRateFinalEndPositiveFriendlyVeryHigh = [
+    [""]
+];
+
 
 //neutral
 const flavorRateFinalEndNeutralLow = [
@@ -1983,6 +2046,55 @@ const mettRateFinalEndNegativeVeryHigh = [
     [""]
 ];
 
+//fullBetrayal
+
+const flavorRateFinalEndBetrayalLow = [
+    [""]
+];
+
+const flavorRateFinalEndBetrayalLowMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndBetrayalMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndBetrayalHighMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndBetrayalHigh = [
+    [""]
+];
+
+const flavorRateFinalEndBetrayalVeryHigh = [
+    [""]
+];
+
+const mettRateFinalEndBetrayalLow = [
+    [""]
+];
+
+const mettRateFinalEndBetrayalLowMiddle = [
+    [""]
+];
+
+const mettRateFinalEndBetrayalMiddle = [
+    [""]
+];
+
+const mettRateFinalEndBetrayalHighMiddle = [
+    [""]
+];
+
+const mettRateFinalEndBetrayalHigh = [
+    [""]
+];
+
+const mettRateFinalEndBetrayalVeryHigh = [
+    [""]
+];
 
 
 const creditsText = [
@@ -2131,18 +2243,28 @@ allText = {
 
             finalScore: {
                 start: {
-                    positive: flavorRateFinalStartPositive,
+                    positiveFlirty: flavorRateFinalStartPositiveFlirty,
+                    positiveFriendly: flavorRateFinalStartPositiveFriendly,
                     neutral: flavorRateFinalStartNeutral,
                     negative: flavorRateFinalStartNegative,
+                    fullBetrayal: flavorRateFinalStartFullBetrayal
                 },
                 endFinal: {
-                    positive: {
-                        low: flavorRateFinalEndPositiveLow,
-                        lowMiddle: flavorRateFinalEndPositiveLowMiddle,
-                        middle: flavorRateFinalEndPositiveMiddle,
-                        highMiddle: flavorRateFinalEndPositiveHighMiddle,
-                        high: flavorRateFinalEndPositiveHigh,
-                        veryHigh: flavorRateFinalEndPositiveVeryHigh
+                    positiveFlirty: {
+                        low: flavorRateFinalEndPositiveFlirtyLow,
+                        lowMiddle: flavorRateFinalEndPositiveFlirtyLowMiddle,
+                        middle: flavorRateFinalEndPositiveFlirtyMiddle,
+                        highMiddle: flavorRateFinalEndPositiveFlirtyHighMiddle,
+                        high: flavorRateFinalEndPositiveFlirtyHigh,
+                        veryHigh: flavorRateFinalEndPositiveFlirtyVeryHigh
+                    },
+                    positiveFriendly: {
+                        low: flavorRateFinalEndPositiveFriendlyLow,
+                        lowMiddle: flavorRateFinalEndPositiveFriendlyLowMiddle,
+                        middle: flavorRateFinalEndPositiveFriendlyMiddle,
+                        highMiddle: flavorRateFinalEndPositiveFriendlyHighMiddle,
+                        high: flavorRateFinalEndPositiveFriendlyHigh,
+                        veryHigh: flavorRateFinalEndPositiveFriendlyVeryHigh
                     },
                     neutral: {
                         low: flavorRateFinalEndNeutralLow,
@@ -2159,6 +2281,14 @@ allText = {
                         highMiddle: flavorRateFinalEndNegativeHighMiddle,
                         high: flavorRateFinalEndNegativeHigh,
                         veryHigh: flavorRateFinalEndNegativeVeryHigh
+                    },
+                    fullBetrayal: {
+                        low: flavorRateFinalEndBetrayalLow,
+                        lowMiddle: flavorRateFinalEndBetrayalLowMiddle,
+                        middle: flavorRateFinalEndBetrayalMiddle,
+                        highMiddle: flavorRateFinalEndBetrayalHighMiddle,
+                        high: flavorRateFinalEndBetrayalHigh,
+                        veryHigh: flavorRateFinalEndBetrayalVeryHigh
                     }
                 }
             }
@@ -2317,18 +2447,28 @@ allText = {
 
             finalScore: {
                 start: {
-                    positive: mettRateFinalStartPositive,
+                    positiveFlirty: mettRateFinalStartPositiveFlirty,
+                    positiveFriendly: mettRateFinalStartPositiveFriendly,
                     neutral: mettRateFinalStartNeutral,
                     negative: mettRateFinalStartNegative,
+                    fullBetrayal: mettRateFinalStartFullBetrayal
                 },
                 endFinal: {
-                    positive: {
-                        low: mettRateFinalEndPositiveLow,
-                        lowMiddle: mettRateFinalEndPositiveLowMiddle,
-                        middle: mettRateFinalEndPositiveMiddle,
-                        highMiddle: mettRateFinalEndPositiveHighMiddle,
-                        high: mettRateFinalEndPositiveHigh,
-                        veryHigh: mettRateFinalEndPositiveVeryHigh
+                    positiveFlirty: {
+                        low: mettRateFinalEndPositiveFlirtyLow,
+                        lowMiddle: mettRateFinalEndPositiveFlirtyLowMiddle,
+                        middle: mettRateFinalEndPositiveFlirtyMiddle,
+                        highMiddle: mettRateFinalEndPositiveFlirtyHighMiddle,
+                        high: mettRateFinalEndPositiveFlirtyHigh,
+                        veryHigh: mettRateFinalEndPositiveFlirtyVeryHigh
+                    },
+                    positiveFriendly: {
+                        low: mettRateFinalEndPositiveFriendlyLow,
+                        lowMiddle: mettRateFinalEndPositiveFriendlyLowMiddle,
+                        middle: mettRateFinalEndPositiveFriendlyMiddle,
+                        highMiddle: mettRateFinalEndPositiveFriendlyHighMiddle,
+                        high: mettRateFinalEndPositiveFriendlyHigh,
+                        veryHigh: mettRateFinalEndPositiveFriendlyVeryHigh
                     },
                     neutral: {
                         low: mettRateFinalEndNeutralLow,
@@ -2345,6 +2485,14 @@ allText = {
                         highMiddle: mettRateFinalEndNegativeHighMiddle,
                         high: mettRateFinalEndNegativeHigh,
                         veryHigh: mettRateFinalEndNegativeVeryHigh
+                    },
+                    fullBetrayal: {
+                        low: mettRateFinalEndBetrayalLow,
+                        lowMiddle: mettRateFinalEndBetrayalLowMiddle,
+                        middle: mettRateFinalEndBetrayalMiddle,
+                        highMiddle: mettRateFinalEndBetrayalHighMiddle,
+                        high: mettRateFinalEndBetrayalHigh,
+                        veryHigh: mettRateFinalEndBetrayalVeryHigh
                     }
                 }
             }
