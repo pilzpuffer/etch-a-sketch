@@ -525,6 +525,7 @@ const removeButtonFocus = function () {
 const typeWriterSound = document.querySelector("#textbox-typing");
 const battleTheme = document.querySelector("#battle-theme")
 typeWriterSound.volume = sameVolume - 0.1;
+battleTheme.volume = sameVolume - 0.1;
 
 function randomIndex (arr) {
     return Math.floor(Math.random() * arr.length)
@@ -786,13 +787,15 @@ const mettFlirtTooMuch = [
 
 const flavorFlirtTooMuchEndingWin = [
     ["The lights shift - softer now, more intimate. The clamor of the crowd fades to a hush as Mettaton glides toward you, his screen aglow with something gentler than before."],
-    ["He slows to a stop, voice losing its usual performative sharpness.", "For a moment, the glitter fades - just a little."],
+    ["He slows, his voice losing its performative edge.", "For a moment, the glitter fades - just a little."],
     ["His arm extends - precise, delicate - and he lifts your hand in his cold, carefully calibrated fingers. The gesture is practiced, yet the pause that follows is not."],
-    ["As Mettaton brings your hand closer to his screen, a faint buzz of static vibrates through the air - like the soft hum you’d feel from touching an old television. The cool surface pulses with an electric warmth, almost as if it’s alive."],
-    ["With elegant care, he presses your knuckles gently to the screen. The static buzz, subtle yet undeniable, passes through your touch - soft, tender, a quiet connection. The contact lingers, meaningful and sincere"],
-    ["The moment lingers - longer than it should - but eventually, he draws back. His screen flickers, bright with energy. The crowd’s murmurs swell into a cacophony of anticipation."],
+    ["As Mettaton brings your hand closer to his screen, a faint buzz of static vibrates through the air - like the soft hum you’d feel from touching an old television."],
+    ["The cool surface pulses with an electric warmth, almost as if it’s alive."],
+    ["With elegant care, he presses your knuckles gently to the screen."],
+    ["The static buzz, subtle yet undeniable, passes through your touch - soft, tender, a quiet connection. The contact lingers, meaningful and sincere."],
+    ["The moment lingers - longer than it should - but eventually, he draws back. His screen flickers, bright with energy. The crowd’s murmurs rises to a restless buzz."],
     ["He leans forward, one hand extending with theatrical flourish, presenting the final rose to you."],
-    ["With a flourish, he twirls on his wheel, scattering glittering confetti from compartments you didn’t even know existed. The music swells, a triumphant, sparkling melody."],
+    ["With a flourish, he twirls on his wheel, scattering glittering confetti. The music swells, a triumphant, sparkling melody."],
     ["He strikes a pose, one hand over his 'chest', the other extended upwards as though reaching for the stars."]
 ];
 
@@ -1134,7 +1137,7 @@ const mettRosePos = [
     ["Be still, my heart!", "If you keep this up, I’ll have to write you into my autobiography!"],
     ["Oh! Still carrying that little token? You do know how to make a star swoon."],
     ["Still blooming… just like my affection for you.", "Oh, this is too romantic!"],
-    ["Oh my! You kept it!", "You’re either hopelessly sentimental… or hopelessly in love!"],
+    ["Oh my! You kept it!", "You’re either hopelessly sentimental... or hopelessly in love!"],
     ["My processors are overheating, darling!", "How am I supposed to keep on with this show when you do things like this?!"]
 ];
 
@@ -2111,26 +2114,25 @@ const creditsText = [
     "On-Set Catering: Muffet",
     "",
     "Art Department",
-    "Head Illustrator & Artistic Panic Manager: So Sorry",
+    "Head Illustrator: So Sorry",
     "Mettaton Face Model Reference: Mettaton (of course)",
-    "Live Sketch Recovery Team: Temmie",
     "Face Canvas Maintenance Crew: Woshua",
     "",
     "Romantic Operations Department",
     "Romantic Tension Consultant: Burgerpants (unpaid intern)",
     "Breakup Scene Consultants: Bratty & Catty",
-    "Post-Rejection Recovery Counselor: Papyrus (Certified Encouragement Expert)",
+    "Post-Rejection Recovery Counselor: Papyrus",
     "Heartbreak Stunt Double: A cardboard box with lipstick",
     "Romantic Lighting Designer: Tsunderplane",
     "",
     "Stage & Set Crew",
     "Stage Pyrotechnics & Fog Machine Operator: Vulkin",
-    "Glitter Effects Supervisor: A swarm of Tsunderplanes",
+    "Glitter Effects Supervisor: Tsunderplane",
     "Rose Deployment Technician: Lesser Dog",
     "",
     "Award Segment",
     "Best Improvised Monologue While Rejecting a Suitor (Gracefully): Mettaton",
-    "Best Performance by a Leading Role in a Romance Drama: Also Mettaton",
+    "Best Performance by a Leading Role in a Romance Drama: Mettaton",
     "",
     "This show was made possible by:",
     "GlamGal Grease – For when your gears need to glow.",
@@ -2141,7 +2143,7 @@ const creditsText = [
     "",
     "No monsters were emotionally harmed during the making of this episode.",
     "Any resemblance to your love life is purely coincidental... probably.",
-    "Viewer discretion advised: contains emotional turbulence and excessive sparkle.",
+    "Viewer discretion advised: contains emotional turbulence.",
     "Use sparkle responsibly.",
     "",
     "Tune in next time for more drama, more sparkle, and maybe, just maybe... more love." 
@@ -3820,11 +3822,9 @@ const createPageNavigation = function(pageNumber, providedText) {
                         menuOptions["rate"]["data"].classList.add("gone");
                     }   
 
-                        Object.keys(gameState["routeFinished"]).forEach(route => {
-                            if (menuOptions[route] && gameState["routeFinished"][route]) {
-                                menuOptions[route].classList.add("gone");
-                            }
-                        })
+                    if (gameState["routeFinished"]["flirt"]) {
+                            menuOptions["flirt"]["data"].classList.add("gone");
+                        }
 
                 } else if (currentButton === "item") {
                     actOptionCountObserver.disconnect();
