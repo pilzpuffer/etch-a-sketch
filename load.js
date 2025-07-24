@@ -11,10 +11,12 @@ window.addEventListener('load', () => {
     const heartBreak = document.querySelector("#battle-start-heartbreak");
     const battleStart = document.querySelector("#battle-start");
     const battleTheme = document.querySelector("#battle-theme");
+    const intro = document.querySelector("#intro");
     
     heartBreak.volume = sameVolume;
     battleStart.volume = sameVolume;
-    battleTheme.volume = sameVolume - 0.1; //sadly, battle crusher theme is as loud as it is great
+    intro.volume = sameVolume;
+
 
     unRatedEnd.remove();
     creditsRoll.remove();
@@ -88,7 +90,7 @@ window.addEventListener('load', () => {
                             heart.remove();
                             battleStart.addEventListener("ended", function() {
                                 setTimeout(() => {
-                                    battleTheme.play();
+                                    intro.play();
                                     load.remove();
                                 }, 600);   
                             })

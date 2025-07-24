@@ -39,7 +39,8 @@ Roadmap to project finalization
 12) <s>Change font for Mettaton's dialogue</s>
 13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
      1) <s>As consequence of this, I need to fix up the functions for pausing/unpausing those animations</s>
-14) Replace all sounds - they need to be 50% more quiet
+14) <s>Add intro sequence</s>
+15) Maybe make all music tracks more quiet?
 
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>
@@ -55,7 +56,7 @@ One of my biggest missteps was the fact that CSS was basically the first thing I
 
 Another takeaway: having a plan (even a loose one) for a projecty as big as this really helps. Adding new goals on the fly felt exciting, but it also made the project drag on way longer than it needed to - sure, life got a bit in the way of this project, but still, this took me about 4 months or so to actually complete. While this was a fun project, at this point of my studying journey it's more important to actially complete the course instead of getting "stuck" like this.
 
-Also, I've realized that I actually hate using 'generative AI' - the fact that I wanted this game to have cool funky text and used ChatGPT for that bogged down the development of this project a LOT. I love text-heavy games, and despite not being a writer, I wanted to also add a lot of text elements to this game - but that felt horribly creatively unfulfilling. As I kept re-working and polishing the generated text, I just started to feel kind of hollow and even started being terribly uninspired and disappointed in this project - as I felt that the time I spend on this text-related busywork would've been better spent on actually coding or planning out the next project. So yeah, unless I will collaborate with an actual writer, I won't make another text-heavy game like this.
+Also, I've realized that I actually hate using 'generative AI' - the fact that I wanted this game to have cool funky text and used ChatGPT for that bogged down the development of this project a LOT. I love text-heavy games, and despite not being a writer, I wanted to also add a lot of text elements to this game - but that felt horribly creatively unfulfilling and made me feel like some sort of hack. As I kept re-working and polishing the generated text, I just started to feel kind of hollow about this entire ordeal. I even started being terribly uninspired and disappointed in this project - as I felt that the time I spent on this text-related busywork would've been better spent on actually coding or planning out the next project. So yeah, unless I will collaborate with an actual writer, I won't make another text-heavy game like this. 
 
 One of the biggest revelation of this project were CSS keyframes. When I've just started working on this project, I've written a bulky 170-line JavaScript function to handle a repeating animation for arms and body swaying, only to realize I could achieve the same effect using about 20 lines of CSS. And the result was also INCREDIBLY faster, more stable, and easier to tweak - and the entire thing started working much better and stopped lagging in specific scenarios (for example, when drawing field was increased to max possible size). I'm still shocked by how easy this actually was to set up!
 

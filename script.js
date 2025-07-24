@@ -1,9 +1,17 @@
 const sketchField = document.querySelector('#mett-a-sketch');
 const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
+const load = document.querySelector("#load");
 
 const battleStart = document.querySelector("#battle-start");
 const romanceTheme = document.querySelector("#flirt-route");
+const battleTheme = document.querySelector("#battle-theme");
+const intro = document.querySelector("#intro");
+const cheer = document.querySelector("#cheer");
+
+cheer.volume = sameVolume;
+intro.volume = sameVolume;
+battleTheme.volume = sameVolume - 0.1; //sadly, battle crusher theme is as loud as it is great
 romanceTheme.volume = sameVolume - 0.1;
 
 const allColors = ["red", "orange", "yellow", "green", "lightBlue", "blue", "purple", "black", "grey"];
@@ -523,9 +531,7 @@ const removeButtonFocus = function () {
 }
 
 const typeWriterSound = document.querySelector("#textbox-typing");
-const battleTheme = document.querySelector("#battle-theme")
 typeWriterSound.volume = sameVolume - 0.1;
-battleTheme.volume = sameVolume - 0.1;
 
 function randomIndex (arr) {
     return Math.floor(Math.random() * arr.length)
@@ -576,6 +582,30 @@ const typeWriter = function (location, phrase) {
 });
 }
 
+const flavorIntro = [
+    ["Spotlights dance on Mettaton’s gleaming frame.", "As he rolls forward, his screen flickers with a slow, theatrical pulse."],
+    ["Mettaton's voice drops theatrically."],
+    ["The crowd murmurs, leaning in."],
+    ["He pauses, letting the silence stretch - just enough."],
+    ["He lifts an arm, as he softly gestures to his screen-face."],
+    ["His screen flickers, a playful glitch of pink and blue."],
+    ["He leans in, voice dropping into a near-whisper, the crowd leaning with him."],
+    ["He rolls back, the hush replaced with eager shuffling, the glow of stage lights sharp on chrome."],
+    ["His screen brightens, outlining you in its glow as he opens his arms to the crowd."]
+];
+
+const mettIntro = [
+    ["Monsters of the Underground, darlings at home, and YOU - our lone human guest!", "Tonight, all of you are in for a truly special treat."],
+    ["They say art reveals the Soul...", "That every stroke, every color, every bold mistake, is a window into who you really are.", "And here, under these lights, before this live audience and every eager viewer at home...", "...Your Soul will have nowhere to hide, Human."],
+    ["So paint, human.", "Paint with fear, with hope, with chaos if you must.", "Let the world see what beats beneath that fragile exterior."],
+    ["Tonight, you will transform this screen - my screen - into a canvas worthy of Hotland’s eyes.", "You will paint, live and unfiltered before a studio audience that demands nothing less than brilliance!"],
+    ["There's no need to FIGHT for your life on a cramped canvas.", "If the moment demands it - go grand, expand it."],
+    ["Need to spice things up or test the waters?", "Feel free to ACT.", "Try a pose, turn the music on - or off - if you think silence will help your inspiration."],
+    ["Or if you crave something special - an ITEM can help.", "A rainbow flourish, a precise pencil, or... something else, if your ambition dares."],
+    ["And if, by some cruel twist, you create a disaster too dreadful for this world - take MERCY, darling.", "Spare us the horror, clear my screen, and begin anew."],
+    ["Now, let’s see what your Soul can create under the gaze of the lights, the audience...", "and ME — your host, your judge, your star!"]
+];
+
 const flavorQuietOnce = [
     ["You ask for something to plug your ears.", "The production team immediately provides earplugs labeled 'FOR OVERLY SENSITIVE ARTISTS'."],
     ["You declare that true visionaries need silence.", "A rogue stagehand immediately hands you a beret and sunglasses."],
@@ -604,7 +634,7 @@ const mettQuietOnce = [
 ];
 
 const mettQuietTwice = [
-    ["Oh, so it’s that kind of performance!", "A pantomime, a mystery, a whispered secret… Delightful!"],
+    ["Oh, so it’s that kind of performance!", "A pantomime, a mystery, a whispered secret... Delightful!"],
     ["Darling, if you needed peace, you could have just asked!", "But fine — let’s see if your talent is loud enough without the fanfare."],
     ["Oh, the tension! The drama!", "I do love an artist who understands the power of anticipation!"],
     ["Oh, craving that old Hollywood charm, are we?", "A silent film? A tragedy!", "But worry not — I always have a monologue ready!"]
@@ -669,7 +699,7 @@ const mettCheckNone = [
 ];
 
 const mettCheckDrawn = [
-    ["Back for another check? Marvelous!", "Appreciate your own work, darling!", "Such bold choices… truly."],
+    ["Back for another check? Marvelous!", "Appreciate your own work, darling!", "Such bold choices... truly."],
     ["Oh, you're checking it again? What’s wrong, dear?", "Second thoughts about your artistic masterpiece?"],
     ["Ah, still looking?", "A true artist should always reevaluate their work...", "...or regret it."]
 ];
@@ -782,7 +812,7 @@ const mettFlirtTooMuch = [
     ["Ooh!", "Such gallantry!", "If you’re auditioning for a leading role in my life, darling... you have my attention."],
     ["It was dreadful! Chaotic! A total mess!", "You’ve hummed your heart out with all the grace of a collapsing chandelier...", "Darling, if this is what love sounds like, then I never want to hear silence again."],
     ["Darling, please! You’re scandalizing the sponsors!", "If they faint, it’ll be your fault - you've captured my likeness a little too well.", "Every angle, every tiny flourish — it’s like you know me better than my own mirror.", "But tell me, sweetheart...", "...can you really handle what you’ve dreamed up?"],
-    ["Tonight... you’ve bared your heart beneath these blinding lights.", "Not with perfect notes or polished lines… but with something far rarer: sincerity.", "I’ve had suitors — brilliant, breathtaking, but ultimately forgettable.", "But you? You've lingered - too dazzling to forget, too foolish to let go.", "And persistence like that? Darling, it’s almost criminal.", "So this is it - the final rose. My last flourish, and perhaps… my first real offer.", "Will you take your place in the spotlight beside me? Or vanish into the wings, one breath short of forever?"]
+    ["Tonight... you’ve bared your heart beneath these blinding lights.", "Not with perfect notes or polished lines... but with something far rarer: sincerity.", "I’ve had suitors — brilliant, breathtaking, but ultimately forgettable.", "But you? You've lingered - too dazzling to forget, too foolish to let go.", "And persistence like that? Darling, it’s almost criminal.", "So this is it - the final rose. My last flourish, and perhaps... my first real offer.", "Will you take your place in the spotlight beside me? Or vanish into the wings, one breath short of forever?"]
 ];
 
 const flavorFlirtTooMuchEndingWin = [
@@ -804,6 +834,8 @@ const mettFlirtTooMuchEndingWin = [
     ["I’ve played a thousand roles. Lived a thousand perfect scenes.", "But none quite like this. None quite like you."],
     ["You’ve earned something most never even dare to dream of..."],
     ["...A fragment of perfection. From me, no less."],
+    [""],
+    [""],
     [""],
     ["But don’t cue the credits just yet, darling... we're only at intermission!"],
     ["Take it, darling. A token of this fabulous, fleeting moment."],
@@ -913,7 +945,7 @@ const mettFullBetrayal = [
     ["You seemed so sincere when you called me dazzling.", "Tell me — were you just rehearsing that, too?"],
     ["So that’s it. I was a tool, a toy for your amusement.", "How poetic. The star, burned out by their own spotlight"],
     ["You had the spotlight, darling. You had me.", "And now?", "Another word - and you’ll see what happens when the lights go out for you."],
-    ["You made a fool of me.", "You turned affection into ammunition.", "So let me return the favor.", "You wanted a brutal show?", "Then die knowing… you were the climax."]
+    ["You made a fool of me.", "You turned affection into ammunition.", "So let me return the favor.", "You wanted a brutal show?", "Then die knowing... you were the climax."]
 ];
 
 //alt phrases for flirt/perform actions when insults were used before
@@ -981,7 +1013,7 @@ const flavorPerformInsult = [
 ];
 
 const flavorPerformDisgrace = [
-    ["You strike a dramatic pose.", "The lights dim slightly… almost like they’re embarrassed for you."],
+    ["You strike a dramatic pose.", "The lights dim slightly... almost like they’re embarrassed for you."],
     ["You belt a line, full voice, full commitment.", "The echo is louder than the response."],
     ["You bow with a flourish, sweat clinging to your brow like shame."],
     ["You pirouette across the stage.", "But the rhythm feels off - and the connection is gone."],
@@ -996,7 +1028,7 @@ const flavorPerformLock = [
 
 const mettPerformInsult = [
     ["A bold attempt, darling. But glitter can’t cover bruises, no matter how you throw it."],
-    ["Oh, trying to win back your audience?", "Points for effort… minus ten for emotional whiplash."],
+    ["Oh, trying to win back your audience?", "Points for effort... minus ten for emotional whiplash."],
     ["Darling, theatrics are lovely - until they start smelling like desperation."],
     ["A little late for humility, don’t you think?", "But hey - audience loves a redemption arc."],
     ["Trying to distract from your words, dear? At least your transitions are smooth."]
@@ -1006,7 +1038,7 @@ const mettPerformDisgrace = [
     ["Oh please. If you wanted to be a clown, darling, all you had to do was ask."],
     ["Stunning, truly.", "Shame it's coming from someone who already flubbed their character arc."],
     ["Bravo. A standing ovation - if only I had legs to walk out with."],
-    ["Such poise, such elegance… such misplaced effort."],
+    ["Such poise, such elegance... such misplaced effort."],
     ["Still rehearsing lines, I see. But this script’s past saving."]
 ];
 
@@ -1050,9 +1082,9 @@ const flavorThrowMoreEmpty = [
 
 const mettThrowOnceDrawn = [
     ["A mixed-media attempt, I see. Tragically unrefined, but amusing!"],
-    ["Chaotic, but I must admit, I’m intrigued.", "You’re not a master, but I see potential in this.", "Just… not with that stick."],
+    ["Chaotic, but I must admit, I’m intrigued.", "You’re not a master, but I see potential in this.", "Just... not with that stick."],
     ["I admire the passion, but props were not part of the program. Let the art speak for itself!"],
-    ["A bold new brushstroke!", "…Oh wait, it’s just a stick.", "Still, you’ve got gumption, darling."]
+    ["A bold new brushstroke!", "...Oh wait, it’s just a stick.", "Still, you’ve got gumption, darling."]
 ];
 
 const mettThrowMoreDrawn = [
@@ -1112,12 +1144,12 @@ const flavorRosePos = [
 ];
 
 const mettRoseRude = [
-    ["Clutching at old glories, are we? How tragic.", "Roses are beautiful, darling… but even they wither when neglected."],
+    ["Clutching at old glories, are we? How tragic.", "Roses are beautiful, darling... but even they wither when neglected."],
     ["Clinging to memories won't save you, darling.", "Not after the cracks you've made."],
     ["How bittersweet... You parade my gift even as you tarnish what we built."],
     ["A flower given in trust, now held by trembling hands. How poetic."],
     ["You can wave it all you want, dear.", "But no amount of nostalgia can rewind the show."],
-    ["Darling… is this guilt I see?", "Or is that just a prop for your next performance?"],
+    ["Darling... is this guilt I see?", "Or is that just a prop for your next performance?"],
     ["Even stars dim, I suppose. Just like the meaning behind that gift."]
 ];
 
@@ -1136,7 +1168,7 @@ const mettRosePos = [
     ["Oh, you sentimental thing!", "Always knowing just how to stir my circuits."],
     ["Be still, my heart!", "If you keep this up, I’ll have to write you into my autobiography!"],
     ["Oh! Still carrying that little token? You do know how to make a star swoon."],
-    ["Still blooming… just like my affection for you.", "Oh, this is too romantic!"],
+    ["Still blooming... just like my affection for you.", "Oh, this is too romantic!"],
     ["Oh my! You kept it!", "You’re either hopelessly sentimental... or hopelessly in love!"],
     ["My processors are overheating, darling!", "How am I supposed to keep on with this show when you do things like this?!"]
 ];
@@ -1208,7 +1240,7 @@ const mettBlankNeutralOnce = [
 ];
 
 const mettBlankNeutralMore = [
-    ["Ah. A series. Minimalist… and utterly empty. Again.", "Maybe you could try a different theme for your actual piece?"],
+    ["Ah. A series. Minimalist... and utterly empty. Again.", "Maybe you could try a different theme for your actual piece?"],
     ["We get it, darling. You’re deep. Now draw something."],
     ["I see you’re dedicated to your craft - the craft of wasting everyone's time."]
 ];
@@ -2295,6 +2327,7 @@ allText = {
                 }
             }
         },
+        introduction: flavorIntro,
         sound: {
             firstChange: flavorQuietOnce,
             secondChange: flavorQuietTwice,
@@ -2499,6 +2532,7 @@ allText = {
                 }
             }
         },
+        introduction: mettIntro,
         sound: {
             firstChange: mettQuietOnce,
             secondChange: mettQuietTwice,
@@ -2817,6 +2851,30 @@ const flavorText = function(lines) {
 })
 }
 
+
+const introductionSequence = async function() {
+    intro.removeEventListener("playing", introductionSequence);
+
+    cheer.play();
+
+    const introText = async function() {
+        let introFlavor = allText["flavor"]["introduction"];
+        let introMett = allText["mettaton"]["introduction"];
+
+            for (let i = 0; i < introFlavor.length; i++) {
+                await flavorText(introFlavor[i]);
+                await mettTalking(introMett[i]);
+            }
+
+        intro.pause();
+        battleTheme.play();
+    } 
+
+    cheer.addEventListener("ended", introText);
+}
+
+intro.addEventListener("playing", introductionSequence);
+
 //at the moment, this pattern is used only for checkOut option
 const checkConversation = async function (topic, checkToIncrement) { 
     successfulSelect();
@@ -2899,7 +2957,6 @@ const defaultConversation = async function (topic, checkToIncrement) {
     let correctKey = gameState["hasDrawing"] ? "drawn" : "none";
     let selectedIndex = randomIndex(allText["mettaton"][topic][correctKey]);
 
-    
 
     if (topic !== "insult" && gameState["insultTimes"] >= 1) {
         let setAmount;
@@ -2981,6 +3038,7 @@ const defaultConversation = async function (topic, checkToIncrement) {
         await routeFunction();
         gameState["routeStages"][`${topic}RouteStage`]++;
     } 
+
 }
 
 const step = 8;

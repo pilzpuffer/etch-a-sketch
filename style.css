@@ -621,12 +621,6 @@ body {
     }
 }
 
-/* .body-wiggle {
-    transform: rotate(var(--rotate-value)) skew(var(--skew-value));
-
-    was set to 0
-} */
-
 .action-button {
     display: flex;
     direction: row;
