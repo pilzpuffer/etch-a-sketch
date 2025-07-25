@@ -1262,39 +1262,33 @@ const mettBlankGegativeMore = [
 
 //all color-related phrases for rating
 const flavorRatePositiveColorOne = [
-    [""],
-    [""],
-    [""]
+    ["You present your monochrome work with confidence.", "Mettaton tilts a bit, intrigued."],
+    ["Mettaton leans in, inspecting the single-colored artwork with a theatrical gasp."]
 ];
 
 const mettRatePositiveColorOne = [
-    [""],
-    [""],
-    [""]
+    ["Just one color - and yet, you held my attention like a spotlight. Stunning."],
+    ["Minimal? Yes. Forgettable? Never."]
 ];
 
 const flavorRatePositiveColorFew = [
-    [""],
-    [""],
-    [""]
+    ["Mettaton’s screen hums as the colors reflect back at the audience, catching the light in just the right way."],
+    ["Mettaton’s glow ripples as he leans forward, screen brightening to catch every shade."]
 ];
 
 const mettRatePositiveColorFew = [
-    [""],
-    [""],
-    [""]
+    ["Just enough color to draw them in and leave them breathless - splendid."],
+    ["Just enough color to tease the eye — daring, deliberate, divine."]
 ];
 
 const flavorRatePositiveColorMany = [
-    [""],
-    [""],
-    [""]
+    ["Mettaton’s glow sharpens with delight as you step back, letting the storm of colors flicker boldly across his screen."],
+    ["Your multicolored creation pulses across Mettaton's screen.", "He leans forward, static humming."]
 ];
 
 const mettRatePositiveColorMany = [
-    [""],
-    [""],
-    [""]
+    ["Now that’s color, darling! A riot of hues worthy of center stage!"],
+    ["Bold, vibrant, fearless - just the kind of drama I adore!"]
 ];
 
 const flavorRatePositiveColorBlue = [
@@ -1372,39 +1366,33 @@ const mettRatePositiveInstrumentBoth = [
 //neutral
 
 const flavorRateNeutralColorOne = [
-    [""],
-    [""],
-    [""]
+    ["You step back from the canvas, arms crossed like it's a statement piece. Mettaton doesn't seem to be impressed by that."],
+    ["Mettaton circles around as if contemplating something - then shrugs with mechanical precision."]
 ];
 
 const mettRateNeutralColorOne = [
-    [""],
-    [""],
-    [""]
+    ["A single color? It’s giving... budget constraints. But let's see the rest of it."],
+    ["A minimalist approach. Not exactly riveting, but acceptable."]
 ];
 
 const flavorRateNeutralColorFew = [
-    [""],
-    [""],
-    [""]
+    ["You present your piece with cautious pride, colors flickering softly across his screen."],
+    ["Mettaton’s glow dims to a calm pulse as he surveys the colors you've used."]
 ];
 
 const mettRateNeutralColorFew = [
-    [""],
-    [""],
-    [""]
+    ["A bit of variety, I see. Serviceable enough. Let’s continue."],
+    ["A modest use of color. Functional, if a touch forgettable."]
 ];
 
 const flavorRateNeutralColorMany = [
-    [""],
-    [""],
-    [""]
+    ["You gesture at the swirl of colors flickering across Mettaton's screen.", "Mettaton’s frame shifts, considering."],
+    ["The colors of your drawing dance across the screen.", "Mettaton hums, tapping his metallic fingers once."]
 ];
 
 const mettRateNeutralColorMany = [
-    [""],
-    [""],
-    [""]
+    ["A respectable spread of hues. Not dazzling, but it shows you tried."],
+    ["Colorful enough to hold attention, at least. Let’s see what else we have here."]
 ];
 
 const flavorRateNeutralColorBlue = [
@@ -1482,39 +1470,33 @@ const mettRateNeutralInstrumentBoth = [
 //negative
 
 const flavorRateNegativeColorOne = [
-    [""],
-    [""],
-    [""]
+    ["You present your one-color masterpiece with a flourish.", "Mettaton doesn’t spare it a glance, idly inspecting his gloved hand as if checking for a chip in his manicure."],
+    ["Mettaton glances at your piece, tilts his frame just so, the closest a robot can get to an offended eyebrow raise."]
 ];
 
 const mettRateNegativeColorOne = [
-    [""],
-    [""],
-    [""]
+    ["One color, one yawn. Next!"],
+    ["Did you drop your whole palette on the way here?"]
 ];
 
 const flavorRateNegativeColorFew = [
-    [""],
-    [""],
-    [""]
+    ["You throw a smug glance at your drawing. Mettaton’s screen dims briefly, exasperated."],
+    ["Mettaton angles away from the flicker of your limited palette, glow flickering impatiently."]
 ];
 
 const mettRateNegativeColorFew = [
-    [""],
-    [""],
-    [""]
+    ["So that’s it? Did you run out of inspiration and crayons?"],
+    ["A few colors can work wonders, darling. This... wasn’t one of those times."]
 ];
 
 const flavorRateNegativeColorMany = [
-    [""],
-    [""],
-    [""]
+    ["Mettaton’s frame shifts just enough to feel like a theatrical wince. The chaos of your colors flickers across his screen like confetti in a storm."],
+    ["Mettaton scans the chaotic swirls of color, then dramatically turns his back."]
 ];
 
 const mettRateNegativeColorMany = [
-    [""],
-    [""],
-    [""]
+    ["Too many colors, darling. You’ve painted like a toddler at a birthday party."],
+    ["A lavish use of color, but wasted on a piece so... uninspired."],
 ];
 
 const flavorRateNegativeColorBlue = [
@@ -3211,7 +3193,7 @@ const finalRateCount = function () {
     //then - player's demeanor
     //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
     //there will be an ending sequence and game will be over
-    console.log(`the colorScore is ${gameState["rate"]["colorScore"]}, the gameScore is ${gameState["rate"]["densityScore"]} and manners score is ${gameState["rate"]["mannersScore"]}`)
+    console.log(`the colorScore is ${gameState["rate"]["colorScore"]}, the densityScore is ${gameState["rate"]["densityScore"]} and manners score is ${gameState["rate"]["mannersScore"]}`)
     console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"]) * 10) / 10}`);
 
     // max possible score for manners is 18, minimum is -15, though it potentially can get much lower if player keeps throwing a stick, but that deducts just 0.5 points at a time, so that's not too much (and will get boring quickly)

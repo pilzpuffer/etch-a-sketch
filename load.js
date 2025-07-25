@@ -56,7 +56,7 @@ window.addEventListener('load', () => {
 
 
         const handleKeyDown = function(event) {
-            if (event.code === "Digit2" || event.code === "Enter") {
+            if (event.code === "Digit2" || event.code === "Numpad2" ||event.code === "Enter") {
 
                 window.removeEventListener("keydown", handleKeyDown);
                 heart.classList.remove("beat");
@@ -99,9 +99,8 @@ window.addEventListener('load', () => {
                         ).onfinish = () => {
                             heart.remove();
                             battleStart.addEventListener("ended", function() {
-                                setTimeout(() => {
-                                    
-                                    if (event.code === "Digit2") {
+                                setTimeout(() => { 
+                                    if (event.code === "Digit2" || event.code === "Numpad2") {
                                         battleTheme.play();
                                     } else if (event.code === "Enter") {
                                         intro.play();
