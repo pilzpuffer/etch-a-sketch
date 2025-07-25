@@ -1508,58 +1508,52 @@ const mettRateNegativeColorOne = [
 
 const flavorRateNegativeColorFew = [
     ["You throw a smug glance at your drawing. Mettaton’s screen dims briefly, exasperated."],
-    ["Mettaton angles away from the flicker of your limited palette, glow flickering impatiently."]
 ];
 
 const mettRateNegativeColorFew = [
-    ["So that’s it? Did you run out of inspiration and crayons?"],
-    ["A few colors can work wonders, darling. This... wasn’t one of those times."]
+    ["So that’s it? Did you run out of inspiration and crayons?"]
 ];
 
 const flavorRateNegativeColorMany = [
     ["Mettaton’s frame shifts just enough to feel like a theatrical wince. The chaos of your colors flickers across his screen like confetti in a storm."],
-    ["Mettaton scans the chaotic swirls of color, then dramatically turns his back."]
 ];
 
 const mettRateNegativeColorMany = [
     ["Too many colors, darling. You’ve painted like a toddler at a birthday party."],
-    ["A lavish use of color, but wasted on a piece so... uninspired."],
 ];
 
 const flavorRateNegativeColorBlue = [
-    [""],
-    [""],
-    [""]
+    ["A cold blue glow sweeps across Mettaton’s display, stark and empty."],
+    ["The scanner’s light holds on blue, unblinking, unamused."]
 ];
 
 const mettRateNegativeColorBlue = [
-    [""],
-    [""],
-    [""]
+    ["Blue, but no depth behind it."],
+    ["A cold choice with nothing beneath the surface."]
 ];
 
 const flavorRateNegativeColorPurple = [
-    [""],
-    [""],
-    [""]
+    ["A violet hue pulses briefly on Mettaton’s screen, then fades into gray."],
+    ["Purple shivers across the scanner light, shallow and showy."],
+    ["The stage dims for the shade, but only for a moment."]
 ];
 
 const mettRateNegativeColorPurple = [
-    [""],
-    [""],
-    [""]
+    ["Purple, reaching for drama, falling flat."],
+    ["You wanted flair, but it felt hollow."],
+    ["A royal color, wasted on a forgettable display."]
 ];
 
 const flavorRateNegativeColorBoth = [
-    [""],
-    [""],
-    [""]
+    ["Blue and purple glow together, but the scanner light flickers impatiently."],
+    ["The hues swirl on Mettaton’s screen without harmony, restless and empty."],
+    ["A layered glow tries to claim the stage but leaves nothing memorable."]
 ];
 
 const mettRateNegativeColorBoth = [
-    [""],
-    [""],
-    [""]
+    ["Blue and purple. A classic combo you managed to drain of impact."],
+    ["These colors deserve better than what you gave them."],
+    ["A pairing meant for drama, wasted on this chaos."]
 ];
 
 const flavorRateNegativeInstrumentPencil = [
