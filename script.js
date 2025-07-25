@@ -1263,7 +1263,7 @@ const mettBlankGegativeMore = [
 //all color-related phrases for rating
 const flavorColorPositiveIntro = [
     ["Mettaton tilts his frame just so, and a wave of color data scrolls across his screen in diagnostic bursts."],
-    ["His fingers click together, snapping a hidden compartment open: a lens-shaped scanner beams briefly at his own surface — your canvas — before projecting a color wheel into the air."],
+    ["His fingers click together, snapping a hidden compartment open: a lens-shaped scanner beams briefly at his own screen — your canvas — before projecting a color wheel into the air."],
     ["The audience leans in. A camera-bot lowers to capture the glow from a better angle."]
 ]
 
@@ -1347,71 +1347,79 @@ const mettRatePositiveColorBoth = [
 ];
 
 const flavorRatePositiveInstrumentPencil = [
-    [""],
-    [""],
-    [""]
+    ["A thin, dusty line etches across Mettaton’s screen.", "It crackles faintly, the scratchy path catching the stage lights."],
+    ["His frame tilts, screen humming."],
+    ["A pause, then a soft chuckle."]
 ];
 
 const mettRatePositiveInstrumentPencil = [
-    [""],
-    [""],
-    [""]
+    ["A pencil. Really."],
+    ["No neon. No flair. Just grit on glass."],
+    ["And darling, it was louder than fireworks."]
 ];
 
 const flavorRatePositiveInstrumentRainbow = [
-    [""],
-    [""],
-    [""]
+    ["Lights fracture. A dozen tiny beams scatter across the audience, matching the rainbow pen’s spectrum. The front row throws their hands up like it’s a concert."],
+    ["Mettaton’s screen rotates through seven shades in sync with the house lights."],
+    ["He pauses, lets the moment simmer."]
 ];
 
 const mettRatePositiveInstrumentRainbow = [
-    [""],
-    [""],
-    [""]
+    ["Oh, you didn’t just draw. You performed."],
+    ["Every color, every second - like a fireworks finale with no warning."],
+    ["You weren’t subtle. But subtlety’s overrated anyway."]
 ];
 
 const flavorRatePositiveInstrumentBoth = [
-    [""],
-    [""],
-    [""]
+    ["The scanner stutters. The display glitches, unsure whether to go grayscale or full disco. Mettaton blinks - figuratively."],
+    ["His frame shifts, intrigued despite himself."],
+    ["Sparks drift down from the lighting rig."],
+    ["The screen glows, steady."]
 ];
 
 const mettRatePositiveInstrumentBoth = [
-    [""],
-    [""],
-    [""]
+    ["What is this?"],
+    ["You scratched whispers, then drowned them in color."],
+    ["It shouldn’t work."],
+    ["And yet, here we are."]
 ];
 
 //neutral
 
 const flavorRateNeutralColorOne = [
-    ["You step back from the canvas, arms crossed like it's a statement piece. Mettaton doesn't seem to be impressed by that."],
-    ["Mettaton circles around as if contemplating something - then shrugs with mechanical precision."]
+    [""],
+    [""],
+    [""]
 ];
 
 const mettRateNeutralColorOne = [
-    ["A single color? It’s giving... budget constraints. But let's see the rest of it."],
-    ["A minimalist approach. Not exactly riveting, but acceptable."]
+    [""],
+    [""],
+    [""]
 ];
 
 const flavorRateNeutralColorFew = [
-    ["You present your piece with cautious pride, colors flickering softly across his screen."],
-    ["Mettaton’s glow dims to a calm pulse as he surveys the colors you've used."]
+    [""],
+    [""],
+    [""]
 ];
 
 const mettRateNeutralColorFew = [
-    ["A bit of variety, I see. Serviceable enough. Let’s continue."],
-    ["A modest use of color. Functional, if a touch forgettable."]
+    [""],
+    [""],
+    [""]
 ];
 
 const flavorRateNeutralColorMany = [
-    ["You gesture at the swirl of colors flickering across Mettaton's screen.", "Mettaton’s frame shifts, considering."],
-    ["The colors of your drawing dance across the screen.", "Mettaton hums, tapping his metallic fingers once."]
+    [""],
+    [""],
+    [""]
 ];
 
 const mettRateNeutralColorMany = [
-    ["A respectable spread of hues. Not dazzling, but it shows you tried."],
-    ["Colorful enough to hold attention, at least. Let’s see what else we have here."]
+    [""],
+    [""],
+    [""]
 ];
 
 const flavorRateNeutralColorBlue = [
