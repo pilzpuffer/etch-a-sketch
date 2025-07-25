@@ -34,13 +34,12 @@ Roadmap to project finalization
 7) <s>Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality</s> - Done!
 8) <s>Add title to the load screen</s> - DONE!
 9) Work on scaling for different/smaller screen resolutions - another intensive task
-10) Work on the intro sequence for this game - Mett text, some flavor text, maybe more sounds might be needed
+10) <s>Work on the intro sequence for this game - Mett text, some flavor text, maybe more sounds might be needed</s>
 11) <s>Rework the "stick" function, add text</s> - DONE!
 12) <s>Change font for Mettaton's dialogue</s>
 13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
      1) <s>As consequence of this, I need to fix up the functions for pausing/unpausing those animations</s>
-14) <s>Add intro sequence</s>
-15) Maybe make all music tracks more quiet?
+14) Maybe make all music tracks more quiet?
 
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>

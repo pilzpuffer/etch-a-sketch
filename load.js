@@ -13,6 +13,7 @@ window.addEventListener('load', () => {
     const battleTheme = document.querySelector("#battle-theme");
     const intro = document.querySelector("#intro");
     
+    battleTheme.volume = sameVolume - 0.1;
     heartBreak.volume = sameVolume;
     battleStart.volume = sameVolume;
     intro.volume = sameVolume;
@@ -36,8 +37,17 @@ window.addEventListener('load', () => {
     load.appendChild(titleTextFront);
     
     const startText = document.createElement("div");
-    startText.textContent = "[PRESS 2 OR ENTER TO START]";
     startText.classList.add("start-text");
+
+    const lineOne = document.createElement("div");
+    lineOne.textContent = "[PRESS ENTER TO START]";
+
+    const lineTwo = document.createElement("div");
+    lineTwo.textContent = "[PRESS 2 TO SKIP TUTORIAL AND START]";
+
+    startText.appendChild(lineOne);
+    startText.appendChild(lineTwo);
+
     load.appendChild(startText);
     
         const beatingMotion = setInterval(function() {
@@ -90,7 +100,12 @@ window.addEventListener('load', () => {
                             heart.remove();
                             battleStart.addEventListener("ended", function() {
                                 setTimeout(() => {
-                                    intro.play();
+                                    
+                                    if (event.code === "Digit2") {
+                                        battleTheme.play();
+                                    } else if (event.code === "Enter") {
+                                        intro.play();
+                                    }
                                     load.remove();
                                 }, 600);   
                             })

@@ -228,6 +228,12 @@ body {
 }
 
 .start-text {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+
     color: var(--background-text-color);
     font-family: "Undertale-Pixelated";
     font-size: 160%;
