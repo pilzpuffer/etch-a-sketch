@@ -1261,70 +1261,89 @@ const mettBlankGegativeMore = [
 
 
 //all color-related phrases for rating
+const flavorColorPositiveIntro = [
+    ["Mettaton tilts his frame just so, and a wave of color data scrolls across his screen in diagnostic bursts."],
+    ["His fingers click together, snapping a hidden compartment open: a lens-shaped scanner beams briefly at his own surface — your canvas — before projecting a color wheel into the air."],
+    ["The audience leans in. A camera-bot lowers to capture the glow from a better angle."]
+]
+
 const flavorRatePositiveColorOne = [
-    ["You present your monochrome work with confidence.", "Mettaton tilts a bit, intrigued."],
-    ["Mettaton leans in, inspecting the single-colored artwork with a theatrical gasp."]
+    ["The color wheel flickers... then freezes on a single hue. The room stills."],
+    ["Mettaton’s screen shifts to match, radiating that lone color across the hall."],
+    ["He rotates slowly, one arm behind his frame like a painter in critique mode."],
+    ["He turns just slightly, voice curling with dry amusement."]
+    
 ];
 
 const mettRatePositiveColorOne = [
-    ["Just one color - and yet, you held my attention like a spotlight. Stunning."],
-    ["Minimal? Yes. Forgettable? Never."]
+    ["Ah. Singular. Decisive. A statement."],
+    ["You could’ve played with the whole rainbow... and you said no."],
+    ["Minimalism has its charm, darling - but you weren’t minimalist."],
+    ["You were cautious. This stage deserves bolder choices.", "Let’s just say... I was hoping for a bit more drama from my co-star."]
 ];
 
 const flavorRatePositiveColorFew = [
-    ["Mettaton’s screen hums as the colors reflect back at the audience, catching the light in just the right way."],
-    ["Mettaton’s glow ripples as he leans forward, screen brightening to catch every shade."]
+    ["The wheel spins, showcasing your tasteful color combination.", "Applause flickers across the crowd like ripples in a champagne glass."],
+    ["Mettaton rotates slowly, displaying each selected hue like a gallery exhibit."],
+    ["He glides slightly forward, screen glowing."]
 ];
 
 const mettRatePositiveColorFew = [
-    ["Just enough color to draw them in and leave them breathless - splendid."],
-    ["Just enough color to tease the eye — daring, deliberate, divine."]
+    ["Mmm, a curated palette! Chic, stylish... a hint of mystery."],
+    ["You didn’t throw paint at the wall - you composed, darling. As if each hue had its own solo."],
+    ["Not loud. Not desperate. Just intentional. And oh, how that lingers."]
 ];
 
 const flavorRatePositiveColorMany = [
-    ["Mettaton’s glow sharpens with delight as you step back, letting the storm of colors flicker boldly across his screen."],
-    ["Your multicolored creation pulses across Mettaton's screen.", "He leans forward, static humming."]
-];
+    ["The scanner goes wild. Colors cascade wildly across Mettaton’s screen, a riot of saturation that nearly outshines the stage lights."],
+    ["Glitter cannons hiss, the crowd surges with a single, collective gasp."],
+    ["His arms sweep upward, screen pulsing in swirling hues."],
+    ["He spins once, letting the chaos of hues reflect across the stage."]
+]
 
 const mettRatePositiveColorMany = [
-    ["Now that’s color, darling! A riot of hues worthy of center stage!"],
-    ["Bold, vibrant, fearless - just the kind of drama I adore!"]
+    [""],
+    ["What a spectacle, darling!"],
+    ["You didn’t just use color - you let it loose."],
+    ["A masterpiece of mayhem, and the spotlight loved every shade."]
 ];
 
 const flavorRatePositiveColorBlue = [
-    [""],
-    [""],
-    [""]
+    ["Soft synth chords play under the audience’s collective sigh.", "Mettaton’s screen adopts a cool, blue tint."],
+    ["He tilts slightly, the glow casting soft halos along his frame."],
+    ["He glances toward the audience, then back to you."]
 ];
 
 const mettRatePositiveColorBlue = [
-    [""],
-    [""],
-    [""]
+    ["So... serene."],
+    ["Blue like silence. Like confidence that doesn’t need applause."],
+    ["A lesser performer might fade in those tones. But you? You glowed."]
 ];
 
 const flavorRatePositiveColorPurple = [
-    [""],
-    [""],
-    [""]
+    ["Mettaton’s screen darkens, then flares with purple undertones from your drawing."],
+    ["He presses two fingertips together, as if savoring fine wine."],
+    ["A dramatic pause. His voice drops just a notch."]
 ];
 
 const mettRatePositiveColorPurple = [
-    [""],
-    [""],
-    [""]
+    ["...Ah. Royal."],
+    ["You covered me in the color of charisma, elegance... and subtle danger"],
+    ["Frankly, it’s flattering. You’ve got taste, darling — and you know where to use it."]
 ];
 
 const flavorRatePositiveColorBoth = [
-    [""],
-    [""],
-    [""]
+    ["A slow ripple of deep blue and violet sweeps across Mettaton’s screen, cool as midnight, sharp as spotlight glass. Somewhere backstage, a mic catches a whispered, '...oh, that’s good.'"],
+    ["His screen tilts, letting the colors catch the light like silk."],
+    ["He glides closer, the hues casting royal shadows across the stage."],
+    ["The hum in his frame is more purr than static now."]
 ];
 
 const mettRatePositiveColorBoth = [
-    [""],
-    [""],
-    [""]
+    ["Oh, you clever thing."],
+    ["You knew your audience. You knew me"],
+    ["You combined restraint with decadence. Cool calculation with flair."],
+    ["A palette so precise, it’s practically a signature."]
 ];
 
 const flavorRatePositiveInstrumentPencil = [
