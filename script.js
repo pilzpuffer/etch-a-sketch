@@ -1387,75 +1387,75 @@ const mettRatePositiveInstrumentBoth = [
 //neutral
 
 const flavorRateNeutralColorOne = [
-    [""],
-    [""],
-    [""]
+    ["The color scanner beeps once, landing on your lone hue."],
+    ["Mettaton’s screen matches your single color, holding steady."],
+    ["He angles his frame, the light catching just so."]
 ];
 
 const mettRateNeutralColorOne = [
-    [""],
-    [""],
-    [""]
+    ["One color. By choice, I suppose."],
+    ["It’s... direct. Can’t fault you for that."],
+    ["Simple. Uncomplicated. Let’s move on."]
 ];
 
 const flavorRateNeutralColorFew = [
-    [""],
-    [""],
-    [""]
+    ["The scanner cycles through a few hues before settling."],
+    ["Mettaton’s screen shifts softly, matching your modest palette."],
+    ["The glow is subdued, but it fills the stage regardless."]
 ];
 
 const mettRateNeutralColorFew = [
-    [""],
-    [""],
-    [""]
+    ["A few colors. A hint of range, at least."],
+    ["You kept it tidy. Respectable."],
+    ["Not too loud, not too dull. Fair enough."]
 ];
 
 const flavorRateNeutralColorMany = [
-    [""],
-    [""],
-    [""]
+    ["The scanner hums as colors dance across Mettaton’s screen."],
+    ["A swirl of shades lights up the stage, but not enough to blind."],
+    ["Mettaton’s screen ripples, briefly saturated with your choices."]
 ];
 
 const mettRateNeutralColorMany = [
-    [""],
-    [""],
-    [""]
+    ["A splash of colors. Busy, but not reckless."],
+    ["You brought variety. Can’t argue with that."],
+    ["Plenty of shades. Let’s see if you made them count."]
 ];
 
 const flavorRateNeutralColorBlue = [
-    [""],
-    [""],
-    [""]
+    ["A cool blue tint pulses across Mettaton’s screen."],
+    ["The scanner’s glow calms as blue takes focus."],
+    ["A hush ripples across the stage lights."]
 ];
 
 const mettRateNeutralColorBlue = [
-    [""],
-    [""],
-    [""]
+    ["Blue. Calm. Measured."],
+    ["A steady choice. Easy on the eyes."],
+    ["Cool, but let’s see if it carries weight."]
 ];
 
 const flavorRateNeutralColorPurple = [
-    [""],
-    [""],
-    [""]
+    ["A violet sheen flickers briefly across Mettaton’s display."],
+    ["Purple lingers in the scanner light, subtle yet noticeable."],
+    ["The stage lighting dims to let the hue breathe."]
 ];
 
 const mettRateNeutralColorPurple = [
-    [""],
-    [""],
-    [""]
+    ["Purple. A touch of drama."],
+    ["Hints of ambition in that shade."],
+    ["Not loud, but it has presence."]
 ];
 
 const flavorRateNeutralColorBoth = [
-    [""],
-    [""],
-    [""]
+    ["Blue and purple filter across Mettaton’s screen, calm but unmistakable."],
+    ["The scanner flickers between the two hues, steady and deliberate."],
+    ["A layered glow settles over the stage, cool and composed."]
 ];
 
 const mettRateNeutralColorBoth = [
-    [""],
-    [""],
-    [""]
+    ["Blue and purple. A dependable choice."],
+    ["Balanced, with just enough depth to stand out."],
+    ["Calm colors, but they hold their own under these lights."]
 ];
 
 const flavorRateNeutralInstrumentPencil = [
@@ -1865,7 +1865,12 @@ const flavorRateFinalStartNeutral = [
 ];
 
 const flavorRateFinalStartNegative = [
-    [""]
+    ["A sharp feedback sound rings out from one of the overhead mics. Someone in the control booth coughs."],
+    ["Mettaton pauses, then glides forward - slow and measured.", "His screen dims slightly, casting you in flickering grayscale."],
+    ["The house lights flicker, intentionally or not.", "You hear someone backstage whisper: 'Did they seriously insult him mid-show?'"],
+    ["He lifts one arm, clicks a remote. A screen behind him replays some past interaction - clipped, petty, graceless. The crowd groans."],
+    ["The light on you hardens into a lone follow-spot."],
+    ["One final pause. Then his screen dims entirely for a single beat. The audience gasps."]
 ];
 const flavorRateFinalStartFullBetrayal = [
     [""]
@@ -1884,7 +1889,13 @@ const mettRateFinalStartNeutral = [
 ];
 
 const mettRateFinalStartNegative = [
+    [""],
+    ["There’s an art to presence. A rhythm to the dance between audience and performer."],
+    ["And you... you misstepped, darling.", "Again. And again. And again."],
+    ["You had the chemistry, the rhythm, the spark...", "...And then you tripped over your own lines."],
+    ["What a shame. You had the stage... but you didn’t respect it."],
     [""]
+
 ];
 
 const mettRateFinalStartFullBetrayal = [
