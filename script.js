@@ -3239,21 +3239,6 @@ const ratingPhrases = async function(section, attitude, topic) {
     }
 }
 
-const finalRateCount = function () {
-    //first, colors will be appraised
-    //then - drawing density
-    //then - player's demeanor
-    //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
-    //there will be an ending sequence and game will be over
-
-   
-    console.log(`the colorScore is ${gameState["rate"]["colorScore"]}, the densityScore is ${gameState["rate"]["densityScore"]} and manners score is ${gameState["rate"]["mannersScore"]}`)
-    console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"]) * 10) / 10}`);
-
-    // max possible score for manners is 18, minimum is -15, though it potentially can get much lower if player keeps throwing a stick, but that deducts just 0.5 points at a time, so that's not too much (and will get boring quickly)
-    // max score for density is 5, minimum is -2. max score for colors is 5 and min is 0
-}
-
 const rating = async function() {
     successfulSelect();
     //rate will be the act function that will complete this game
@@ -3413,7 +3398,7 @@ const rating = async function() {
         }
     }
 
-        if (gameState[gameState["routeFinished"]["flirt"] && "routeStages"]["insultRouteStage"] >= 4) {
+        if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 4) {
             mannersAppraisal("ifBetrayal");
         } else if (gameState["rate"]["mannersScore"] >= 5 && gameState["insultTimes"] === 0) {
             if (gameState["routeFinished"]["flirt"]) {
@@ -3431,9 +3416,76 @@ const rating = async function() {
             mannersAppraisal("ifNeutral");
         }
 
-        finalRateCount();
+        
     }
-        }
+
+    const miniMettsContainer = document.createElement("div");
+    const middlePart = document.querySelector(".middle-part");
+
+    miniMettsContainer.classList.add("shuffle-box");
+
+    const judgeOneContainer = document.createElement("div");
+    const judgeTwoContainer = document.createElement("div");
+    const judgeThreeContainer = document.createElement("div");
+
+    judgeOneContainer.classList.add("judge-box");
+    judgeTwoContainer.classList.add("judge-box");
+    judgeThreeContainer.classList.add("judge-box");
+
+    const judgeOne = document.createElement("img");
+    const judgeTwo = document.createElement("img");
+    const judgeThree = document.createElement("img");
+    judgeOne.src = "./images/small-M-D.png";
+    judgeTwo.src = "./images/small-M-D.png";
+    judgeThree.src = "./images/small-M-D.png";
+
+    const tinyLegOne = document.createElement("div");
+    const tinyLegTwo = document.createElement("div");
+    const tinyLegThree = document.createElement("div");
+    tinyLegOne.classList.add("tiny-leg");
+    tinyLegTwo.classList.add("tiny-leg");
+    tinyLegThree.classList.add("tiny-leg");
+
+    const wheelOne = document.createElement("img");
+    const wheelTwo = document.createElement("img");
+    const wheelThree = document.createElement("img");
+    wheelOne.src = "./images/mett-sprite/mett-wheel.png";
+    wheelTwo.src = "./images/mett-sprite/mett-wheel.png";
+    wheelThree.src = "./images/mett-sprite/mett-wheel.png";
+    wheelOne.classList.add("wheelie");
+    wheelTwo.classList.add("wheelie");
+    wheelThree.classList.add("wheelie");
+
+
+    judgeOneContainer.appendChild(judgeOne);
+    judgeOneContainer.appendChild(tinyLegOne);
+    judgeOneContainer.appendChild(wheelOne);
+
+    judgeTwoContainer.appendChild(judgeTwo);
+    judgeTwoContainer.appendChild(tinyLegTwo);
+    judgeTwoContainer.appendChild(wheelTwo);
+
+    judgeThreeContainer.appendChild(judgeThree);
+    judgeThreeContainer.appendChild(tinyLegThree);
+    judgeThreeContainer.appendChild(wheelThree);
+
+
+    miniMettsContainer.appendChild(judgeOneContainer);
+    miniMettsContainer.appendChild(judgeTwoContainer);
+    miniMettsContainer.appendChild(judgeThreeContainer);
+
+    middlePart.appendChild(miniMettsContainer);
+    //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
+    //there will be an ending sequence and game will be over
+
+   
+    console.log(`the colorScore is ${gameState["rate"]["colorScore"]}, the densityScore is ${gameState["rate"]["densityScore"]} and manners score is ${gameState["rate"]["mannersScore"]}`)
+    console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"]) * 10) / 10}`);
+
+    // max possible score for manners is 18, minimum is -15, though it potentially can get much lower if player keeps throwing a stick, but that deducts just 0.5 points at a time, so that's not too much (and will get boring quickly)
+    // max score for density is 5, minimum is -2. max score for colors is 5 and min is 0
+
+}
 
 const rose = async function() {
     successfulSelect();
