@@ -1809,7 +1809,7 @@ const flavorRateMannersNeutral = [
     [""]
 ];
 
-const flavorRateMannersnegative = [
+const flavorRateMannersNegative = [
     [""]
 ];
 
@@ -2288,7 +2288,7 @@ allText = {
                 ifHighFlirty: flavorRateMannersHighFlirty,
                 ifHighFriendly: flavorRateMannersHighFriendly,
                 ifNeutral: flavorRateMannersNeutral,
-                ifNegative: flavorRateMannersnegative,
+                ifNegative: flavorRateMannersNegative,
                 ifVeryNegative: flavorRateMannersVeryNegative,
                 ifBetrayal: flavorRateMannersBetrayal
             },
@@ -3401,6 +3401,34 @@ const rating = async function() {
                 gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1.5), 5)
                 ratingPhrases("densityComments", attitude, "full");
             }
+        }
+
+    const mannersAppraisal = async function(topic) {
+        let flavorLine = allText["flavor"]["rate"]["mannersComments"][topic];
+        let mettLine = allText["mettaton"]["rate"]["mannersComments"][topic];
+
+        for (let i = 0; i < flavorLine.length; i++) {
+            await flavorText(flavorLine[i]);
+            await mettTalking(mettLine[i]);
+        }
+    }
+
+        if (gameState[gameState["routeFinished"]["flirt"] && "routeStages"]["insultRouteStage"] >= 4) {
+            mannersAppraisal("ifBetrayal");
+        } else if (gameState["rate"]["mannersScore"] >= 5 && gameState["insultTimes"] === 0) {
+            if (gameState["routeFinished"]["flirt"]) {
+                mannersAppraisal("ifHighFlirty");
+            } else {
+                mannersAppraisal("ifHighFriendly");
+            }
+        } else if (gameState["insultTimes"] > 0 || gameState["rate"]["mannersScore"] <= -2) { 
+            if (gameState["rate"]["mannersScore"] < -5) {
+                mannersAppraisal("ifVeryNegative");
+            } else {
+                mannersAppraisal("ifNegative");
+            }
+        } else {
+            mannersAppraisal("ifNeutral");
         }
 
         finalRateCount();

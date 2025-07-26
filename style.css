@@ -257,6 +257,7 @@ body {
     display: flex;
     align-items: center;
     object-fit: contain;
+    z-index: 2;
 }
 
 .center-section {
