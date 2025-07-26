@@ -10,7 +10,7 @@ Roadmap to project finalization
                4) <s>Need to add an interaction for the rose item (with changes to mannersScore)</s>
                5) <s>Add an interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)</s>
           2) Compose the 'final' rate function
-               1) Logic for how Mett's rating phrases show up
+               1) <s>Logic for how Mett's rating phrases show up</s>
                2) Logic/structure for how "mini-judges'" ratings show up and disappear
                3) Logic for final score declaration and endgame
      2) Compose relevant text for rating

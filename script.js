@@ -389,11 +389,7 @@ const gameState = {
         colorScore: 0,
         densityScore: 0,
         mannersScore: 0,
-        baitAndSwitch: 0,
-        pencilComment: false,
-        rainbowComment: false,
-        dotComment: false,
-        bucketComment: false
+        baitAndSwitch: 0
     }
 }
 
@@ -1261,7 +1257,9 @@ const mettBlankGegativeMore = [
 
 
 //all color-related phrases for rating
+//adjust this intro - need to add a clearer switch into the "rating mode"
 const flavorColorPositiveIntro = [
+    ["Satisfied with your drawing, you nod to Mettaton, confirming that your masterpiece is done."]
     ["Mettaton tilts his frame just so, and a wave of color data scrolls across his screen in diagnostic bursts."],
     ["His fingers click together, snapping a hidden compartment open: a lens-shaped scanner beams briefly at his own screen — your canvas — before projecting a color wheel into the air."],
     ["The audience leans in. A camera-bot lowers to capture the glow from a better angle."]
@@ -1385,6 +1383,9 @@ const mettRatePositiveInstrumentBoth = [
 ];
 
 //neutral
+const flavorColorNeutralIntro = [
+    [""]
+]
 
 const flavorRateNeutralColorOne = [
     ["The color scanner beeps once, landing on your lone hue."],
@@ -1495,6 +1496,9 @@ const mettRateNeutralInstrumentBoth = [
 ];
 
 //negative
+const flavorColorNegativeIntro = [
+    [""]
+];
 
 const flavorRateNegativeColorOne = [
     ["You present your one-color masterpiece with a flourish.", "Mettaton doesn’t spare it a glance, idly inspecting his gloved hand as if checking for a chip in his manicure."],
@@ -2407,6 +2411,8 @@ allText = {
             },
             colorComments: {
                 positive: {
+                    introduction: flavorColorPositiveIntro,
+
                     lightBlue: mettRatePositiveColorBlue,
                     purple: mettRatePositiveColorPurple,
                     bothColorsComment: mettRatePositiveColorBoth,
@@ -2420,6 +2426,8 @@ allText = {
                     many: mettRatePositiveColorMany
                 },
                 neutral: {
+                    introduction: flavorColorNeutralIntro,
+
                     lightBlue: mettRateNeutralColorBlue,
                     purple: mettRateNeutralColorPurple,
                     bothColorsComment: mettRateNeutralColorBoth,
@@ -2433,6 +2441,8 @@ allText = {
                     many: mettRateNeutralColorMany
                 },
                 negative: {
+                    introduction: flavorColorNegativeIntro,
+
                     lightBlue: mettRateNegativeColorBlue,
                     purple: mettRateNegativeColorPurple,
                     bothColorsComment: mettRateNegativeColorBoth,
@@ -3219,12 +3229,24 @@ function randomNumber (number, modificator) {
     return Math.round(rand * 10) / 10;
 }
 
+const ratingPhrases = async function(section, attitude, topic) {
+    let flavorLine = allText["flavor"]["rate"][section][attitude][topic]
+    let mettLine = allText["mettaton"]["rate"][section][attitude][topic]
+
+    for (let i = 0; i < flavorLine.length; i++) {
+        await flavorText(flavorLine[i]);
+         await mettTalking(mettLine[i]);
+    }
+}
+
 const finalRateCount = function () {
     //first, colors will be appraised
     //then - drawing density
     //then - player's demeanor
     //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
     //there will be an ending sequence and game will be over
+
+   
     console.log(`the colorScore is ${gameState["rate"]["colorScore"]}, the densityScore is ${gameState["rate"]["densityScore"]} and manners score is ${gameState["rate"]["mannersScore"]}`)
     console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"]) * 10) / 10}`);
 
@@ -3234,17 +3256,7 @@ const finalRateCount = function () {
 
 const rating = async function() {
     successfulSelect();
-    //ask mettaton to rate the drawing (need some function to check the colors of cells, determine which color is most prevalent)
     //rate will be the act function that will complete this game
-    //MTT will comment on the most used color, maybe there can be additional comments depending on the most prevalent color and on the amount of colored-in squares
-    //and then the drawing will be rated randomly. yeah. maybe I can add some extra checks, like, if the drawing contains more than a few colors, the amount of squares colored in + numbers can be deducted based on user's behavior
-    //like, insults would deduct points, but flirts will increase them
-    //once rated, it will be possible to fully spare MTT (his name will become yellow) - and the game will end!!!! -> I'll need to make something similiar to the death screen, but with "winning" sounds and other text
-    //if the rating will be lower than 7, MTT will initially threaten the player that he will kill them, but at the end will just tell that there's the show is on an ad break as there were not enough viewers - so he will have to save killing the player
-    //for the grand finale
-    //if the rating is somewhere around 1-3, MTT will be appalled at the player's lack of artistry - and tell them that they're too pathetic/not inspiring enough to be killed. 
-    //rainbow-colored drawing would automatically grant 5 points and the rest will depend on player's actions and the power of random
-    // there should be a separate check if too many points were deducted due to the player's bad behavior, then he will calculate their drawing score separately, but note that the player is an awful person 
      
     const allCells = document.querySelectorAll(".innerCells");
 
@@ -3262,9 +3274,19 @@ const rating = async function() {
         
     })
 
+    let attitude;
     let allColorNames = [];
     let allColorLength = [];
-    
+
+    if (gameState["insultTimes"] === 0) {
+            if (gameState["routeFinished"]["flirt"]) {
+                attitude = "positive";
+            } else {
+                attitude = "neutral";
+            }    
+        } else {
+            attitude = "negative";
+        } 
 
     Object.keys(colorsPresent).forEach(color => {
         allColorNames.push(color);
@@ -3273,20 +3295,14 @@ const rating = async function() {
     
     if (allColorLength.length === 0) {
         let times = gameState["rate"]["baitAndSwitch"] === 0 ? "once" : "more";
-        let attitude;
-         
-        if (gameState["insultTimes"] === 0) {
-            if (gameState["routeFinished"]["flirt"]) {
-                attitude = "positive";
+
+            if (attitude === "positive") {
                 gameState["rate"]["mannersScore"] += (times === "once" ? 0.5 : -0.5);
-            } else {
-                attitude = "neutral";
+            } else if (attitude === "neutral") {
                 gameState["rate"]["mannersScore"] -= (times === "once" ? 0 : 0.5);
-            }    
-        } else {
-            attitude = "negative";
-            gameState["rate"]["mannersScore"] -= (times === "once" ? 0.5 : 1);
-        }
+            } else if (attitude === "negative") {
+                gameState["rate"]["mannersScore"] -= (times === "once" ? 0.5 : 1);
+            }
 
         blankIndex = randomIndex(allText["mettaton"]["rate"]["blank"][attitude][times]);
 
@@ -3304,12 +3320,15 @@ const rating = async function() {
         if (allColorLength.length === 1) {
             gameState["rate"]["colorScore"] = randomNumber(2, 0);
             console.log(`just one color used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+            ratingPhrases("colorComments", attitude, "one");
         } else if (allColorLength.length >= 2 && allColorLength.length <= 3) {
             gameState["rate"]["colorScore"] = Math.min(randomNumber(4, 0.5), 4);
             console.log(`a few colors were used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+            ratingPhrases("colorComments", attitude, "few");
         } else if (allColorLength.length > 3) {
             gameState["rate"]["colorScore"] = Math.min(randomNumber(5, 1), 5);
             console.log(`a lot of colors used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+            ratingPhrases("colorComments", attitude, "many");
         }
 
         for (i = 0; i < allColorLength.length; i++) { //mostColor finds a color that shows up most frequently - and checkIfMultiple finds if any other colors show up as often 
@@ -3320,7 +3339,6 @@ const rating = async function() {
 
         if (checkIfMultiple.length === 1) {
             mostFrequentColor.push(allColorNames[allColorLength.indexOf(mostColor)]);
-            // a colorScore can result in a max of 5, density - 5 (can be negative), behavior - 5 (but can get into negatives), maximum achievable score will still be 10 (even though the possible sum of those elements CAN be more, the score will still be capped at 10 - this overhang is needed to make it so that achieveing a high score will be more probable)
         } else {
             for (i = 0; i < allColorLength.length; i++) {
                 if (allColorLength[i] === mostColor) {
@@ -3330,21 +3348,23 @@ const rating = async function() {
         }
 
         if (mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen")) {
-            gameState["rate"]["rainbowComment"] = true;
-            gameState["rate"]["pencilComment"] = true;
+            ratingPhrases("colorComments", attitude, "bothInstrumentsComment");
         } else if (mostFrequentColor.includes("rainbowPen")) {
-            gameState["rate"]["rainbowComment"] = true;
+            ratingPhrases("colorComments", attitude, "rainbowComment");
         } else if (mostFrequentColor.includes("etchPen")) {
-            gameState["rate"]["pencilComment"] = true;
+            ratingPhrases("colorComments", attitude, "pencilComment");
         } 
 
-
-        if (mostFrequentColor.includes("purple")) {
+        if (mostFrequentColor.includes("purple") && mostFrequentColor.includes("lightBlue")) {
+            ratingPhrases("colorComments", attitude, "bothColorsComment");
+        } else if (mostFrequentColor.includes("purple")) {
             gameState["rate"]["colorScore"] += 1;
-            console.log("you sure like purple!") //mett's favorite color, need to include an extra phrase for that
+            console.log("you sure like purple!") 
+            ratingPhrases("colorComments", attitude, "purple");
         } else if (mostFrequentColor.includes("lightBlue")) {
             gameState["rate"]["colorScore"] += 1;
-            console.log("light blue time") //same here, both options will increase the total score
+            console.log("light blue time");
+            ratingPhrases("colorComments", attitude, "lightBlue");
         }  
 
         console.log(`we have ${allCells.length} cells in total`);
@@ -3354,25 +3374,32 @@ const rating = async function() {
         
             if (gameState["fieldSize"] === biggestSize) {
                 gameState["rate"]["densityScore"] = -2;
-                gameState["rate"]["dotComment"] = true;
+                ratingPhrases("densityComments", attitude, "dotComment");
+                
             } else {
                 gameState["rate"]["densityScore"] = randomNumber(2, 0)
+                ratingPhrases("densityComments", attitude, "sparse");
             }     
         } else if (percentage >= 2 && percentage <= 10) {
             gameState["rate"]["densityScore"] = Math.min(randomNumber(3, 0.5), 3)
+            ratingPhrases("densityComments", attitude, "little");
         } else if (percentage >= 11 && percentage <= 29) {
             gameState["rate"]["densityScore"] = Math.min(randomNumber(4, 1), 4)
+            ratingPhrases("densityComments", attitude, "some");
         } else if (percentage >= 30 && percentage <= 79) {
             gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 0.5), 5)
+            ratingPhrases("densityComments", attitude, "filledOut");
         } else if (percentage >= 80 && percentage < 99) {
             gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1), 5)
+            ratingPhrases("densityComments", attitude, "lots");
         } else if (percentage >= 99) {
             //filling out the entire thing in one color will result in the lowest score
             if (allColorLength.length === 1) {
                 gameState["rate"]["densityScore"] = -2;
-                gameState["rate"]["bucketComment"] = true;
+                gratingPhrases("densityComments", attitude, "bucketComment");
             } else {
                 gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1.5), 5)
+                ratingPhrases("densityComments", attitude, "full");
             }
         }
 
