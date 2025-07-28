@@ -12,7 +12,7 @@ Roadmap to project finalization
           2) Compose the 'final' rate function
                1) <s>Logic for how Mett's rating phrases show up</s>
                2) Logic/structure for how "mini-judges'" ratings show up and disappear
-               3) Logic for final score declaration and endgame
+               3) <s>Logic for final score declaration and endgame</s>
      2) Compose relevant text for rating
      3) Make animation for mini-Metts - since the animation logic is a bit more complicated than in Mett's movements, I'll need to use JS instead CSS keyframes for this
      4) Create ending sequence
