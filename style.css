@@ -257,7 +257,6 @@ body {
     display: flex;
     align-items: center;
     object-fit: contain;
-    z-index: 2;
 }
 
 .center-section {
@@ -292,6 +291,25 @@ body {
     }
 }
 
+.hiding-block-left,
+.hiding-block-right {
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    z-index: 5;
+
+    background-color: var(--background-color);
+}
+
+.hiding-block-left {
+    left: 0%
+}
+
+.hiding-block-right {
+    left: 80%;
+}
+
 .shuffle-box {
     height: 20%;
     width: 60%;
@@ -312,12 +330,12 @@ body {
     padding-bottom: 0.5%;
 
     height: 100%;
-    width: fit-content;
+    overflow: visible;
 }
 
 .judge-box > img:not(.wheelie) {
     height: 40%;
-    width: auto;
+    aspect-ratio: 59/47;
 }
 
 .wheelie {

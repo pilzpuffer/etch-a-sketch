@@ -19,6 +19,7 @@ const allColors = ["red", "orange", "yellow", "green", "lightBlue", "blue", "pur
 const mettBody = document.querySelector(".top-part");
 const textBubble = document.querySelector("#text-bubble");
 
+
 let allNumbers = []; //colors for the rainbowPen function
 
     for (let i = 1; i <= 255; i++) {
@@ -1678,7 +1679,8 @@ const flavorRateNeutralSparse = [
 ];
 
 const flavorRateNeutralLittle = [
-    [""]
+    ["testing colors density"],
+    ["nice test you've got here!"]
 ];
 
 const flavorRateNeutralSome = [
@@ -1859,7 +1861,8 @@ const flavorRateFinalStartPositiveFriendly = [
 ];
 
 const flavorRateFinalStartNeutral = [
-    [""]
+    ["i'm running a test"],
+    ["test is good for me"]
 ];
 
 const flavorRateFinalStartNegative = [
@@ -1883,7 +1886,8 @@ const mettRateFinalStartPositiveFriendly = [
 ];
 
 const mettRateFinalStartNeutral = [
-    [""]
+    ["testing!", "yay!"],
+    ["love me sum tests"]
 ];
 
 const mettRateFinalStartNegative = [
@@ -2299,7 +2303,7 @@ allText = {
                     positiveFriendly: flavorRateFinalStartPositiveFriendly,
                     neutral: flavorRateFinalStartNeutral,
                     negative: flavorRateFinalStartNegative,
-                    fullBetrayal: flavorRateFinalStartFullBetrayal
+                    betrayal: flavorRateFinalStartFullBetrayal
                 },
                 endFinal: {
                     positiveFlirty: {
@@ -2334,7 +2338,7 @@ allText = {
                         high: flavorRateFinalEndNegativeHigh,
                         veryHigh: flavorRateFinalEndNegativeVeryHigh
                     },
-                    fullBetrayal: {
+                    betrayal: {
                         low: flavorRateFinalEndBetrayalLow,
                         lowMiddle: flavorRateFinalEndBetrayalLowMiddle,
                         middle: flavorRateFinalEndBetrayalMiddle,
@@ -2492,9 +2496,6 @@ allText = {
                 },
             },
 
-            //"neutral" path of other phrases will apply for highfriendly/neutral/negative paths. 
-            // explicitly negative phrases would apply only for the lest 2 options
-
             mannersComments: {
                 ifHighFlirty: mettRateMannersHighFlirty,
                 ifHighFriendly: mettRateMannersHighFriendly,
@@ -2510,7 +2511,7 @@ allText = {
                     positiveFriendly: mettRateFinalStartPositiveFriendly,
                     neutral: mettRateFinalStartNeutral,
                     negative: mettRateFinalStartNegative,
-                    fullBetrayal: mettRateFinalStartFullBetrayal
+                    betrayal: mettRateFinalStartFullBetrayal
                 },
                 endFinal: {
                     positiveFlirty: {
@@ -2545,7 +2546,7 @@ allText = {
                         high: mettRateFinalEndNegativeHigh,
                         veryHigh: mettRateFinalEndNegativeVeryHigh
                     },
-                    fullBetrayal: {
+                    betrayal: {
                         low: mettRateFinalEndBetrayalLow,
                         lowMiddle: mettRateFinalEndBetrayalLowMiddle,
                         middle: mettRateFinalEndBetrayalMiddle,
@@ -3235,8 +3236,20 @@ const ratingPhrases = async function(section, attitude, topic) {
 
     for (let i = 0; i < flavorLine.length; i++) {
         await flavorText(flavorLine[i]);
-         await mettTalking(mettLine[i]);
+        await mettTalking(mettLine[i]);
     }
+}
+const finalRating = async function() {
+    
+    //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
+    //there will be an ending sequence and game will be over
+
+   
+    console.log(`the colorScore is ${gameState["rate"]["colorScore"]}, the densityScore is ${gameState["rate"]["densityScore"]} and manners score is ${gameState["rate"]["mannersScore"]}`)
+    console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"]) * 10) / 10}`);
+
+    // max possible score for manners is 18, minimum is -15, though it potentially can get much lower if player keeps throwing a stick, but that deducts just 0.5 points at a time, so that's not too much (and will get boring quickly)
+    // max score for density is 5, minimum is -2. max score for colors is 5 and min is 0
 }
 
 const rating = async function() {
@@ -3255,8 +3268,6 @@ const rating = async function() {
     
     allUniqueColors.forEach(element => {
         colorsPresent[`${element}`] = allColorsApplied.filter((color) => color === element);
-
-        
     })
 
     let attitude;
@@ -3302,20 +3313,6 @@ const rating = async function() {
         let mostFrequentColor = [];
         let checkIfMultiple = [];
 
-        if (allColorLength.length === 1) {
-            gameState["rate"]["colorScore"] = randomNumber(2, 0);
-            console.log(`just one color used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
-            ratingPhrases("colorComments", attitude, "one");
-        } else if (allColorLength.length >= 2 && allColorLength.length <= 3) {
-            gameState["rate"]["colorScore"] = Math.min(randomNumber(4, 0.5), 4);
-            console.log(`a few colors were used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
-            ratingPhrases("colorComments", attitude, "few");
-        } else if (allColorLength.length > 3) {
-            gameState["rate"]["colorScore"] = Math.min(randomNumber(5, 1), 5);
-            console.log(`a lot of colors used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
-            ratingPhrases("colorComments", attitude, "many");
-        }
-
         for (i = 0; i < allColorLength.length; i++) { //mostColor finds a color that shows up most frequently - and checkIfMultiple finds if any other colors show up as often 
             if (allColorLength[i] === mostColor) {
                 checkIfMultiple.push(allColorLength[i])
@@ -3332,159 +3329,225 @@ const rating = async function() {
             } 
         }
 
-        if (mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen")) {
-            ratingPhrases("colorComments", attitude, "bothInstrumentsComment");
-        } else if (mostFrequentColor.includes("rainbowPen")) {
-            ratingPhrases("colorComments", attitude, "rainbowComment");
-        } else if (mostFrequentColor.includes("etchPen")) {
-            ratingPhrases("colorComments", attitude, "pencilComment");
-        } 
+        const colorComments = async function () {
+                if (allColorLength.length === 1) {
+                gameState["rate"]["colorScore"] = randomNumber(2, 0);
+                console.log(`just one color used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+                ratingPhrases("colorComments", attitude, "one");
+                console.log("color comment was shown");
+            } else if (allColorLength.length >= 2 && allColorLength.length <= 3) {
+                gameState["rate"]["colorScore"] = Math.min(randomNumber(4, 0.5), 4);
+                console.log(`a few colors were used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+                ratingPhrases("colorComments", attitude, "few");
+            } else if (allColorLength.length > 3) {
+                gameState["rate"]["colorScore"] = Math.min(randomNumber(5, 1), 5);
+                console.log(`a lot of colors used, the total score for colors is ${gameState["rate"]["colorScore"]}`);
+                ratingPhrases("colorComments", attitude, "many");
+            }
+        }
 
-        if (mostFrequentColor.includes("purple") && mostFrequentColor.includes("lightBlue")) {
+        const instrumentColorComments = async function () {
+            await colorComments();
+            if (mostFrequentColor.includes("rainbowPen") && mostFrequentColor.includes("etchPen")) {
+                ratingPhrases("colorComments", attitude, "bothInstrumentsComment");
+            } else if (mostFrequentColor.includes("rainbowPen")) {
+                    ratingPhrases("colorComments", attitude, "rainbowComment");
+            } else if (mostFrequentColor.includes("etchPen")) {
+                    ratingPhrases("colorComments", attitude, "pencilComment");
+            } else {
+                    return;
+            }
+        }
+
+        const specialColorComments = async function () {
+            await instrumentColorComments();
+            if (mostFrequentColor.includes("purple") && mostFrequentColor.includes("lightBlue")) {
             ratingPhrases("colorComments", attitude, "bothColorsComment");
-        } else if (mostFrequentColor.includes("purple")) {
-            gameState["rate"]["colorScore"] += 1;
-            console.log("you sure like purple!") 
-            ratingPhrases("colorComments", attitude, "purple");
-        } else if (mostFrequentColor.includes("lightBlue")) {
-            gameState["rate"]["colorScore"] += 1;
-            console.log("light blue time");
-            ratingPhrases("colorComments", attitude, "lightBlue");
-        }  
-
-        console.log(`we have ${allCells.length} cells in total`);
-        console.log(`and ${allColored.length} of them have any coloring applied`);
-        console.log(`so ${percentage} percents of all canvas is colored in now`)
-        if (percentage <= 1) {
+            } else if (mostFrequentColor.includes("purple")) {
+                gameState["rate"]["colorScore"] += 1;
+                console.log("you sure like purple!") 
+                ratingPhrases("colorComments", attitude, "purple");
+            } else if (mostFrequentColor.includes("lightBlue")) {
+                gameState["rate"]["colorScore"] += 1;
+                console.log("light blue time");
+                ratingPhrases("colorComments", attitude, "lightBlue");
+            }  else {
+                    return;
+            }
+        }
         
-            if (gameState["fieldSize"] === biggestSize) {
-                gameState["rate"]["densityScore"] = -2;
-                ratingPhrases("densityComments", attitude, "dotComment");
-                
-            } else {
-                gameState["rate"]["densityScore"] = randomNumber(2, 0)
-                ratingPhrases("densityComments", attitude, "sparse");
-            }     
-        } else if (percentage >= 2 && percentage <= 10) {
-            gameState["rate"]["densityScore"] = Math.min(randomNumber(3, 0.5), 3)
-            ratingPhrases("densityComments", attitude, "little");
-        } else if (percentage >= 11 && percentage <= 29) {
-            gameState["rate"]["densityScore"] = Math.min(randomNumber(4, 1), 4)
-            ratingPhrases("densityComments", attitude, "some");
-        } else if (percentage >= 30 && percentage <= 79) {
-            gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 0.5), 5)
-            ratingPhrases("densityComments", attitude, "filledOut");
-        } else if (percentage >= 80 && percentage < 99) {
-            gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1), 5)
-            ratingPhrases("densityComments", attitude, "lots");
-        } else if (percentage >= 99) {
-            //filling out the entire thing in one color will result in the lowest score
-            if (allColorLength.length === 1) {
-                gameState["rate"]["densityScore"] = -2;
-                gratingPhrases("densityComments", attitude, "bucketComment");
-            } else {
-                gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1.5), 5)
-                ratingPhrases("densityComments", attitude, "full");
+        const densityComments = async function () {
+            await specialColorComments();
+
+            console.log(`we have ${allCells.length} cells in total`);
+            console.log(`and ${allColored.length} of them have any coloring applied`);
+            console.log(`so ${percentage} percents of all canvas is colored in now`)
+
+            if (percentage <= 1) {
+                if (gameState["fieldSize"] === biggestSize) {
+                    gameState["rate"]["densityScore"] = -2;
+                    ratingPhrases("densityComments", attitude, "dotComment");
+                    
+                } else {
+                    gameState["rate"]["densityScore"] = randomNumber(2, 0)
+                    ratingPhrases("densityComments", attitude, "sparse");
+                }     
+            } else if (percentage >= 2 && percentage <= 10) {
+                gameState["rate"]["densityScore"] = Math.min(randomNumber(3, 0.5), 3)
+                ratingPhrases("densityComments", attitude, "little");
+                console.log("density comment was shown");
+            } else if (percentage >= 11 && percentage <= 29) {
+                gameState["rate"]["densityScore"] = Math.min(randomNumber(4, 1), 4)
+                ratingPhrases("densityComments", attitude, "some");
+            } else if (percentage >= 30 && percentage <= 79) {
+                gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 0.5), 5)
+                ratingPhrases("densityComments", attitude, "filledOut");
+            } else if (percentage >= 80 && percentage < 99) {
+                gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1), 5)
+                ratingPhrases("densityComments", attitude, "lots");
+            } else if (percentage >= 99) {
+                //filling out the entire thing in one color will result in the lowest score
+                if (allColorLength.length === 1) {
+                    gameState["rate"]["densityScore"] = -2;
+                    gratingPhrases("densityComments", attitude, "bucketComment");
+                } else {
+                    gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1.5), 5)
+                    ratingPhrases("densityComments", attitude, "full");
+                }
             }
         }
-
-    const mannersAppraisal = async function(topic) {
-        let flavorLine = allText["flavor"]["rate"]["mannersComments"][topic];
-        let mettLine = allText["mettaton"]["rate"]["mannersComments"][topic];
-
-        for (let i = 0; i < flavorLine.length; i++) {
-            await flavorText(flavorLine[i]);
-            await mettTalking(mettLine[i]);
-        }
-    }
-
-        if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 4) {
-            mannersAppraisal("ifBetrayal");
-        } else if (gameState["rate"]["mannersScore"] >= 5 && gameState["insultTimes"] === 0) {
-            if (gameState["routeFinished"]["flirt"]) {
-                mannersAppraisal("ifHighFlirty");
-            } else {
-                mannersAppraisal("ifHighFriendly");
-            }
-        } else if (gameState["insultTimes"] > 0 || gameState["rate"]["mannersScore"] <= -2) { 
-            if (gameState["rate"]["mannersScore"] < -5) {
-                mannersAppraisal("ifVeryNegative");
-            } else {
-                mannersAppraisal("ifNegative");
-            }
-        } else {
-            mannersAppraisal("ifNeutral");
-        }
-
         
+        const mannersComments = async function () {
+            await densityComments();
+
+            const mannersAppraisal = async function(topic) {
+                let flavorLine = allText["flavor"]["rate"]["mannersComments"][topic];
+                let mettLine = allText["mettaton"]["rate"]["mannersComments"][topic];
+
+                for (let i = 0; i < flavorLine.length; i++) {
+                    await flavorText(flavorLine[i]);
+                    await mettTalking(mettLine[i]);
+                }
+            }
+
+            if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 4) {
+                mannersAppraisal("ifBetrayal");
+            } else if (gameState["rate"]["mannersScore"] >= 5 && gameState["insultTimes"] === 0) {
+                if (gameState["routeFinished"]["flirt"]) {
+                    mannersAppraisal("ifHighFlirty");
+                } else {
+                    mannersAppraisal("ifHighFriendly");
+                }
+            } else if (gameState["insultTimes"] > 0 || gameState["rate"]["mannersScore"] <= -2) { 
+                if (gameState["rate"]["mannersScore"] < -5) {
+                    mannersAppraisal("ifVeryNegative");
+                } else {
+                    mannersAppraisal("ifNegative");
+                }
+            } else {
+                mannersAppraisal("ifNeutral");
+                console.log("manners comment was shown");
+            }  
+        }
+        
+        const finale = async function () {
+            await mannersComments();
+
+            const finalRateStart = async function() {
+            if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 4){
+                attitude = "betrayal";
+            } else if (gameState["insultTimes"] === 0) {
+                    if (gameState["routeFinished"]["flirt"]) {
+                        attitude = "positiveFlirty";
+                    } else if (gameState["rate"]["mannersScore"] >= 5) {
+                        positiveFriendly = "positiveFriendly";
+                    } else {
+                        attitude = "neutral";
+                    }    
+            } else {
+                attitude = "negative";
+            } 
+
+            let flavorLine = allText["flavor"]["rate"]["finalScore"]["start"][attitude];
+            let mettLine  = allText["mettaton"]["rate"]["finalScore"]["start"][attitude];
+
+            for (let i = 0; i < flavorLine.length; i++) {
+                await flavorText(flavorLine[i]);
+                await mettTalking(mettLine[i]);
+            }
+            console.log("start of the finale comment was shown");
+        }
+
+            await finalRateStart().then(() => {
+
+            const miniMettsContainer = document.createElement("div");
+            const middlePart = document.querySelector(".middle-part");
+
+            miniMettsContainer.classList.add("shuffle-box");
+
+            const judgeOneContainer = document.createElement("div");
+            const judgeTwoContainer = document.createElement("div");
+            const judgeThreeContainer = document.createElement("div");
+
+            judgeOneContainer.classList.add("judge-box");
+            judgeTwoContainer.classList.add("judge-box");
+            judgeThreeContainer.classList.add("judge-box");
+
+            const judgeOne = document.createElement("img");
+            const judgeTwo = document.createElement("img");
+            const judgeThree = document.createElement("img");
+            judgeOne.src = "./images/small-M-D.png";
+            judgeTwo.src = "./images/small-M-D.png";
+            judgeThree.src = "./images/small-M-D.png";
+
+            const tinyLegOne = document.createElement("div");
+            const tinyLegTwo = document.createElement("div");
+            const tinyLegThree = document.createElement("div");
+            tinyLegOne.classList.add("tiny-leg");
+            tinyLegTwo.classList.add("tiny-leg");
+            tinyLegThree.classList.add("tiny-leg");
+
+            const wheelOne = document.createElement("img");
+            const wheelTwo = document.createElement("img");
+            const wheelThree = document.createElement("img");
+            wheelOne.src = "./images/mett-sprite/mett-wheel.png";
+            wheelTwo.src = "./images/mett-sprite/mett-wheel.png";
+            wheelThree.src = "./images/mett-sprite/mett-wheel.png";
+            wheelOne.classList.add("wheelie");
+            wheelTwo.classList.add("wheelie");
+            wheelThree.classList.add("wheelie");
+
+            judgeOneContainer.appendChild(judgeOne);
+            judgeOneContainer.appendChild(tinyLegOne);
+            judgeOneContainer.appendChild(wheelOne);
+
+            judgeTwoContainer.appendChild(judgeTwo);
+            judgeTwoContainer.appendChild(tinyLegTwo);
+            judgeTwoContainer.appendChild(wheelTwo);
+
+            judgeThreeContainer.appendChild(judgeThree);
+            judgeThreeContainer.appendChild(tinyLegThree);
+            judgeThreeContainer.appendChild(wheelThree);
+
+            miniMettsContainer.appendChild(judgeOneContainer);
+            miniMettsContainer.appendChild(judgeTwoContainer);
+            miniMettsContainer.appendChild(judgeThreeContainer);
+
+
+            const leftBlock = document.createElement("div");
+            const rightBlock = document.createElement("div");
+            leftBlock.classList.add("hiding-block-left");
+            rightBlock.classList.add("hiding-block-right");
+            body.append(leftBlock);
+            body.append(rightBlock);
+
+            middlePart.appendChild(miniMettsContainer);
+
+        });
+    } 
+    
+        finale();
     }
-
-    const miniMettsContainer = document.createElement("div");
-    const middlePart = document.querySelector(".middle-part");
-
-    miniMettsContainer.classList.add("shuffle-box");
-
-    const judgeOneContainer = document.createElement("div");
-    const judgeTwoContainer = document.createElement("div");
-    const judgeThreeContainer = document.createElement("div");
-
-    judgeOneContainer.classList.add("judge-box");
-    judgeTwoContainer.classList.add("judge-box");
-    judgeThreeContainer.classList.add("judge-box");
-
-    const judgeOne = document.createElement("img");
-    const judgeTwo = document.createElement("img");
-    const judgeThree = document.createElement("img");
-    judgeOne.src = "./images/small-M-D.png";
-    judgeTwo.src = "./images/small-M-D.png";
-    judgeThree.src = "./images/small-M-D.png";
-
-    const tinyLegOne = document.createElement("div");
-    const tinyLegTwo = document.createElement("div");
-    const tinyLegThree = document.createElement("div");
-    tinyLegOne.classList.add("tiny-leg");
-    tinyLegTwo.classList.add("tiny-leg");
-    tinyLegThree.classList.add("tiny-leg");
-
-    const wheelOne = document.createElement("img");
-    const wheelTwo = document.createElement("img");
-    const wheelThree = document.createElement("img");
-    wheelOne.src = "./images/mett-sprite/mett-wheel.png";
-    wheelTwo.src = "./images/mett-sprite/mett-wheel.png";
-    wheelThree.src = "./images/mett-sprite/mett-wheel.png";
-    wheelOne.classList.add("wheelie");
-    wheelTwo.classList.add("wheelie");
-    wheelThree.classList.add("wheelie");
-
-
-    judgeOneContainer.appendChild(judgeOne);
-    judgeOneContainer.appendChild(tinyLegOne);
-    judgeOneContainer.appendChild(wheelOne);
-
-    judgeTwoContainer.appendChild(judgeTwo);
-    judgeTwoContainer.appendChild(tinyLegTwo);
-    judgeTwoContainer.appendChild(wheelTwo);
-
-    judgeThreeContainer.appendChild(judgeThree);
-    judgeThreeContainer.appendChild(tinyLegThree);
-    judgeThreeContainer.appendChild(wheelThree);
-
-
-    miniMettsContainer.appendChild(judgeOneContainer);
-    miniMettsContainer.appendChild(judgeTwoContainer);
-    miniMettsContainer.appendChild(judgeThreeContainer);
-
-    middlePart.appendChild(miniMettsContainer);
-    //mett will note on each of those things, then miniMetts will show up with scores, and then - he will give out the final score
-    //there will be an ending sequence and game will be over
-
-   
-    console.log(`the colorScore is ${gameState["rate"]["colorScore"]}, the densityScore is ${gameState["rate"]["densityScore"]} and manners score is ${gameState["rate"]["mannersScore"]}`)
-    console.log(`your total score is ${Math.round((gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"]) * 10) / 10}`);
-
-    // max possible score for manners is 18, minimum is -15, though it potentially can get much lower if player keeps throwing a stick, but that deducts just 0.5 points at a time, so that's not too much (and will get boring quickly)
-    // max score for density is 5, minimum is -2. max score for colors is 5 and min is 0
-
 }
 
 const rose = async function() {
