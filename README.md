@@ -14,7 +14,7 @@ Roadmap to project finalization
                2) Logic/structure for how "mini-judges'" ratings show up and disappear
                3) <s>Logic for final score declaration and endgame</s>
      2) Compose relevant text for rating
-     3) Make animation for mini-Metts - since the animation logic is a bit more complicated than in Mett's movements, I'll need to use JS instead CSS keyframes for this
+     3) <s>Make animation for mini-Metts - since the animation logic is a bit more complicated than in Mett's movements, I'll need to use JS instead CSS keyframes for this</s> - ended up using both JS and keyframes, this solution seems to be quite efficient
      4) Create ending sequence
 3) <s>Add text for flirt/perform routes</s>
      1) <s>Add text for the flirt route</s>

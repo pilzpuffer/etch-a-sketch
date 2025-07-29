@@ -3376,6 +3376,7 @@ const rating = async function() {
 
         const specialColorComments = async function () {
                 if (mostFrequentColor.includes("purple") && mostFrequentColor.includes("lightBlue")) {
+                    gameState["rate"]["colorScore"] += 1.5;
                     await ratingPhrases("colorComments", attitude, "bothColorsComment");
                 } else if (mostFrequentColor.includes("purple")) {
                     gameState["rate"]["colorScore"] += 1;
@@ -3476,6 +3477,7 @@ const rating = async function() {
         }
 
             await finalRateStart().then(() => {
+            starSpace.classList.add("gone");
 
             const miniMettsContainer = document.createElement("div");
             const middlePart = document.querySelector(".middle-part");
@@ -3539,6 +3541,46 @@ const rating = async function() {
             body.append(rightBlock);
 
             middlePart.appendChild(miniMettsContainer);
+            miniMettsContainer.id = "shuffle-here"
+
+            miniMettsContainer.addEventListener("animationend", function(event) {
+                if (event.animationName === 'motion-to') {
+                    judgeOne.src = "./images/small-M-R.png";
+                    judgeTwo.src = "./images/small-M-R.png";
+                    judgeThree.src = "./images/small-M-R.png";
+
+                    const rateSignOne = document.createElement("div");
+                    const rateSignTwo = document.createElement("div");
+                    const rateSignThree = document.createElement("div");
+                    rateSignOne.classList.add("rate-sign");
+                    rateSignTwo.classList.add("rate-sign");
+                    rateSignThree.classList.add("rate-sign");
+
+                    judgeOneContainer.prepend(rateSignOne);
+                    judgeTwoContainer.prepend(rateSignTwo);
+                    judgeThreeContainer.prepend(rateSignThree);
+
+                    rateSignThree.textContent = "test!";
+
+                    window.addEventListener("click", function() {
+                        rateSignOne.remove();
+                        rateSignTwo.remove();
+                        rateSignThree.remove();
+                        judgeOne.src = "./images/small-M-D.png";
+                        judgeTwo.src = "./images/small-M-D.png";
+                        judgeThree.src = "./images/small-M-D.png";
+                        
+                        setTimeout(() => {
+                            miniMettsContainer.id = "shuffle-away";
+                        }, 500)
+                    })
+                    
+                } else if (event.animationName === 'motion-from') {
+                    leftBlock.remove();
+                    rightBlock.remove();
+                    miniMettsContainer.remove();
+                }
+            })
 
         });
     }
