@@ -3253,10 +3253,7 @@ const mannersAppraisal = async function(topic) {
 }
 
 const rating = async function() {
-    successfulSelect();
-    //rate will be the act function that will complete this game
-    ///!!!look into promise chaining to finalize this
-     
+    successfulSelect();     
     const allCells = document.querySelectorAll(".innerCells");
 
     const colorsPresent = {};
@@ -3451,7 +3448,7 @@ const rating = async function() {
         }
         
         const finale = async function () {
-            const finalRateStart = async function() {
+            const finalRate = async function(startOrEnd) {
             if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 4){
                 attitude = "betrayal";
             } else if (gameState["insultTimes"] === 0) {
@@ -3466,17 +3463,16 @@ const rating = async function() {
                 attitude = "negative";
             } 
 
-            let flavorLine = allText["flavor"]["rate"]["finalScore"]["start"][attitude];
-            let mettLine  = allText["mettaton"]["rate"]["finalScore"]["start"][attitude];
+            let flavorLine = allText["flavor"]["rate"]["finalScore"][startOrEnd][attitude];
+            let mettLine  = allText["mettaton"]["rate"]["finalScore"][startOrEnd][attitude];
 
             for (let i = 0; i < flavorLine.length; i++) {
                 await flavorText(flavorLine[i]);
                 await mettTalking(mettLine[i]);
             }
-            console.log("start of the finale comment was shown");
         }
 
-            await finalRateStart().then(() => {
+            await finalRate("start").then(() => {
             starSpace.classList.add("gone");
 
             const miniMettsContainer = document.createElement("div");
@@ -3543,7 +3539,7 @@ const rating = async function() {
             middlePart.appendChild(miniMettsContainer);
             miniMettsContainer.id = "shuffle-here"
 
-            miniMettsContainer.addEventListener("animationend", function(event) {
+            miniMettsContainer.addEventListener("animationend", async function(event) {
                 if (event.animationName === 'motion-to') {
                     judgeOne.src = "./images/small-M-R.png";
                     judgeTwo.src = "./images/small-M-R.png";
@@ -3560,7 +3556,16 @@ const rating = async function() {
                     judgeTwoContainer.prepend(rateSignTwo);
                     judgeThreeContainer.prepend(rateSignThree);
 
-                    rateSignThree.textContent = "test!";
+                    function getVariedRating (number) {
+                        let theFinalRating = gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"];
+                        let getNumber = (Math.random() * number);
+                        return Math.round((theFinalRating - getNumber) * 10) / 10;
+                    }
+
+                    rateSignOne.textContent = `${getVariedRating(2)}`;
+                    rateSignTwo.textContent = `${getVariedRating(2)}`;
+                    rateSignThree.textContent = `${getVariedRating(2)}`;       
+
 
                     window.addEventListener("click", function() {
                         rateSignOne.remove();
@@ -3579,6 +3584,8 @@ const rating = async function() {
                     leftBlock.remove();
                     rightBlock.remove();
                     miniMettsContainer.remove();
+
+                    await finalRate("endFinal");
                 }
             })
 

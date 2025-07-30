@@ -2,16 +2,16 @@
 Roadmap to project finalization
 1) <s>Complete the page navigation for when there are more than 6 options available</s> - ALL DONE!
 2) Work on "rate" endgame logic -> biggest task at the moment
-     1) Create rate function
+     1) <s>Create rate function</s>
           1) <s>Make up the 'skeleton' of function</s>
                1) <s>Logic for color rating</s>
                2) <s>Logic for density rating</s>
                3) <s>Logic for manners rating - addition/deduction of points needs to be set within route progression/item interactions and etc - and then it should all be summarized within the rate function. so need to work on route progression first</s>
                4) <s>Need to add an interaction for the rose item (with changes to mannersScore)</s>
                5) <s>Add an interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)</s>
-          2) Compose the 'final' rate function
+          2) <s>Compose the 'final' rate function</s>
                1) <s>Logic for how Mett's rating phrases show up</s>
-               2) Logic/structure for how "mini-judges'" ratings show up and disappear
+               2) <s>Logic/structure for how "mini-judges'" ratings show up and disappear<s>
                3) <s>Logic for final score declaration and endgame</s>
      2) Compose relevant text for rating
      3) <s>Make animation for mini-Metts - since the animation logic is a bit more complicated than in Mett's movements, I'll need to use JS instead CSS keyframes for this</s> - ended up using both JS and keyframes, this solution seems to be quite efficient
