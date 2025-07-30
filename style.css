@@ -811,44 +811,42 @@ body {
 }
 
 .red {
-    background: var(--red);
+    background-color: var(--red);
 }
 
 .orange {
-    background: var(--orange);
+    background-color: var(--orange);
 }
 
 .yellow {
-    background: var(--yellow);
+    background-color: var(--yellow);
 }
 
 .green {
-    background: var(--green);
+    background-color: var(--green);
 }
 
 .lightBlue {
-    background: var(--light-blue);
+    background-color: var(--light-blue);
 }
 
 .blue {
-    background: var(--blue);
+    background-color: var(--blue);
 }
 
 .purple {
-    background: var(--purple);
+    background-color: var(--purple);
 }
 
 .black {
-    background: var(--background-color);
+    background-color: var(--background-color);
 }
 
 .grey {
-    background: var(--background-text-color);
+    background-color: var(--background-text-color);
 };
 
 .etchPen {
-    background-color: rgba(0, 0, 0, 0.1) !important;
-    border: 2px solid red !important;
     mix-blend-mode: darken;
 }
 
