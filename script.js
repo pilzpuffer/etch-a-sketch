@@ -1283,52 +1283,44 @@ const mettRatePositiveColorOne = [
 
 const flavorRatePositiveColorFew = [
     ["The wheel spins, showcasing your tasteful color combination.", "Applause flickers across the crowd like ripples in a champagne glass."],
-    ["Mettaton rotates slowly, displaying each selected hue like a gallery exhibit."],
-    ["He glides slightly forward, screen glowing."]
+    ["Mettaton rotates slowly, displaying each selected hue like a gallery exhibit."]
 ];
 
 const mettRatePositiveColorFew = [
     ["Mmm, a curated palette! Chic, stylish... a hint of mystery."],
-    ["You didn’t throw paint at the wall - you composed, darling. As if each hue had its own solo."],
     ["Not loud. Not desperate. Just intentional. And oh, how that lingers."]
 ];
 
 const flavorRatePositiveColorMany = [
     ["The scanner goes wild. Colors cascade wildly across Mettaton’s screen, a riot of saturation that nearly outshines the stage lights."],
     ["Glitter cannons hiss, the crowd surges with a single, collective gasp."],
-    ["His arms sweep upward, screen pulsing in swirling hues."],
     ["He spins once, letting the chaos of hues reflect across the stage."]
 ]
 
 const mettRatePositiveColorMany = [
     [""],
     ["What a spectacle, darling!"],
-    ["You didn’t just use color - you let it loose."],
     ["A masterpiece of mayhem, and the spotlight loved every shade."]
 ];
 
 const flavorRatePositiveColorBlue = [
     ["Soft synth chords play under the audience’s collective sigh.", "Mettaton’s screen adopts a cool, blue tint."],
-    ["He tilts slightly, the glow casting soft halos along his frame."],
     ["He glances toward the audience, then back to you."]
 ];
 
 const mettRatePositiveColorBlue = [
     ["So... serene."],
-    ["Blue like silence. Like confidence that doesn’t need applause."],
     ["A lesser performer might fade in those tones. But you? You glowed."]
 ];
 
 const flavorRatePositiveColorPurple = [
     ["Mettaton’s screen darkens, then flares with purple undertones from your drawing."],
-    ["He presses two fingertips together, as if savoring fine wine."],
-    ["A dramatic pause. His voice drops just a notch."]
+    ["He presses two fingertips together, as if savoring fine wine."]
 ];
 
 const mettRatePositiveColorPurple = [
     ["...Ah. Royal."],
-    ["You covered me in the color of charisma, elegance... and subtle danger"],
-    ["Frankly, it’s flattering. You’ve got taste, darling — and you know where to use it."]
+    ["Frankly, it’s quite flattering. You’ve got taste, darling — and you know where to use it."]
 ];
 
 const flavorRatePositiveColorBoth = [
@@ -1390,74 +1382,62 @@ const flavorColorNeutralIntro = [
 
 const flavorRateNeutralColorOne = [
     ["The color scanner beeps once, landing on your lone hue."],
-    ["Mettaton’s screen matches your single color, holding steady."],
     ["He angles his frame, the light catching just so."]
 ];
 
 const mettRateNeutralColorOne = [
     ["One color. By choice, I suppose."],
-    ["It’s... direct. Can’t fault you for that."],
     ["Simple. Uncomplicated. Let’s move on."]
 ];
 
 const flavorRateNeutralColorFew = [
-    ["The scanner cycles through a few hues before settling."],
-    ["Mettaton’s screen shifts softly, matching your modest palette."],
+    ["The scanner cycles through a few hues before settling."]
     ["The glow is subdued, but it fills the stage regardless."]
 ];
 
 const mettRateNeutralColorFew = [
     ["A few colors. A hint of range, at least."],
-    ["You kept it tidy. Respectable."],
     ["Not too loud, not too dull. Fair enough."]
 ];
 
 const flavorRateNeutralColorMany = [
     ["The scanner hums as colors dance across Mettaton’s screen."],
-    ["A swirl of shades lights up the stage, but not enough to blind."],
     ["Mettaton’s screen ripples, briefly saturated with your choices."]
 ];
 
 const mettRateNeutralColorMany = [
-    ["A splash of colors. Busy, but not reckless."],
-    ["You brought variety. Can’t argue with that."],
+    ["A splash of colors. Busy, but not reckless."]
     ["Plenty of shades. Let’s see if you made them count."]
 ];
 
 const flavorRateNeutralColorBlue = [
     ["A cool blue tint pulses across Mettaton’s screen."],
-    ["The scanner’s glow calms as blue takes focus."],
-    ["A hush ripples across the stage lights."]
+    ["The scanner’s glow calms as blue takes focus."]
 ];
 
 const mettRateNeutralColorBlue = [
     ["Blue. Calm. Measured."],
-    ["A steady choice. Easy on the eyes."],
-    ["Cool, but let’s see if it carries weight."]
+    ["A steady choice. Easy on the eyes."]
 ];
 
 const flavorRateNeutralColorPurple = [
-    ["A violet sheen flickers briefly across Mettaton’s display."],
     ["Purple lingers in the scanner light, subtle yet noticeable."],
     ["The stage lighting dims to let the hue breathe."]
 ];
 
 const mettRateNeutralColorPurple = [
-    ["Purple. A touch of drama."],
     ["Hints of ambition in that shade."],
     ["Not loud, but it has presence."]
 ];
 
 const flavorRateNeutralColorBoth = [
     ["Blue and purple filter across Mettaton’s screen, calm but unmistakable."],
-    ["The scanner flickers between the two hues, steady and deliberate."],
-    ["A layered glow settles over the stage, cool and composed."]
+    ["The scanner flickers between the two hues, steady and deliberate."]
 ];
 
 const mettRateNeutralColorBoth = [
     ["Blue and purple. A dependable choice."],
-    ["Balanced, with just enough depth to stand out."],
-    ["Calm colors, but they hold their own under these lights."]
+    ["Balanced, with just enough depth to stand out."]
 ];
 
 const flavorRateNeutralInstrumentPencil = [
@@ -1539,26 +1519,22 @@ const mettRateNegativeColorBlue = [
 
 const flavorRateNegativeColorPurple = [
     ["A violet hue pulses briefly on Mettaton’s screen, then fades into gray."],
-    ["Purple shivers across the scanner light, shallow and showy."],
-    ["The stage dims for the shade, but only for a moment."]
+    ["Purple shivers across the scanner light, shallow and showy."]
 ];
 
 const mettRateNegativeColorPurple = [
-    ["Purple, reaching for drama, falling flat."],
-    ["You wanted flair, but it felt hollow."],
+    ["Purple, reaching for drama, falling flat."]
     ["A royal color, wasted on a forgettable display."]
 ];
 
 const flavorRateNegativeColorBoth = [
     ["Blue and purple glow together, but the scanner light flickers impatiently."],
-    ["The hues swirl on Mettaton’s screen without harmony, restless and empty."],
-    ["A layered glow tries to claim the stage but leaves nothing memorable."]
+    ["The hues swirl on Mettaton’s screen without harmony, restless and empty."]
 ];
 
 const mettRateNegativeColorBoth = [
     ["Blue and purple. A classic combo you managed to drain of impact."],
-    ["These colors deserve better than what you gave them."],
-    ["A pairing meant for drama, wasted on this chaos."]
+    ["These colors deserve better than what you gave them."]
 ];
 
 const flavorRateNegativeInstrumentPencil = [
@@ -3566,7 +3542,6 @@ const rating = async function() {
                     rateSignTwo.textContent = `${getVariedRating(2)}`;
                     rateSignThree.textContent = `${getVariedRating(2)}`;       
 
-
                     window.addEventListener("click", function() {
                         rateSignOne.remove();
                         rateSignTwo.remove();
@@ -3586,7 +3561,22 @@ const rating = async function() {
                     miniMettsContainer.remove();
 
                     await finalRate("endFinal");
-                }
+
+                    body.replaceChildren(creditsRoll);
+                    const creditsMusicFinal = document.createElement("audio");
+                    creditsMusicFinal.src = "./music/Death By Glamour.mp3"
+                    creditsMusicFinal.setAttribute("loop", "loop");
+                    creditsMusicFinal.volume = sameVolume;
+
+                    for (let i = 0; i < creditsText.length; i++) {
+                        const newLine = document.createElement("p");
+                        newLine.textContent = creditsText[i];
+
+                        creditsTextBox.appendChild(newLine);
+                    }
+
+                    creditsMusicFinal.play();
+                } 
             })
 
         });

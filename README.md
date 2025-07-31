@@ -11,11 +11,20 @@ Roadmap to project finalization
                5) <s>Add an interaction for requesting a rating with an empty canvas (if menu was opened while drawing was present, drawing was erased, and rate function was called)</s>
           2) <s>Compose the 'final' rate function</s>
                1) <s>Logic for how Mett's rating phrases show up</s>
-               2) <s>Logic/structure for how "mini-judges'" ratings show up and disappear<s>
+               2) <s>Logic/structure for how "mini-judges'" ratings show up and disappear</s>
                3) <s>Logic for final score declaration and endgame</s>
      2) Compose relevant text for rating
+          1) intro
+          2) colors
+               1) colors - special
+               2) colors - instruments
+          3) density
+          4) manners
+          5) final - intro
+          6) final - end
      3) <s>Make animation for mini-Metts - since the animation logic is a bit more complicated than in Mett's movements, I'll need to use JS instead CSS keyframes for this</s> - ended up using both JS and keyframes, this solution seems to be quite efficient
-     4) Create ending sequence
+     4) <s>Create ending sequence</s>
+          1) Add some text variation to ending credits for different levels of Mettaton's approval
 3) <s>Add text for flirt/perform routes</s>
      1) <s>Add text for the flirt route</s>
      2) <s>Add alt text/block progression if the insult route went too far (stage 4 - mett will disregard player's attempts to flirt/perform, and both functions will be removed after that - so need just one set of phrases for that, if insult is at stage 3 or less - alt phrases need to be utilized for both perform and flirt routes (without separate sets for drawn/empty state))</s>
