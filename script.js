@@ -1268,7 +1268,6 @@ const flavorColorPositiveIntro = [
 
 const flavorRatePositiveColorOne = [
     ["The color wheel flickers... then freezes on a single hue. The room stills."],
-    ["Mettaton’s screen shifts to match, radiating that lone color across the hall."],
     ["He rotates slowly, one arm behind his frame like a painter in critique mode."],
     ["He turns just slightly, voice curling with dry amusement."]
     
@@ -1276,7 +1275,6 @@ const flavorRatePositiveColorOne = [
 
 const mettRatePositiveColorOne = [
     ["Ah. Singular. Decisive. A statement."],
-    ["You could’ve played with the whole rainbow... and you said no."],
     ["Minimalism has its charm, darling - but you weren’t minimalist."],
     ["You were cautious. This stage deserves bolder choices.", "Let’s just say... I was hoping for a bit more drama from my co-star."]
 ];
@@ -1382,98 +1380,102 @@ const flavorColorNeutralIntro = [
 
 const flavorRateNeutralColorOne = [
     ["The color scanner beeps once, landing on your lone hue."],
-    ["He angles his frame, the light catching just so."]
+    ["A pause hangs in the air before Mettaton tilts his screen, reflecting that lonely hue back at you."],
+    ["A mechanical sigh hums softly through the mic."],
+    ["He leans in, glow sharpening."]
 ];
 
 const mettRateNeutralColorOne = [
-    ["One color. By choice, I suppose."],
-    ["Simple. Uncomplicated. Let’s move on."]
+    [""],
+    ["One color, hm?"],
+    ["Minimalism can be art… if it has impact."],
+    ["Let’s hope you didn’t waste your single note, darling."]
 ];
 
 const flavorRateNeutralColorFew = [
-    ["The scanner cycles through a few hues before settling."]
-    ["The glow is subdued, but it fills the stage regardless."]
+    ["The scanner cycles through a few hues before dimming."],
+    ["The glow is modest - not meek, but hardly daring."]
 ];
 
 const mettRateNeutralColorFew = [
-    ["A few colors. A hint of range, at least."],
-    ["Not too loud, not too dull. Fair enough."]
+    ["A selective palette. Economical, or just cautious?"],
+    ["Not every stage needs fireworks... but they help."]
 ];
 
 const flavorRateNeutralColorMany = [
-    ["The scanner hums as colors dance across Mettaton’s screen."],
-    ["Mettaton’s screen ripples, briefly saturated with your choices."]
+    ["Colors shimmer across the scanner, bold but uncertain."],
+    ["The stage pulses with hues like a crowd unsure whether to clap."]
 ];
 
 const mettRateNeutralColorMany = [
-    ["A splash of colors. Busy, but not reckless."]
-    ["Plenty of shades. Let’s see if you made them count."]
+    ["A medley of ambition. A pity it lacks a crescendo."],
+    ["Colorful, certainly. Memorable? We’ll see."]
 ];
 
 const flavorRateNeutralColorBlue = [
-    ["A cool blue tint pulses across Mettaton’s screen."],
-    ["The scanner’s glow calms as blue takes focus."]
+    ["Light blue settles over the scanner like a sigh."],
+    ["The light pulses coolly, reserved and distant."]
 ];
 
 const mettRateNeutralColorBlue = [
-    ["Blue. Calm. Measured."],
-    ["A steady choice. Easy on the eyes."]
+    ["Ah, blue. Always the professional. Never the star."],
+    ["Composed. Understated. Some might even say... safe.", "But I quite like its simplicity"]
 ];
 
 const flavorRateNeutralColorPurple = [
-    ["Purple lingers in the scanner light, subtle yet noticeable."],
-    ["The stage lighting dims to let the hue breathe."]
+    ["Purple seeps into the scanner’s glow, faintly theatrical."],
+    ["The hue lingers — less a spotlight, more a velvet curtain."]
 ];
 
 const mettRateNeutralColorPurple = [
-    ["Hints of ambition in that shade."],
-    ["Not loud, but it has presence."]
+    ["Purple. Drama’s favorite middle child."],
+    ["You flirted with grandeur. And then stopped."]
 ];
 
 const flavorRateNeutralColorBoth = [
-    ["Blue and purple filter across Mettaton’s screen, calm but unmistakable."],
-    ["The scanner flickers between the two hues, steady and deliberate."]
+    ["Blue and purple ripple together, smooth but restrained."],
+    ["The scanner holds the two hues in gentle balance, like a practiced duet."]
 ];
 
 const mettRateNeutralColorBoth = [
-    ["Blue and purple. A dependable choice."],
-    ["Balanced, with just enough depth to stand out."]
+    ["Cool. Composed. Just enough edge to avoid fading entirely."],
+    ["Elegant, if a bit too... editorial."]
 ];
 
 const flavorRateNeutralInstrumentPencil = [
-    [""],
-    [""],
-    [""]
+    ["A gray mark trails across his screen — quiet, almost self-conscious."],
+    ["It vanishes into the glare of the lights before it can matter."],
+    ["Mettaton’s gaze lingers, then flicks away."]
 ];
 
 const mettRateNeutralInstrumentPencil = [
-    [""],
-    [""],
-    [""]
+    ["Minimalism. How brave."],
+    ["No color. No shine. Just... earnestness."],
+    ["We’ll call it 'introspective' and move on."]
 ];
 
 const flavorRateNeutralInstrumentRainbow = [
-    [""],
-    [""],
-    [""]
+    ["Color flickers across the stage like a skipped stone."],
+    ["The lights try to catch up, but something falls flat."],
+    ["Mettaton’s screen flashes once, then dulls."]
 ];
 
 const mettRateNeutralInstrumentRainbow = [
-    [""],
-    [""],
-    [""]
+    ["All spectacle, no soul."],
+    ["A burst of color can’t cover a lack of direction."],
+    ["But hey, at least it’s photogenic."]
 ];
 
 const flavorRateNeutralInstrumentBoth = [
-    [""],
-    [""],
-    [""]
+    ["The stage glows, stutters, then settles into something undefined."],
+    ["Pencil grit and rainbow flash muddle together, neither claiming the spotlight."],
+    ["Mettaton sighs - audibly."]
 ];
 
 const mettRateNeutralInstrumentBoth = [
-    [""],
-    [""],
-    [""]
+    ["You mixed a whisper with a scream."],
+    ["Confusing. Contradictory. Possibly... avant-garde?"],
+    ["Still, I admire this attempt. Sort of."]
 ];
 
 //negative
@@ -1482,13 +1484,13 @@ const flavorColorNegativeIntro = [
 ];
 
 const flavorRateNegativeColorOne = [
-    ["You present your one-color masterpiece with a flourish.", "Mettaton doesn’t spare it a glance, idly inspecting his gloved hand as if checking for a chip in his manicure."],
-    ["Mettaton glances at your piece, tilts his frame just so, the closest a robot can get to an offended eyebrow raise."]
+    ["You present your one-color masterpiece with a flourish."],
+    ["Mettaton doesn’t spare it a glance, idly inspecting his gloved hand as if checking for a chip in his manicure."]
 ];
 
 const mettRateNegativeColorOne = [
-    ["One color, one yawn. Next!"],
-    ["Did you drop your whole palette on the way here?"]
+    [""],
+    ["Is there even any color to this?", "Sweetheart, if I wanted a blank canvas, I’d stare at the ceiling."]
 ];
 
 const flavorRateNegativeColorFew = [
@@ -1500,21 +1502,23 @@ const mettRateNegativeColorFew = [
 ];
 
 const flavorRateNegativeColorMany = [
-    ["Mettaton’s frame shifts just enough to feel like a theatrical wince. The chaos of your colors flickers across his screen like confetti in a storm."],
+    ["A wild mess of hues dances across the canvas."],
+    ["The scanner jolts through a barrage of colors, visibly distressed. It sputters and twitches as if it wants to shut itself off."]
 ];
 
 const mettRateNegativeColorMany = [
-    ["Too many colors, darling. You’ve painted like a toddler at a birthday party."],
+    ["Too many colors, darling. You’ve painted like a toddler at a birthday party.", "And not a particularly talented toddler at that."],
+    ["Do you even know what you were trying to say with all that?"]
 ];
 
 const flavorRateNegativeColorBlue = [
-    ["A cold blue glow sweeps across Mettaton’s display, stark and empty."],
-    ["The scanner’s light holds on blue, unblinking, unamused."]
+    ["The scanner’s light holds on blue, unblinking, unamused."],
+    ["It feels like the scanner is waiting for something more."]
 ];
 
 const mettRateNegativeColorBlue = [
-    ["Blue, but no depth behind it."],
-    ["A cold choice with nothing beneath the surface."]
+    ["A cold choice with nothing beneath the surface."],
+    ["I’ve seen water stains with more emotional depth."]
 ];
 
 const flavorRateNegativeColorPurple = [
@@ -1528,49 +1532,45 @@ const mettRateNegativeColorPurple = [
 ];
 
 const flavorRateNegativeColorBoth = [
-    ["Blue and purple glow together, but the scanner light flickers impatiently."],
-    ["The hues swirl on Mettaton’s screen without harmony, restless and empty."]
+    ["Light blue and purple trade places like understudies unsure who got the part."],
+    ["The scanner cycles between them, looking for meaning. It finds none."]
 ];
 
 const mettRateNegativeColorBoth = [
-    ["Blue and purple. A classic combo you managed to drain of impact."],
-    ["These colors deserve better than what you gave them."]
+    ["Moody and confused. Just like your artistic direction."],
+    ["A brooding duet — if neither singer could stay in key, or on stage."]
 ];
 
 const flavorRateNegativeInstrumentPencil = [
-    [""],
-    [""],
-    [""]
+    ["A timid streak of gray scrawls across the screen, forgotten as soon as it appears."],
+    ["The lights don’t even bother reacting."],
+    ["The audience hesitantly laughs for maybe the first time during this show."]
 ];
 
 const mettRateNegativeInstrumentPencil = [
-    [""],
-    [""],
+    ["This isn't art. It's a cry for help in grayscale."],
+    ["Did your soul fall asleep mid-doodle, darling?", "This drawing is flat that I’d need a shovel just to dig up something."],
     [""]
 ];
 
 const flavorRateNegativeInstrumentRainbow = [
-    [""],
-    [""],
-    [""]
+    ["Color lashes out across the stage, desperate to impress."],
+    ["The scanner sputters, then goes still, as if it got embarrassed."]
 ];
 
 const mettRateNegativeInstrumentRainbow = [
-    [""],
-    [""],
-    [""]
+    ["A tantrum disguised as a palette."],
+    ["So much noise. So little meaning.", "You threw everything at the wall - and somehow missed entirely."]
 ];
 
 const flavorRateNegativeInstrumentBoth = [
-    [""],
-    [""],
-    [""]
+    ["Gray smears and rainbow flares collide, clawing for attention."],
+    ["This entire performance chokes on its own ambition."]
 ];
 
 const mettRateNegativeInstrumentBoth = [
-    [""],
-    [""],
-    [""]
+    ["Panic isn’t a style, darling."],
+    ["A clumsy mashup of drama and dullness. You truly outdid yourself."],
 ];
 
 
