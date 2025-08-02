@@ -1258,12 +1258,44 @@ const mettBlankGegativeMore = [
 
 
 //all color-related phrases for rating
-//adjust this intro - need to add a clearer switch into the "rating mode"
-const flavorColorPositiveIntro = [
-    ["Satisfied with your drawing, you nod to Mettaton, confirming that your masterpiece is done."]
-    ["Mettaton tilts his frame just so, and a wave of color data scrolls across his screen in diagnostic bursts."],
-    ["His fingers click together, snapping a hidden compartment open: a lens-shaped scanner beams briefly at his own screen — your canvas — before projecting a color wheel into the air."],
-    ["The audience leans in. A camera-bot lowers to capture the glow from a better angle."]
+const flavorRatingPositiveIntro = [
+    ["Satisfied with your creation, you step back.", "Mettaton’s screen glows — your final stroke still gleaming across his face."],
+    ["You meet Mettaton’s gaze and nod.", "He stills - not from hesitation, but anticipation.."],
+    ["The music fades. The lights dim.", "A hush settles over the studio like falling velvet."],
+    ["Then, a soft mechanical hum begins to rise.", "Above, hidden panels slide open."], 
+    ["A half-circle of polished mirrors descends from the ceiling, slow and reverent."],
+    ["Each one reflects a different angle of Mettaton... and your art displayed in radiant color across his screen."],
+    ["The audience gasps.", "The camera-bot zooms in, capturing the mirrored glory of it all."],
+    ["Bathed in his own reflections and the color of your creation, Mettaton lifts his arms in front of the mirrors — a conductor poised before a symphony."],
+    ["His voice drops, low and sweet."],
+    ["Mettaton's screen shimmers - faint, flickering, like a held breath."],
+    ["Then, he snaps his fingers - a panel opens, and a sleek scanning lens slides forward. A pulse of light washes over your drawing."],
+    ["The scanner locks in.", "A radiant color wheel unfurls above the stage - spinning, analyzing"],
+    ["Mettaton turns to the audience with deliberate dramatism."],
+    ["Then he turns to you, just slightly."]
+    ["He flicks his wrist toward the glowing wheel overhead."],
+    ["The spotlight shifts and lands on you."],
+    ["Judgment begins."]
+];
+
+const mettRatingPositiveIntro = [
+    [" "],
+    [" "],
+    [" "],
+    [" "],
+    [" "],
+    [" "],
+    [" "],
+    [" "],
+    ["Darling... isn’t that what art truly is? A wish to be seen. To be known."],
+    ["And you truly saw me."],
+    [" "],
+    [" "],
+    ["Ladies, gentlemen, and all my dazzling darlings!"],
+    ["The spotlight has kissed every line you drew, sugar.", "And now, let us see..."],
+    ["...just what kind of Soul blooms beneath such bold beauty."],
+    [""],
+    [""]
 ]
 
 const flavorRatePositiveColorOne = [
@@ -1374,10 +1406,43 @@ const mettRatePositiveInstrumentBoth = [
 ];
 
 //neutral
-const flavorColorNeutralIntro = [
-    [""]
-]
+const flavorRatingNeutralIntro = [
+    ["You take a step back, signaling that you're finished."],
+    ["Mettaton’s screen holds the final image - the glow of your last brush stroke still pulsing faintly across his 'face'."],
+    ["He meets your gaze. A slight nod. Professional. Measured."],
+    ["The music fades. The lights dim.", "With a practiced hum, a mechanism whirs overhead."],
+    ["From hidden ceiling panels, a crescent of mirrors descends in perfect formation. Each reflects a different facet of Mettaton - and the artwork displayed across his face."],
+    ["The audience leans forward, curious.", "The camera-bot slides in, catching the mirrored tableau in cinematic clarity."],
+    ["Bathed in reflections, Mettaton lifts a single hand, just enough to catch the light. His voice is smooth, deliberate - not cold, but composed."],
+    ["A soft snap — a hidden panel opens.", "A sleek color scanning lens extends, casting a gentle beam over his screen - over your work."],
+    ["The scanner ticks. Lights blink.", "The mirrors rotate slightly, as if adjusting for best exposure."],
+    ["A color wheel unfolds above the stage, spinning in deliberate arcs."],
+    ["Mettaton doesn’t look at you at first.", "He studies the reflections, tapping his fingers lightly together."],
+    ["Then - a glance, sharp but unreadable."],
+    ["He taps his 'chin' with one elegantly gloved finger, then slowly turns to the audience."],
+    ["Mettaton fans his fingers, as if dusting glitter from the air."],
+    ["He glides forward, one hand resting theatrically on his chest."],
+    ["A snap. The color scanner flickers to life. The wheel begins to turn, colors gleaming."],
+];
 
+const mettRatingNeutralIntro = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    ["Well, darling... I see that your creation is complete.", "You’ve had your moment.", "Now I’ll have mine."],
+    [""],
+    [""],
+    [""],
+    ["Hm. Not bad."],
+    ["Ladies, gentlemen, and all my dazzling darlings!", "You’ve witnessed a performance, a presentation... a painting, if we must."],
+    ["The final stroke has just dried...", "...but oh, the drama is just beginning."],
+    ["They say art reveals the Soul...", "And yours, sugarplum, is practically screaming for attention."],
+    ["So let’s indulge it, shall we?", "Let’s see what truths you’ve painted all over little ol’ me."], 
+    ["Judgment begins."],
+]
 const flavorRateNeutralColorOne = [
     ["The color scanner beeps once, landing on your lone hue."],
     ["A pause hangs in the air before Mettaton tilts his screen, reflecting that lonely hue back at you."],
@@ -1479,9 +1544,37 @@ const mettRateNeutralInstrumentBoth = [
 ];
 
 //negative
-const flavorColorNegativeIntro = [
-    [""]
+const flavorRatingNegativeIntro = [
+    ["The final stroke hits the canvas.", "Smudged. Defiant. A flourish, or a mess — but yours."],
+    ["The lights snap to a focused white. No fanfare. No applause."],
+    ["Just the heavy hum of the studio - and Mettaton’s unmoving frame, center-stage."],
+    ["Your drawing flickers across his screen: smeared, jagged, or unnervingly plain. A digital sigh crackles through his speakers."],
+    ["His voice is velvet and static, the kind that smiles without softening."],
+    ["He turns slightly, mechanical servos whirring as his display reflects your work in fragments."],
+    ["From above, mirrors descend - silent and sterile - slowly encircling him like mourners at a wake."],
+    ["A soft chuckle fizzes through the speakers - indulgent, almost fond."],
+    ["His gaze flows toward the mirrors - not at you, not quite."],
+    ["For a moment, he simply studies his own screen. The drawing. The mess. The echo."],
+    ["Then he lifts his voice — not warm, but entertained."],
+    ["The mirrors tilt. The spotlight sharpens."],
+    ["Judgment begins."],
 ];
+
+const mettRatingNegativeIntro = [
+    [" "],
+    [" "],
+    [" "],
+    ["Astonishing."],
+    ["Truly, I’ve never seen anything quite like it.", "So loud... or so empty. So messy, or so painfully controlled."],
+    [" "],
+    ["You had the stage, darling.", "A blank canvas. A willing star.", "And this is what you chose to leave behind."],
+    ["They say art reveals the Soul.", "Yours practically threw itself onto the floor and screamed."],
+    [" "],
+    [" "],
+    ["Ladies and gentlemen, beauties and beasts...", "Let us see what this sordid little masterpiece says about our darling co-star."],
+    [" "],
+    [" "]
+]
 
 const flavorRateNegativeColorOne = [
     ["You present your one-color masterpiece with a flourish."],

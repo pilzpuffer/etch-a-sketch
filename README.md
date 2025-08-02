@@ -14,7 +14,7 @@ Roadmap to project finalization
                2) <s>Logic/structure for how "mini-judges'" ratings show up and disappear</s>
                3) <s>Logic for final score declaration and endgame</s>
      2) Compose relevant text for rating
-          1) intro
+          1) <s>intro</s>
           2) <s>colors</s>
                1) <s>colors - special</s>
                2) <s>colors - instruments</s>
