@@ -2283,6 +2283,11 @@ allText = {
                 neutral: { once: flavorBlankNeutralOnce, more: flavorBlankNeutralMore },
                 negative: { once: flavorBlankNegativeOnce, more: flavorBlankGegativeMore },
             },
+            ratingIntroduction: {
+                positive: flavorRatingPositiveIntro,
+                neutral: flavorRatingNeutralIntro,
+                negative: flavorRatingNegativeIntro
+            },
             colorComments: {
                 positive: {
                     lightBlue: flavorRatePositiveColorBlue,
@@ -2484,10 +2489,13 @@ allText = {
                 neutral: {once: mettBlankNeutralOnce, more: mettBlankNeutralMore},
                 negative: {once: mettBlankNegativeOnce, more: mettBlankGegativeMore},
             },
+            ratingIntroduction: {
+                positive: mettRatingPositiveIntro,
+                neutral: mettRatingNeutralIntro,
+                negative: mettRatingNegativeIntro
+            },
             colorComments: {
                 positive: {
-                    introduction: flavorColorPositiveIntro,
-
                     lightBlue: mettRatePositiveColorBlue,
                     purple: mettRatePositiveColorPurple,
                     bothColorsComment: mettRatePositiveColorBoth,
@@ -2501,8 +2509,6 @@ allText = {
                     many: mettRatePositiveColorMany
                 },
                 neutral: {
-                    introduction: flavorColorNeutralIntro,
-
                     lightBlue: mettRateNeutralColorBlue,
                     purple: mettRateNeutralColorPurple,
                     bothColorsComment: mettRateNeutralColorBoth,
@@ -2516,8 +2522,6 @@ allText = {
                     many: mettRateNeutralColorMany
                 },
                 negative: {
-                    introduction: flavorColorNegativeIntro,
-
                     lightBlue: mettRateNegativeColorBlue,
                     purple: mettRateNegativeColorPurple,
                     bothColorsComment: mettRateNegativeColorBoth,
@@ -3321,6 +3325,16 @@ const mannersAppraisal = async function(topic) {
     }
 }
 
+const ratingTransition = async function(attitude) {
+    let flavorLine = allText["flavor"]["rate"]["ratingIntroduction"][attitude];
+    let mettLine = allText["mettaton"]["rate"]["ratingIntroduction"][attitude];
+
+    for (let i = 0; i < flavorLine.length; i++) {
+        await flavorText(flavorLine[i]);
+        await mettTalking(mettLine[i]);
+    }
+}
+
 const rating = async function() {
     successfulSelect();     
     const allCells = document.querySelectorAll(".innerCells");
@@ -3397,6 +3411,7 @@ const rating = async function() {
         }
 
         async function showAllFinal() {
+            await ratingTransition(attitude);
             await colorComments();
 
             if (mostFrequentColor.includes("rainbowPen") || mostFrequentColor.includes("etchPen")) {
