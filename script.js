@@ -823,7 +823,7 @@ const flavorFlirtTooMuchEndingWin = [
     ["The moment lingers - longer than it should - but eventually, he draws back. His screen flickers, bright with energy. The crowd’s murmurs rises to a restless buzz."],
     ["He leans forward, one hand extending with theatrical flourish, presenting the final rose to you."],
     ["With a flourish, he twirls on his wheel, scattering glittering confetti. The music swells, a triumphant, sparkling melody."],
-    ["He strikes a pose, one hand over his 'chest', the other extended upwards as though reaching for the stars."]
+    ["He strikes a pose, one hand over his 'chest', the other extended upwards as if trying to grab the stars."]
 ];
 
 const mettFlirtTooMuchEndingWin = [
@@ -850,7 +850,7 @@ const flavorFlirtTooMuchEndingLose = [
     ["With a flick of his wrist, Mettaton pulls a hidden lever.", "You drop - theatrically - into a pit filled with oversized pink heart pillows marked “FRIEND ZONE”."],
     ["Mettaton peers over the edge, striking a sorrowful pose, one hand extended downward."],
     ["He tosses down a glittery envelope."],
-    ["He spins back to the crowd", "Music explodes into an over-the-top, bittersweet finale. Confetti rains. Cameras zoom."]
+    ["He spins back to the crowd", "Music explodes into an over-the-top, bittersweet finale."]
 ];
 
 const mettFlirtTooMuchEndingLose = [
@@ -1453,7 +1453,7 @@ const flavorRateNeutralColorOne = [
 const mettRateNeutralColorOne = [
     [""],
     ["One color, hm?"],
-    ["Minimalism can be art… if it has impact."],
+    ["Minimalism can be art... if it has impact."],
     ["Let’s hope you didn’t waste your single note, darling."]
 ];
 
@@ -1601,7 +1601,7 @@ const flavorRateNegativeColorMany = [
 
 const mettRateNegativeColorMany = [
     ["Too many colors, darling. You’ve painted like a toddler at a birthday party.", "And not a particularly talented toddler at that."],
-    ["Do you even know what you were trying to say with all that?"]
+    ["...Do you even know what you were trying to say with all that?"]
 ];
 
 const flavorRateNegativeColorBlue = [
@@ -1671,6 +1671,11 @@ const mettRateNegativeInstrumentBoth = [
 
 //positive
 const flavorRatePositiveBucket = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
@@ -1736,68 +1741,101 @@ const mettRatePositiveFull = [
 
 //neutral
 const flavorRateNeutralBucket = [
-    [""]
+    ["Mettaton stares at his reflection in disbelief, then turns to you, disappointed felt heavy in the air."],
+    ["Then he raises a hand - delicately, tragically - to cover his screen."],
+    ["He moves his hand away and says as deadpan as it could only be possible."]
 ];
 
 const flavorRateNeutralDot = [
-    [""]
+    ["He leans closer to one of the mirrors, peering at his screen."],
+    ["It seems that as if he squints, then recoils theatrically."],
+    ["A beat of silence."]
 ];
 
 const flavorRateNeutralSparse = [
-    [""]
+    ["He tilts to the side, as if considering something."]
 ];
 
 const flavorRateNeutralLittle = [
-    ["testing colors density"],
-    ["nice test you've got here!"]
+    ["A quiet beat. Then Mettaton exhales — exaggerated, as ever."],
+    ["He taps the display twice, as if expecting something to appear."],
+    ["Then he glances toward the audience."],
+    ["You hear some giggles from the audience."]
 ];
 
 const flavorRateNeutralSome = [
-    [""]
+    ["He leans in to the mirror, thoughtfully analyzing your drawing."],
+    ["He traces one gloved finger over his reflection."],
+    ["Then, Mettaton half-turns to you, and says in a softer, almost intrigued tone."],
+    ["His voice sounds as if he smiled faintly."]
 ];
 
 const flavorRateNeutralFilledOut = [
-    [""]
+    ["Mettaton leans in to the mirror, the air to him showing that he's satisfied in this work."],
+    ["He gestures grandly across the canvas."],
+    ["He nods."]
 ];
 
 const flavorRateNeutralLots = [
-    [""]
+    ["He turns to the audience and flicks to the canvas like a magician revealing a card."],
+    ["He circles around a mirror with one outstretched hand, showcasing your work from different angles."],
+    ["Then, with a glimmer of a grin in his voice, Mettaton addresses you directly."],
 ];
 
 const flavorRateNeutralFull = [
-    [""]
+    ["Silence. Mettaton goes still. The camera begins a slow, deliberate zoom on the canvas."],
+    ["Then he exhales - purely for drama."],
+    ["He snaps his fingers; the lights behind him shimmer in response."],
+    ["He sweeps one arm outward, unveiling your work to the audience."]
 ];
 
 const mettRateNeutralBucket = [
-    [""]
+    ["A bold creative decision..."],
+    ["...to dump a bucket of paint on me and call it art"],
+    ["Tell me, was it satire? Technical difficulties? A cry for help?", "Because it seems as if you just gave up on trying to give any meaning to your work."]
 ];
 
 const mettRateNeutralDot = [
-    [""]
+    ["Is that a dead pixel, or..."],
+    ["No, no - don’t tell me. That’s it, isn’t it?"],
+    ["Art, reduced to a single molecule.", "Audacious. Or lazy."]
 ];
 
 const mettRateNeutralSparse = [
-    [""]
+    ["Did you run out of paint... or ambition?", "I suppose restraint can be powerful... in theory.", "But I don't believe that's truly a case here."]
 ];
 
 const mettRateNeutralLittle = [
+    ["How delicate. How restrained. How... unfinished."],
+    ["An opening flourish without a show. A trailer for a film that doesn’t exist."],
+    ["At least we know your stylus works."],
     [""]
 ];
 
 const mettRateNeutralSome = [
-    [""]
+    ["Hmm. We have a pulse."],
+    ["Not a heartbeat. But... something stirred in your Soul."],
+    ["Was it hesitation? Or restraint in disguise?"],
+    ["Either way, it’s more than nothing."]
 ];
 
 const mettRateNeutralFilledOut = [
-    [""]
+    ["Finally - an image that dares to take space."],
+    ["It breathes. It stretches. It almost says something."],
+    ["Almost."]
 ];
 
 const mettRateNeutralLots = [
-    [""]
+    ["Now this is starting to look like a performance!"],
+    ["A few more strokes and I might’ve called it a piece."],
+    ["Instead, I’ll call it... promising."]
 ];
 
 const mettRateNeutralFull = [
-    [""]
+    [""],
+    ["Now that... that’s a performance."],
+    ["You didn’t just doodle, darling - you committed. A full painting, a full vision."],
+    ["And in this business, that’s more than most do.", "Let’s call it... a standing ovation in progress."]
 ];
 
 //negative
@@ -1877,8 +1915,7 @@ const flavorRateMannersHighFriendly = [
 ];
 
 const flavorRateMannersNeutral = [
-    ["test of manners"],
-    ["it's important to test them"]
+    [""]
 ];
 
 const flavorRateMannersNegative = [
@@ -1902,8 +1939,7 @@ const mettRateMannersHighFriendly = [
 ];
 
 const mettRateMannersNeutral = [
-    ["it's a manners test"],
-    ["gotta run it"]
+    [""]
 ];
 
 const mettRateMannersnegative = [
@@ -1932,8 +1968,7 @@ const flavorRateFinalStartPositiveFriendly = [
 ];
 
 const flavorRateFinalStartNeutral = [
-    ["i'm running a test"],
-    ["test is good for me"]
+    [""]
 ];
 
 const flavorRateFinalStartNegative = [
@@ -1957,8 +1992,7 @@ const mettRateFinalStartPositiveFriendly = [
 ];
 
 const mettRateFinalStartNeutral = [
-    ["testing!", "yay!"],
-    ["love me sum tests"]
+    [""]
 ];
 
 const mettRateFinalStartNegative = [
@@ -1974,8 +2008,8 @@ const mettRateFinalStartNegative = [
 const mettRateFinalStartFullBetrayal = [
     [""]
 ];
-//end
 
+//end
 //positive flirty
 const flavorRateFinalEndPositiveFlirtyLow = [
     [""]
@@ -3118,7 +3152,7 @@ const defaultConversation = async function (topic, checkToIncrement) {
         }
 
         if (gameState["routeStages"]["flirtRouteStage"] === 4) {
-            if (gameState["rate"]["baitAndSwitch"] > 0 || gameState["stickTimes"] > 2 || gameState["hasDrawing"] === false || gameState["animationOn"] === false || gameState["musicOn"] === false) {
+            if (gameState["rate"]["baitAndSwitch"] > 0 || gameState["stickTimes"] >= 2 || gameState["hasDrawing"] === false || gameState["animationOn"] === false || gameState["musicOn"] === false) {
                 gameState["flirtLoseEnd"] = true;
                 tooMuchFlavor = allText["flavor"]["flirt"]["ending"]["lose"];
                 tooMuchMett = allText["mettaton"]["flirt"]["ending"]["lose"];
@@ -3412,19 +3446,27 @@ const rating = async function() {
 
         async function showAllFinal() {
             await ratingTransition(attitude);
-            await colorComments();
 
-            if (mostFrequentColor.includes("rainbowPen") || mostFrequentColor.includes("etchPen")) {
-                await instrumentColorComments();
+            if ((gameState["fieldSize"] === biggestSize && percentage <= 1) || (percentage >= 99 && allColorLength.length === 1)) {
+                await densityComments();
+                await mannersComments();
+                await finale();
+            } else {
+                await colorComments();
+
+                if (mostFrequentColor.includes("rainbowPen") || mostFrequentColor.includes("etchPen")) {
+                    await instrumentColorComments();
+                }
+                
+                if (mostFrequentColor.includes("purple") || mostFrequentColor.includes("lightBlue")) {
+                    await specialColorComments();
+                }
+                
+                await densityComments();
+                await mannersComments();
+                await finale();
             }
             
-            if (mostFrequentColor.includes("purple") || mostFrequentColor.includes("lightBlue")) {
-                await specialColorComments();
-            }
-            
-            await densityComments();
-            await mannersComments();
-            await finale();
         }
 
         const colorComments = async function () {
@@ -3501,7 +3543,7 @@ const rating = async function() {
                     //filling out the entire thing in one color will result in the lowest score
                     if (allColorLength.length === 1) {
                         gameState["rate"]["densityScore"] = -2;
-                        await gratingPhrases("densityComments", attitude, "bucketComment");
+                        await ratingPhrases("densityComments", attitude, "bucketComment");
                     } else {
                         gameState["rate"]["densityScore"] = Math.min(randomNumber(5, 1.5), 5)
                         await ratingPhrases("densityComments", attitude, "full");
