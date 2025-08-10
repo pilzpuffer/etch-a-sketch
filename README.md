@@ -19,7 +19,7 @@ Roadmap to project finalization
                1) <s>colors - special</s>
                2) <s>colors - instruments</s>
                3) <s>main color comments</s>
-          3) density
+          3) <s>density</s>
           4) manners
           5) final - intro
           6) final - end

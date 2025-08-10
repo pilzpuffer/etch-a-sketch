@@ -1622,7 +1622,7 @@ const flavorRateNegativeInstrumentPencil = [
 
 const mettRateNegativeInstrumentPencil = [
     ["This isn't art. It's a cry for help in grayscale."],
-    ["Did your soul fall asleep mid-doodle, darling?", "This drawing is flat that I’d need a shovel just to dig up something."],
+    ["Did your soul fall asleep mid-doodle, darling?", "This drawing is so flat that I’d need a shovel just to dig up something."],
     [""]
 ];
 
@@ -1782,7 +1782,7 @@ const flavorRateNeutralLittle = [
     ["A quiet beat. Then Mettaton exhales - exaggerated, as ever."],
     ["He taps the display twice, as if expecting something to appear."],
     ["Then he glances toward the audience."],
-    ["You hear some giggles from the audience."]
+    ["You hear some giggles from the spectators of this show."]
 ];
 
 const mettRateNeutralLittle = [
@@ -1847,147 +1847,83 @@ const mettRateNeutralFull = [
 //negative
 
 const flavorRateNegativeBucket = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
+    ["Mettaton folds his arms, glaring at the monochrome wall."],
+    ["He tilts his head, voice razor sharp."]
 ];
 
 const mettRateNegativeBucket = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Oh, wonderful. A solid wall of nothing. How... uninspired."],
+    ["Newsflash: covering the canvas doesn’t make up for the lack of imagination.", "This isn’t art - it’s a joke. And guess what? You’re the punchline."],
 ];
 
 const flavorRateNegativeDot = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Mettaton zooms in on the lonely speck, his screen flashing a mix of disbelief and mockery."],
+    ["He folds his metallic arms, voice dripping with sarcasm."]
 ];
 
 const mettRateNegativeDot = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Is that a glitch? A dead pixel?", "No, let me guess... that’s your entire masterpiece!"],
+    ["Bravo - this is the smallest, most pathetic act of defiance I’ve ever seen."]
 ];
 
 const flavorRateNegativeSparse = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Mettaton squints at the single speck of color, unimpressed."],
+    ["He taps his gloved fingers, mock irritation in his tone."]
 ];
 
 const mettRateNegativeSparse = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["A solitary dot on a vast stage - are we playing hide and seek?"],
+    ["Did your inspiration ghost you, or are you simply unable to make anything better than this?"]
 ];
 
 const flavorRateNegativeLittle = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["The scanner traces a few hesitant strokes, like a whisper in a crowded room."],
+    ["He smirks with theatrical impatience."]
 ];
 
 const mettRateNegativeLittle = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["A few timid brushstrokes... Is this your opening act or the full show?"],
+    ["It’s like watching a trailer missing all the best scenes.", "Step it up - or clear the stage for someone who will."]
 ];
 
 const flavorRateNegativeSome = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Color fights to claim the stage but never quite commands it."],
+    ["He snaps his fingers, voice sharp and theatrical."]
 ];
 
 const mettRateNegativeSome = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Almost there, sugar. But almost doesn’t get an encore."],
+    ["If you’re going to play the star, darling, you need to own the spotlight - not half-step near it."]
 ];
 
 const flavorRateNegativeFilledOut = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Mettaton’s screen flickers over the fuller canvas, clearly unimpressed."],
+    ["He taps a finger on his side, tone sharp."]
 ];
 
 const mettRateNegativeFilledOut = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["You filled the space, but forgot the point."],
+    ["Raw? Messy? More like sloppy and uninspired", "But mostly, it's incredibly forgettable."]
 ];
 
 const flavorRateNegativeLots = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Mettaton’s screen bursts with color - yet something feels off."],
+    ["His tone is cold but theatrical."]
 ];
 
 const mettRateNegativeLots = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["You filled the space, but left the Soul wanting."],
+    ["A full canvas isn’t enough if the heart isn’t in it.", "If you want to impress, bring more than just colors to what you're making."]
 ];
 
 const flavorRateNegativeFull = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Mettaton studies the riotous canvas with amused disbelief."],
+    ["His voice is sharp and dripping with sarcasm."]
 ];
 
 const mettRateNegativeFull = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
+    ["An all-out assault on the eyes - but where’s the soul, darling?"],
+    ["This is chaos without cause.", "If you wanted attention, congratulations.", "But if this was an attempt at making art - I'm afraid you weren't as successful at that."]
 ];
 
 //manners 
