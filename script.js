@@ -600,7 +600,7 @@ const mettIntro = [
     ["Need to spice things up or test the waters?", "Feel free to ACT.", "Try a pose, turn the music on - or off - if you think silence will help your inspiration."],
     ["Or if you crave something special - an ITEM can help.", "A rainbow flourish, a precise pencil, or... something else, if your ambition dares."],
     ["And if, by some cruel twist, you create a disaster too dreadful for this world - take MERCY, darling.", "Spare us the horror, clear my screen, and begin anew."],
-    ["Now, let’s see what your Soul can create under the gaze of the lights, the audience...", "and ME — your host, your judge, your star!"]
+    ["Now, let’s see what your Soul can create under the gaze of the lights, the audience...", "and ME - your host, your judge, your star!"]
 ];
 
 const flavorQuietOnce = [
@@ -632,9 +632,9 @@ const mettQuietOnce = [
 
 const mettQuietTwice = [
     ["Oh, so it’s that kind of performance!", "A pantomime, a mystery, a whispered secret... Delightful!"],
-    ["Darling, if you needed peace, you could have just asked!", "But fine — let’s see if your talent is loud enough without the fanfare."],
+    ["Darling, if you needed peace, you could have just asked!", "But fine - let’s see if your talent is loud enough without the fanfare."],
     ["Oh, the tension! The drama!", "I do love an artist who understands the power of anticipation!"],
-    ["Oh, craving that old Hollywood charm, are we?", "A silent film? A tragedy!", "But worry not — I always have a monologue ready!"]
+    ["Oh, craving that old Hollywood charm, are we?", "A silent film? A tragedy!", "But worry not - I always have a monologue ready!"]
 
 ];
 
@@ -680,7 +680,7 @@ const mettStopTwice = [
 const mettStopDisabled = [
     ["You’re allowing me to move again, darling? How kind!", "Let’s see if you can capture my essence while I work my charm!"],
     ["Now we’re talking! Back in action, darling!", "A true masterpiece demands motion - and nobody moves like Mettaton!"],
-    ["Finally! My full glory returns!", "Let’s not waste a second — there’s beauty to unleash and legends to create, darling!"]
+    ["Finally! My full glory returns!", "Let’s not waste a second - there’s beauty to unleash and legends to create, darling!"]
 ]
 
 const checkOut = [
@@ -689,7 +689,7 @@ const checkOut = [
 ];
 
 const mettCheckNone = [
-    ["I see you've checked again!", "And oh — would you look at that? Nothing’s changed!"],
+    ["I see you've checked again!", "And oh - would you look at that? Nothing’s changed!"],
     ["Ah, a critic returning for a second glance?", "You’ll find the masterpiece is already perfect."],
     ["Repetition is the key to success!", "Except here.", "Here, it’s just a waste of time."],
     ["Oh, checking twice? How thorough!", "But the perfection remains unchanged."]
@@ -703,13 +703,13 @@ const mettCheckDrawn = [
 
 const flavorPerformNone = [
     ["You insist you’re merely building suspense."], 
-    ["You claim your masterpiece is invisible — a true avant-garde statement."],
+    ["You claim your masterpiece is invisible - a true avant-garde statement."],
     ['You dramatically insist that true art exists in the mind.'],
     ['You claim your empty canvas represents the boundless potential of the universe.'],
     ["You say you're still summoning the artistic spirits."],
     ['You dramatically gesture at the blank canvas, declaring it a statement on silence and restraint.'],
     ['You declare the blank space represents the beauty of nothingness.'],
-    ['You say that every stroke must be perfect — and so you hesitate.'],
+    ['You say that every stroke must be perfect - and so you hesitate.'],
     ['You dramatically wave your hands over the canvas, insisting the spirits are guiding your hand.'],
 ];
 
@@ -722,7 +722,7 @@ const mettPerformNone = [
     ['Oh! A bold move! But darling, an empty stage is only thrilling if something eventually happens!'],
     ['Oh, the elegance of the unseen! But sweetheart, let’s make sure they don’t mistake it for an artistic oversight!'],
     ['Perfection takes time, dear, but so does a show! Let’s not keep the audience waiting!'],
-    ['Ah, so the spirits are your collaborators? How avant-garde!', 'But darling, this is your moment — no ghostwriting!'],
+    ['Ah, so the spirits are your collaborators? How avant-garde!', 'But darling, this is your moment - no ghostwriting!'],
 ];
 
 const flavorPerformDrawn = [
@@ -763,8 +763,8 @@ const flavorFlirtNone = [
 const mettFlirtNone = [
     ['Oh, darling! Such exquisite taste!', 'But I do want to see your artistic genius, too!'],
     ['A muse with no masterpiece?', 'Darling, this is artistic blasphemy!'],
-    ['Ah! A tragic curse! But fear not, dear — I accept verbal tributes, too!'],
-    ['Of course you do, dear! But let’s really sell it — tears, music, confetti!'],
+    ['Ah! A tragic curse! But fear not, dear - I accept verbal tributes, too!'],
+    ['Of course you do, dear! But let’s really sell it - tears, music, confetti!'],
     ['Naturally, darling!', 'That’s why I keep mirrors everywhere.'],
     ['How charming! But do try to stand out, dear.'],
     ['But of course! I’m one of a kind, dear.'],
@@ -784,13 +784,13 @@ const flavorFlirtDrawn = [
 ];
 
 const mettFlirtDrawn = [
-    ['Oh, sweetheart, nothing could — but I do adore a devoted artist!'],
+    ['Oh, sweetheart, nothing could - but I do adore a devoted artist!'],
     ['Darling, my mere presence is the signature of excellence.'],
-    ["Why, of course!", "But be warned, dear — no portrait could ever outshine the original."],
+    ["Why, of course!", "But be warned, dear - no portrait could ever outshine the original."],
     ['Oh, darling, inspiration was inevitable!', ' But can your art truly contain my brilliance?'],
     ['Oh, how sweet!', 'But darling, where’s the grand show? ', 'The fireworks?', 'The thunderous applause I so richly deserve?'],
     ['ONLY TEN?!', 'How utterly tragic!'],
-    ['Naturally, darling! But do say it louder — the cameras are rolling!'],
+    ['Naturally, darling! But do say it louder - the cameras are rolling!'],
     ['Ah! A tragic, star-crossed romance!', 'Quick, someone cue the sweeping orchestral score!'],
     ['']
 ];
@@ -808,8 +808,8 @@ const mettFlirtTooMuch = [
     ["Oho, darling! Starting with the charm already?", "I’m flattered, really.", "But let's see if you can back it up with some talent!"],
     ["Ooh!", "Such gallantry!", "If you’re auditioning for a leading role in my life, darling... you have my attention."],
     ["It was dreadful! Chaotic! A total mess!", "You’ve hummed your heart out with all the grace of a collapsing chandelier...", "Darling, if this is what love sounds like, then I never want to hear silence again."],
-    ["Darling, please! You’re scandalizing the sponsors!", "If they faint, it’ll be your fault - you've captured my likeness a little too well.", "Every angle, every tiny flourish — it’s like you know me better than my own mirror.", "But tell me, sweetheart...", "...can you really handle what you’ve dreamed up?"],
-    ["Tonight... you’ve bared your heart beneath these blinding lights.", "Not with perfect notes or polished lines... but with something far rarer: sincerity.", "I’ve had suitors — brilliant, breathtaking, but ultimately forgettable.", "But you? You've lingered - too dazzling to forget, too foolish to let go.", "And persistence like that? Darling, it’s almost criminal.", "So this is it - the final rose. My last flourish, and perhaps... my first real offer.", "Will you take your place in the spotlight beside me? Or vanish into the wings, one breath short of forever?"]
+    ["Darling, please! You’re scandalizing the sponsors!", "If they faint, it’ll be your fault - you've captured my likeness a little too well.", "Every angle, every tiny flourish - it’s like you know me better than my own mirror.", "But tell me, sweetheart...", "...can you really handle what you’ve dreamed up?"],
+    ["Tonight... you’ve bared your heart beneath these blinding lights.", "Not with perfect notes or polished lines... but with something far rarer: sincerity.", "I’ve had suitors - brilliant, breathtaking, but ultimately forgettable.", "But you? You've lingered - too dazzling to forget, too foolish to let go.", "And persistence like that? Darling, it’s almost criminal.", "So this is it - the final rose. My last flourish, and perhaps... my first real offer.", "Will you take your place in the spotlight beside me? Or vanish into the wings, one breath short of forever?"]
 ];
 
 const flavorFlirtTooMuchEndingWin = [
@@ -863,7 +863,7 @@ const mettFlirtTooMuchEndingLose = [
     [""],
     ["You’re still one of my favorites, darling... just not THE one."],
     ["As a consolation prize: a lifetime membership to my fan club!", "Signed, sealed, and sparkled - by yours truly!"],
-    ["Because even when hearts break—", "-THE SHOW MUST GO ON!"]
+    ["Because even when hearts break-", "-THE SHOW MUST GO ON!"]
 ];
 
 const flavorInsultNone = [
@@ -905,7 +905,7 @@ const flavorInsultTooMuch = [
 ];
 const mettInsultTooMuch = [
     ["Oh, darling, you’re really digging yourself a hole, aren’t you?", "Keep this up, and I may stop gracing you with my attention."],
-    ["You’re testing my patience, aren’t you?", "Keep going, and I’ll have no sympathy left for you.", "Rudeness isn’t wit, darling — it’s a death sentence."],
+    ["You’re testing my patience, aren’t you?", "Keep going, and I’ll have no sympathy left for you.", "Rudeness isn’t wit, darling - it’s a death sentence."],
     ["You’re really pushing it, darling.", "If you’re not careful, you’ll find yourself in a much worse position than you realize.", "Not everyone takes insults lightly."],
     ["You’ve crossed a line now, darling.", "One more word, and you’ll regret ever uttering my name.", "You’ve lost the privilege of my attention."],
     ["That’s it.", "You’ve earned yourself a one-way ticket out of here.", " You want to keep insulting me?", "Well, let’s see how much you enjoy your final act.", "The show is over."]
@@ -939,7 +939,7 @@ const flavorFullBetrayal = [
 
 const mettFullBetrayal = [
     ["...Is this a new bit, darling?", "A little edge for the ratings?", "Surely, someone as charming as you wouldn't truly mean that."],
-    ["You seemed so sincere when you called me dazzling.", "Tell me — were you just rehearsing that, too?"],
+    ["You seemed so sincere when you called me dazzling.", "Tell me - were you just rehearsing that, too?"],
     ["So that’s it. I was a tool, a toy for your amusement.", "How poetic. The star, burned out by their own spotlight"],
     ["You had the spotlight, darling. You had me.", "And now?", "Another word - and you’ll see what happens when the lights go out for you."],
     ["You made a fool of me.", "You turned affection into ammunition.", "So let me return the favor.", "You wanted a brutal show?", "Then die knowing... you were the climax."]
@@ -979,7 +979,7 @@ const mettFlirtInsult = [
     ["Such passion!", "Such venom!", "I'm almost flattered, in a tragic sort of way."],
     ["If this is your idea of courtship, darling... it needs serious revision."],
     ["Wounds don't heal with sweet words, especially not from you."],
-    ["Save your sweet nothings — I heard your true voice already."]
+    ["Save your sweet nothings - I heard your true voice already."]
 ];
 
 const mettFlirtDisgrace = [
@@ -1054,7 +1054,7 @@ const flavorThrowOnceDrawn = [
 ];
 
 const flavorThrowMoreDrawn = [
-    ["You send your stick flying again.", "Mettaton flinches this time — but not from fear."],
+    ["You send your stick flying again.", "Mettaton flinches this time - but not from fear."],
     ["You lob a stick mid-drawing.", "Mettaton dodges it with a sharp metallic clink."],
     ["You toss the stick yet again.", "Mettaton’s screen glows red for a split second as he avoids it."],
     ["You throw the stick once again.", "Mettaton rolls out of its path."],
@@ -1111,10 +1111,10 @@ const mettThrowMoreEmpty = [
 //phrases for rose
 
 const flavorRoseRude = [
-    ["You hold out the rose like a shield — but your eyes falter before his glow."],
+    ["You hold out the rose like a shield - but your eyes falter before his glow."],
     ["You raise it gently, but the warmth behind the gesture is gone.", "Something’s broken - and you know it."],
     ["You offer the rose again, but there’s tension in your grip.", "What once bloomed now feels like an apology."],
-    ["You try to steady your hand, holding the rose like a memory — but the petals feel heavier than before."],
+    ["You try to steady your hand, holding the rose like a memory - but the petals feel heavier than before."],
     ["You lift it high, as if to rewind time - but Mettaton’s gaze stays fixed on what you've become."],
     ["You flash the rose between acts of cruelty, pretending it still means something."],
     ["You bring it forward, but not even the lights believe the gesture anymore."]
@@ -1124,7 +1124,7 @@ const flavorRoseMaxInsult = [
     ["You shove the rose forward like an excuse, hoping it’ll say what your actions can’t."],
     ["You try to wave it off - the insults, the betrayal.", "It only makes the silence louder."],
     ["You hold it out, but your words still linger in the air, sharp and unforgivable."],
-    ["You clutch the rose like a mask — but it can’t hide what you’ve already done."],
+    ["You clutch the rose like a mask - but it can’t hide what you’ve already done."],
     ["You present it again, but the petals have curled.", "It no longer suits the one holding it."],
     ["You raise it once more, desperate for it to mean something.", "But you’ve burned every line in the script."],
     ["You dare to show it, even now.", "The gesture is crueler than silence."]
@@ -1154,10 +1154,10 @@ const mettRoseMaxInsult = [
     ["Is that supposed to soften your cruelty?", "Pathetic.", "Even the prettiest gift can’t hide an ugly heart, darling."],
     ["You thought that sentiment would save you?", "It only makes your fall more pitiful."],
     ["Even a rose that beautiful can't mask the stench of betrayal, sweetheart."],
-    ["Pathetic. Flowers wilt, trust dies — and you, darling, are withering faster than both."],
+    ["Pathetic. Flowers wilt, trust dies - and you, darling, are withering faster than both."],
     ["A wilted rose for a withered heart. How fitting."],
     ["Touching. Tragic. Tiresome.", "I hope you enjoy your finale, because there won’t be a curtain call."],
-    ["You still have that thing? Darling, that’s not nostalgia — that’s mockery."]
+    ["You still have that thing? Darling, that’s not nostalgia - that’s mockery."]
 ];
 
 const mettRosePos = [
@@ -1259,14 +1259,14 @@ const mettBlankGegativeMore = [
 
 //all color-related phrases for rating
 const flavorRatingPositiveIntro = [
-    ["Satisfied with your creation, you step back.", "Mettaton’s screen glows — your final stroke still gleaming across his face."],
+    ["Satisfied with your creation, you step back.", "Mettaton’s screen glows - your final stroke still gleaming across his face."],
     ["You meet Mettaton’s gaze and nod.", "He stills - not from hesitation, but anticipation.."],
     ["The music fades. The lights dim.", "A hush settles over the studio like falling velvet."],
     ["Then, a soft mechanical hum begins to rise.", "Above, hidden panels slide open."], 
     ["A half-circle of polished mirrors descends from the ceiling, slow and reverent."],
     ["Each one reflects a different angle of Mettaton... and your art displayed in radiant color across his screen."],
     ["The audience gasps.", "The camera-bot zooms in, capturing the mirrored glory of it all."],
-    ["Bathed in his own reflections and the color of your creation, Mettaton lifts his arms in front of the mirrors — a conductor poised before a symphony."],
+    ["Bathed in his own reflections and the color of your creation, Mettaton lifts his arms in front of the mirrors - a conductor poised before a symphony."],
     ["His voice drops, low and sweet."],
     ["Mettaton's screen shimmers - faint, flickering, like a held breath."],
     ["Then, he snaps his fingers - a panel opens, and a sleek scanning lens slides forward. A pulse of light washes over your drawing."],
@@ -1300,7 +1300,7 @@ const mettRatingPositiveIntro = [
 
 const flavorRatePositiveColorOne = [
     ["The color wheel flickers... then freezes on a single hue. The room stills."],
-    ["He rotates slowly, one arm behind his frame like a painter in critique mode."],
+    ["Mettaton rotates slowly, one arm behind his frame like a painter in critique mode."],
     ["He turns just slightly, voice curling with dry amusement."]
     
 ];
@@ -1312,8 +1312,8 @@ const mettRatePositiveColorOne = [
 ];
 
 const flavorRatePositiveColorFew = [
-    ["The wheel spins, showcasing your tasteful color combination.", "Applause flickers across the crowd like ripples in a champagne glass."],
-    ["Mettaton rotates slowly, displaying each selected hue like a gallery exhibit."]
+    ["Mettaton's wheel spins as he rolls around showcasing your tasteful color combination to the cameras."],
+    ["He keeps rotating slowly, displaying each selected hue like a gallery exhibit."]
 ];
 
 const mettRatePositiveColorFew = [
@@ -1350,12 +1350,12 @@ const flavorRatePositiveColorPurple = [
 
 const mettRatePositiveColorPurple = [
     ["...Ah. Royal."],
-    ["Frankly, it’s quite flattering. You’ve got taste, darling — and you know where to use it."]
+    ["Frankly, it’s quite flattering. You’ve got taste, darling - and you know where to use it."]
 ];
 
 const flavorRatePositiveColorBoth = [
-    ["A slow ripple of deep blue and violet sweeps across Mettaton’s screen, cool as midnight, sharp as spotlight glass. Somewhere backstage, a mic catches a whispered, '...oh, that’s good.'"],
-    ["His screen tilts, letting the colors catch the light like silk."],
+    ["A slow ripple of deep blue and violet sweeps across Mettaton’s screen, cool as midnight, sharp as spotlight glass."],
+    ["His screen tilts, letting the colors shine under the lights."],
     ["He glides closer, the hues casting royal shadows across the stage."],
     ["The hum in his frame is more purr than static now."]
 ];
@@ -1376,7 +1376,7 @@ const flavorRatePositiveInstrumentPencil = [
 const mettRatePositiveInstrumentPencil = [
     ["A pencil. Really."],
     ["No neon. No flair. Just grit on glass."],
-    ["And darling, it was louder than fireworks."]
+    ["And darling, confidence like this? Makes this a worthy show."]
 ];
 
 const flavorRatePositiveInstrumentRainbow = [
@@ -1414,7 +1414,7 @@ const flavorRatingNeutralIntro = [
     ["From hidden ceiling panels, a crescent of mirrors descends in perfect formation. Each reflects a different facet of Mettaton - and the artwork displayed across his face."],
     ["The audience leans forward, curious.", "The camera-bot slides in, catching the mirrored tableau in cinematic clarity."],
     ["Bathed in reflections, Mettaton lifts a single hand, just enough to catch the light. His voice is smooth, deliberate - not cold, but composed."],
-    ["A soft snap — a hidden panel opens.", "A sleek color scanning lens extends, casting a gentle beam over his screen - over your work."],
+    ["A soft snap - a hidden panel opens.", "A sleek color scanning lens extends, casting a gentle beam over his screen - over your work."],
     ["The scanner ticks. Lights blink.", "The mirrors rotate slightly, as if adjusting for best exposure."],
     ["A color wheel unfolds above the stage, spinning in deliberate arcs."],
     ["Mettaton doesn’t look at you at first.", "He studies the reflections, tapping his fingers lightly together."],
@@ -1458,13 +1458,11 @@ const mettRateNeutralColorOne = [
 ];
 
 const flavorRateNeutralColorFew = [
-    ["The scanner cycles through a few hues before dimming."],
-    ["The glow is modest - not meek, but hardly daring."]
+    ["The scanner cycles through a few hues before dimming. The glow is modest - not meek, but hardly daring."]
 ];
 
 const mettRateNeutralColorFew = [
-    ["A selective palette. Economical, or just cautious?"],
-    ["Not every stage needs fireworks... but they help."]
+    ["A selective palette. Economical, or just cautious?", "Not every stage needs fireworks... but they do add more to the show."]
 ];
 
 const flavorRateNeutralColorMany = [
@@ -1478,74 +1476,60 @@ const mettRateNeutralColorMany = [
 ];
 
 const flavorRateNeutralColorBlue = [
-    ["Light blue settles over the scanner like a sigh."],
-    ["The light pulses coolly, reserved and distant."]
+    ["Light blue settles over the scanner like a sigh. Its light pulses coolly, reserved and distant."]
 ];
 
 const mettRateNeutralColorBlue = [
-    ["Ah, blue. Always the professional. Never the star."],
-    ["Composed. Understated. Some might even say... safe.", "But I quite like its simplicity"]
+    ["Ah, blue. Always the professional. Never the star.", "Composed. Understated. Some might even say... safe.", "But I quite like its simplicity"]
 ];
 
 const flavorRateNeutralColorPurple = [
-    ["Purple seeps into the scanner’s glow, faintly theatrical."],
-    ["The hue lingers — less a spotlight, more a velvet curtain."]
+    ["Purple seeps into the scanner’s glow, faintly theatrical. The hue lingers - less a spotlight, more a velvet curtain."]
 ];
 
 const mettRateNeutralColorPurple = [
-    ["Purple. Drama’s favorite middle child."],
-    ["You flirted with grandeur. And then stopped."]
+    ["Purple. Drama’s favorite middle child.", "You flirted with grandeur. And then stopped."]
 ];
 
 const flavorRateNeutralColorBoth = [
-    ["Blue and purple ripple together, smooth but restrained."],
-    ["The scanner holds the two hues in gentle balance, like a practiced duet."]
+    ["Blue and purple ripple together, smooth but restrained.", "The scanner holds the two hues in gentle balance, like a practiced duet."],
 ];
 
 const mettRateNeutralColorBoth = [
-    ["Cool. Composed. Just enough edge to avoid fading entirely."],
-    ["Elegant, if a bit too... editorial."]
+    ["Cool. Composed. Just enough edge to avoid fading entirely.", "Elegant, if a bit too... editorial."]
 ];
 
 const flavorRateNeutralInstrumentPencil = [
-    ["A gray mark trails across his screen — quiet, almost self-conscious."],
-    ["It vanishes into the glare of the lights before it can matter."],
-    ["Mettaton’s gaze lingers, then flicks away."]
+    ["A gray mark trails across his screen - quiet, almost self-conscious. Mettaton’s gaze lingers on his reflection, then flicks away."]
 ];
 
 const mettRateNeutralInstrumentPencil = [
-    ["Minimalism. How brave."],
-    ["No color. No shine. Just... earnestness."],
-    ["We’ll call it 'introspective' and move on."]
+    ["Minimalism. How brave.", "No color. No shine. Just... earnestness.", "We’ll call it 'introspective' and move on."]
 ];
 
 const flavorRateNeutralInstrumentRainbow = [
-    ["Color flickers across the stage like a skipped stone."],
-    ["The lights try to catch up, but something falls flat."],
+    ["Color flickers across the stage like a skipped stone.", "The lights try to catch up, but something falls flat."],
     ["Mettaton’s screen flashes once, then dulls."]
 ];
 
 const mettRateNeutralInstrumentRainbow = [
-    ["All spectacle, no soul."],
-    ["A burst of color can’t cover a lack of direction."],
+    ["All spectacle, no soul.", "A burst of color can’t cover a lack of direction."],
     ["But hey, at least it’s photogenic."]
 ];
 
 const flavorRateNeutralInstrumentBoth = [
-    ["The stage glows, stutters, then settles into something undefined."],
-    ["Pencil grit and rainbow flash muddle together, neither claiming the spotlight."],
+    ["The stage glows, stutters, then settles into something undefined. Pencil grit and rainbow flash muddle together, neither claiming the spotlight."],
     ["Mettaton sighs - audibly."]
 ];
 
 const mettRateNeutralInstrumentBoth = [
-    ["You mixed a whisper with a scream."],
-    ["Confusing. Contradictory. Possibly... avant-garde?"],
+    ["You mixed a whisper with a scream.", "Confusing. Contradictory. Possibly... avant-garde?"],
     ["Still, I admire this attempt. Sort of."]
 ];
 
 //negative
 const flavorRatingNegativeIntro = [
-    ["The final stroke hits the canvas.", "Smudged. Defiant. A flourish, or a mess — but yours."],
+    ["The final stroke hits the canvas.", "Smudged. Defiant. A flourish, or a mess - but yours."],
     ["The lights snap to a focused white. No fanfare. No applause."],
     ["Just the heavy hum of the studio - and Mettaton’s unmoving frame, center-stage."],
     ["Your drawing flickers across his screen: smeared, jagged, or unnervingly plain. A digital sigh crackles through his speakers."],
@@ -1555,7 +1539,7 @@ const flavorRatingNegativeIntro = [
     ["A soft chuckle fizzes through the speakers - indulgent, almost fond."],
     ["His gaze flows toward the mirrors - not at you, not quite."],
     ["For a moment, he simply studies his own screen. The drawing. The mess. The echo."],
-    ["Then he lifts his voice — not warm, but entertained."],
+    ["Then he lifts his voice - not warm, but entertained."],
     ["The mirrors tilt. The spotlight sharpens."],
     ["Judgment begins."],
 ];
@@ -1605,13 +1589,11 @@ const mettRateNegativeColorMany = [
 ];
 
 const flavorRateNegativeColorBlue = [
-    ["The scanner’s light holds on blue, unblinking, unamused."],
-    ["It feels like the scanner is waiting for something more."]
+    ["The scanner’s light holds on blue, unblinking, unamused.", "It feels like it is waiting for something more."]
 ];
 
 const mettRateNegativeColorBlue = [
-    ["A cold choice with nothing beneath the surface."],
-    ["I’ve seen water stains with more emotional depth."]
+    ["A cold choice with nothing beneath the surface.", "I’ve seen water stains with more emotional depth."]
 ];
 
 const flavorRateNegativeColorPurple = [
@@ -1625,13 +1607,11 @@ const mettRateNegativeColorPurple = [
 ];
 
 const flavorRateNegativeColorBoth = [
-    ["Light blue and purple trade places like understudies unsure who got the part."],
-    ["The scanner cycles between them, looking for meaning. It finds none."]
+    ["Light blue and purple trade places like understudies unsure who got the part. The scanner cycles between them, looking for meaning. It finds none."]
 ];
 
 const mettRateNegativeColorBoth = [
-    ["Moody and confused. Just like your artistic direction."],
-    ["A brooding duet — if neither singer could stay in key, or on stage."]
+    ["Moody and confused. Just like your artistic direction.", "A brooding duet - if neither singer could stay in key, or on stage."]
 ];
 
 const flavorRateNegativeInstrumentPencil = [
@@ -1648,7 +1628,7 @@ const mettRateNegativeInstrumentPencil = [
 
 const flavorRateNegativeInstrumentRainbow = [
     ["Color lashes out across the stage, desperate to impress."],
-    ["The scanner sputters, then goes still, as if it got embarrassed."]
+    ["At that, the scanner sputters, then goes still, as if it got embarrassed."]
 ];
 
 const mettRateNegativeInstrumentRainbow = [
@@ -1657,87 +1637,113 @@ const mettRateNegativeInstrumentRainbow = [
 ];
 
 const flavorRateNegativeInstrumentBoth = [
-    ["Gray smears and rainbow flares collide, clawing for attention."],
-    ["This entire performance chokes on its own ambition."]
+    ["Gray smears and rainbow flares collide, clawing for attention. This entire performance chokes on its own ambition."]
 ];
 
 const mettRateNegativeInstrumentBoth = [
-    ["Panic isn’t a style, darling."],
-    ["A clumsy mashup of drama and dullness. You truly outdid yourself."],
+    ["Panic isn’t a style, darling.", "A clumsy mashup of drama and dullness. You truly outdid yourself."]
 ];
 
 
-//now it's time for density
+//density
 
 //positive
 const flavorRatePositiveBucket = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""]
-];
-
-const flavorRatePositiveDot = [
-    [""]
-];
-
-const flavorRatePositiveSparse = [
-    [""]
-];
-
-const flavorRatePositiveLittle = [
-    [""]
-];
-
-const flavorRatePositiveSome = [
-    [""]
-];
-
-const flavorRatePositiveFilledOut = [
-    [""]
-];
-
-const flavorRatePositiveLots = [
-    [""]
-];
-
-const flavorRatePositiveFull = [
-    [""]
+    ["Mettaton folds his arms, staring flatly at the monochrome wall of color in his reflection."],
+    ["He gestures at the screen with a sweep so elegant it’s almost cruel."],
+    ["A faint smile can be heard in his voice now."],
+    ["He leans forward, voice dropping into that teasing, velvet register."]
 ];
 
 const mettRatePositiveBucket = [
-    [""]
+    ["Darling… you know I love a bold statement, but this?"],
+    ["This isn’t a painting - it’s a set piece, waiting for someone else’s spotlight.", "Is this a statement? An inside joke? Or did you strain your creative muscle?", ]
+    ["You’re my co-star, sugar - the lead role in my art show."],
+    ["Don’t make me wonder if you’re only here to look pretty.", "I'd like to see some effort as well."]
+];
+
+const flavorRatePositiveDot = [
+    ["The camera zooms so close the lone mark turns into a trembling pixel."],
+    ["His tone is low, almost intimate - but there’s a bite underneath."],
+    ["A pause."]
 ];
 
 const mettRatePositiveDot = [
-    [""]
+    ["One dot. That’s all I get from my leading act?"],
+    ["I’ve seen you set a room on fire with a glance, darling.", "And now you choose to be needlessly cheeky instead of showing what you're actually capable of?"],
+    ["I like you far too much to pretend I’m not... disappointed."]
+];
+
+const flavorRatePositiveSparse = [
+    ["Mettaton's screen flickers, zooming in on the tiny smudge you left behind."],
+    ["He gives a faint sigh and his arm slumps with performative disappointment."]
 ];
 
 const mettRatePositiveSparse = [
-    [""]
+    ["Darling, is this art, or did your stylus slip? It’s a bit... minimalistic for my taste."],
+    ["Absence can be powerful, sugar...", "...But only if the audience doesn’t think you just got bored and stopped drawing right after starting."]
+];
+
+const flavorRatePositiveLittle = [
+    ["Bright flecks scatter across the screen as he processes your strokes."],
+    ["A faint metallic sigh."]
+    ["A beat. His voice is soft, but with a challenge to it."]
 ];
 
 const mettRatePositiveLittle = [
-    [""]
+    ["Mmm... A preview. A tantalizing taste. A trailer of what could be."],
+    ["But darling - trailers are meant to sell the movie. Where’s my feature presentation?"],
+    ["You’ve got the spark. Next time? Don't hold back - light up the whole room."]
+];
+
+const flavorRatePositiveSome = [
+    ["The lights on Mettaton's frame pulse as he studies the canvas."],
+    ["He tilts his head as he turns to you."],
+    ["His tone dips lower, almost conspiratorial."]
 ];
 
 const mettRatePositiveSome = [
-    [""]
+    ["There it is - your spark. I can feel it, sugarplum."],
+    ["I see vision. I see hesitation. And - most importantly - I see you trying."],
+    ["Don’t stop at just teasing with potential. Let everyone feel you in every inch of the stage."]
+];
+
+const flavorRatePositiveFilledOut = [
+    ["Mettaton glides closer, taking in the busy canvas."],
+    ["A small nod, the hint of a genuine smile to his voice."],
+    ["His screen dims gently for a second - a wink?"]
 ];
 
 const mettRatePositiveFilledOut = [
-    [""]
+    ["Now this - this shows courage.", "Space filled with purpose - I love to see it."],
+    ["It’s raw, a little messy... But also daring and completely impossible to ignore."],
+    ["Keep that edge, darling. Perfect is boring when it comes to art."]
+];
+
+const flavorRatePositiveLots = [
+    ["Mettaton’s tone is velvety, but with a razor’s edge beneath."],
+    ["He lets the words hang, then smirks."],
+    ["There's an affectionate but teasing smile to his voice."]
 ];
 
 const mettRatePositiveLots = [
-    [""]
+    ["This is delicious - vibrant, chaotic, alive."],
+    ["I’ll admit, I’m pleased.", "But darling, the bar is set now. You’ve impressed me today..."],
+    ["...But tomorrow, the stage will demand even more.", "Can you handle that, star?"]
+];
+
+const flavorRatePositiveFull = [
+    ["Mettaton glides around a mirror, taking in your drawing from every angle - slowly and deliberately."],
+    ["His voice is smooth but edged in delivery."],
+    ["Then, his tone shifts to something akin to a sly smile."]
 ];
 
 const mettRatePositiveFull = [
-    [""]
+    ["Now this is what I expect from my co-star - bold, relentless, impossible to look away from."],
+    ["It’s decadent. Messy. Human. I love it - and I don’t say that lightly."],
+    ["But don’t get comfortable, darling.", "Today you’ve impressed me.", "Tomorrow... you’ll have to outdo yourself."]
 ];
+
 
 //neutral
 const flavorRateNeutralBucket = [
@@ -1746,53 +1752,16 @@ const flavorRateNeutralBucket = [
     ["He moves his hand away and says as deadpan as it could only be possible."]
 ];
 
-const flavorRateNeutralDot = [
-    ["He leans closer to one of the mirrors, peering at his screen."],
-    ["It seems that as if he squints, then recoils theatrically."],
-    ["A beat of silence."]
-];
-
-const flavorRateNeutralSparse = [
-    ["He tilts to the side, as if considering something."]
-];
-
-const flavorRateNeutralLittle = [
-    ["A quiet beat. Then Mettaton exhales — exaggerated, as ever."],
-    ["He taps the display twice, as if expecting something to appear."],
-    ["Then he glances toward the audience."],
-    ["You hear some giggles from the audience."]
-];
-
-const flavorRateNeutralSome = [
-    ["He leans in to the mirror, thoughtfully analyzing your drawing."],
-    ["He traces one gloved finger over his reflection."],
-    ["Then, Mettaton half-turns to you, and says in a softer, almost intrigued tone."],
-    ["His voice sounds as if he smiled faintly."]
-];
-
-const flavorRateNeutralFilledOut = [
-    ["Mettaton leans in to the mirror, the air to him showing that he's satisfied in this work."],
-    ["He gestures grandly across the canvas."],
-    ["He nods."]
-];
-
-const flavorRateNeutralLots = [
-    ["He turns to the audience and flicks to the canvas like a magician revealing a card."],
-    ["He circles around a mirror with one outstretched hand, showcasing your work from different angles."],
-    ["Then, with a glimmer of a grin in his voice, Mettaton addresses you directly."],
-];
-
-const flavorRateNeutralFull = [
-    ["Silence. Mettaton goes still. The camera begins a slow, deliberate zoom on the canvas."],
-    ["Then he exhales - purely for drama."],
-    ["He snaps his fingers; the lights behind him shimmer in response."],
-    ["He sweeps one arm outward, unveiling your work to the audience."]
-];
-
 const mettRateNeutralBucket = [
     ["A bold creative decision..."],
     ["...to dump a bucket of paint on me and call it art"],
     ["Tell me, was it satire? Technical difficulties? A cry for help?", "Because it seems as if you just gave up on trying to give any meaning to your work."]
+];
+
+const flavorRateNeutralDot = [
+    ["He leans closer to one of the mirrors, peering at his screen."],
+    ["It seems that as if he squints, then recoils theatrically."],
+    ["A beat of silence."]
 ];
 
 const mettRateNeutralDot = [
@@ -1801,8 +1770,19 @@ const mettRateNeutralDot = [
     ["Art, reduced to a single molecule.", "Audacious. Or lazy."]
 ];
 
+const flavorRateNeutralSparse = [
+    ["He tilts to the side, as if considering something."]
+];
+
 const mettRateNeutralSparse = [
     ["Did you run out of paint... or ambition?", "I suppose restraint can be powerful... in theory.", "But I don't believe that's truly a case here."]
+];
+
+const flavorRateNeutralLittle = [
+    ["A quiet beat. Then Mettaton exhales - exaggerated, as ever."],
+    ["He taps the display twice, as if expecting something to appear."],
+    ["Then he glances toward the audience."],
+    ["You hear some giggles from the audience."]
 ];
 
 const mettRateNeutralLittle = [
@@ -1812,11 +1792,24 @@ const mettRateNeutralLittle = [
     [""]
 ];
 
+const flavorRateNeutralSome = [
+    ["He leans in to the mirror, thoughtfully analyzing your drawing."],
+    ["He traces one gloved finger over his reflection."],
+    ["Then, Mettaton half-turns to you, and says in a softer, almost intrigued tone."],
+    ["His voice sounds as if he smiled faintly."]
+];
+
 const mettRateNeutralSome = [
     ["Hmm. We have a pulse."],
-    ["Not a heartbeat. But... something stirred in your Soul."],
+    ["Not a full-on heartbeat. But... something stirred in your Soul."],
     ["Was it hesitation? Or restraint in disguise?"],
     ["Either way, it’s more than nothing."]
+];
+
+const flavorRateNeutralFilledOut = [
+    ["Mettaton leans in to the mirror, the air to him showing that he's satisfied in this work."],
+    ["He gestures grandly across the canvas."],
+    ["He nods."]
 ];
 
 const mettRateNeutralFilledOut = [
@@ -1825,82 +1818,175 @@ const mettRateNeutralFilledOut = [
     ["Almost."]
 ];
 
+const flavorRateNeutralLots = [
+    ["He turns to the audience and flicks to the canvas like a magician revealing a card."],
+    ["He circles around a mirror with one outstretched hand, showcasing your work from different angles."],
+    ["Then, with a glimmer of a grin in his voice, Mettaton addresses you directly."],
+];
+
 const mettRateNeutralLots = [
     ["Now this is starting to look like a performance!"],
     ["A few more strokes and I might’ve called it a piece."],
     ["Instead, I’ll call it... promising."]
 ];
 
+const flavorRateNeutralFull = [
+    ["Silence. Mettaton goes still. The camera begins a slow, deliberate zoom on the canvas."],
+    ["Then he exhales - purely for drama."],
+    ["He snaps his fingers; the lights behind him shimmer in response."],
+    ["He sweeps one arm outward, unveiling your work to the audience."]
+];
+
 const mettRateNeutralFull = [
     [""],
     ["Now that... that’s a performance."],
     ["You didn’t just doodle, darling - you committed. A full painting, a full vision."],
-    ["And in this business, that’s more than most do.", "Let’s call it... a standing ovation in progress."]
+    ["And in this business, that’s more than most do.", "Dedication and passion like this is what defines a true artist."]
 ];
 
 //negative
 
 const flavorRateNegativeBucket = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+];
+
+const mettRateNegativeBucket = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const flavorRateNegativeDot = [
-    [""]
-];
-
-const flavorRateNegativeSparse = [
-    [""]
-];
-
-const flavorRateNegativeLittle = [
-    [""]
-];
-
-const flavorRateNegativeSome = [
-    [""]
-];
-
-const flavorRateNegativeFilledOut = [
-    [""]
-];
-
-const flavorRateNegativeLots = [
-    [""]
-];
-
-const flavorRateNegativeFull = [
-    [""]
-];
-
-const mettRateNegativeBucket = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const mettRateNegativeDot = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeSparse = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const mettRateNegativeSparse = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeLittle = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const mettRateNegativeLittle = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeSome = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const mettRateNegativeSome = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeFilledOut = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const mettRateNegativeFilledOut = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeLots = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const mettRateNegativeLots = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""]
+];
+
+const flavorRateNegativeFull = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const mettRateNegativeFull = [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
@@ -1910,27 +1996,11 @@ const flavorRateMannersHighFlirty = [
     [""]
 ];
 
-const flavorRateMannersHighFriendly = [
-    [""]
-];
-
-const flavorRateMannersNeutral = [
-    [""]
-];
-
-const flavorRateMannersNegative = [
-    [""]
-];
-
-const flavorRateMannersVeryNegative = [
-    [""]
-];
-
-const flavorRateMannersBetrayal = [
-    [""]
-];
-
 const mettRateMannersHighFlirty = [
+    [""]
+];
+
+const flavorRateMannersHighFriendly = [
     [""]
 ];
 
@@ -1938,7 +2008,15 @@ const mettRateMannersHighFriendly = [
     [""]
 ];
 
+const flavorRateMannersNeutral = [
+    [""]
+];
+
 const mettRateMannersNeutral = [
+    [""]
+];
+
+const flavorRateMannersNegative = [
     [""]
 ];
 
@@ -1946,7 +2024,15 @@ const mettRateMannersnegative = [
     [""]
 ];
 
+const flavorRateMannersVeryNegative = [
+    [""]
+];
+
 const mettRateMannersVeryNegative = [
+    [""]
+];
+
+const flavorRateMannersBetrayal = [
     [""]
 ];
 
