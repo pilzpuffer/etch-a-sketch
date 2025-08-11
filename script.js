@@ -1929,51 +1929,75 @@ const mettRateNegativeFull = [
 //manners 
 
 const flavorRateMannersHighFlirty = [
-    [""]
+    ["The lights dim until only the two of you remain visible, as if the rest of the theater has fallen away. "],
+    ["Mettaton tilts to the side a bit, letting the pause stretch just long enough to be felt."],
+    ["He paces around you with the precision of a slow dance, the faint click of his wheels syncing to your breath."]
 ];
 
 const mettRateMannersHighFlirty = [
-    [""]
+    [""],
+    ["Elegant without being cold. Charming without trying too hard.", "You know exactly how much to give... And how much to keep them wanting."],
+    ["Play it like this, darling, and they won’t just watch you - they’ll hang on your every move."]
 ];
 
 const flavorRateMannersHighFriendly = [
-    [""]
+    ["The lights soften to gold, casting Mettaton in warm silhouette as he rolls toward you."],
+    ["His tone has the ease of champagne poured into crystal."],
+    ["He tips an imaginary hat, a playful little bow."]
 ];
 
 const mettRateMannersHighFriendly = [
-    [""]
+    ["Respect, darling - such a rare, underrated art."],
+    ["You didn’t flatter or fawn, but you stood your ground... and the star notices such things"],
+    ["Grace on stage deserves grace in return."]
 ];
 
 const flavorRateMannersNeutral = [
-    [""]
+    ["The spotlight hovers uncertainly before landing on you. Mettaton regards you with a faintly amused tone."],
+    ["His voice teases, but the glamour is muted."],
+    ["He glances away with a small shrug."]
 ];
 
 const mettRateMannersNeutral = [
-    [""]
+    ["Neither a scandal nor a sensation... a quiet night in the theatre, hm?"],
+    ["A safe choice, but safe is oh so forgettable - there's a reason the stage favors the bold."],
+    ["Perhaps next time, you’ll give your audience something to remember."]
 ];
 
 const flavorRateMannersNegative = [
-    [""]
+    ["The lighting dims, a cool spotlight following Mettaton as he circles you."],
+    ["His voice carries a sweet sting."],
+    ["He rolls back, dismissive yet dazzling."]
 ];
 
-const mettRateMannersnegative = [
-    [""]
+const mettRateMannersNegative = [
+    ["Oh, darling... Manners may not make the star, but they do keep the audience from leaving."],
+    ["And you? You’ve been playing with fire... Without the charm to match."],
+    ["Careful, sugar - even the brightest light can burn out."]
 ];
 
 const flavorRateMannersVeryNegative = [
-    [""]
+    ["The stage snaps to harsh white light. Every edge of Mettaton’s silhouette is razor-sharp."],
+    ["His tone is silk wrapped around glass shards."],
+    ["He turns away with a dramatic toss of his arm."]
 ];
 
 const mettRateMannersVeryNegative = [
-    [""]
+    ["You didn’t just snub the star - you spat in the spotlight."],
+    ["Insults are easy, darling. Wit? That takes talent."],
+    ["And you, clearly, are still auditioning."]
 ];
 
 const flavorRateMannersBetrayal = [
-    [""]
+    ["The lighting fractures into cold, sterile white. The stage is silent save for the faint hiss of static from Mettaton's screen."],
+    ["His laugh is bright, brittle, and entirely without warmth."],
+    ["He gestures broadly, as though revealing the final act of a play."]
 ];
 
 const mettRateMannersBetrayal = [
-    [""]
+    ["Win the crowd, then burn the stage... How very theatrical of you."],
+    ["The tragedy, of course, is that you were so close to stealing the show."],
+    ["But instead, you’ve written yourself into the footnotes - a scandal remembered only for its mess."]
 ];
 
 
@@ -2631,7 +2655,7 @@ allText = {
                 ifHighFlirty: mettRateMannersHighFlirty,
                 ifHighFriendly: mettRateMannersHighFriendly,
                 ifNeutral: mettRateMannersNeutral,
-                ifNegative: mettRateMannersnegative,
+                ifNegative: mettRateMannersNegative,
                 ifVeryNegative: mettRateMannersVeryNegative,
                 ifBetrayal: mettRateMannersBetrayal
             },
