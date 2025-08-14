@@ -2076,10 +2076,6 @@ const flavorRateFinalEndPositiveFlirtyHigh = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveFlirtyVeryHigh = [
-    [""]
-];
-
 const mettRateFinalEndPositiveFlirtyLow = [
     [""]
 ];
@@ -2089,10 +2085,6 @@ const mettRateFinalEndPositiveFlirtyMiddle = [
 ];
 
 const mettRateFinalEndPositiveFlirtyHigh = [
-    [""]
-];
-
-const mettRateFinalEndPositiveFlirtyVeryHigh = [
     [""]
 ];
 
@@ -2109,9 +2101,6 @@ const flavorRateFinalEndPositiveFriendlyHigh = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveFriendlyVeryHigh = [
-    [""]
-];
 
 const mettRateFinalEndPositiveFriendlyLow = [
     [""]
@@ -2122,10 +2111,6 @@ const mettRateFinalEndPositiveFriendlyMiddle = [
 ];
 
 const mettRateFinalEndPositiveFriendlyHigh = [
-    [""]
-];
-
-const mettRateFinalEndPositiveFriendlyVeryHigh = [
     [""]
 ];
 
@@ -2143,10 +2128,6 @@ const flavorRateFinalEndNeutralHigh = [
     [""]
 ];
 
-const flavorRateFinalEndNeutralVeryHigh = [
-    [""]
-];
-
 const mettRateFinalEndNeutralLow = [
     [""]
 ];
@@ -2156,10 +2137,6 @@ const mettRateFinalEndNeutralMiddle = [
 ];
 
 const mettRateFinalEndNeutralHigh = [
-    [""]
-];
-
-const mettRateFinalEndNeutralVeryHigh = [
     [""]
 ];
 
@@ -2177,10 +2154,6 @@ const flavorRateFinalEndNegativeHigh = [
     [""]
 ];
 
-const flavorRateFinalEndNegativeVeryHigh = [
-    [""]
-];
-
 const mettRateFinalEndNegativeLow = [
     [""]
 ];
@@ -2190,10 +2163,6 @@ const mettRateFinalEndNegativeMiddle = [
 ];
 
 const mettRateFinalEndNegativeHigh = [
-    [""]
-];
-
-const mettRateFinalEndNegativeVeryHigh = [
     [""]
 ];
 
@@ -2211,10 +2180,6 @@ const flavorRateFinalEndBetrayalHigh = [
     [""]
 ];
 
-const flavorRateFinalEndBetrayalVeryHigh = [
-    [""]
-];
-
 const mettRateFinalEndBetrayalLow = [
     [""]
 ];
@@ -2224,10 +2189,6 @@ const mettRateFinalEndBetrayalMiddle = [
 ];
 
 const mettRateFinalEndBetrayalHigh = [
-    [""]
-];
-
-const mettRateFinalEndBetrayalVeryHigh = [
     [""]
 ];
 
@@ -2392,32 +2353,27 @@ allText = {
                     positiveFlirty: {
                         low: flavorRateFinalEndPositiveFlirtyLow,
                         middle: flavorRateFinalEndPositiveFlirtyMiddle,
-                        high: flavorRateFinalEndPositiveFlirtyHigh,
-                        veryHigh: flavorRateFinalEndPositiveFlirtyVeryHigh
+                        high: flavorRateFinalEndPositiveFlirtyHigh
                     },
                     positiveFriendly: {
                         low: flavorRateFinalEndPositiveFriendlyLow,
                         middle: flavorRateFinalEndPositiveFriendlyMiddle,
-                        high: flavorRateFinalEndPositiveFriendlyHigh,
-                        veryHigh: flavorRateFinalEndPositiveFriendlyVeryHigh
+                        high: flavorRateFinalEndPositiveFriendlyHigh
                     },
                     neutral: {
                         low: flavorRateFinalEndNeutralLow,
                         middle: flavorRateFinalEndNeutralMiddle,
-                        high: flavorRateFinalEndNeutralHigh,
-                        veryHigh: flavorRateFinalEndNeutralVeryHigh
+                        high: flavorRateFinalEndNeutralHigh
                     },
                     negative: {
                         low: flavorRateFinalEndNegativeLow,
                         middle: flavorRateFinalEndNegativeMiddle,
-                        high: flavorRateFinalEndNegativeHigh,
-                        veryHigh: flavorRateFinalEndNegativeVeryHigh
+                        high: flavorRateFinalEndNegativeHigh
                     },
                     betrayal: {
                         low: flavorRateFinalEndBetrayalLow,
                         middle: flavorRateFinalEndBetrayalMiddle,
-                        high: flavorRateFinalEndBetrayalHigh,
-                        veryHigh: flavorRateFinalEndBetrayalVeryHigh
+                        high: flavorRateFinalEndBetrayalHigh
                     }
                 }
             }
@@ -2589,32 +2545,27 @@ allText = {
                     positiveFlirty: {
                         low: mettRateFinalEndPositiveFlirtyLow,
                         middle: mettRateFinalEndPositiveFlirtyMiddle,
-                        high: mettRateFinalEndPositiveFlirtyHigh,
-                        veryHigh: mettRateFinalEndPositiveFlirtyVeryHigh
+                        high: mettRateFinalEndPositiveFlirtyHigh
                     },
                     positiveFriendly: {
                         low: mettRateFinalEndPositiveFriendlyLow,
                         middle: mettRateFinalEndPositiveFriendlyMiddle,
-                        high: mettRateFinalEndPositiveFriendlyHigh,
-                        veryHigh: mettRateFinalEndPositiveFriendlyVeryHigh
+                        high: mettRateFinalEndPositiveFriendlyHigh
                     },
                     neutral: {
                         low: mettRateFinalEndNeutralLow,
                         middle: mettRateFinalEndNeutralMiddle,
-                        high: mettRateFinalEndNeutralHigh,
-                        veryHigh: mettRateFinalEndNeutralVeryHigh
+                        high: mettRateFinalEndNeutralHigh
                     },
                     negative: {
                         low: mettRateFinalEndNegativeLow,
                         middle: mettRateFinalEndNegativeMiddle,
-                        high: mettRateFinalEndNegativeHigh,
-                        veryHigh: mettRateFinalEndNegativeVeryHigh
+                        high: mettRateFinalEndNegativeHigh
                     },
                     betrayal: {
                         low: mettRateFinalEndBetrayalLow,
                         middle: mettRateFinalEndBetrayalMiddle,
-                        high: mettRateFinalEndBetrayalHigh,
-                        veryHigh: mettRateFinalEndBetrayalVeryHigh
+                        high: mettRateFinalEndBetrayalHigh
                     }
                 }
             }
@@ -3554,9 +3505,7 @@ const rating = async function() {
                 score = "middle"
             } else if (scoreCount >= 5 && scoreCount <= 9) {
                 score = "high"
-            } else if (scoreCount >= 20) {
-                score = "veryHigh"
-            }
+            } 
 
             if (startOrEnd === "start") {
                 flavorLine = allText["flavor"]["rate"]["finalScore"][startOrEnd][attitude];
