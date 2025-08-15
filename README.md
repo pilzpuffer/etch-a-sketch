@@ -23,7 +23,6 @@ Roadmap to project finalization
           4) <s>manners</s>
           5) final - intro
           6) final - end
-          7) adjust the cohesiveness of rating text 
      3) <s>Make animation for mini-Metts - since the animation logic is a bit more complicated than in Mett's movements, I'll need to use JS instead CSS keyframes for this</s> - ended up using both JS and keyframes, this solution seems to be quite efficient
      4) <s>Create ending sequence</s>
           1) Add some text variation to ending credits for different levels of Mettaton's approval
@@ -50,8 +49,7 @@ Roadmap to project finalization
 12) <s>Change font for Mettaton's dialogue</s>
 13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
      1) <s>As consequence of this, I need to fix up the functions for pausing/unpausing those animations</s>
-14) Maybe make all music tracks more quiet?
-15) Add a text-skipping mechanic?
+14) Add a text-skipping mechanic?
 
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>

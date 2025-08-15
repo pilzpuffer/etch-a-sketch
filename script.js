@@ -1424,6 +1424,7 @@ const flavorRatingNeutralIntro = [
     ["Mettaton fans his fingers, as if dusting glitter from the air."],
     ["He glides forward, one hand resting theatrically on his chest."],
     ["A snap. The color scanner flickers to life. The wheel begins to turn, colors gleaming."],
+    ["Judgment begins."]
 ];
 
 const mettRatingNeutralIntro = [
@@ -1441,8 +1442,9 @@ const mettRatingNeutralIntro = [
     ["Ladies, gentlemen, and all my dazzling darlings!", "You’ve witnessed a performance, a presentation... a painting, if we must."],
     ["The final stroke has just dried...", "...but oh, the drama is just beginning."],
     ["They say art reveals the Soul...", "And yours, sugarplum, is practically screaming for attention."],
-    ["So let’s indulge it, shall we?", "Let’s see what truths you’ve painted all over little ol’ me."], 
-    ["Judgment begins."],
+    ["So let’s indulge it, shall we?", "Let’s see what truths you’ve painted all over me."], 
+    [""]
+    
 ]
 const flavorRateNeutralColorOne = [
     ["The color scanner beeps once, landing on your lone hue."],
@@ -1546,19 +1548,19 @@ const flavorRatingNegativeIntro = [
 ];
 
 const mettRatingNegativeIntro = [
-    [" "],
-    [" "],
-    [" "],
+    [""],
+    [""],
+    [""],
     ["Astonishing."],
     ["Truly, I’ve never seen anything quite like it.", "So loud... or so empty. So messy, or so painfully controlled."],
-    [" "],
+    [""],
     ["You had the stage, darling.", "A blank canvas. A willing star.", "And this is what you chose to leave behind."],
     ["They say art reveals the Soul.", "Yours practically threw itself onto the floor and screamed."],
-    [" "],
-    [" "],
+    [""],
+    [""],
     ["Ladies and gentlemen, beauties and beasts...", "Let us see what this sordid little masterpiece says about our darling co-star."],
-    [" "],
-    [" "]
+    [""],
+    [""]
 ]
 
 const flavorRateNegativeColorOne = [
@@ -2007,15 +2009,15 @@ const mettRateMannersBetrayal = [
 
 //start
 const flavorRateFinalStartPositiveFlirty = [
-        ["Mettaton spins away from you with a laugh that shimmers like the lights overhead."],
-        ["A snap of his fingers — and from the wings, the mini-Metts roll in, each gripping a glittering judge’s paddle in tiny, polished hands."],
-        ["The judges line up with clockwork precision, paddles poised. Mettaton rolls back a pace, folding his arms in a pose of playful detachment."]
+    ["Mettaton spins away from you with a laugh that shimmers like the lights overhead."],
+    ["A snap of his fingers — and from the wings, the mini-Metts roll in, each gripping a glittering judge’s paddle in tiny, polished hands."],
+    ["The judges line up with clockwork precision, paddles poised. Mettaton rolls back a pace, folding his arms in a pose of playful detachment."]
 ];
 
 const mettRateFinalStartPositiveFlirty = [
-        ["Mm, I could keep playing this little back-and-forth all night...", "...But every show needs its grand reveal."],
-        ["Behold - my precious panel. Sharp-eyed, cold-bolted... and tragically immune to flattery.", "The most discerning critics in the business, here to decide your fate tonight."],
-        ["Don’t fret, darling - they insist they’re objective.", "Let’s see if all that charm of yours can survive... the spotlight of scrutiny."]
+    ["Mm, I could keep playing this little back-and-forth all night...", "...But every show needs its grand reveal."],
+    ["Behold - my precious panel. Sharp-eyed, cold-bolted... and tragically immune to flattery.", "The most discerning critics in the business, here to decide your fate tonight."],
+    ["Don’t fret, darling - they insist they’re objective.", "Let’s see if all that charm of yours can survive... the spotlight of scrutiny."]
 ];
 
 const flavorRateFinalStartPositiveFriendly = [
@@ -2065,10 +2067,18 @@ const mettRateFinalStartFullBetrayal = [
 //end
 //positive flirty
 const flavorRateFinalEndPositiveFlirtyLow = [
-    [""]
+    ["The lights fade to a deep rose as Mettaton closes the distance between you. His screen glows with something unreadable."],
+    ["He brushes his fingertips against your cheek, the cool metal contrasting with the warmth in his voice."],
+    ["He leans in, close enough for the faint hum of his screen to reach your ears."],
+    ["He draws back, a sad smile in his voice."]
+    ["Mettaton rolls into shadow as the stage music swells. His outline blurs, the glow of his screen dimming like the last flicker of a dying reel."]
 ];
 
 const mettRateFinalEndPositiveFlirtyLow = [
+    ["My darling... You make it so very hard to say no."],
+    ["But a star must never accept a scene that isn’t ready for the silver screen."],
+    ["Don’t take it as cruelty, darling. Take it as... motivation.", "After all - what’s more thrilling than making me eat my words?"],
+    ["When you’re ready to give me the kind of moment that could end my career because nothing could ever top it...", "...You’ll know where to find me."],
     [""]
 ];
 
@@ -3312,6 +3322,7 @@ const rating = async function() {
     })
     
     if (allColorLength.length === 0) {
+        sketchField.classList.add("unclickable");
         let times = gameState["rate"]["baitAndSwitch"] === 0 ? "once" : "more";
 
             if (attitude === "positive") {
@@ -3328,9 +3339,12 @@ const rating = async function() {
         await mettTalking(allText["mettaton"]["rate"]["blank"][attitude][times][blankIndex]);
 
         gameState["rate"]["baitAndSwitch"] += 1;
+        sketchField.classList.remove("unclickable");
+
 
         return;
     } else {
+        sketchField.classList.add("unclickable");
         let mostColor = allColorLength.reduce((a, b) => { return (a < b) ? a : b})
         let mostFrequentColor = [];
         let checkIfMultiple = [];

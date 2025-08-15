@@ -105,7 +105,9 @@ body {
     user-select: none;
 }
 
-
+.unclickable {
+    pointer-events: none;
+}
 
 #premature-end {
     height: 100vh;
