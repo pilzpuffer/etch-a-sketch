@@ -336,6 +336,7 @@ const gameState = {
     flirtTimes: 0,
     performTimes: 0,
     insultTimes: 0,
+    roseTimes: 0,
     routeStages: {
         flirtRouteStage: 0,
         insultRouteStage: 0,
@@ -1411,9 +1412,9 @@ const flavorRatingNeutralIntro = [
     ["Mettaton’s screen holds the final image - the glow of your last brush stroke still pulsing faintly across his 'face'."],
     ["He meets your gaze. A slight nod. Professional. Measured."],
     ["The music fades. The lights dim.", "With a practiced hum, a mechanism whirs overhead."],
-    ["From hidden ceiling panels, a crescent of mirrors descends in perfect formation. Each reflects a different facet of Mettaton - and the artwork displayed across his face."],
+    ["A crescent of mirrors descends from the ceiling in perfect formation. Each reflects a different facet of Mettaton - and the artwork displayed across his face."],
     ["The audience leans forward, curious.", "The camera-bot slides in, catching the mirrored tableau in cinematic clarity."],
-    ["Bathed in reflections, Mettaton lifts a single hand, just enough to catch the light. His voice is smooth, deliberate - not cold, but composed."],
+    ["Bathed in reflections, Mettaton lifts a single hand, just enough to catch the light. His voice is smooth and composed."],
     ["A soft snap - a hidden panel opens.", "A sleek color scanning lens extends, casting a gentle beam over his screen - over your work."],
     ["The scanner ticks. Lights blink.", "The mirrors rotate slightly, as if adjusting for best exposure."],
     ["A color wheel unfolds above the stage, spinning in deliberate arcs."],
@@ -2026,11 +2027,11 @@ const mettRateFinalStartPositiveFriendly = [
 ];
 
 const flavorRateFinalStartNeutral = [
-    [""]
+    ["testing out if this works"]
 ];
 
 const mettRateFinalStartNeutral = [
-    [""]
+    ["testing out if this works"]
 ];
 
 const flavorRateFinalStartNegative = [
@@ -2067,20 +2068,19 @@ const flavorRateFinalEndPositiveFlirtyLow = [
     [""]
 ];
 
+const mettRateFinalEndPositiveFlirtyLow = [
+    [""]
+];
 
 const flavorRateFinalEndPositiveFlirtyMiddle = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveFlirtyHigh = [
-    [""]
-];
-
-const mettRateFinalEndPositiveFlirtyLow = [
-    [""]
-];
-
 const mettRateFinalEndPositiveFlirtyMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveFlirtyHigh = [
     [""]
 ];
 
@@ -2093,20 +2093,19 @@ const flavorRateFinalEndPositiveFriendlyLow = [
     [""]
 ];
 
-const flavorRateFinalEndPositiveFriendlyMiddle = [
-    [""]
-];
-
-const flavorRateFinalEndPositiveFriendlyHigh = [
-    [""]
-];
-
-
 const mettRateFinalEndPositiveFriendlyLow = [
     [""]
 ];
 
+const flavorRateFinalEndPositiveFriendlyMiddle = [
+    [""]
+];
+
 const mettRateFinalEndPositiveFriendlyMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndPositiveFriendlyHigh = [
     [""]
 ];
 
@@ -2117,27 +2116,33 @@ const mettRateFinalEndPositiveFriendlyHigh = [
 
 //neutral
 const flavorRateFinalEndNeutralLow = [
-    [""]
-];
-
-const flavorRateFinalEndNeutralMiddle = [
-    [""]
-];
-
-const flavorRateFinalEndNeutralHigh = [
-    [""]
+    ["this is a low test"],
+    ["testing low"]
 ];
 
 const mettRateFinalEndNeutralLow = [
-    [""]
+    ["mett this is a low test"],
+    ["mett testing low"]
+];
+
+const flavorRateFinalEndNeutralMiddle = [
+    ["this is a middle test"],
+    ["testing middle"]
 ];
 
 const mettRateFinalEndNeutralMiddle = [
-    [""]
+    ["mett this is a middle test"],
+    ["mett testing middle"]
+];
+
+const flavorRateFinalEndNeutralHigh = [
+    ["this is a high test"],
+    ["testing high"]
 ];
 
 const mettRateFinalEndNeutralHigh = [
-    [""]
+    ["mett this is a high test"],
+    ["mett testing high"]
 ];
 
 //negative
@@ -2146,19 +2151,19 @@ const flavorRateFinalEndNegativeLow = [
     [""]
 ];
 
-const flavorRateFinalEndNegativeMiddle = [
-    [""]
-];
-
-const flavorRateFinalEndNegativeHigh = [
-    [""]
-];
-
 const mettRateFinalEndNegativeLow = [
     [""]
 ];
 
+const flavorRateFinalEndNegativeMiddle = [
+    [""]
+];
+
 const mettRateFinalEndNegativeMiddle = [
+    [""]
+];
+
+const flavorRateFinalEndNegativeHigh = [
     [""]
 ];
 
@@ -2172,15 +2177,11 @@ const flavorRateFinalEndBetrayalLow = [
     [""]
 ];
 
-const flavorRateFinalEndBetrayalMiddle = [
-    [""]
-];
-
-const flavorRateFinalEndBetrayalHigh = [
-    [""]
-];
-
 const mettRateFinalEndBetrayalLow = [
+    [""]
+];
+
+const flavorRateFinalEndBetrayalMiddle = [
     [""]
 ];
 
@@ -2188,10 +2189,13 @@ const mettRateFinalEndBetrayalMiddle = [
     [""]
 ];
 
-const mettRateFinalEndBetrayalHigh = [
+const flavorRateFinalEndBetrayalHigh = [
     [""]
 ];
 
+const mettRateFinalEndBetrayalHigh = [
+    [""]
+];
 
 const creditsText = [
     "METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS",
@@ -2230,7 +2234,6 @@ const creditsText = [
     "This show was made possible by:",
     "GlamGal Grease – For when your gears need to glow.",
     "RoboRomance Magazine – Now 99% Mettaton!",
-    "Hotland Heartbreakers Hotline – “Now 30% less judgment!”",
     "The Official Mettaton Body Pillow – “For lonely nights... or all of them.”",
     "Dramatone Eyeliner – Cries with you.",
     "",
@@ -3456,9 +3459,9 @@ const rating = async function() {
         }
         
         const mannersComments = async function () {
-                if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 4) {
+                if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 1) {
                     await mannersAppraisal("ifBetrayal");
-                } else if (gameState["rate"]["mannersScore"] >= 5 && gameState["insultTimes"] === 0) {
+                } else if (gameState["rate"]["mannersScore"] >= 3 && gameState["insultTimes"] === 0) {
                     if (gameState["routeFinished"]["flirt"]) {
                         await mannersAppraisal("ifHighFlirty");
                     } else {
@@ -3479,12 +3482,12 @@ const rating = async function() {
         
         const finale = async function () {
             const finalRate = async function(startOrEnd) {
-            if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 4){
+            if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 1){
                 attitude = "betrayal";
             } else if (gameState["insultTimes"] === 0) {
                     if (gameState["routeFinished"]["flirt"]) {
                         attitude = "positiveFlirty";
-                    } else if (gameState["rate"]["mannersScore"] >= 5) {
+                    } else if (gameState["rate"]["mannersScore"] >= 3) {
                         positiveFriendly = "positiveFriendly";
                     } else {
                         attitude = "neutral";
@@ -3496,14 +3499,52 @@ const rating = async function() {
             let flavorLine;
             let mettLine;
             let score;
+            let mannersModifier;
 
-            let scoreCount = gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"];
+            if (attitude === "positiveFlirty") {
+                if (gameState["rate"]["mannersScore"] > 14.5) {
+                    mannersModifier = 4;
+                } else if (gameState["rate"]["mannersScore"] === 14.5) {
+                    mannersModifier = 3;
+                } else if (gameState["rate"]["mannersScore"] < 14.5) {
+                    mannersModifier = 2;
+                }
+            } else if (attitude === "positiveFriendly") {
+                mannersModifier = 2;
+            } else if (attitude === "neutral") {
+                mannersModifier = 0;
+            } else if (attitude === "negative") {
+                //-11 is max score before getting killed when using just the insult action
+                if (gameState["rate"]["mannersScore"] <= -11) {
+                    mannersModifier = -3;
+                } else if (gameState["rate"]["mannersScore"] <= -6) {
+                    mannersModifier = -2;
+                } else {
+                    mannersModifier = -1;
+                }
+            } else if (attitude === "betrayal") {
+                if (gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] <= 2) {
+                    //for case when user went through a few stages of betrayal
+                    mannersModifier = -3;
+                } else if ((gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 3) || gameState["routeFinished"]["flirt"] && gameState["routeStages"]["insultRouteStage"] >= 2 && (gameState["roseTimes"] > 0 || gameState["stickTimes"] > 1 || gameState["rate"]["baitAndSwitch"] > 0)) {
+                    //for case if user almost finished the betrayal route or taken other actions that result in a negative score 
+                    mannersModifier = -4;
+                }
+            }
+
+            //min possible score for colors + density is 0, maximum is 11.5 if 2 fave colors are used, or 10 without them (so it would be logical to define low as <= 4, middle between 5 and 7, high as anything more than 8)
+            //but i think that having good manners score should make it easier to gain a high score
+            //who said that Mettaton is completely unbiased as a judge? no one.
+            //score "modifier" will be added, which will depend of user's manners rating
+
+            let scoreCount = gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + mannersModifier;
+            console.log(`color score is ${gameState["rate"]["colorScore"]}, density score is ${gameState["rate"]["densityScore"]}, manners modifier is ${mannersModifier} - and the total is ${scoreCount}`);
 
             if (scoreCount <= 4) {
                 score = "low"
-            } else if (scoreCount >= 10 && scoreCount <= 14) {
+            } else if (scoreCount >= 5 && scoreCount <= 7) {
                 score = "middle"
-            } else if (scoreCount >= 5 && scoreCount <= 9) {
+            } else if (scoreCount >= 8) {
                 score = "high"
             } 
 
@@ -3522,7 +3563,7 @@ const rating = async function() {
             }
         }
 
-            await finalRate("start").then(() => {
+        const judgeAnimation = async function() {
             starSpace.classList.add("gone");
 
             const miniMettsContainer = document.createElement("div");
@@ -3607,14 +3648,14 @@ const rating = async function() {
                     judgeThreeContainer.prepend(rateSignThree);
 
                     function getVariedRating (number) {
-                        let theFinalRating = gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + gameState["rate"]["mannersScore"];
+                        let theFinalRating = gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"];
                         let getNumber = (Math.random() * number);
                         return Math.round((theFinalRating - getNumber) * 10) / 10;
                     }
 
-                    rateSignOne.textContent = `${getVariedRating(2)}`;
-                    rateSignTwo.textContent = `${getVariedRating(2)}`;
-                    rateSignThree.textContent = `${getVariedRating(2)}`;       
+                    rateSignOne.textContent = `${Math.min(getVariedRating(2), 10)}`;
+                    rateSignTwo.textContent = `${Math.min(getVariedRating(2), 10)}`;
+                    rateSignThree.textContent = `${Math.min(getVariedRating(2), 10)}`;       
 
                     window.addEventListener("click", function() {
                         rateSignOne.remove();
@@ -3652,8 +3693,10 @@ const rating = async function() {
                     creditsMusicFinal.play();
                 } 
             })
+        }
 
-        });
+            await finalRate("start");
+            await judgeAnimation();
     }
 
         showAllFinal();
@@ -3669,7 +3712,7 @@ const rose = async function() {
         mannerState = "positive";
         gameState["rate"][mannersScore] += 0.5;
     } else {
-        if (gameState["routeStages"]["insultRouteStage"] === 4) {
+        if (gameState["routeStages"]["insultRouteStage"] >= 2) {
             mannerState = "tooMuch";
             gameState["rate"][mannersScore] -= 5;
         } else {
@@ -3680,20 +3723,14 @@ const rose = async function() {
     
     let selectedIndex = randomIndex(allText["mettaton"]["rose"][mannerState]);
 
-    const flavorLine = async () => {
-        await flavorText(allText["flavor"]["rose"][mannerState][selectedIndex]);
-    }
-
-    const mettResponding = async() => {
-        await flavorLine();
-        await mettTalking(allText["mettaton"]["rose"][mannerState][selectedIndex]);
-    }
-
-    mettResponding();
+    await flavorText(allText["flavor"]["rose"][mannerState][selectedIndex]);
+    await mettTalking(allText["mettaton"]["rose"][mannerState][selectedIndex]); 
 
     if (gameState["routeStages"]["insultRouteStage"] === 4) {
         gameState["routeBlocked"]["rejectionSeen"] = true;
     }
+
+    gameState["roseTimes"]++;
 }
 
 const stick = async function() { 
