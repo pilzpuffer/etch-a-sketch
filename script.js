@@ -2099,10 +2099,24 @@ const mettRateFinalEndPositiveFlirtyLow = [
 ];
 
 const flavorRateFinalEndPositiveFlirtyMiddle = [
-    [""]
+    ["The judges’ paddles lift with middling scores. The numbers gleam without cruelty, but without awe either."],
+    ["The applause that follows is polite, uncertain - neither a triumph nor a failure."],
+    ["Mettaton glides toward you, voice dipping low, intimate."],
+    ["He lets a fingertip linger beneath your chin, his screen glowing with a glint of playful intrigue."],
+    ["With a flourish, he spins away to face the audience, arms wide as the spotlight blooms around him."],
+    ["He pivots back to you, screen humming with a pulse like anticipation."],
+    ["The lights cut to black, the echo of his voice hanging in the air like the last note of a song unfinished."],
+    ["The music swells - a curtain call without closure."]
 ];
 
 const mettRateFinalEndPositiveFlirtyMiddle = [
+    [""],
+    [""],
+    ["Mm... steady. Safe. A sketch of something unfinished.", "But oh, darling — even half a spark can make me wonder how brightly the fire might yet burn."],
+    ["You’re not unworthy - far from it. You’re dangerous.", "Because you’ve left me wanting to know whether you’ll soar... or shatter spectacularly."],
+    ["“Viewers! What you’ve witnessed tonight is not a finale — but a cliffhanger!", "The promise of brilliance or disaster, waiting to be claimed.", "And isn’t that the cruelest, sweetest lure of live theatre?"],
+    ["Next time, darling... don’t leave them wanting.", "Make them gasp, make them cheer - and make ME regret every other show I’ve ever hosted."],
+    [""],
     [""]
 ];
 

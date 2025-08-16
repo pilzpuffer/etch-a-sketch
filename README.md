@@ -22,7 +22,7 @@ Roadmap to project finalization
           3) <s>density</s>
           4) <s>manners</s>
           5) final - intro
-               1) flirty
+               1) <s>flirty</s>
                2) friendly
                3) neutral
                4) negative
