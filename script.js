@@ -2010,14 +2010,18 @@ const mettRateMannersBetrayal = [
 //start
 const flavorRateFinalStartPositiveFlirty = [
     ["Mettaton spins away from you with a laugh that shimmers like the lights overhead."],
-    ["A snap of his fingers — and from the wings, the mini-Metts roll in, each gripping a glittering judge’s paddle in tiny, polished hands."],
-    ["The judges line up with clockwork precision, paddles poised. Mettaton rolls back a pace, folding his arms in a pose of playful detachment."]
+    ["A snap of his fingers — and from the wings, the mini-Mett bots roll in, each gripping a glittering judge's paddle in tiny, polished hands."],
+    ["They line up with clockwork precision, striking poses as if the cameras were already flashing."],
+    ["Mettaton glides back a pace, arms folding in playful detachment - a star savoring the suspense."],
+    ["He leans close to you, voice dropping to a sultry whisper."]
 ];
 
 const mettRateFinalStartPositiveFlirty = [
-    ["Mm, I could keep playing this little back-and-forth all night...", "...But every show needs its grand reveal."],
-    ["Behold - my precious panel. Sharp-eyed, cold-bolted... and tragically immune to flattery.", "The most discerning critics in the business, here to decide your fate tonight."],
-    ["Don’t fret, darling - they insist they’re objective.", "Let’s see if all that charm of yours can survive... the spotlight of scrutiny."]
+    ["Mm, I could keep playing this little back-and-forth all night...", "...But every show, darling, deserves its grand reveal."],
+    ["Behold - my precious judge panel. Sharp-eyed, cold-bolted... and tragically immune to flattery.", "The most discerning critics in showbiz, here to decide your fate tonight."],
+    [""],
+    ["Darling, they’ve judged every act from tragedy to tap-dance. Will yours be their headline... or just a footnote?"],
+    ["...No spoilers. That’s not how primetime works."]
 ];
 
 const flavorRateFinalStartPositiveFriendly = [
@@ -2071,8 +2075,13 @@ const flavorRateFinalEndPositiveFlirtyLow = [
     ["The lights fade to a deep rose as Mettaton closes the distance between you. His screen glows with something unreadable."],
     ["He brushes his fingertips against your cheek, the cool metal contrasting with the warmth in his voice."],
     ["He leans in, close enough for the faint hum of his screen to reach your ears."],
-    ["He draws back, a sad smile in his voice."]
-    ["Mettaton rolls into shadow as the stage music swells. His outline blurs, the glow of his screen dimming like the last flicker of a dying reel."]
+    ["He draws back, his glow dimming, voice threaded with something almost tender."],
+
+    ["Then, with a sudden flourish, he spins back to face the audience, voice booming with theatrical clarity."],
+    ["He sweeps a grand bow, one arm extended toward you as if inviting the crowd to remember your name."],
+    ["He turns back to you for one last whisper, private and electric."],
+    ["Mettaton rolls into shadow as the stage music swells."]
+    ["The lights fall in a gentle fade, as though the theater itself exhales — leaving only the echo of applause to carry you into the credits."]
 ];
 
 const mettRateFinalEndPositiveFlirtyLow = [
@@ -2080,7 +2089,12 @@ const mettRateFinalEndPositiveFlirtyLow = [
     ["My darling... You make it so very hard to say no."],
     ["But a star must never accept a scene that isn’t ready for the silver screen."],
     ["Don’t take it as cruelty, darling. Take it as... motivation.", "After all - what’s more thrilling than making me eat my words?"],
-    ["When you’re ready to give me the kind of moment that could end my career because nothing could ever top it...", "...You’ll know where to find me."],
+    ["My poor, beautiful thing... the stage can be so cruel, can’t it?"],
+
+    ["Ladies, gentlemen, and glamorous entities of every persuasion - tonight you have witnessed a spark, fragile but bright.", "Perhaps not the inferno you craved... but isn’t that the joy of live theater?", "The promise that next time might set the whole world ablaze!"],
+    ["Keep your eyes open, darlings. When this one returns, it may be with a fire no critic can extinguish."],
+    ["And when that blaze is ready to blind me... I’ll be waiting."]
+    [""],
     [""]
 ];
 
