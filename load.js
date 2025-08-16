@@ -56,7 +56,7 @@ window.addEventListener('load', () => {
 
 
         const handleKeyDown = function(event) {
-            if (event.code === "Digit2" || event.code === "Numpad2" ||event.code === "Enter") {
+            if (event.code === "Digit2" || event.code === "Numpad2" || event.code === "Enter") {
 
                 window.removeEventListener("keydown", handleKeyDown);
                 heart.classList.remove("beat");
@@ -75,6 +75,7 @@ window.addEventListener('load', () => {
                     battleStart.play();
 
                     async function heartBeat() {
+                        
                         if (beat) {
                             heart.src = "./images/red-soul-hidden.png";
                             beat = !beat;

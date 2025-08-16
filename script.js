@@ -2067,6 +2067,7 @@ const mettRateFinalStartFullBetrayal = [
 //end
 //positive flirty
 const flavorRateFinalEndPositiveFlirtyLow = [
+    ["The judges' paddles slam up - numbers on them so low they practically mock you. As they exit the stage, this mockery still stings."]
     ["The lights fade to a deep rose as Mettaton closes the distance between you. His screen glows with something unreadable."],
     ["He brushes his fingertips against your cheek, the cool metal contrasting with the warmth in his voice."],
     ["He leans in, close enough for the faint hum of his screen to reach your ears."],
@@ -2075,6 +2076,7 @@ const flavorRateFinalEndPositiveFlirtyLow = [
 ];
 
 const mettRateFinalEndPositiveFlirtyLow = [
+    [""],
     ["My darling... You make it so very hard to say no."],
     ["But a star must never accept a scene that isn’t ready for the silver screen."],
     ["Don’t take it as cruelty, darling. Take it as... motivation.", "After all - what’s more thrilling than making me eat my words?"],
@@ -2655,6 +2657,13 @@ const mettTalking = function (phrase) {
         textBubble.classList.remove("gone");
         gameState["mettTextShown"] = true;
 
+        window.addEventListener("keydown", (event) => {
+        if (event.code === "Digit2" || event.code === "Numpad2" ) {
+            removeBubble();
+        }
+    })
+
+
         async function displayNextPhrase() {
             if (i >= phrase.length) {
                 setTimeout(removeBubble, 50);
@@ -2867,6 +2876,13 @@ const flavorText = function(lines) {
     multiLine.appendChild(lineTwo);
 
     textField.appendChild(multiLine); 
+
+    window.addEventListener("keydown", (event) => {
+        if (event.code === "Digit2" || event.code === "Numpad2" ) {
+            cleanUp();
+            starSpace.textContent = `*`;
+        }
+    })
     
 
     const cleanUp = function() {

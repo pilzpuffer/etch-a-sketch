@@ -22,7 +22,17 @@ Roadmap to project finalization
           3) <s>density</s>
           4) <s>manners</s>
           5) final - intro
+               1) flirty
+               2) friendly
+               3) neutral
+               4) negative
+               5) betrayal
           6) final - end
+               1) flirty
+               2) friendly
+               3) neutral
+               4) negative
+               5) betrayal
      3) <s>Make animation for mini-Metts - since the animation logic is a bit more complicated than in Mett's movements, I'll need to use JS instead CSS keyframes for this</s> - ended up using both JS and keyframes, this solution seems to be quite efficient
      4) <s>Create ending sequence</s>
           1) Add some text variation to ending credits for different levels of Mettaton's approval
@@ -49,7 +59,7 @@ Roadmap to project finalization
 12) <s>Change font for Mettaton's dialogue</s>
 13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
      1) <s>As consequence of this, I need to fix up the functions for pausing/unpausing those animations</s>
-14) Add a text-skipping mechanic?
+14) <s>Add a text-skipping mechanic? - to achieve this, I'll need some sort of event listener that will be constantly running and waiting for '2' to be clicked - and at that, would change the i (the iteration variable) of the active mettTalking/typeWriter function to proceed to the next one?</s> - wrong, i needed to run a function that would resolve the promise, ending the relevant function iteration effectively
 
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>
