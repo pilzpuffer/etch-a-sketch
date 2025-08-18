@@ -2025,19 +2025,31 @@ const mettRateFinalStartPositiveFlirty = [
 ];
 
 const flavorRateFinalStartPositiveFriendly = [
-    [""]
+    ["Mettaton’s appraisal dissolves into a hush. There's silence in the air - the kind that makes an audience lean forward, breath held."],
+    ["A bassy thrum rattles the stage. From the wings, the mini-Mett bots roll out, hoisting scoreboards that blaze beneath the lights."],
+    ["Mettaton sweeps an arm toward them as though presenting a finale act, his voice rising in theatrical crescendo."],
+    ["He glides back, arms folding with decadent detachment, savoring the tension as the hum of the lights swells around him."]
 ];
 
 const mettRateFinalStartPositiveFriendly = [
-    [""]
+    ["But really, darlings… what kind of spectacle ends with only my word?", "A true star knows: the final verdict belongs to the critics."],
+    ["Behold - my illustrious jury panel!", "Sharper than diamond, colder than steel, and ravenous for judgment.", "They’ve shredded egos, toppled careers - and tonight, their gaze is fixed on you."],
+    ["So tell me, our dear contestant…", "...Will they hail you as tonight’s sensation - or cut you down as nothing more than a failed audition reel?"],
+    ["...No rewrites. No retakes. This is your final cut."]
 ];
 
 const flavorRateFinalStartNeutral = [
-    ["testing out if this works"]
+    ["Mettaton’s appraisal dissolves into a hush. There's silence in the air - the kind that makes an audience lean forward, breath held."],
+    ["A bassy thrum rattles the stage. From the wings, the mini-Mett bots roll out, hoisting scoreboards that blaze beneath the lights."],
+    ["Mettaton sweeps an arm toward them as though presenting a finale act, his voice rising in theatrical crescendo."],
+    ["He glides back, arms folding with decadent detachment, savoring the tension as the hum of the lights swells around him."]
 ];
 
 const mettRateFinalStartNeutral = [
-    ["testing out if this works"]
+    ["But really, darlings… what kind of spectacle ends with only my word?", "A true star knows: the final verdict belongs to the critics."],
+    ["Behold - my illustrious jury panel!", "Sharper than diamond, colder than steel, and ravenous for judgment.", "They’ve shredded egos, toppled careers - and tonight, their gaze is fixed on you."],
+    ["So tell me, our dear contestant…", "...Will they hail you as tonight’s sensation - or cut you down as nothing more than a failed audition reel?"],
+    ["...No rewrites. No retakes. This is your final cut."]
 ];
 
 const flavorRateFinalStartNegative = [
