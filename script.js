@@ -2133,10 +2133,30 @@ const mettRateFinalEndPositiveFlirtyMiddle = [
 ];
 
 const flavorRateFinalEndPositiveFlirtyHigh = [
-    [""]
+    ["The judges’ scorecards flash high, numbers gleaming. The crowd explodes in cheers, the sound cascading through the hall."],
+    ["Mettaton rolls to center stage, his chrome catching the spotlight in dazzling bursts"],
+    ["He pivots sharply, screen glowing with delight and his arms wide."],
+    ["He gestures grandly toward the crowd, his tone swelling to a crescendo."],
+    ["Then softer, leaning in, his voice almost intimate."],
+    ["He pauses, the stage falling into silence. With a dramatic sweep, he conjures a holographic scroll edged in glimmering gold trim."],
+    ["He tilts that scroll forward, its surface shimmering with light."],
+    ["Mettaton takes your hand with a deliberate grace, his touch electric and his voice softening to a purr."],
+    ["The roar of the crowd melts into a softer hum, the spotlight narrowing until it frames only you and Mettaton."],
+    ["His screen lingers on you, glowing with quiet warmth as if the rest of the world has vanished."],
+    ["The curtain lowers, the world fading to black as the credits begin their slow ascent, shimmering softly in the darkness."]
 ];
 
 const mettRateFinalEndPositiveFlirtyHigh = [
+    [""],
+    ["Darling... you’ve turned a stage into a galaxy of your own making. Every step, every glance... radiant."],
+    ["Look at them! The audience is spellbound, breathless — and I... I can’t look away."],
+    ["Tonight, you glittered brighter than anyone could dream. Remember this moment - it belongs to you."],
+    ["Feel it, darling. The roar, the rhythm, the spotlight beating in time with your pulse.", "Tonight, you weren’t just a performer... you were the star they came to see."],
+    ["And now... the offer."],
+    ["Put your name here, and it’s official - not just a fleeting act, not just a spark that fades, not even a special thanks at the credits...", "...But the name beside mine. From this moment, every ovation, every curtain rise, every shining beat of the stage - ours, together.”"],
+    ["So... what will it be, darling? Shall we take our bow together and let the spotlight never dim?", "Or should we leave the world begging for a sequel?"], 
+    [""],
+    [""],
     [""]
 ];
 
