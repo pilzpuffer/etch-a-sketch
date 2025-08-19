@@ -23,7 +23,7 @@ Roadmap to project finalization
           4) <s>manners</s>
           5) final - intro
                1) <s>flirty</s>
-               2) <s>friendly/<s>
+               2) <s>friendly</s>
                3) <s>neutral</s>
                4) negative
                5) betrayal

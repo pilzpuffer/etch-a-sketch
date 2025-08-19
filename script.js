@@ -2025,17 +2025,17 @@ const mettRateFinalStartPositiveFlirty = [
 ];
 
 const flavorRateFinalStartPositiveFriendly = [
-    ["Mettaton’s appraisal dissolves into a hush. There's silence in the air - the kind that makes an audience lean forward, breath held."],
-    ["A bassy thrum rattles the stage. From the wings, the mini-Mett bots roll out, hoisting scoreboards that blaze beneath the lights."],
-    ["Mettaton sweeps an arm toward them as though presenting a finale act, his voice rising in theatrical crescendo."],
-    ["He glides back, arms folding with decadent detachment, savoring the tension as the hum of the lights swells around him."]
+    ["Mettaton’s voice melts into a velvet hush, his screen aglow with sly amusement."],
+    ["The stage shudders with a playful chime as the mini-Mett bots roll in, chrome glittering under the lights, scoreboards in hands."],
+    ["He spreads his arms, voice rich with mock-gravity, though the tease in his tone is undeniable."],
+    ["He reclines a step, arms folding, savoring the tension as the hum of the lights swells around him."]
 ];
 
 const mettRateFinalStartPositiveFriendly = [
-    ["But really, darlings… what kind of spectacle ends with only my word?", "A true star knows: the final verdict belongs to the critics."],
-    ["Behold - my illustrious jury panel!", "Sharper than diamond, colder than steel, and ravenous for judgment.", "They’ve shredded egos, toppled careers - and tonight, their gaze is fixed on you."],
-    ["So tell me, our dear contestant…", "...Will they hail you as tonight’s sensation - or cut you down as nothing more than a failed audition reel?"],
-    ["...No rewrites. No retakes. This is your final cut."]
+    ["But really, darlings... a star doesn’t shine alone.", "Every finale needs critics bold enough to crown it in glory — or slash it to ribbons."],
+    ["Behold - my jury of brilliance!", "They’ve seen disasters, divas, dazzling flames that fizzled in a single act... yet still, they hunger for something new."],
+    ["So, my radiant contestant... will they reveal their scores to crown you tonight’s sensation?", "Or will you leave them scandalized, whispering of potential that almost - almost - touched greatness?"],
+    ["...No rewrites. No retakes. Only a finale bold enough to make them remember your name."]
 ];
 
 const flavorRateFinalStartNeutral = [
