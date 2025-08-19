@@ -25,7 +25,7 @@ Roadmap to project finalization
                1) <s>flirty</s>
                2) <s>friendly</s>
                3) <s>neutral</s>
-               4) negative
+               4) <s>negative</s>
                5) betrayal
           6) final - end
                1) <s>flirty</s>

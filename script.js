@@ -2053,29 +2053,30 @@ const mettRateFinalStartNeutral = [
 ];
 
 const flavorRateFinalStartNegative = [
-    ["A sharp feedback sound rings out from one of the overhead mics. Someone in the control booth coughs."],
-    ["Mettaton pauses, then glides forward - slow and measured.", "His screen dims slightly, casting you in flickering grayscale."],
-    ["The house lights flicker, intentionally or not.", "You hear someone backstage whisper: 'Did they seriously insult him mid-show?'"],
-    ["He lifts one arm, clicks a remote. A screen behind him replays some past interaction - clipped, petty, graceless. The crowd groans."],
-    ["The light on you hardens into a lone follow-spot."],
-    ["One final pause. Then his screen dims entirely for a single beat. The audience gasps."]
+    [""],
+    [""],
+    [""],
+    [""]
 ];
 
 const mettRateFinalStartNegative = [
     [""],
-    ["There’s an art to presence. A rhythm to the dance between audience and performer."],
-    ["And you... you misstepped, darling.", "Again. And again. And again."],
-    ["You had the chemistry, the rhythm, the spark...", "...And then you tripped over your own lines."],
-    ["What a shame. You had the stage... but you didn’t respect it."],
+    [""],
+    [""],
     [""]
-
 ];
 
 const flavorRateFinalStartFullBetrayal = [
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
 const mettRateFinalStartFullBetrayal = [
+    [""],
+    [""],
+    [""],
     [""]
 ];
 
