@@ -64,7 +64,7 @@ Roadmap to project finalization
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>
 2) <s>check line 1601\2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with). basically, currently there's an issue with insult progression and its interaction with other functions - it works fine by itself, start to finish</s>
-3) check on perform progression when insults were used - moreRude/tooMuch phrases don't play out
+3) <s>check on perform progression when insults were used - moreRude/tooMuch phrases don't play out</s> - needed variables were simply missing in allText object
 4) related to the problem above - there's an issue when insult is initiated on stage 4 of flirting, check on that as well
 5) <s>verify if the option to flirt gets properly hidden after the route is finished successfully</s>
 6) <s>if a regular marker is used (any color) sometimes when drawing in the lower part of the drawing field (no matter if animations are on or off), one of the columns will get its cells elongated - happens to 2-3 columns at most, but not any specific ones (mostly in the left part of the screen) - for some reason, they leave the normal flow of the box and their height gets set to 100% instead of 30%. monitor why that happens, exactly. </s> - a bit of a mystery issue, as I couldn't recreate it again when I've restarted my browser/tried it on a different device. so i'll just have to look out for it if it'll happen again

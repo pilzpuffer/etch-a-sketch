@@ -2500,6 +2500,11 @@ allText = {
         perform: {
             none: flavorPerformNone,
             drawn: flavorPerformDrawn,
+            wasInsulted: {
+                rude: flavorPerformInsult,
+                moreRude: flavorPerformDisgrace, 
+                tooMuch: flavorPerformLock
+            }
         },
         insult: {
             none: flavorInsultNone,
@@ -2695,6 +2700,11 @@ allText = {
         perform: {
             none: mettPerformNone,
             drawn: mettPerformDrawn,
+            wasInsulted: {
+                rude: mettPerformInsult,
+                moreRude: mettPerformDisgrace, 
+                tooMuch: mettPerformLock
+            }
         },
         insult: {
             none: mettInsultNone,
