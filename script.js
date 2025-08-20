@@ -952,7 +952,7 @@ const mettFullBetrayal = [
 const flavorFlirtInsult = [
     ["You toss a desperate compliment into the fraying air between you."],
     ["You try to spin your insults into charm.", "It’s not very convincing."],
-    ["You attempt a flirtatious smile", "It feels brittle."],
+    ["You attempt a flirtatious smile.", "It feels brittle."],
     ["You offer a compliment, clumsy and clattering."],
     ["You toss another half-hearted flirt Mettaton's way."],
 ];
@@ -3131,14 +3131,12 @@ const defaultConversation = async function (topic, checkToIncrement) {
         let tooMuchMett;
         let routeFunction = gameState["routeFunctions"][`${topic}`];
 
-        if (topic === "insult" && gameState["flirtTimes"] >= 1) {
-            if (gameState["routeFinished"]["flirt"]) {
-                tooMuchFlavor = allText["flavor"][topic]["wasFlirtedWith"]["flavorFullBetrayal"];
-                tooMuchMett = allText["mettaton"][topic]["wasFlirtedWith"]["mettFullBetrayal"];
-            } else {
-                tooMuchFlavor = allText["flavor"][topic]["wasFlirtedWith"]["flavorBetrayal"];
-                tooMuchMett = allText["mettaton"][topic]["wasFlirtedWith"]["mettBetrayal"];
-            }
+        if (topic === "insult" && gameState["routeFinished"]["flirt"]) {
+            tooMuchFlavor = allText["flavor"][topic]["wasFlirtedWith"]["part"];
+            tooMuchMett = allText["mettaton"][topic]["wasFlirtedWith"]["full"];
+        } else if (topic === "insult" && !gameState["routeFinished"]["flirt"] && gameState["flirtTimes"] >= 1 ) {
+            tooMuchFlavor = allText["flavor"][topic]["wasFlirtedWith"]["part"];
+            tooMuchMett = allText["mettaton"][topic]["wasFlirtedWith"]["full"];
         } else {
             tooMuchFlavor = allText["flavor"][topic]["tooMuch"];
             tooMuchMett = allText["mettaton"][topic]["tooMuch"];

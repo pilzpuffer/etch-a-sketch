@@ -65,10 +65,17 @@ Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>
 2) <s>check line 1601\2395, insult progression - the lines don't show up as they should (in case if Mettaton was already flirted with). basically, currently there's an issue with insult progression and its interaction with other functions - it works fine by itself, start to finish</s>
 3) <s>check on perform progression when insults were used - moreRude/tooMuch phrases don't play out</s> - needed variables were simply missing in allText object
-4) related to the problem above - there's an issue when insult is initiated on stage 4 of flirting, check on that as well
+4) <s>related to the problem above - there's an issue when insult is initiated on stage 4 of flirting, check on that as well.   
+     UPD: tested, and the issue is that the moreRude/tooMuch progression simply doesn't play out here, we're always stuck with the "rude" stage and never proceed with anything further, need to verify why that happens. 
+     UPD2: any stage of flirt route/action + insult ACT = regular insult lines play out, dialogue breaks on a third insult as there's no specific path for proceeding in that case, need to adjust logic in defaultConversation to account for this so that player would proceed to go onto the regular insult path (not yet betrayal-worthy)
+     UPD3: there are 3 variations of final insult progression:
+	1) tooMuch - no flirting done
+	2) Betrayal - flirt route wasn't completed, insults initiated
+	3) FullBetrayal - flirt route completed, then proceed with insults </s> - The issue here was due to me not accessing the needed part of the allText object- I was trying to pull the needed lines not by the key, but by the value name, and that's why there was an error 
 5) <s>verify if the option to flirt gets properly hidden after the route is finished successfully</s>
 6) <s>if a regular marker is used (any color) sometimes when drawing in the lower part of the drawing field (no matter if animations are on or off), one of the columns will get its cells elongated - happens to 2-3 columns at most, but not any specific ones (mostly in the left part of the screen) - for some reason, they leave the normal flow of the box and their height gets set to 100% instead of 30%. monitor why that happens, exactly. </s> - a bit of a mystery issue, as I couldn't recreate it again when I've restarted my browser/tried it on a different device. so i'll just have to look out for it if it'll happen again
 6) <s>if an entire drawing is done in etch pen - for some reason, when about 50% of the drawing field is filled in, the color of most part of the drawing field changes to fully black. if some of those black squares get erased - the coloring returns to normal? check why that happens</s> - another mystery issue, couldn't recreate it again?
+7) text skipping completely messes up story progression, if done many times in a row. why does that happen? veruft
 
 Project notes:
 This concept really inspired me to try building a cohesive mini-game - and while it REALLY went far beyond the original task requirements, I’m glad I decided to pursue it. It ended up teaching me some valuable lessons about handling larger-scale projects.
