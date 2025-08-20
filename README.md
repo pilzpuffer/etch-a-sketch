@@ -21,12 +21,12 @@ Roadmap to project finalization
                3) <s>main color comments</s>
           3) <s>density</s>
           4) <s>manners</s>
-          5) final - intro
+          5) <s>final - intro</s>
                1) <s>flirty</s>
                2) <s>friendly</s>
                3) <s>neutral</s>
                4) <s>negative</s>
-               5) betrayal
+               5) <s>betrayal</s>
           6) final - end
                1) <s>flirty</s>
                2) friendly
@@ -75,7 +75,7 @@ Debugging Roadmap:
 5) <s>verify if the option to flirt gets properly hidden after the route is finished successfully</s>
 6) <s>if a regular marker is used (any color) sometimes when drawing in the lower part of the drawing field (no matter if animations are on or off), one of the columns will get its cells elongated - happens to 2-3 columns at most, but not any specific ones (mostly in the left part of the screen) - for some reason, they leave the normal flow of the box and their height gets set to 100% instead of 30%. monitor why that happens, exactly. </s> - a bit of a mystery issue, as I couldn't recreate it again when I've restarted my browser/tried it on a different device. so i'll just have to look out for it if it'll happen again
 6) <s>if an entire drawing is done in etch pen - for some reason, when about 50% of the drawing field is filled in, the color of most part of the drawing field changes to fully black. if some of those black squares get erased - the coloring returns to normal? check why that happens</s> - another mystery issue, couldn't recreate it again?
-7) text skipping completely messes up story progression, if done many times in a row. why does that happen? veruft
+7) text skipping completely messes up story progression, if done many times in a row. why does that happen? verify
 
 Project notes:
 This concept really inspired me to try building a cohesive mini-game - and while it REALLY went far beyond the original task requirements, I’m glad I decided to pursue it. It ended up teaching me some valuable lessons about handling larger-scale projects.

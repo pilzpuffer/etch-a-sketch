@@ -1659,7 +1659,7 @@ const flavorRatePositiveBucket = [
 ];
 
 const mettRatePositiveBucket = [
-    ["Darling… you know I love a bold statement, but this?"],
+    ["Darling... you know I love a bold statement, but this?"],
     ["This isn’t a painting - it’s a set piece, waiting for someone else’s spotlight.", "Is this a statement? An inside joke? Or did you strain your creative muscle?", ]
     ["You’re my co-star, sugar - the lead role in my art show."],
     ["Don’t make me wonder if you’re only here to look pretty.", "I'd like to see some effort as well."]
@@ -2046,9 +2046,9 @@ const flavorRateFinalStartNeutral = [
 ];
 
 const mettRateFinalStartNeutral = [
-    ["But really, darlings… what kind of spectacle ends with only my word?", "A true star knows: the final verdict belongs to the critics."],
+    ["But really, darlings... what kind of spectacle ends with only my word?", "A true star knows: the final verdict belongs to the critics."],
     ["Behold - my illustrious jury panel!", "Sharper than diamond, colder than steel, and ravenous for judgment.", "They’ve shredded egos, toppled careers - and tonight, their gaze is fixed on you."],
-    ["So tell me, our dear contestant…", "...Will they hail you as tonight’s sensation - or cut you down as nothing more than a failed audition reel?"],
+    ["So tell me, our dear contestant...", "...Will they hail you as tonight’s sensation - or cut you down as nothing more than a failed audition reel?"],
     ["...No rewrites. No retakes. This is your final cut."]
 ];
 
@@ -2067,17 +2067,17 @@ const mettRateFinalStartNegative = [
 ];
 
 const flavorRateFinalStartFullBetrayal = [
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Mettaton’s critique fades, leaving a charged hush. It feels deliberate - the kind that makes every eye in the hall lean in."],
+    ["He spins, his metal body catching the lights with gleaming precision, arms wide in theatrical exasperation."],
+    ["Mini-Mett bots glide in, judge paddles raised with gleaming, precise judgment - a mechanical chorus of snide applause."],
+    ["Mettaton leans in, screen flickering like a spotlight teasing the stage.)"]
 ];
 
 const mettRateFinalStartFullBetrayal = [
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Oh, my darling... I praised you, I flattered you, perhaps even indulged you...", "And you?", "You repay me with a twist worthy of opening night drama!"],
+    ["Every barb, every sneer, every gleeful jab — a performance within the performance! Bravo!", "Truly, you could have your own show... just hope the rest of the cast survives your entrance."],
+    ["The judges have arrived, darlings!", "Will they celebrate the star you pretended to be...", "...Or expose the mischief-maker under all that charm?"],
+    ["Darling, the curtain is down, the lights are hot, and the final... oh, it bites", "But isn’t that the thrill of showbiz?", "Now, let’s see if you survive your own performance."]
 ];
 
 
