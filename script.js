@@ -2053,17 +2053,17 @@ const mettRateFinalStartNeutral = [
 ];
 
 const flavorRateFinalStartNegative = [
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Mettaton lingers center stage, screen flickering with a sly, indulgent glow. His tone oozes syrupy dramatics, every word gilded with mockery."],
+    ["He spreads his arms as though unveiling a masterpiece, though the smirk in his voice betrays the joke."],
+    ["The stage rattles with canned applause, hollow and tinny, as the mini-Mett bots wheel in."],
+    ["He sweeps back, basking in the tension, voice lowering to a dramatic whisper."]
 ];
 
 const mettRateFinalStartNegative = [
-    [""],
-    [""],
-    [""],
-    [""]
+    ["Bravo, darling! A one-of-a-kind performance... though not of a star, no, no.", "Tonight, you’ve stolen the role of the clown prince of this little circus!"],
+    ["Every stumble, every jeer, every oh-so-spirited insult - a routine worthy of the big top itself!", "A jest so committed, I could almost book you as tonight’s opening act."],
+    ["But every circus needs its ringmasters - and mine, darling, carry scorecards instead of whips.", "Will they cheer your pratfalls as genius... or snap the tent shut on your little show?"],
+    ["Let’s not keep them waiting, hmm?"]
 ];
 
 const flavorRateFinalStartFullBetrayal = [
