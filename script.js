@@ -2075,7 +2075,7 @@ const flavorRateFinalStartFullBetrayal = [
 
 const mettRateFinalStartFullBetrayal = [
     ["Oh, my darling... I praised you, I flattered you, perhaps even indulged you...", "And you?", "You repay me with a twist worthy of opening night drama!"],
-    ["Every barb, every sneer, every gleeful jab — a performance within the performance! Bravo!", "Truly, you could have your own show... just hope the rest of the cast survives your entrance."],
+    ["Every barb, every sneer, every gleeful jab - a performance within the performance! Bravo!", "Truly, you could have your own show... just hope the rest of the cast survives your entrance."],
     ["The judges have arrived, darlings!", "Will they celebrate the star you pretended to be...", "...Or expose the mischief-maker under all that charm?"],
     ["Darling, the curtain is down, the lights are hot, and the final... oh, it bites", "But isn’t that the thrill of showbiz?", "Now, let’s see if you survive your own performance."]
 ];
@@ -2247,26 +2247,74 @@ const mettRateFinalEndNegativeHigh = [
 //fullBetrayal
 
 const flavorRateFinalEndBetrayalLow = [
-    [""]
+    ["The scoreboard flickers violently, numbers crashing into pitiful lows. The audience gasps, then breaks into slow, mocking applause."],
+    ["Mettaton rolls forward, the spotlight following him like an obedient pet. There's an eery feel to his screen glow, and there's a sharp smile in his voice."],
+    ["From the rafters, neon strings descend, latching onto your wrists, your ankles. They tug once, twice - your body lurches forward in jerky, humiliating motions."],
+    ["Mettaton spreads his arms as though presenting a masterpiece to the crowd."],
+    ["Each tug of the strings makes you stumble, dance, collapse, all to the roaring delight of the audience."],
+    ["Mettaton leans in, his voice velvet over steel, rising above the mockery."],
+    ["The strings tighten. Your movements grow more frantic, more grotesque, every step perfectly in time with Mettaton’s gestures."],
+    ["The audience claps along, not in admiration, but in cruel rhythm."],
+    ["The spotlight narrows, trapping you in its suffocating glow. The laughter swells, drowning out everything else."],
+    ["The strings pull taut — and the stage goes dark."]
 ];
 
 const mettRateFinalEndBetrayalLow = [
     [""]
+    ["Darling... such betrayal, such audacity!", "You played your hand, and oh, how the cards collapsed.", "But don’t fret - every disaster has its... entertainment value."],
+    [""],
+    ["Behold! The schemer, the betrayer, now reduced to my finest marionette.", "How poetic. How divine. How utterly pitiful."],
+    [""],
+    ["You wanted to control the stage, to steal the spotlight?", "Congratulations, darling - you are on it. But no longer as a star... only as a puppet."],
+    [""],
+    ["And when the curtain falls, you won’t bow... oh no, my darling.", "Puppets don’t bow. They hang. They dangle.", "They dance until the crowd has had their fill of entertainment."],
+    [""],
+    [""]
 ];
 
 const flavorRateFinalEndBetrayalMiddle = [
-    [""]
+    ["The scoreboards flicker, then settle on middling numbers. The glow is muted, the digits dull against the stage lights."]
+    ["The audience reacts with uneven clapping, scattered cheers, and the low buzz of whispers running through the hall like static."],
+    ["Mettaton rolls into center stage, his chrome catching the spotlight - but instead of dazzling, the light accentuate every flaw and imperfection of your work."],
+    ["He gestures outward, sweeping one hand toward the crowd. Their applause falters into murmurs, the sound more like gossip in the dark than admiration."],
+    ["His screen flickers, tone sharpening to a cruel edge."],
+    ["The audience titters nervously. A cough, a shuffle of feet, the rustle of programs. The energy drains from the hall as quickly as it rose."],
+    ["He pivots suddenly, pointing a polished finger directly at you. The spotlight narrows, isolating you in a cold cone of white."],
+    ["His voice drops, low and intimate, almost venomous."],
+    ["The spotlight snaps off. The stage is swallowed in darkness. For a moment, all that remains is the echo of half-hearted applause, fading into silence."]
 ];
 
 const mettRateFinalEndBetrayalMiddle = [
     [""]
-];
-
-const flavorRateFinalEndBetrayalHigh = [
+    [""],
+    ["Ahhh, darling... hear that?", "Not the roar of triumph. Not the hiss of outrage.", "Just... noise. Tepid, flavorless noise."],
+    ["You played your hand. You plotted, you twisted, you betrayed.", "For a glittering second, it almost worked - eyes turned, mouths gasped, hearts quickened..."],
+    ["...But sparks that fizzle never become fire."],
+    ["You wanted scandal, darling. And scandal you made... but only the petty kind.", "A fleeting rumor. A tiny footnote in tomorrow’s tabloids.", "Nothing sharp enough to scar, nothing bright enough to burn.", "Just a stain - destined to be scrubbed away."],
+    ["Look at them. Not cheering. Not booing. Just watching, already forgetting.", "You gave them betrayal without brilliance - and in this world, darling..."],
+    ["...The greatest failure is to be forgettable."],
     [""]
 ];
 
+const flavorRateFinalEndBetrayalHigh = [
+    ["The scores burst across judges' scoreboards, perfect. The crowd gasps, then bursts into frenzy - stomping, screaming, roses flying like confetti."]
+    ["This result is undeniable, staggering, almost unthinkable. Even in betrayal, even with the odds stacked against you, you’ve done the impossible."],
+    ["Mettaton steps into the light, flawless and radiant. When he speaks, there's a tinge of hurt surprise - blink and you'll miss it."],
+    ["The crowd’s chant swells, shaking the stage: 'MET-TA-TON! MET-TA-TON!' But this time, there are other cries — your name, shouted, chanted, mixed into the tide. Not equal, but present. Real."],
+    ["For the first time, it feels like you carved out a sliver of the spotlight for yourself."],
+    ["He glides closer, lowering his voice - intimate, with a dangerious gleam of his now perfectly stark screen, your work erased."],
+    ["With a final, glittering spin, the lights converge on him. The cheers rise to fever pitch, swallowing your name into his."],
+    ["The roses at your feet are real... but the stage itself still belongs to him."]
+];
+
 const mettRateFinalEndBetrayalHigh = [
+    [""]
+    [""],
+    ["Darling...! You actually did it.", "Against every scandal, every gasp, every jeer...", "You seized their eyes, their hearts, their precious little thrills - and you won them."],
+    [""],
+    ["Delicious! Scandal that became triumph, betrayal that became history!", "You’ve stolen a scene in my grandest show. And darling, let me assure you...", "...Very, very few ever manage that."],
+    ["But remember: roses wilt. Whispers fade. Rivalries burn hot... then turn to ash.", "Yet me? I am the spotlight. Eternal. Inescapable.", "Your triumph will live on - but always, always in my shadow."],
+    [""],
     [""]
 ];
 
