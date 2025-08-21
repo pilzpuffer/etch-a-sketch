@@ -2010,7 +2010,7 @@ const mettRateMannersBetrayal = [
 //start
 const flavorRateFinalStartPositiveFlirty = [
     ["Mettaton spins away from you with a laugh that shimmers like the lights overhead."],
-    ["A snap of his fingers — and from the wings, the mini-Mett bots roll in, each gripping a glittering judge's paddle in tiny, polished hands."],
+    ["A snap of his fingers - and from the wings, the mini-Mett bots roll in, each gripping a glittering judge's paddle in tiny, polished hands."],
     ["They line up with clockwork precision, striking poses as if the cameras were already flashing."],
     ["Mettaton glides back a pace, arms folding in playful detachment - a star savoring the suspense."],
     ["He leans close to you, voice dropping to a sultry whisper."]
@@ -2032,7 +2032,7 @@ const flavorRateFinalStartPositiveFriendly = [
 ];
 
 const mettRateFinalStartPositiveFriendly = [
-    ["But really, darlings... a star doesn’t shine alone.", "Every finale needs critics bold enough to crown it in glory — or slash it to ribbons."],
+    ["But really, darlings... a star doesn’t shine alone.", "Every finale needs critics bold enough to crown it in glory - or slash it to ribbons."],
     ["Behold - my jury of brilliance!", "They’ve seen disasters, divas, dazzling flames that fizzled in a single act... yet still, they hunger for something new."],
     ["So, my radiant contestant... will they reveal their scores to crown you tonight’s sensation?", "Or will you leave them scandalized, whispering of potential that almost - almost - touched greatness?"],
     ["...No rewrites. No retakes. Only a finale bold enough to make them remember your name."]
@@ -2094,7 +2094,7 @@ const flavorRateFinalEndPositiveFlirtyLow = [
     ["He sweeps a grand bow, one arm extended toward you as if inviting the crowd to remember your name."],
     ["He turns back to you for one last whisper, private and electric."],
     ["Mettaton rolls into shadow as the stage music swells."]
-    ["The lights fall in a gentle fade, as though the theater itself exhales — leaving only the echo of applause to carry you into the credits."]
+    ["The lights fall in a gentle fade, as though the theater itself exhales - leaving only the echo of applause to carry you into the credits."]
 ];
 
 const mettRateFinalEndPositiveFlirtyLow = [
@@ -2125,9 +2125,9 @@ const flavorRateFinalEndPositiveFlirtyMiddle = [
 const mettRateFinalEndPositiveFlirtyMiddle = [
     [""],
     [""],
-    ["Mm... steady. Safe. A sketch of something unfinished.", "But oh, darling — even half a spark can make me wonder how brightly the fire might yet burn."],
+    ["Mm... steady. Safe. A sketch of something unfinished.", "But oh, darling - even half a spark can make me wonder how brightly the fire might yet burn."],
     ["You’re not unworthy - far from it. You’re dangerous.", "Because you’ve left me wanting to know whether you’ll soar... or shatter spectacularly."],
-    ["“Viewers! What you’ve witnessed tonight is not a finale — but a cliffhanger!", "The promise of brilliance or disaster, waiting to be claimed.", "And isn’t that the cruelest, sweetest lure of live theatre?"],
+    ["“Viewers! What you’ve witnessed tonight is not a finale - but a cliffhanger!", "The promise of brilliance or disaster, waiting to be claimed.", "And isn’t that the cruelest, sweetest lure of live theatre?"],
     ["Next time, darling... don’t leave them wanting.", "Make them gasp, make them cheer - and make ME regret every other show I’ve ever hosted."],
     [""],
     [""]
@@ -2150,7 +2150,7 @@ const flavorRateFinalEndPositiveFlirtyHigh = [
 const mettRateFinalEndPositiveFlirtyHigh = [
     [""],
     ["Darling... you’ve turned a stage into a galaxy of your own making. Every step, every glance... radiant."],
-    ["Look at them! The audience is spellbound, breathless — and I... I can’t look away."],
+    ["Look at them! The audience is spellbound, breathless - and I... I can’t look away."],
     ["Tonight, you glittered brighter than anyone could dream. Remember this moment - it belongs to you."],
     ["Feel it, darling. The roar, the rhythm, the spotlight beating in time with your pulse.", "Tonight, you weren’t just a performer... you were the star they came to see."],
     ["And now... the offer."],
@@ -2221,26 +2221,74 @@ const mettRateFinalEndNeutralHigh = [
 //negative
 
 const flavorRateFinalEndNegativeLow = [
-    [""]
+    ["The Mettabots’ screens flicker, numbers flashing one by one until they freeze on your final score - pitifully low."],
+    ["A murmur ripples through the audience, followed by uneasy chuckles."],
+    ["Mettaton sweeps to center stage, raising a gleaming hand as if to command the very mood of the crowd. His voice rings out, sharp and melodic"],
+    ["The audience titters nervously, looking to him for cues. When Mettaton laughs, they laugh with him."],
+    ["The laughter surges, sharp, aimed squarely at you. Mettaton lets it rise, then glides closer, lowering his tone to something almost... tender."],
+    ["The spotlight slams down upon you - blinding, searing. At first it feels like stage fright burning through your veins..."],
+    ["...but then your body begins to smolder, cracking like paper in a flame. The crowd is caught between awe and horror thinking that this bit must be special effects."],
+    ["Mettaton watches, hand pressed dramatically to his chest, as you collapse in a cloud of embers. He kneels, scooping a few pale remnants into his palm."],
+    ["For the briefest moment, his voice softens - pity wrapped in poison."],
+    ["He lets the ash drift through his fingers like glitter, scattering across the stage. Then, he turns back to the audience, radiant and unshaken."],
+    ["The spotlight retracts to him alone, flawless, eternal. The curtain falls to thunderous cheers."]
 ];
 
 const mettRateFinalEndNegativeLow = [
     [""]
+    [""],
+    ["Darlings, darlings... what WAS that performance?", "Our would-be headliner came strutting in, dreaming of crowns and glory...", "...only to trip over their own punchline!"],
+    [""],
+    ["Oh, my poor little fool. You tried to play at royalty, to turn jest into majesty.", "How brave. How foolish. But don’t worry..."],
+    [""],
+    [""],
+    [""],
+    ["Even the worst acts deserve... a grand finale.", "And you, my dear failure, just gave the Underground the laugh of a lifetime."],
+    ["Remember them well, darlings! The jester who dreamed too high - and burned for it!", "But don’t fret... you’ll always have me. Your one and only star."],
+    [""]
 ];
 
 const flavorRateFinalEndNegativeMiddle = [
-    [""]
+    ["The Mett-Bot judges flash their middling scores."]
+    ["A polite murmur ripples through the hall - chuckles, meek applause, the kind reserved for a sideshow rather than a headline act."],
+    ["Mettaton rolls to center stage, screen flickering with sly amusement."],
+    ["He purrs, voice dripping mock grandeur."],
+    ["He snaps his fingers. A spotlight shifts - you’re perched atop a massive rolling ball, wobbling precariously under the glare."],
+    ["Mettaton claps, each motion dripping sarcastic charm."],
+    ["With a gentle shove, you roll toward the edge of the stage. The audience titters, the sound a ripple of dismissive amusement."],
+    ["Mettaton twirls, center stage again, every movement commanding attention. Now he nudges your ball to the stage exit, while you barely keep your balance."],
+    ["The applause swells, and the spotlight returns to Mettaton - the stage, and the show, forever his."],
+    ["Your moment is over - Mettaton claims the stage once more, leaving you a playful footnote in the evening’s spectacle."],
+    ["The curtain falls as Mettaton takes a theatrical bow."]
 ];
 
 const mettRateFinalEndNegativeMiddle = [
     [""]
-];
-
-const flavorRateFinalEndNegativeHigh = [
+    [""],
+    ["Ah, our would-be monarch of the spotlight!"],
+    ["Every stumble, every sly jab... truly a performance!", "Bravo, darling - you’ve earned your role... just not the one you dreamed of."],
+    ["And now, for the final flourish - the grandest exit of all!"],
+    [""],
+    [""],
+    ["See, darlings? Even the brightest stars need their supporting acts.", "And tonight, our dear Clown Prince...simply rolls off into the wings!", "But who knows, maybe you'll see them in some opening act again!"],
+    [""],
+    [""],
     [""]
 ];
 
+const flavorRateFinalEndNegativeHigh = [
+    ["The scorecards flash - impossibly high. Gasps ripple through the crowd. Mettaton throws his arms wide, voice booming."]
+    ["Your 'crown' descends from the rafters - it's an oversized jester’s cap, the bells jingling as it settles crookedly on your head. The audience chuckles at that."],
+    ["The lights flare. Behind you, a phantom circus rises, shimmering tents and tumbling silhouettes. For a heartbeat, you are its star."],
+    ["Mettaton snaps his fingers, and the misty circus vanishes in a puff of smoke."],
+    ["The audience roars, caught between laughter and applause, as the spotlight lingers on you — mocked, celebrated, and dismissed all at once."],
+];
+
 const mettRateFinalEndNegativeHigh = [
+    ["Well, well, well!", "The Clown Prince who clawed and jeered their way across my stage... has somehow dazzled the judges!", "What a delicious disgrace!", "Why, it wouldn't be right if we don't crown our Monarch of show and comedy right here and now!"],
+    [""],
+    ["But don’t get carried away, darling...", "Because a crown of bells is still only noise. And when MY curtain falls..."],
+    ["...your little circus goes with it."],
     [""]
 ];
 
@@ -2256,7 +2304,7 @@ const flavorRateFinalEndBetrayalLow = [
     ["The strings tighten. Your movements grow more frantic, more grotesque, every step perfectly in time with Mettaton’s gestures."],
     ["The audience claps along, not in admiration, but in cruel rhythm."],
     ["The spotlight narrows, trapping you in its suffocating glow. The laughter swells, drowning out everything else."],
-    ["The strings pull taut — and the stage goes dark."]
+    ["The strings pull taut - and the stage goes dark."]
 ];
 
 const mettRateFinalEndBetrayalLow = [
@@ -2300,7 +2348,7 @@ const flavorRateFinalEndBetrayalHigh = [
     ["The scores burst across judges' scoreboards, perfect. The crowd gasps, then bursts into frenzy - stomping, screaming, roses flying like confetti."]
     ["This result is undeniable, staggering, almost unthinkable. Even in betrayal, even with the odds stacked against you, you’ve done the impossible."],
     ["Mettaton steps into the light, flawless and radiant. When he speaks, there's a tinge of hurt surprise - blink and you'll miss it."],
-    ["The crowd’s chant swells, shaking the stage: 'MET-TA-TON! MET-TA-TON!' But this time, there are other cries — your name, shouted, chanted, mixed into the tide. Not equal, but present. Real."],
+    ["The crowd’s chant swells, shaking the stage: 'MET-TA-TON! MET-TA-TON!' But this time, there are other cries - your name, shouted, chanted, mixed into the tide. Not equal, but present. Real."],
     ["For the first time, it feels like you carved out a sliver of the spotlight for yourself."],
     ["He glides closer, lowering his voice - intimate, with a dangerious gleam of his now perfectly stark screen, your work erased."],
     ["With a final, glittering spin, the lights converge on him. The cheers rise to fever pitch, swallowing your name into his."],
