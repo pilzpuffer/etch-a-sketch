@@ -30,7 +30,7 @@ Roadmap to project finalization
           6) final - end
                1) <s>flirty</s>
                2) friendly
-               3) neutral
+               3) <s>neutral</s>
                4) <s>negative</s>
                5) <s>betrayal</s>
      3) <s>Make animation for mini-Metts - since the animation logic is a bit more complicated than in Mett's movements, I'll need to use JS instead CSS keyframes for this</s> - ended up using both JS and keyframes, this solution seems to be quite efficient

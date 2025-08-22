@@ -2163,59 +2163,141 @@ const mettRateFinalEndPositiveFlirtyHigh = [
 
 // positive friendly
 const flavorRateFinalEndPositiveFriendlyLow = [
-    [""]
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
 ];
 
 const mettRateFinalEndPositiveFriendlyLow = [
-    [""]
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
 ];
 
 const flavorRateFinalEndPositiveFriendlyMiddle = [
-    [""]
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
 ];
 
 const mettRateFinalEndPositiveFriendlyMiddle = [
-    [""]
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
 ];
 
 const flavorRateFinalEndPositiveFriendlyHigh = [
-    [""]
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
 ];
 
 const mettRateFinalEndPositiveFriendlyHigh = [
-    [""]
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
 ];
 
 
 //neutral
 const flavorRateFinalEndNeutralLow = [
-    ["this is a low test"],
-    ["testing low"]
+    ["The scores flash — all pitifully low. The audience sits in stunned silence. A few coughs. The spotlight flickers awkwardly."],
+    ["The hush stretches. Mettaton leans forward to the audience, voice dripping with mock sympathy."],
+    ["The crowd murmurs with mild relief. Some begin shuffling toward the exits."],
+    ["Mettaton then snaps back to the production crew, looking out from the stage wings."],
+    ["The cameras swivel away from you. On-screen, a cheery 'TECHNICAL DIFFICULTIES' card flickers for a moment before fading to black."],
+    ["As Mettaton's microphone gets turned off, he turns back to you."]
 ];
 
 const mettRateFinalEndNeutralLow = [
-    ["mett this is a low test"],
-    ["mett testing low"]
+    ["...Well. THAT was... an artistic interpretation.", "Not one I asked for, or that ANYONE wanted, but an interpretation nonetheless."],
+    ["Darlings, you deserve better. Refunds will, of course, be issued to our lovely live audience.", "Please, stop by the lobby on your way out and claim your complimentary coupons for something actually entertaining."],
+    [""],
+    ["And as for the HOME audience - CUT the feed.", "Replace this disaster with a rerun of my Holiday Special.", "Yes, the one with the thirty-foot candy cane.", "At least THAT had charm."],
+    [""],
+    ["Try not to take it personally, dear. Not EVERYONE is destined for stardom."]
 ];
 
 const flavorRateFinalEndNeutralMiddle = [
-    ["this is a middle test"],
-    ["testing middle"]
+    ["The judges' scoreboards settle on middlying scores - lukewarm applause trickles in."],
+    ["Mettaton strikes a grand pose anyway, his voice dripping with irony."],
+    ["He snaps his fingers. Spotlights flare, and his voice booms."],
+    ["The audience surges out of their seats, a stampede for the snack bar. The roar of food orders drowns out everything else."],
+    ["A group of teens loudly debates whether the nacho cheese counts as real cheese."],
+    ["Your artwork blips on the big stage screen once, then vanishes under looping ads: popcorn buckets, candy bars, and soda cups fizzing in slow motion."],
+    ["Backstage chatter leaks through a hot mic: 'Okay, swap the feed.' 'Copy that - snack ads until we roll into the next feature.' 'Finally...'"],
+    ["Mettaton glances back at you, but the smile in his voice is too sweet to be sincere."],
+    ["The broadcast dissolves into a cheery jingle: 'Snack smart, snack glam — only with Glamburgers!'."],
+    ["The crowd’s gone, their chatter about sodas louder than any memory of your work. You're left staring at the emptying seats."]
 ];
 
 const mettRateFinalEndNeutralMiddle = [
-    ["mett this is a middle test"],
-    ["mett testing middle"]
+    [""],
+    ["Ah, perfection! Not too spicy, not too bland... the ideal flavor for..."],
+    ["...AN INTERMISSION!"],
+    [""],
+    [""],
+    [""],
+    [""],
+    ["Congratulations, darling.", "You’ve achieved what few ever do: you’re officially the reason people remembered to grab snacks before the good part starts."],
+    [""],
+    [""]
 ];
 
 const flavorRateFinalEndNeutralHigh = [
-    ["this is a high test"],
-    ["testing high"]
+    ["The judges reveal their scores - all dazzlyingly high. The audience actually gasps, then breaks into real applause."],
+    ["Mettaton presses a hand to his 'chest', staggering back as though struck by divine inspiration."],
+    ["He gestures at your drawing with operatic reverence."],
+    ["The audience cheers. Backstage chatter bleeds in: 'Are we... really hosting a gallery?' 'Print the flyers! Quick! Before he changes his mind!'"],
+    ["Spotlights converge on your work, now projected onto a big stage screen. Applause swells like a curtain call."],
+    ["Mettaton leans close to the camera lens of one of the nearby camera operators."],
+    ["The broadcast ends frozen on your art, framed as if it already hung in a gallery."],
 ];
 
 const mettRateFinalEndNeutralHigh = [
-    ["mett this is a high test"],
-    ["mett testing high"]
+    [""],
+    ["Oh! The reluctant one, the wallflower... blossoming into a TRUE prodigy!"],
+    ["This is no mere sketch, darling. This is a MASTERPIECE begging for its own EXHIBITION!"],
+    [""],
+    [""],
+    ["Next season, darlings - the grand premiere of ‘The Hesitant Virtuoso: A Collection’...", "...curated, of course, by ME."],
+    [""]
 ];
 
 //negative
