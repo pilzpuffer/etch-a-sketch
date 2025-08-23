@@ -49,8 +49,8 @@ Roadmap to project finalization
      1) <s>polish the soul appearance a bit</s>
 5) <s>Add flavor/Mett text for disabling animations</s> - DONE! 
 6) <s>Work on "fight" action to allow changing the size of the canvas - another big task</s> - DONE!
-     1) add some flavor/mett text for "fight" action as well 
-     2) on canvas-related actions - also add text for "mercy" action when used to erase the entire canvas (endgame will be handled through rate so that i won't have to make post-rating text for other actions)
+     1) <s>add some flavor/mett text for "fight" action as well</s>
+     2) <s>on canvas-related actions - also add text for "mercy" action when used to erase the entire canvas (endgame will be handled through rate so that i won't have to make post-rating text for other actions)</s>
 7) <s>Convert all animations to use RequestAnimationFrame() method for better efficiency, as the amount of setIntervals is a bit heavy on game's functionality</s> - Done!
 8) <s>Add title to the load screen</s> - DONE!
 9) Work on scaling for different/smaller screen resolutions - another intensive task

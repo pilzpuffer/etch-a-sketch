@@ -1135,6 +1135,32 @@ const mettMercyDrawn = [
     ["The stage is reset. Try again."]
 ];
 
+//phrases for the 'fight' action
+
+const flavorFightGrow = [
+    ["You strike a bold pose. The resolution of the screen increases, giving way to more nuance in drawing."],
+    ["Your hands sweep wide. The canvas obeys, stretching to fill the imagined horizon."],
+    ["Space to dazzle. Use it wisely."]
+];
+
+const flavorFightShrink = [
+    ["The canvas folds in, daring boldness within a cozy frame."],
+    ["You pinch the edges inward. The space contracts with eager anticipation."],
+    ["Tiny frame, sharp focus!"]
+];
+
+const mettFightGrow = [
+    ["Bigger, brighter, bolder! Yes, yes - give the drama room to breathe!"],
+    ["Bigger is better, darling! If you’re going to draw, do it with grandeur!"],
+    [""]
+];
+
+const mettFightShrink = [
+    ["A clever trick! When the world shrinks, the spotlight grows hotter!"],
+    ["Tiny stage, huge consequences! Every gesture matters now, darling."],
+    [""]
+];
+
 //phrases for rose
 
 const flavorRoseRude = [
@@ -2690,6 +2716,10 @@ allText = {
             none: flavorMercyEmpty,
             drawn: flavorMercyDrawn
         },
+        fight: {
+            grow: flavorFightGrow,
+            shrink: flavorFightShrink
+        },
         check: checkOut,
         flirt: {
             none: flavorFlirtNone,
@@ -2890,6 +2920,10 @@ allText = {
         mercy: {
             none: mettMercyEmpty,
             drawn: mettMercyDrawn
+        },
+        fight: {
+            grow: mettFightGrow,
+            shrink: mettFightShrink
         },
         check: {
             none: mettCheckNone,
@@ -3411,6 +3445,8 @@ const fightMett = function() {
     starSpace.classList.add("gone")
     gameState["fightActive"] = true;
 
+    let oldSize = gameState["fieldSize"];
+
     const fightHits = {
         one:  { fieldSize: smallestSize },
         two:  { fieldSize: slightlyBiggerSize }, 
@@ -3441,14 +3477,23 @@ const fightMett = function() {
                 newButton.classList.add("earth");
             }
 
-            newButton.addEventListener("click", function() {
+            newButton.addEventListener("click", async function() {
+                let newSize = fightHits[button].fieldSize;
+
                 sketchField.replaceChildren();
                 gameState["fieldSize"] = fightHits[button].fieldSize;
                 drawField();
                 clearTextField();
-                buttonConfirm.play(); //need some text for this
+                buttonConfirm.play();
+
                 gameState["fightActive"] = false;
                 starSpace.classList.remove("gone");
+
+                let correctKey = newSize > oldSize ? "grow" : "shrink";
+                let selectedIndex = randomIndex(allText["mettaton"]["fight"][correctKey]);
+
+                await flavorText(allText["flavor"]["fight"][correctKey][selectedIndex]);
+                await mettTalking(allText["mettaton"]["fight"][correctKey][selectedIndex]);
             });
 
             mousedBox.appendChild(newButton);
