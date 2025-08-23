@@ -211,6 +211,15 @@ const flirtRoute = function() {
                 creditsMusic.setAttribute("loop", "loop");
                 creditsMusic.volume = sameVolume - 0.1;
 
+                let creditsText = [];
+                let correctPart = allCredits["flirty"]["fail"];
+
+                creditsText.push(...correctPart["title"], "",
+                    ...allCredits["forAll"], "", ...correctPart["department"], "", 
+                    ...correctPart["awards"], "",  ...correctPart["sponsors"], "",  
+                    ...correctPart["legal"], "", ...correctPart["closing"]
+                );
+
                 for (let i = 0; i < creditsText.length; i++) {
                     const newLine = document.createElement("p");
                     newLine.textContent = creditsText[i];
@@ -2500,9 +2509,7 @@ const mettRateFinalEndBetrayalHigh = [
     [""]
 ];
 
-const creditsText = [
-    "METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS",
-    "",
+const commonText = [
     "Production Team",
     "Directed by: Mettaton",
     "Camera Operator: Aaron",
@@ -2510,6 +2517,7 @@ const creditsText = [
     "Lighting Technician: Jerry",
     "Robotics Specialist: Alphys",
     "Makeup Artist: Alphys",
+    "Wardrobe Management: Catty & Bratty",
     "Cue/Applause Sign Holder: Mettabot Model CLAP-TRAP",
     "On-Set Catering: Muffet",
     "",
@@ -2518,35 +2526,568 @@ const creditsText = [
     "Mettaton Face Model Reference: Mettaton (of course)",
     "Face Canvas Maintenance Crew: Woshua",
     "",
+    "Stage & Set Crew",
+    "Stage Pyrotechnics & Fog Machine Operator: Vulkin",
+    "Glitter Effects Supervisor: Tsunderplane",
+    "Rose Deployment Technician: Lesser Dog",
+    "",
     "Romantic Operations Department",
     "Romantic Tension Consultant: Burgerpants (unpaid intern)",
     "Breakup Scene Consultants: Bratty & Catty",
     "Post-Rejection Recovery Counselor: Papyrus",
     "Heartbreak Stunt Double: A cardboard box with lipstick",
     "Romantic Lighting Designer: Tsunderplane",
-    "",
-    "Stage & Set Crew",
-    "Stage Pyrotechnics & Fog Machine Operator: Vulkin",
-    "Glitter Effects Supervisor: Tsunderplane",
-    "Rose Deployment Technician: Lesser Dog",
-    "",
+];
+
+const flirtyFailTitle = ["METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS"];
+
+const flirtyFailDepartment = [
+    "Romantic Operations Department",
+    "Romantic Tension Consultant: Burgerpants (unpaid intern)",
+    "Breakup Scene Consultants: Bratty & Catty",
+    "Post-Rejection Recovery Counselor: Papyrus",
+    "Heartbreak Stunt Double: A cardboard box with lipstick",
+    "Romantic Lighting Designer: Tsunderplane"
+];
+
+const flirtyFailAwards = [
     "Award Segment",
     "Best Improvised Monologue While Rejecting a Suitor (Gracefully): Mettaton",
     "Best Performance by a Leading Role in a Romance Drama: Mettaton",
-    "",
+];
+
+const flirtyFailSponsors = [
     "This show was made possible by:",
     "GlamGal Grease – For when your gears need to glow.",
     "RoboRomance Magazine – Now 99% Mettaton!",
     "The Official Mettaton Body Pillow – “For lonely nights... or all of them.”",
     "Dramatone Eyeliner – Cries with you.",
-    "",
+];
+
+const flirtyFailLegal = [
     "No monsters were emotionally harmed during the making of this episode.",
     "Any resemblance to your love life is purely coincidental... probably.",
     "Viewer discretion advised: contains emotional turbulence.",
-    "Use sparkle responsibly.",
-    "",
-    "Tune in next time for more drama, more sparkle, and maybe, just maybe... more love." 
-]
+    "Use sparkle responsibly."
+];
+
+const flirtyFailClosing = [
+    "Tune in next time for more drama, more sparkle, and maybe, just maybe... more love."
+];
+
+// low
+
+const flirtyLowTitle = [];
+
+const flirtyLowDepartment = [
+
+];
+
+const flirtyLowAwards = [
+
+];
+
+const flirtyLowSponsors = [
+
+];
+
+const flirtyLowLegal = [
+
+];
+
+const flirtyLowClosing = [
+
+];
+
+// middle
+
+const flirtyMiddleTitle = [];
+
+const flirtyMiddleDepartment = [
+
+];
+
+const flirtyMiddleAwards = [
+
+];
+
+const flirtyMiddleSponsors = [
+
+];
+
+const flirtyMiddleLegal = [
+
+];
+
+const flirtyMiddleClosing = [
+
+];
+
+// high
+
+const flirtyHighTitle = [];
+
+const flirtyHighDepartment = [
+
+];
+
+const flirtyHighAwards = [
+
+];
+
+const flirtyHighSponsors = [
+
+];
+
+const flirtyHighLegal = [
+
+];
+
+const flirtyHighClosing = [
+
+];
+
+//friendly
+
+// low
+
+const friendlyLowTitle = [];
+
+const friendlyLowDepartment = [
+
+];
+
+const friendlyLowAwards = [
+
+];
+
+const friendlyLowSponsors = [
+
+];
+
+const friendlyLowLegal = [
+
+];
+
+const friendlyLowClosing = [
+
+];
+
+// middle
+
+const friendlyMiddleTitle = [];
+
+const friendlyMiddleDepartment = [
+
+];
+
+const friendlyMiddleAwards = [
+
+];
+
+const friendlyMiddleSponsors = [
+
+];
+
+const friendlyMiddleLegal = [
+
+];
+
+const friendlyMiddleClosing = [
+
+];
+
+// high
+
+const friendlyHighTitle = [];
+
+const friendlyHighDepartment = [
+
+];
+
+const friendlyHighAwards = [
+
+];
+
+const friendlyHighSponsors = [
+
+];
+
+const friendlyHighLegal = [
+
+];
+
+const friendlyHighClosing = [
+
+];
+
+//neutral
+
+// low
+
+const neutralLowTitle = [];
+
+const neutralLowDepartment = [
+
+];
+
+const neutralLowAwards = [
+
+];
+
+const neutralLowSponsors = [
+
+];
+
+const neutralLowLegal = [
+
+];
+
+const neutralLowClosing = [
+
+];
+
+// middle
+
+const neutralMiddleTitle = [];
+
+const neutralMiddleDepartment = [
+
+];
+
+const neutralMiddleAwards = [
+
+];
+
+const neutralMiddleSponsors = [
+
+];
+
+const neutralMiddleLegal = [
+
+];
+
+const neutralMiddleClosing = [
+
+];
+
+// high
+
+const neutralHighTitle = [];
+
+const neutralHighDepartment = [
+
+];
+
+const neutralHighAwards = [
+
+];
+
+const neutralHighSponsors = [
+
+];
+
+const neutralHighLegal = [
+
+];
+
+const neutralHighClosing = [
+
+];
+
+//negative
+
+// low
+
+const negativeLowTitle = [];
+
+const negativeLowDepartment = [
+
+];
+
+const negativeLowAwards = [
+
+];
+
+const negativeLowSponsors = [
+
+];
+
+const negativeLowLegal = [
+
+];
+
+const negativeLowClosing = [
+
+];
+
+// middle
+
+const negativeMiddleTitle = [];
+
+const negativeMiddleDepartment = [
+
+];
+
+const negativeMiddleAwards = [
+
+];
+
+const negativeMiddleSponsors = [
+
+];
+
+const negativeMiddleLegal = [
+
+];
+
+const negativeMiddleClosing = [
+
+];
+
+// high
+
+const negativeHighTitle = [];
+
+const negativeHighDepartment = [
+
+];
+
+const negativeHighAwards = [
+
+];
+
+const negativeHighSponsors = [
+
+];
+
+const negativeHighLegal = [
+
+];
+
+const negativeHighClosing = [
+
+];
+
+//betrayal
+
+// low
+
+const betrayalLowTitle = [];
+
+const betrayalLowDepartment = [
+
+];
+
+const betrayalLowAwards = [
+
+];
+
+const betrayalLowSponsors = [
+
+];
+
+const betrayalLowLegal = [
+
+];
+
+const betrayalLowClosing = [
+
+];
+
+// middle
+
+const betrayalMiddleTitle = [];
+
+const betrayalMiddleDepartment = [
+
+];
+
+const betrayalMiddleAwards = [
+
+];
+
+const betrayalMiddleSponsors = [
+
+];
+
+const betrayalMiddleLegal = [
+
+];
+
+const betrayalMiddleClosing = [
+
+];
+
+// high
+
+const betrayalHighTitle = [];
+
+const betrayalHighDepartment = [
+
+];
+
+const betrayalHighAwards = [
+
+];
+
+const betrayalHighSponsors = [
+
+];
+
+const betrayalHighLegal = [
+
+];
+
+const betrayalHighClosing = [
+
+];
+
+
+
+allCredits = {
+    forAll: commonText,
+    flirty: {
+        low: {
+            title: flirtyLowTitle,
+            department: flirtyLowAwards,
+            awards: flirtyLowAwards,
+            sponsors: flirtyLowSponsors,
+            legal: flirtyLowLegal,
+            closing: flirtyLowClosing
+        },
+        middle: {
+            title: flirtyMiddleTitle,
+            department: flirtyMiddleAwards,
+            awards: flirtyMiddleAwards,
+            sponsors: flirtyMiddleSponsors,
+            legal: flirtyMiddleLegal,
+            closing: flirtyMiddleClosing
+        },
+        high: {
+            title: flirtyHighTitle,
+            department: flirtyHighAwards,
+            awards: flirtyHighAwards,
+            sponsors: flirtyHighSponsors,
+            legal: flirtyHighLegal,
+            closing: flirtyHighClosing
+        },
+        fail: {
+            title: flirtyFailTitle,
+            department: flirtyFailAwards,
+            awards: flirtyFailAwards,
+            sponsors: flirtyFailSponsors,
+            legal: flirtyFailLegal,
+            closing: flirtyFailClosing
+        }
+    },
+    friendly: {
+        low: {
+            title: friendlyLowTitle,
+            department: friendlyLowAwards,
+            awards: friendlyLowAwards,
+            sponsors: friendlyLowSponsors,
+            legal: friendlyLowLegal,
+            closing: friendlyLowClosing
+        },
+        middle: {
+            title: friendlyMiddleTitle,
+            department: friendlyMiddleAwards,
+            awards: friendlyMiddleAwards,
+            sponsors: friendlyMiddleSponsors,
+            legal: friendlyMiddleLegal,
+            closing: friendlyMiddleClosing
+        },
+        high: {
+            title: friendlyHighTitle,
+            department: friendlyHighAwards,
+            awards: friendlyHighAwards,
+            sponsors: friendlyHighSponsors,
+            legal: friendlyHighLegal,
+            closing: friendlyHighClosing
+        },
+    },
+    neutral: {
+        low: {
+            title: neutralLowTitle,
+            department: neutralLowAwards,
+            awards: neutralLowAwards,
+            sponsors: neutralLowSponsors,
+            legal: neutralLowLegal,
+            closing: neutralLowClosing
+        },
+        middle: {
+            title: neutralMiddleTitle,
+            department: neutralMiddleAwards,
+            awards: neutralMiddleAwards,
+            sponsors: neutralMiddleSponsors,
+            legal: neutralMiddleLegal,
+            closing: neutralMiddleClosing
+        },
+        high: {
+            title: neutralHighTitle,
+            department: neutralHighAwards,
+            awards: neutralHighAwards,
+            sponsors: neutralHighSponsors,
+            legal: neutralHighLegal,
+            closing: neutralHighClosing
+        },
+    },
+    negative: {
+        low: {
+            title: negativeLowTitle,
+            department: negativeLowAwards,
+            awards: negativeLowAwards,
+            sponsors: negativeLowSponsors,
+            legal: negativeLowLegal,
+            closing: negativeLowClosing
+        },
+        middle: {
+            title: negativeMiddleTitle,
+            department: negativeMiddleAwards,
+            awards: negativeMiddleAwards,
+            sponsors: negativeMiddleSponsors,
+            legal: negativeMiddleLegal,
+            closing: negativeMiddleClosing
+        },
+        high: {
+            title: negativeHighTitle,
+            department: negativeHighAwards,
+            awards: negativeHighAwards,
+            sponsors: negativeHighSponsors,
+            legal: negativeHighLegal,
+            closing: negativeHighClosing
+        },
+    },
+    betrayal: {
+        low: {
+            title: betrayalLowTitle,
+            department: betrayalLowAwards,
+            awards: betrayalLowAwards,
+            sponsors: betrayalLowSponsors,
+            legal: betrayalLowLegal,
+            closing: betrayalLowClosing
+        },
+        middle: {
+            title: betrayalMiddleTitle,
+            department: betrayalMiddleAwards,
+            awards: betrayalMiddleAwards,
+            sponsors: betrayalMiddleSponsors,
+            legal: betrayalMiddleLegal,
+            closing: betrayalMiddleClosing
+        },
+        high: {
+            title: betrayalHighTitle,
+            department: betrayalHighAwards,
+            awards: betrayalHighAwards,
+            sponsors: betrayalHighSponsors,
+            legal: betrayalHighLegal,
+            closing: betrayalHighClosing
+        },
+    }
+}
+
+
 
 
 allText = {
@@ -4049,6 +4590,14 @@ const rating = async function() {
                     creditsMusicFinal.src = "./music/Death By Glamour.mp3"
                     creditsMusicFinal.setAttribute("loop", "loop");
                     creditsMusicFinal.volume = sameVolume;
+
+                    let creditsText = [];
+                    let correctPart = allCredits[attitude][score];
+                    creditsText.push(...correctPart["title"], "",
+                        ...allCredits["forAll"], "", ...correctPart["department"], "", 
+                        ...correctPart["awards"], "",  ...correctPart["sponsors"], "",  
+                        ...correctPart["legal"], "", ...correctPart["closing"]
+                    );
 
                     for (let i = 0; i < creditsText.length; i++) {
                         const newLine = document.createElement("p");
