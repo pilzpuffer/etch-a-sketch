@@ -2163,75 +2163,75 @@ const mettRateFinalEndPositiveFlirtyHigh = [
 
 // positive friendly
 const flavorRateFinalEndPositiveFriendlyLow = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
+    ["The judges' scorecards flicker at the bottom rungs. Applause trickles in like rain on an empty stage."],
+    ["Mettaton doesn’t miss a beat. He claps his hands together with manufactured delight."],
+    ["He glides offstage, then sweeps back in dragging a glittery trunk brimming with random props: boas, a bent disco ball, and at least three sparkling top hats."],
+    ["With a theatrical flourish, he plucks out a clipboard out of the prop pile and thrusts it into your hands."],
+    ["Then, Mettaton plucks a pink feather boa from the heap and drapes it around your shoulders as though it were a royal cape."],
+    ["A soft ripple of laughter rises from the audience - affectionate, not cruel."],
+    ["Mettaton leans close, lowering his voice just enough that the sweetness carries through:"],
+    ["He winks, striking a final pose. The lights dim, catching you in silhouette behind him, arms full of mismatched props."]
 ];
 
 const mettRateFinalEndPositiveFriendlyLow = [
     [""],
+    ["Marvelous! Simply marvelous! ...for a first rehearsal, that is."],
     [""],
+    ["Every shining star needs someone who knows where the glitter is kept. And, darling, that someone can be you!"],
+    ["You may not sparkle in the spotlight...", "...but you’ll keep it ready for the next act. The stage itself will depend on you!"],
     [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
+    ["Don’t pout, darling. Even assistants share the glamour - just less of the pressure.", "And with me, even the smallest role gets a standing ovation."],
+    [""]
 ];
 
 const flavorRateFinalEndPositiveFriendlyMiddle = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
+    ["The judges' scorecards flicker with middling numbers - polite applause, scattered cheers, nothing too wild."],
+    ["Mettaton doesn’t falter for even a second. With a whirl of his wheel and a perfectly practiced gasp, he throws out his arms toward you."],
+    ["He lowers his voice just enough to make the crowd lean in."],
+    ["The audience murmurs in interest. Mettaton produces a clipboard with a flourish, your name already scribbled under a document titled 'UNDERSTUDY'."],
+    ["The crowd titters at his joke, but there’s genuine warmth beneath the glamour."],
+    ["He steps closer, lowering his voice as if sharing a secret just for you."],
+    ["With a snap of his fingers, a cascade of golden spotlights blooms around you."],
+    ["They don’t stay long - just enough to bathe you in promise before retreating back to Mettaton."],
+    ["He twirls, voice rising again into a triumphant crescendo."],
+    ["The audience erupts into applause - supportive, if not earth-shattering. Mettaton leans down for one last, syrupy parting shot."],
+    ["With a final dramatic spin, the cameras fade to black - leaving your new role hanging in the air, full of promise and pressure."]
 ];
 
 const mettRateFinalEndPositiveFriendlyMiddle = [
     [""],
+    ["Darling... you may not have stolen tonight’s spotlight..."],
+    ["...but I see it. That spark. That raw, glittering potential just begging for its debut!"],
+    ["So! Consider this your big break. You’ll be my official understudy!", "Should tragedy ever befall me...", "...or should I decide to nap through rehearsal - the stage will be yours."],
     [""],
+    ["Don’t think of it as second place, sweetheart. Think of it as stardom... simply waiting for its perfect cue."],
     [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
+    ["From this day forth, you’ll shadow me, learn the ropes, and when the time is right..."],
+    ["...step into the radiance of fame itself!"],
+    ["Stay ready, darling. For when the curtain calls your name... the world will already be watching."],
+    [""]
 ];
 
 const flavorRateFinalEndPositiveFriendlyHigh = [
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
+    ["The judges' scorecards keep on ticking higher and higher - as their scores get projected onto a big scoreboard stage screen."],
+    ["As ticking stops, that screen explodes into light, panels spinning until they fuse into a single shining sign above the stage:"],
+    ["'COMING SOON: METTATON & FRISK - A DOUBLE FEATURE SENSATION!' shows on that sign in big bold letters."],
+    ["Mettaton gasps, clutching his chest in mock theatricality, as though the announcement itself has taken his breath away."],
+    ["He sweeps across the stage in a whirl, stopping just in front of you. His voice softens, though the room still hangs on every word."],
+    ["A hand to your cheek, tender but dazzling."],
+    ["With a dramatic snap, the lights blaze, casting both your names on the sign in golden glow."],
+    ["He takes your hand, raising it high as if presenting you to all creation. The stage erupts in shimmer, and the curtain falls - not on one star, but on two."]
 ];
 
 const mettRateFinalEndPositiveFriendlyHigh = [
     [""],
     [""],
     [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
+    ["Darling...! You weren’t my opening act.", "You weren’t my rival. You were my equal!", "Every step, every stroke of your brush - flawless. Absolutely flawless!"],
+    ["I’ve seen stars. I’ve made stars. But you-"],
+    ["You’re the kind that burns forever."],
+    ["So let the world prepare. The age of Mettaton doesn’t end tonight... it doubles!", "A new era begins: two names, one legend, side by side!"],
+    [""]
 ];
 
 

@@ -1,7 +1,7 @@
 # etch-a-sketch
 Roadmap to project finalization
 1) <s>Complete the page navigation for when there are more than 6 options available</s> - ALL DONE!
-2) Work on "rate" endgame logic -> biggest task at the moment
+2) <s>Work on "rate" endgame logic -> biggest task at the moment</s> - FINALLY, ALL DONE!!!
      1) <s>Create rate function</s>
           1) <s>Make up the 'skeleton' of function</s>
                1) <s>Logic for color rating</s>
@@ -13,7 +13,7 @@ Roadmap to project finalization
                1) <s>Logic for how Mett's rating phrases show up</s>
                2) <s>Logic/structure for how "mini-judges'" ratings show up and disappear</s>
                3) <s>Logic for final score declaration and endgame</s>
-     2) Compose relevant text for rating
+     2) <s>Compose relevant text for rating</s>
           1) <s>intro</s>
           2) <s>colors</s>
                1) <s>colors - special</s>
@@ -27,9 +27,9 @@ Roadmap to project finalization
                3) <s>neutral</s>
                4) <s>negative</s>
                5) <s>betrayal</s>
-          6) final - end
+          6) <s>final - end</s>
                1) <s>flirty</s>
-               2) friendly
+               2) <s>friendly</s>
                3) <s>neutral</s>
                4) <s>negative</s>
                5) <s>betrayal</s>
