@@ -2577,74 +2577,102 @@ const flirtyFailClosing = [
 
 // low
 
-const flirtyLowTitle = [];
+const flirtyLowTitle = ["METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS"];
 
 const flirtyLowDepartment = [
-
+    "Romantic Operations Department",
+    "Passion Coordinator: Burgerpants (unpaid intern)",
+    "Chemistry Consultants: Bratty & Catty",
+    "Romantic Lighting Designer: Tsunderplane",
+    "Heartthrob Stand-In: A potted plant (Mettaton-approved)"
 ];
 
 const flirtyLowAwards = [
-
+    "Most Dramatic Near-Swoon: Mettaton",
+    "Audience Vote for 'Second Chance Needed': YOU"
 ];
 
 const flirtyLowSponsors = [
-
+    "Lonely Hearts’ Karaoke Night - Thursdays at Grillby’s, first drink free!",
+    "Instant Noodles - For when romance just isn’t on the menu",
+    "Re-runs of 'Cooking with Mettaton!' – Weeknights at 7!"
 ];
 
 const flirtyLowLegal = [
-
+    "All romantic sparks generated tonight are considered 'non-binding'.",
+    "Results may vary depending on charisma, timing, and dramatic lighting.",
+    "Consult a doctor if you blush for more than 4 hours."
 ];
 
 const flirtyLowClosing = [
-
+    "Tune in again — maybe next time your sparks will actually start a fire."
 ];
 
 // middle
 
-const flirtyMiddleTitle = [];
+const flirtyMiddleTitle = ["METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS"];
 
 const flirtyMiddleDepartment = [
-
+    "Romantic Operations Department",
+    "Passion Coordinator: Burgerpants (unpaid intern)",
+    "Chemistry Consultants: Bratty & Catty",
+    "Romantic Lighting Designer: Tsunderplane",
+    "Heartthrob Stand-In: A potted plant (Mettaton-approved)"
 ];
 
 const flirtyMiddleAwards = [
-
+    "Outstanding Use of Stage Lighting for Maximum Tension: Mettaton",
+    "The 'Just Kiss Already' Award"
 ];
 
 const flirtyMiddleSponsors = [
-
+    "Glamazon Prime – free shipping on roses, chocolates, and fan mail.",
+    "Alphys’ Shipping Hotline – text 'OTP' for live updates!",
+    "MTT Brand Perfume — ‘One spritz, infinite longing’"
 ];
 
 const flirtyMiddleLegal = [
-
+    "Any romance depicted may cause excessive swooning in susceptible viewers.",
+    "Do not attempt these levels of passion unsupervised.",
+    "All lingering eye contact licensed exclusively to MTT Productions."
 ];
 
 const flirtyMiddleClosing = [
-
+    "A spark caught on live television — rare, dazzling, unforgettable.",
+    "Will it blaze brighter next time? Stay tuned, beauties!"
 ];
 
 // high
 
-const flirtyHighTitle = [];
+const flirtyHighTitle = ["METTATON'S ART SHOW/ROMANCE SPECIAL: END CREDITS"];
 
 const flirtyHighDepartment = [
-
+    "Romantic Operations Department",
+    "Passion Coordinator: Burgerpants (unpaid intern)",
+    "Chemistry Consultants: Bratty & Catty",
+    "Romantic Lighting Designer: Tsunderplane",
+    "Heartthrob Stand-In: A potted plant (Mettaton-approved)"
 ];
 
 const flirtyHighAwards = [
-
+    "Critics’ Choice for Irresistible Leading Couple",
+    "Underground Emmy for Romance in Prime Time"
 ];
 
 const flirtyHighSponsors = [
-
+    "Rosemelt Candles - 'Let the scent of passion linger long after the credits.'",
+    "Red Velvet Energy Bars - because passion burns calories!",
+    "Starlight Champagne Co. - 'Raise a glass to forever.'",
+    "Underground Broadcasting Network - 'Delivering the drama you didn’t know you needed.'"
 ];
 
 const flirtyHighLegal = [
-
+    "Side effects may include sighing, hand-holding, and writing overly dramatic poetry.",
+    "Mettaton Enterprises is not liable for fainting due to excessive charm."
 ];
 
 const flirtyHighClosing = [
-
+    "Until our next rendezvous, darlings... don’t stop believing in the spotlight of love."
 ];
 
 //friendly
