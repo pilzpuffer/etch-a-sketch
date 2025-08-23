@@ -653,7 +653,7 @@ const flavorStopOnce = [
 ];
 
 const flavorStopTwice = [
-    ["You make a T shape with your hands.", "Offstage, a spotlight snaps onto Mettaton’s frozen form."],
+    ["You make a T shape with your hands.", "At that, a spotlight snaps onto Mettaton’s frozen form."],
     ["You raise your hand, commanding complete stillness.", "Even the audience seems to lean forward, holding their breath."],
     ["You clasp your hands in front of you solemnly.", "Mettaton catches the cue and freezes, a perfect monument to lost motion."]
 
@@ -1107,6 +1107,32 @@ const mettThrowMoreEmpty = [
     ["Darling... this is an art show, not fetch night at the park."],
     ["Not the response I was hoping for, darling. You’re starting to bore me."],
     ["Is this really all that you’re bringing to the table?", "The novelty’s wearing off quickly, darling."]
+];
+
+//phrases for mercy action
+
+const flavorMercyEmpty = [
+    ["You attempt to reset, but the display is perfectly blank."],
+    ["Woshua appears, checks the spotless surface, and politely bows out."],
+    ["Canvas is spotless. Waiting for you."]
+];
+
+const flavorMercyDrawn = [
+    ["With a flicker, Woshua appears and wipes every mark away, leaving the display spotless."],
+    ["Woshua dutifully sweeps across the screen, erasing every trace of your last attempt."],
+    ["A chime sounds. Woshua quickly mops the screen clean, restoring an empty canvas."]
+];
+
+const mettMercyEmpty = [
+    ["The stage is empty. All that’s missing is your performance."],
+    ["Darling, you can’t polish perfection."],
+    [""]
+];
+
+const mettMercyDrawn = [
+    ["Clean as ever. Your work starts from zero once more."],
+    ["Blank, polished, and waiting. Let’s see what you do with it this time."],
+    ["The stage is reset. Try again."]
 ];
 
 //phrases for rose
@@ -2660,6 +2686,10 @@ allText = {
                 anotherThrow: flavorThrowMoreDrawn
             }
         },
+        mercy: {
+            none: flavorMercyEmpty,
+            drawn: flavorMercyDrawn
+        },
         check: checkOut,
         flirt: {
             none: flavorFlirtNone,
@@ -2857,6 +2887,10 @@ allText = {
                 anotherThrow: mettThrowMoreDrawn
             }
         },
+        mercy: {
+            none: mettMercyEmpty,
+            drawn: mettMercyDrawn
+        },
         check: {
             none: mettCheckNone,
             drawn: mettCheckDrawn
@@ -3003,15 +3037,26 @@ battleStart.addEventListener("ended", function() {
 
     const allCells = document.querySelectorAll(".innerCells");
 
-const clearSketchField = function() {
-    allCells.forEach((div) => {
-        div.className = "innerCells";
-        div.style.backgroundColor = "";
-        div.removeAttribute("style");
-    })
-    gameState["hasDrawing"] = false;
+const clearSketchField = async function() {
+    successfulSelect();
+    let correctKey = gameState["hasDrawing"] ? "drawn" : "none";
+    let selectedIndex = randomIndex(allText["mettaton"]["mercy"][correctKey]);
+
+    await flavorText(allText["flavor"]["mercy"][correctKey][selectedIndex]);
+
+    if (gameState["hasDrawing"]) {
+        allCells.forEach((div) => {
+            div.className = "innerCells";
+            div.style.backgroundColor = "";
+            div.removeAttribute("style");
+        })
+
+        gameState["hasDrawing"] = false;        
+    }
+
+    await mettTalking(allText["mettaton"]["mercy"][correctKey][selectedIndex]);
+    
     clearTextField();
-    buttonConfirm.play();
 }
 
 const handleMouseOver = function (event) {
@@ -4017,16 +4062,8 @@ const stick = async function() {
     let thrownState = gameState["stickTimes"] === 0 ? "firstThrow" : "anotherThrow";
     let selectedIndex = randomIndex(allText["mettaton"]["stick"][correctKey][thrownState]);
 
-    const flavorLine = async () => {
-        await flavorText(allText["flavor"]["stick"][correctKey][thrownState][selectedIndex]);
-    }
-
-    const mettResponding = async() => {
-        await flavorLine();
-        await mettTalking(allText["mettaton"]["stick"][correctKey][thrownState][selectedIndex]);
-    }
-
-    mettResponding();
+    await flavorText(allText["flavor"]["stick"][correctKey][thrownState][selectedIndex]);
+    await mettTalking(allText["mettaton"]["stick"][correctKey][thrownState][selectedIndex]);
 
     if (gameState["stickTimes"] === 0) {
         gameState["rate"]["mannersScore"] += 0.5;
