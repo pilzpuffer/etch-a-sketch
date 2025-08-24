@@ -2780,74 +2780,95 @@ const friendlyHighClosing = [
 
 // low
 
-const neutralLowTitle = [];
+const neutralLowTitle = ["METTATON’S ART SHOW SPECIAL: END CREDITS"];
 
 const neutralLowDepartment = [
-
+    "Department of Audience Management and Damage Control",
+    "Chief Excuse Engineer - Alphys",
+    "Refund Distribution Supervisor - Nice Cream Guy",
+    "Snack Bar Logistics Coordinator - Burgerpants"
 ];
 
 const neutralLowAwards = [
-
+    "Lifetime Achievement in Audience Disappointment: YOU"
 ];
 
 const neutralLowSponsors = [
-
+    "Napstablook’s Mix Tapes - 'Perfect for when things flop.'",
+    "Temmie’s Bargain Exits - 'Get out fast, get out cheap!'"
 ];
 
 const neutralLowLegal = [
-
+    "No audience members were emotionally scarred beyond standard contractual limits.",
+    "Refunds may be redeemed in the form of coupons for unrelated entertainment.",
+    "By staying seated, you agree that boredom is subjective."
 ];
 
 const neutralLowClosing = [
-
+    "Thank you for enduring... err, watching."
 ];
 
 // middle
 
-const neutralMiddleTitle = [];
+const neutralMiddleTitle = ["METTATON’S ART SHOW SPECIAL: END CREDITS"];
 
 const neutralMiddleDepartment = [
-
+    "Department of Audience Management and Damage Control",
+    "Chief Excuse Engineer - Alphys",
+    "Refund Distribution Supervisor - Nice Cream Guy",
+    "Snack Bar Logistics Coordinator - Burgerpants"  
 ];
 
 const neutralMiddleAwards = [
-
+    "The Golden Popcorn Bucket Award (for Inspiring Snack Runs): YOU"
 ];
 
 const neutralMiddleSponsors = [
-
+    "Glamburger™ Snack Breaks - 'The real star of the evening.'",
+    "Nice Cream Vending Solutions - 'Because nothing says ‘meh’ like lukewarm sprinkles.'",
+    "Snowdin Soda Co. - 'Carbonation you can count on when art can’t.'"
 ];
 
 const neutralMiddleLegal = [
-
+    "Viewer engagement during intermission may not reflect actual artistic merit.",
+    "Any resemblance between this performance and quality entertainment is purely coincidental."
 ];
 
 const neutralMiddleClosing = [
-
+    "Thank you for joining us tonight!",
+    "Now please enjoy something actually satisfying - the concession stand is still open until the start of the next show."
 ];
 
 // high
 
-const neutralHighTitle = [];
+const neutralHighTitle = ["METTATON’S ART SHOW SPECIAL: END CREDITS"];
 
 const neutralHighDepartment = [
-
+    "Department of Audience Management and Damage Control",
+    "Chief Excuse Engineer - Alphys",
+    "Refund Distribution Supervisor - Nice Cream Guy",
+    "Snack Bar Logistics Coordinator - Burgerpants"
 ];
 
 const neutralHighAwards = [
-
+    "The Reluctant Virtuoso Award: YOU",
+    "Best Unintended Masterpiece"
 ];
 
 const neutralHighSponsors = [
-
+    "Napstablook’s Limited Edition Vinyls - 'For the quiet genius in us all.'",
+    "Dog Residue Cleaning Services - 'Because even brilliance leaves a mess.'",
+    "Underground Ink Co. – 'For sketches that might shock, or might just flop.'"
 ];
 
 const neutralHighLegal = [
-
+    "Sudden stardom may cause dizziness, inflated ego, or unsolicited fan mail.",
+    "The producers assume no responsibility if your work gets auctioned off without your consent."
 ];
 
 const neutralHighClosing = [
-
+    "Thank you, dearest viewers, for witnessing greatness emerge from neutrality.",
+    "Remember - even hesitation can make history (even if rarely)."
 ];
 
 //negative
