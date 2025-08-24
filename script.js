@@ -2558,10 +2558,10 @@ const flirtyFailAwards = [
 
 const flirtyFailSponsors = [
     "This show was made possible by:",
-    "GlamGal Grease – For when your gears need to glow.",
-    "RoboRomance Magazine – Now 99% Mettaton!",
-    "The Official Mettaton Body Pillow – “For lonely nights... or all of them.”",
-    "Dramatone Eyeliner – Cries with you.",
+    "GlamGal Grease - For when your gears need to glow.",
+    "RoboRomance Magazine - Now 99% Mettaton!",
+    "The Official Mettaton Body Pillow - “For lonely nights... or all of them.”",
+    "Dramatone Eyeliner - Cries with you.",
 ];
 
 const flirtyFailLegal = [
@@ -2595,7 +2595,7 @@ const flirtyLowAwards = [
 const flirtyLowSponsors = [
     "Lonely Hearts’ Karaoke Night - Thursdays at Grillby’s, first drink free!",
     "Instant Noodles - For when romance just isn’t on the menu",
-    "Re-runs of 'Cooking with Mettaton!' – Weeknights at 7!"
+    "Re-runs of 'Cooking with Mettaton!' - Weeknights at 7!"
 ];
 
 const flirtyLowLegal = [
@@ -2626,8 +2626,8 @@ const flirtyMiddleAwards = [
 ];
 
 const flirtyMiddleSponsors = [
-    "Glamazon Prime – free shipping on roses, chocolates, and fan mail.",
-    "Alphys’ Shipping Hotline – text 'OTP' for live updates!",
+    "Glamazon Prime - free shipping on roses, chocolates, and fan mail.",
+    "Alphys’ Shipping Hotline - text 'OTP' for live updates!",
     "MTT Brand Perfume — ‘One spritz, infinite longing’"
 ];
 
@@ -2679,74 +2679,101 @@ const flirtyHighClosing = [
 
 // low
 
-const friendlyLowTitle = [];
+const friendlyLowTitle = ["METTATON’S ART SHOW/FRIENDSHIP EXTRAVAGANZA: END CREDITS"];
 
 const friendlyLowDepartment = [
-
+    "Department of Audience Relations and Cooperative Entertainment",
+    "Coordinator of High-Fives: Monster Kid",
+    "Chief Encouragement Officer: Toriel",
+    "Compliment Consultant: Nice Cream Guy",
+    "Team Spirit and Training Technician - Temmie"
 ];
 
 const friendlyLowAwards = [
-
+    "Excellence in Boa Management and Feather Control: Mettaton",
+    "Most Promising Prop Wrangler: YOU (Honorable Mention)"
 ];
 
 const friendlyLowSponsors = [
-
+    "Backstage Brew - coffee strong enough to survive any tech rehearsals",
+    "Glowstick Warehouse Outlet - 'Lighting up your role, no matter how small.'",
+    "Royal Capital Paperclip Consortium - Holding your clipboard and your dignity together.",
+    "Toriel’s Knitted Socks Co. - 'Warm feet, warmer friendships.'"
 ];
 
 const friendlyLowLegal = [
-
+    "The title of 'Assistant' does not guarantee health insurance, free snacks, or union representation.",
+    "Any resemblance to unpaid interns, actual or implied, is purely coincidental."
 ];
 
 const friendlyLowClosing = [
-
+    "Remember: without assistants, there’s no act, no sparkle, no show. Goodnight, my unseen heroes!"
 ];
 
 // middle
 
-const friendlyMiddleTitle = [];
+const friendlyMiddleTitle = ["METTATON’S ART SHOW/FRIENDSHIP EXTRAVAGANZA: END CREDITS"];
 
 const friendlyMiddleDepartment = [
-
+    "Department of Audience Relations and Cooperative Entertainment",
+    "Coordinator of High-Fives: Monster Kid",
+    "Chief Encouragement Officer: Toriel",
+    "Compliment Consultant: Nice Cream Guy",
+    "Team Spirit and Training Technician: Temmie"
 ];
 
 const friendlyMiddleAwards = [
-
+    "Best Performance That Wasn’t Technically the Lead: YOU"
 ];
 
 const friendlyMiddleSponsors = [
-
+    "MTT Brand Co-Op Arcade Cabinet - 'Because Player Two matters'.",
+    "Second Act Insurance - covering minor stage slips, fainting spells, and overzealous pirouettes",
+    "Dramedy Masks Inc. - smile now, cry later (professionally)"
 ];
 
 const friendlyMiddleLegal = [
-
+    "Being an official understudy does not guarantee leading roles, glamour, or access to Mettaton’s personal dressing room.",
+    "All star-making opportunities are subject to cancellation, rescheduling, or catastrophic ego meltdowns."
 ];
 
 const friendlyMiddleClosing = [
-
+    "So, viewers... let’s give a round of applause for tonight’s nearly-star!",
+    "Their big debut may not be tonight, but remember - every understudy’s shadow is just waiting to burst into light."
 ];
 
 // high
 
-const friendlyHighTitle = [];
+const friendlyHighTitle = ["METTATON’S ART SHOW/FRIENDSHIP EXTRAVAGANZA: END CREDITS"];
 
 const friendlyHighDepartment = [
-
+    "Department of Audience Relations and Cooperative Entertainment",
+    "Coordinator of High-Fives: Monster Kid",
+    "Chief Encouragement Officer: Toriel",
+    "Compliment Consultant: Nice Cream Guy",
+    "Team Spirit and Training Technician - Temmie"
 ];
 
 const friendlyHighAwards = [
-
+    "Golden Spotlight for Best Duo Performance: Mettaton & YOU",
+    "The Rising Starlet Award: YOU"
 ];
 
 const friendlyHighSponsors = [
-
+    "ForeverFlare Lighting - the only spotlight that dares rival yours",
+    "GlitterForge™ - armory of sparkle, certified indestructible",
+    "Radiant Pulse Energy Drink - bottled applause, carbonated fame"
 ];
 
 const friendlyHighLegal = [
-
+    "By participating in the newly-declared era of Mettaton & Frisk, audiences accept full responsibility for fainting from overwhelming brilliance.",
+    "Prolonged exposure to dual stardom may result in euphoric screaming, autograph addiction, and a sparkle-induced whiplash.",
+    "Refunds will not be offered, because history cannot be refunded."
 ];
 
 const friendlyHighClosing = [
-
+    "Tonight was no ending, darlings - it was an overture.",
+    "Two stars blazing brighter than one, a legend too radiant to ever fade!"
 ];
 
 //neutral
