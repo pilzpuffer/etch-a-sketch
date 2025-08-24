@@ -4307,6 +4307,9 @@ const ratingTransition = async function(attitude) {
     }
 }
 
+let attitude;
+let score;
+
 const rating = async function() {
     successfulSelect();     
     const allCells = document.querySelectorAll(".innerCells");
@@ -4323,7 +4326,6 @@ const rating = async function() {
         colorsPresent[`${element}`] = allColorsApplied.filter((color) => color === element);
     })
 
-    let attitude;
     let allColorNames = [];
     let allColorLength = [];
 
@@ -4533,7 +4535,6 @@ const rating = async function() {
 
             let flavorLine;
             let mettLine;
-            let score;
             let mannersModifier;
 
             if (attitude === "positiveFlirty") {
@@ -4713,10 +4714,20 @@ const rating = async function() {
                     await finalRate("endFinal");
 
                     body.replaceChildren(creditsRoll);
-                    const creditsMusicFinal = document.createElement("audio");
-                    creditsMusicFinal.src = "./music/Death By Glamour.mp3"
-                    creditsMusicFinal.setAttribute("loop", "loop");
-                    creditsMusicFinal.volume = sameVolume;
+                    const creditsMusicFinalStandard = document.createElement("audio");
+                    creditsMusicFinalStandard.src = "./music/Death By Glamour.mp3";
+                    creditsMusicFinalStandard.setAttribute("loop", "loop");
+                    creditsMusicFinalStandard.volume = sameVolume;
+
+                    const creditsMusicFinalFlirty = document.createElement("audio");
+                    creditsMusicFinalFlirty.src = "./music/Undertale OST： 061 - Oh! One True Love.mp3";
+                    creditsMusicFinalFlirty.setAttribute("loop", "loop");
+                    creditsMusicFinalFlirty.volume = sameVolume;
+
+                    const creditsMusicFinalBad = document.createElement("audio");
+                    creditsMusicFinalBad.src = './music/Undertale - Snowy (Genocide).mp3'
+                    creditsMusicFinalBad.setAttribute("loop", "loop");
+                    creditsMusicFinalBad.volume = sameVolume;
 
                     let creditsText = [];
                     let correctPart = allCredits[attitude][score];
@@ -4736,7 +4747,14 @@ const rating = async function() {
                         creditsTextBox.appendChild(newLine);
                     }
 
-                    creditsMusicFinal.play();
+                    if (attitude === "friendly" || attitude === "neutral") {
+                        creditsMusicFinalStandard.play();
+                    } else if (attitude === "flirty") {
+                        creditsMusicFinalFlirty.play();
+                    } else if (attitude === "negative" || attitude === "betrayal") {
+                        creditsMusicFinalBad.play();
+                    }
+                    
                 } 
             })
         }

@@ -60,7 +60,8 @@ Roadmap to project finalization
 13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
      1) <s>As consequence of this, I need to fix up the functions for pausing/unpausing those animations</s>
 14) <s>Add a text-skipping mechanic? - to achieve this, I'll need some sort of event listener that will be constantly running and waiting for '2' to be clicked - and at that, would change the i (the iteration variable) of the active mettTalking/typeWriter function to proceed to the next one?</s> - wrong, i needed to run a function that would resolve the promise, ending the relevant function iteration effectively
-15) add a mechanic where the ending credits lines become yellow if player hovers over them
+15) <s>add a mechanic where the ending credits lines become yellow if player hovers over them</s>
+16) maybe add a few different music tracks for endings? as the current one doesn't quite fit all routes
 
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>
@@ -76,7 +77,7 @@ Debugging Roadmap:
 5) <s>verify if the option to flirt gets properly hidden after the route is finished successfully</s>
 6) <s>if a regular marker is used (any color) sometimes when drawing in the lower part of the drawing field (no matter if animations are on or off), one of the columns will get its cells elongated - happens to 2-3 columns at most, but not any specific ones (mostly in the left part of the screen) - for some reason, they leave the normal flow of the box and their height gets set to 100% instead of 30%. monitor why that happens, exactly. </s> - a bit of a mystery issue, as I couldn't recreate it again when I've restarted my browser/tried it on a different device. so i'll just have to look out for it if it'll happen again
 6) <s>if an entire drawing is done in etch pen - for some reason, when about 50% of the drawing field is filled in, the color of most part of the drawing field changes to fully black. if some of those black squares get erased - the coloring returns to normal? check why that happens</s> - another mystery issue, couldn't recreate it again?
-7) text skipping completely messes up story progression, if done many times in a row. why does that happen? verify
+7) text skipping completely messes up story progression, if done many times in a row. why does that happen? verify + music sounds still play when text is skipped, so something is not done fully correctly right now.
 8) when "fight" action is used once, the entire action gets processed, but then you try to initiate "fight" action again, you need to click twice on that button to actually do that. all other buttons work fine and the same error doesn't occur there. why does this happen?
 
 Project notes:
