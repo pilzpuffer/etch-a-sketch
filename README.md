@@ -60,6 +60,7 @@ Roadmap to project finalization
 13) <s>Move the gun arm a bit up and to the right for the end of the insult route</s> - DONE, ended up improving animations by using CSS keyframes instead of JS requestAnimationFrame method
      1) <s>As consequence of this, I need to fix up the functions for pausing/unpausing those animations</s>
 14) <s>Add a text-skipping mechanic? - to achieve this, I'll need some sort of event listener that will be constantly running and waiting for '2' to be clicked - and at that, would change the i (the iteration variable) of the active mettTalking/typeWriter function to proceed to the next one?</s> - wrong, i needed to run a function that would resolve the promise, ending the relevant function iteration effectively
+15) add a mechanic where the ending credits lines become yellow if player hovers over them
 
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>

@@ -224,6 +224,10 @@ const flirtRoute = function() {
                     const newLine = document.createElement("p");
                     newLine.textContent = creditsText[i];
 
+                    newLine.addEventListener("mouseover", (event) => {
+                            event.target.classList.add("yellow-text");
+                    })
+
                     creditsTextBox.appendChild(newLine);
                 }
 
@@ -4726,6 +4730,9 @@ const rating = async function() {
                         const newLine = document.createElement("p");
                         newLine.textContent = creditsText[i];
 
+                        newLine.addEventListener("mouseover", (event) => {
+                            event.target.classList.add("yellow-text");
+                        })
                         creditsTextBox.appendChild(newLine);
                     }
 
