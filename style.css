@@ -134,6 +134,7 @@ body {
        flex-direction: column;
        justify-content: center;
        align-items: center;
+       flex-wrap: wrap;
        transform: translateY(400%);
        animation: end-text 45s linear;
        animation-fill-mode: forwards;

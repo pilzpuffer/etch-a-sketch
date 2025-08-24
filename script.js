@@ -2747,13 +2747,16 @@ const friendlyMiddleSponsors = [
 ];
 
 const friendlyMiddleLegal = [
-    "Being an official understudy does not guarantee leading roles, glamour, or access to Mettaton’s personal dressing room.",
-    "All star-making opportunities are subject to cancellation, rescheduling, or catastrophic ego meltdowns."
+    "Being an official understudy does not guarantee leading roles, glamour,",
+    "or access to Mettaton’s personal dressing room.",
+    "All star-making opportunities are subject to cancellation, rescheduling,",
+    "or catastrophic ego meltdowns."
 ];
 
 const friendlyMiddleClosing = [
     "So, viewers... let’s give a round of applause for tonight’s nearly-star!",
-    "Their big debut may not be tonight, but remember - every understudy’s shadow is just waiting to burst into light."
+    "Their big debut may not be tonight, but remember - every understudy’s shadow",
+    "is just waiting to burst into light."
 ];
 
 // high
@@ -2782,8 +2785,10 @@ const friendlyHighSponsors = [
 ];
 
 const friendlyHighLegal = [
-    "By participating in the newly-declared era of Mettaton & Frisk, audiences accept full responsibility for fainting from overwhelming brilliance.",
-    "Prolonged exposure to dual stardom may result in euphoric screaming, autograph addiction, and a sparkle-induced whiplash.",
+    "By participating in the newly-declared era of Mettaton & Frisk, audiences",
+    "accept full responsibility for fainting from overwhelming brilliance.",
+    "Prolonged exposure to dual stardom may result in euphoric screaming, autograph addiction,",
+    "and a sparkle-induced whiplash.",
     "Refunds will not be offered, because history cannot be refunded."
 ];
 
@@ -2856,7 +2861,8 @@ const neutralMiddleLegal = [
 
 const neutralMiddleClosing = [
     "Thank you for joining us tonight!",
-    "Now please enjoy something actually satisfying - the concession stand is still open until the start of the next show."
+    "Now please enjoy something actually satisfying - the concession stand",
+    "is still open until the start of the next show."
 ];
 
 // high
@@ -2919,14 +2925,16 @@ const negativeLowSponsors = [
 ];
 
 const negativeLowLegal = [
-    "This program accepts no responsibility for combustions, humiliations, or existential collapse experienced during tonight’s performance.",
+    "This program accepts no responsibility for combustions, humiliations, or existential",
+    "collapse experienced during tonight’s performance.",
     "By entering the stage, all participants waive dignity, hope, and posthumous rights to complaint.",
     "Do not attempt at home, in theaters, or anywhere lacking a five-star insurance policy."
 ];
 
 const negativeLowClosing = [
     "Every clown burns bright, but only once.",
-    "Apologies to the audience for the smoke and ash - the concession stand will remain open while we sweep up what’s left."
+    "Apologies to the audience for the smoke and ash.",
+    "The concession stand will remain open while we sweep up what’s left."
 ];
 
 // middle
@@ -2960,7 +2968,8 @@ const negativeMiddleLegal = [
 const negativeMiddleClosing = [
     "All tumbling acts are performed by trained participants or those deemed expendable.",
     "Mettaton Enterprises reserves the right to humiliate performers for entertainment value",
-    "No dignity was harmed in the making of this performance - because it was never present to begin with."
+    "No dignity was harmed in the making of this performance - because it was never",
+    "present to begin with."
 ];
 
 // high
@@ -2982,18 +2991,20 @@ const negativeHighAwards = [
 
 const negativeHighSponsors = [
     "This show was made possible by:",  
-    "Snowdin’s Department of Festivals - 'Making sure your circus stays licensed, loud, and laughable.'",
+    "Snowdin’s Department of Festivals - 'Making sure your circus stays licensed and laughable.'",
     "Temmie Premium Bell Oil - 'so ur clown hat jingles good!!'",
     "Nice Cream XL (Clown Special) - 'Bright, colorful, and melting all over your dignity.'"
 ];
 
 const negativeHighLegal = [
-    "This coronation is purely symbolic. Title of Clown Monarch confers no respect, wealth, or real power.",
-    "Crowning does not imply actual royalty, relevance, or respect. Bells included, dignity not.”"
+    "This coronation is purely symbolic. Title of Clown Monarch confers",
+    "no respect, wealth, or real power.",
+    "Crowning does not imply actual royalty. Bells included, dignity not.”"
 ];
 
 const negativeHighClosing = [
-    "Ah, my devoted viewers! Witness the rise of a true... calamity. Give them the applause they think they deserve!"
+    "Ah, my devoted viewers! Witness the rise of a true... calamity.",
+    "Give them the applause they think they deserve!"
 ];
 
 //betrayal
