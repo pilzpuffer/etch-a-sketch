@@ -143,7 +143,7 @@ body {
 @keyframes end-text {
     0% {
         visibility: visible;
-        transform: translateY(350%)
+        transform: translateY(200%)
     }
 
     100% {

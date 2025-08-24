@@ -857,7 +857,7 @@ const flavorFlirtTooMuchEndingLose = [
     ["He turns his back with a sharp, practiced spin.", "A single spotlight catches the glint of the rose as he clutches it to his chest like a fallen star."],
     ["A sudden lurch - a trapdoor beneath your feet creaks ominously."],
     ["Cue dramatic gasp from the audience.", "Somewhere, a production intern sobs into a headset."],
-    ["With a flick of his wrist, Mettaton pulls a hidden lever.", "You drop - theatrically - into a pit filled with oversized pink heart pillows marked “FRIEND ZONE”."],
+    ["With a flick of his wrist, Mettaton pulls a hidden lever.", "You drop - theatrically - into a pit filled with oversized pink heart pillows marked 'FRIEND ZONE'."],
     ["Mettaton peers over the edge, striking a sorrowful pose, one hand extended downward."],
     ["He tosses down a glittery envelope."],
     ["He spins back to the crowd", "Music explodes into an over-the-top, bittersweet finale."]
@@ -2188,7 +2188,7 @@ const mettRateFinalEndPositiveFlirtyMiddle = [
     [""],
     ["Mm... steady. Safe. A sketch of something unfinished.", "But oh, darling - even half a spark can make me wonder how brightly the fire might yet burn."],
     ["You’re not unworthy - far from it. You’re dangerous.", "Because you’ve left me wanting to know whether you’ll soar... or shatter spectacularly."],
-    ["“Viewers! What you’ve witnessed tonight is not a finale - but a cliffhanger!", "The promise of brilliance or disaster, waiting to be claimed.", "And isn’t that the cruelest, sweetest lure of live theatre?"],
+    ["'Viewers! What you’ve witnessed tonight is not a finale - but a cliffhanger!", "The promise of brilliance or disaster, waiting to be claimed.", "And isn’t that the cruelest, sweetest lure of live theatre?"],
     ["Next time, darling... don’t leave them wanting.", "Make them gasp, make them cheer - and make ME regret every other show I’ve ever hosted."],
     [""],
     [""]
@@ -2215,7 +2215,7 @@ const mettRateFinalEndPositiveFlirtyHigh = [
     ["Tonight, you glittered brighter than anyone could dream. Remember this moment - it belongs to you."],
     ["Feel it, darling. The roar, the rhythm, the spotlight beating in time with your pulse.", "Tonight, you weren’t just a performer... you were the star they came to see."],
     ["And now... the offer."],
-    ["Put your name here, and it’s official - not just a fleeting act, not just a spark that fades, not even a special thanks at the credits...", "...But the name beside mine. From this moment, every ovation, every curtain rise, every shining beat of the stage - ours, together.”"],
+    ["Put your name here, and it’s official - not just a fleeting act, not just a spark that fades, not even a special thanks at the credits...", "...But the name beside mine. From this moment, every ovation, every curtain rise, every shining beat of the stage - ours, together.'"],
     ["So... what will it be, darling? Shall we take our bow together and let the spotlight never dim?", "Or should we leave the world begging for a sequel?"], 
     [""],
     [""],
@@ -2560,7 +2560,7 @@ const flirtyFailSponsors = [
     "This show was made possible by:",
     "GlamGal Grease - For when your gears need to glow.",
     "RoboRomance Magazine - Now 99% Mettaton!",
-    "The Official Mettaton Body Pillow - “For lonely nights... or all of them.”",
+    "The Official Mettaton Body Pillow - 'For lonely nights... or all of them.'",
     "Dramatone Eyeliner - Cries with you.",
 ];
 
@@ -2588,11 +2588,13 @@ const flirtyLowDepartment = [
 ];
 
 const flirtyLowAwards = [
+    "Award Segment",
     "Most Dramatic Near-Swoon: Mettaton",
     "Audience Vote for 'Second Chance Needed': YOU"
 ];
 
 const flirtyLowSponsors = [
+    "This show was made possible by:",
     "Lonely Hearts’ Karaoke Night - Thursdays at Grillby’s, first drink free!",
     "Instant Noodles - For when romance just isn’t on the menu",
     "Re-runs of 'Cooking with Mettaton!' - Weeknights at 7!"
@@ -2621,11 +2623,13 @@ const flirtyMiddleDepartment = [
 ];
 
 const flirtyMiddleAwards = [
+    "Award Segment",    
     "Outstanding Use of Stage Lighting for Maximum Tension: Mettaton",
     "The 'Just Kiss Already' Award"
 ];
 
 const flirtyMiddleSponsors = [
+    "This show was made possible by:",
     "Glamazon Prime - free shipping on roses, chocolates, and fan mail.",
     "Alphys’ Shipping Hotline - text 'OTP' for live updates!",
     "MTT Brand Perfume — ‘One spritz, infinite longing’"
@@ -2655,11 +2659,13 @@ const flirtyHighDepartment = [
 ];
 
 const flirtyHighAwards = [
+    "Award Segment",    
     "Critics’ Choice for Irresistible Leading Couple",
     "Underground Emmy for Romance in Prime Time"
 ];
 
 const flirtyHighSponsors = [
+    "This show was made possible by:",
     "Rosemelt Candles - 'Let the scent of passion linger long after the credits.'",
     "Red Velvet Energy Bars - because passion burns calories!",
     "Starlight Champagne Co. - 'Raise a glass to forever.'",
@@ -2690,11 +2696,13 @@ const friendlyLowDepartment = [
 ];
 
 const friendlyLowAwards = [
+    "Award Segment",   
     "Excellence in Boa Management and Feather Control: Mettaton",
     "Most Promising Prop Wrangler: YOU (Honorable Mention)"
 ];
 
 const friendlyLowSponsors = [
+    "This show was made possible by:",
     "Backstage Brew - coffee strong enough to survive any tech rehearsals",
     "Glowstick Warehouse Outlet - 'Lighting up your role, no matter how small.'",
     "Royal Capital Paperclip Consortium - Holding your clipboard and your dignity together.",
@@ -2723,10 +2731,12 @@ const friendlyMiddleDepartment = [
 ];
 
 const friendlyMiddleAwards = [
+    "Award Segment",    
     "Best Performance That Wasn’t Technically the Lead: YOU"
 ];
 
 const friendlyMiddleSponsors = [
+    "This show was made possible by:",
     "MTT Brand Co-Op Arcade Cabinet - 'Because Player Two matters'.",
     "Second Act Insurance - covering minor stage slips, fainting spells, and overzealous pirouettes",
     "Dramedy Masks Inc. - smile now, cry later (professionally)"
@@ -2755,11 +2765,13 @@ const friendlyHighDepartment = [
 ];
 
 const friendlyHighAwards = [
+    "Award Segment",    
     "Golden Spotlight for Best Duo Performance: Mettaton & YOU",
     "The Rising Starlet Award: YOU"
 ];
 
 const friendlyHighSponsors = [
+    "This show was made possible by:",
     "ForeverFlare Lighting - the only spotlight that dares rival yours",
     "GlitterForge™ - armory of sparkle, certified indestructible",
     "Radiant Pulse Energy Drink - bottled applause, carbonated fame"
@@ -2790,10 +2802,12 @@ const neutralLowDepartment = [
 ];
 
 const neutralLowAwards = [
+    "Award Segment",   
     "Lifetime Achievement in Audience Disappointment: YOU"
 ];
 
 const neutralLowSponsors = [
+    "This show was made possible by:",
     "Napstablook’s Mix Tapes - 'Perfect for when things flop.'",
     "Temmie’s Bargain Exits - 'Get out fast, get out cheap!'"
 ];
@@ -2820,10 +2834,12 @@ const neutralMiddleDepartment = [
 ];
 
 const neutralMiddleAwards = [
+    "Award Segment",
     "The Golden Popcorn Bucket Award (for Inspiring Snack Runs): YOU"
 ];
 
 const neutralMiddleSponsors = [
+    "This show was made possible by:",
     "Glamburger™ Snack Breaks - 'The real star of the evening.'",
     "Nice Cream Vending Solutions - 'Because nothing says ‘meh’ like lukewarm sprinkles.'",
     "Snowdin Soda Co. - 'Carbonation you can count on when art can’t.'"
@@ -2851,14 +2867,16 @@ const neutralHighDepartment = [
 ];
 
 const neutralHighAwards = [
+    "Award Segment",
     "The Reluctant Virtuoso Award: YOU",
     "Best Unintended Masterpiece"
 ];
 
 const neutralHighSponsors = [
+    "This show was made possible by:",
     "Napstablook’s Limited Edition Vinyls - 'For the quiet genius in us all.'",
     "Dog Residue Cleaning Services - 'Because even brilliance leaves a mess.'",
-    "Underground Ink Co. – 'For sketches that might shock, or might just flop.'"
+    "Underground Ink Co. - 'For sketches that might shock, or might just flop.'"
 ];
 
 const neutralHighLegal = [
@@ -2875,74 +2893,103 @@ const neutralHighClosing = [
 
 // low
 
-const negativeLowTitle = [];
+const negativeLowTitle = ["METTATON’S CLOWN SHOW/ART SHOW SPECIAL: END CREDITS"];
 
 const negativeLowDepartment = [
-
+    "Department of Accidents & Public Safety Hazards",
+    "Grillby - Pyrotechnics and Fire Safety",
+    "Mad Dummy - Anger Management Consultant",
+    "River Person - Evacuation Planner"
 ];
 
 const negativeLowAwards = [
-
+    "Award Segment",
+    "The 'Brightest Burnout' Award: YOU"
 ];
 
 const negativeLowSponsors = [
-
+    "This show was made possible by:",
+    "Grillby’s Fire Safety School - Enrollment now open!",
+    "Burgerpants’ Bargain Sunscreen - SPF too little, too late.",
+    "Hotland Tourist Bureau - 'Feel the burn!' package tours."
 ];
 
 const negativeLowLegal = [
-
+    "This program accepts no responsibility for combustions, humiliations, or existential collapse experienced during tonight’s performance.",
+    "By entering the stage, all participants waive dignity, hope, and posthumous rights to complaint.",
+    "Do not attempt at home, in theaters, or anywhere lacking a five-star insurance policy."
 ];
 
 const negativeLowClosing = [
-
+    "Every clown burns bright, but only once.",
+    "Apologies to the audience for the smoke and ash - the concession stand will remain open while we sweep up what’s left."
 ];
 
 // middle
 
-const negativeMiddleTitle = [];
+const negativeMiddleTitle = ["METTATON’S CLOWN SHOW/ART SHOW SPECIAL: END CREDITS"];
 
 const negativeMiddleDepartment = [
-
+    "Department of Pity Applause & Failed Performances",
+    "Snowdrake - Head Joke Critic ('this isn’t even funny...')",
+    "Gyftrot - Prop Delivery",
+    "Temmie - Merchandising ('get ur failure plushie!!')"
 ];
 
 const negativeMiddleAwards = [
-
+    "Award Segment",
+    "The 'Nap Time Highlight' Award': YOU"
 ];
 
 const negativeMiddleSponsors = [
-
+    "This show was made possible by:",
+    "Snowdin Library - Because silence is better than this.",
+    "Tem Shop - Selling your dignity back at double price.",
+    "Nice Cream Guy - New flavor: 'Tearsicle.'"
 ];
 
 const negativeMiddleLegal = [
-
+    "Mettaton Enterprises™ reserves the right to humiliate performers for entertainment value.",
+    "Refunds not available; pity applause constitutes payment in full."
 ];
 
 const negativeMiddleClosing = [
-
+    "All tumbling acts are performed by trained participants or those deemed expendable.",
+    "Mettaton Enterprises reserves the right to humiliate performers for entertainment value",
+    "No dignity was harmed in the making of this performance - because it was never present to begin with."
 ];
 
 // high
 
-const negativeHighTitle = [];
+const negativeHighTitle = ["METTATON’S CLOWN SHOW/ART SHOW SPECIAL: END CREDITS"];
 
 const negativeHighDepartment = [
-
+    "Department of Mock Honors",
+    "Mettaton - Master of Ceremonies, Arbiter of Ridicule",
+    "Glyde - Vanity Consultant",
+    "Napstablook - Mood Technician"
 ];
 
 const negativeHighAwards = [
-
+    "Award Segment",
+    "The 'Jester’s Crown' Distinction - Heavy with bells, hollow of meaning.",
+    "The 'Star of Irony' Ribbon - YOU shone... only as the butt of the joke."
 ];
 
 const negativeHighSponsors = [
-
+    "This show was made possible by:",  
+    "Snowdin’s Department of Festivals - 'Making sure your circus stays licensed, loud, and laughable.'",
+    "Temmie Premium Bell Oil - 'so ur clown hat jingles good!!'",
+    "Nice Cream XL (Clown Special) - 'Bright, colorful, and melting all over your dignity.'"
 ];
 
 const negativeHighLegal = [
-
+    "This coronation is purely symbolic. Title of Clown Monarch confers no respect, wealth, or real power.",
+    "Crowning does not imply actual royalty, relevance, or respect. Bells included, dignity not.”"
 ];
 
 const negativeHighClosing = [
-
+    "Ah, my devoted viewers! Witness the rise of a true... calamity. Give them the applause they think they deserve!"
 ];
 
 //betrayal
@@ -2956,11 +3003,11 @@ const betrayalLowDepartment = [
 ];
 
 const betrayalLowAwards = [
-
+    "Award Segment",
 ];
 
 const betrayalLowSponsors = [
-
+    "This show was made possible by:",
 ];
 
 const betrayalLowLegal = [
@@ -2980,11 +3027,11 @@ const betrayalMiddleDepartment = [
 ];
 
 const betrayalMiddleAwards = [
-
+    "Award Segment",
 ];
 
 const betrayalMiddleSponsors = [
-
+    "This show was made possible by:",
 ];
 
 const betrayalMiddleLegal = [
@@ -3004,11 +3051,11 @@ const betrayalHighDepartment = [
 ];
 
 const betrayalHighAwards = [
-
+    "Award Segment",
 ];
 
 const betrayalHighSponsors = [
-
+    "This show was made possible by:",
 ];
 
 const betrayalHighLegal = [
