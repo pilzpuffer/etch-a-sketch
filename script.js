@@ -4181,7 +4181,6 @@ const fightMett = function() {
     clearTextField(); 
     starSpace.classList.add("gone")
     gameState["fightActive"] = true;
-    gameState["currentActiveActionButton"]["fight"] = 0;
 
     let oldSize = gameState["fieldSize"];
 
@@ -4232,6 +4231,7 @@ const fightMett = function() {
 
                 await flavorText(allText["flavor"]["fight"][correctKey][selectedIndex]);
                 await mettTalking(allText["mettaton"]["fight"][correctKey][selectedIndex]);
+                gameState["currentActiveActionButton"]["fight"] = 0;
             });
 
             mousedBox.appendChild(newButton);
@@ -5023,9 +5023,9 @@ const createPageNavigation = function(pageNumber, providedText) {
         
     
         div.addEventListener("mouseover", (event) => {
-            if (gameState["actionButtonClicked"] === false && !event.currentTarget.classList.contains("button-highlight") && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
+            if (gameState["actionButtonClicked"] === false && !event.currentTarget.classList.contains("button-highlight") && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false && !gameState["fightActive"]) {
                 handleMouseOver(event);
-            } else if (gameState["actionButtonClicked"] === true && event.currentTarget.classList.contains("button-highlight") && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
+            } else if (gameState["actionButtonClicked"] === true && event.currentTarget.classList.contains("button-highlight") && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false && !gameState["fightActive"]) {
                 handleMouseOver(event);
             }
         })
@@ -5224,7 +5224,7 @@ const createPageNavigation = function(pageNumber, providedText) {
             });
 
             let currentButton = event.currentTarget.getAttribute("id").split("-")[0];
-            if (gameState["actionButtonClicked"] === false && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false) {
+            if (gameState["actionButtonClicked"] === false && gameState["flavorTextShown"] === false && gameState["mettTextShown"] === false && !gameState["fightActive"]) {
 
                 buttonConfirm.play();
 
@@ -5236,18 +5236,13 @@ const createPageNavigation = function(pageNumber, providedText) {
                 starSpace.classList.add("invisible");
                     
                 if (currentButton === "fight") {
-                        const figthMenu = {
-                            fightOption: {
-                                id: "fight",
-                                data: document.createElement("div")}
-                        }
-    
-                        if (gameState["currentActiveActionButton"][`${currentButton}`] <= 1) {
-                            createMenuOption(figthMenu, "fightOption", "Mettaton", fightMett);
-                        } else {
-                            clearTextField();
-                            gameState["currentActiveActionButton"][`${currentButton}`] = 0;
-                        }
+                    const fightMenu = {
+                        fightOption: {
+                            id: "fight",
+                            data: document.createElement("div")}
+                    }
+
+                    createMenuOption(fightMenu, "fightOption", "Mettaton", fightMett);
                         
                 } else if (currentButton === "act") {    
                     itemsOptionCountObserver.disconnect();  
