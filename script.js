@@ -3885,16 +3885,15 @@ const musicBack = function () {
 
 const stopMoving = function () {
     successfulSelect();
-    gameState["stayStill"]++;
 
-    if (gameState["stayStill"] === 1) {        
+    if (gameState["stayStill"] === 0) {        
         mettBody.classList.add("paused");
         mettBody.style.transform = `skew(0deg)`; 
 
         gameState["moveBody"] = false;
         gameState["animationOn"] = false;
 
-    } else if (gameState["stayStill"] > 1) {
+    } else if (gameState["stayStill"] >= 1) {
         gameState["moveArms"] = false;
 
         leftArm.classList.add("paused");
@@ -4059,8 +4058,9 @@ const twoStepConversation = async function (topic, checkToIncrement) {
         }
         
     }
-    
+
     mettResponding(); 
+    gameState[checkToIncrement]++;
 }
 
 //used for music/animation handling

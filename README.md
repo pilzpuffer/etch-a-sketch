@@ -62,7 +62,7 @@ Roadmap to project finalization
 14) <s>Add a text-skipping mechanic? - to achieve this, I'll need some sort of event listener that will be constantly running and waiting for '2' to be clicked - and at that, would change the i (the iteration variable) of the active mettTalking/typeWriter function to proceed to the next one?</s> - wrong, i needed to run a function that would resolve the promise, ending the relevant function iteration effectively
 15) <s>add a mechanic where the ending credits lines become yellow if player hovers over them</s>
 16) <s>maybe add a few different music tracks for endings? as the current one doesn't quite fit all routes</s>
-17) add a different musical track for the judging bit, as it doesn't feel quite correct to just have one main theme through the entire thing. Maybe can use 'Here We Are' or 'Another Medium' for this? I'm honestly unsure. And might be kind of overthinking this, so I won't adjust that for now.
+17) add a different musical track for the judging bit, as it doesn't feel quite correct to just have one main theme through the entire thing. Maybe can use 'Here We Are' or 'Another Medium' for this? I'm honestly unsure. And might be kind of overthinking this, so I won't adjust the soundtrack for judging for now.
 
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>
@@ -80,7 +80,7 @@ Debugging Roadmap:
 6) <s>if an entire drawing is done in etch pen - for some reason, when about 50% of the drawing field is filled in, the color of most part of the drawing field changes to fully black. if some of those black squares get erased - the coloring returns to normal? check why that happens</s> - another mystery issue, couldn't recreate it again?
 7) <s>text skipping completely messes up story progression, if done many times in a row. why does that happen? verify + music sounds still play when text is skipped, so something is not done fully correctly right now.</s>
 8) when "fight" action is used once, the entire action gets processed, but when you try to initiate "fight" action again, you need to click twice on that button to actually do that. all other buttons work fine and the same error doesn't occur there. why does this happen?
-9) in the current code iteration, quiet/music ACT options don't work quite correctly - because the "quiet" option doesn't fully play out (where ALL sounds are muted) - check why
+9) <s>in the current code iteration, quiet/music ACT options don't work quite correctly - because the "quiet" option doesn't fully play out (where ALL sounds are muted) - check why</s>
 
 Project notes:
 This concept really inspired me to try building a cohesive mini-game - and while it REALLY went far beyond the original task requirements, I’m glad I decided to pursue it. It ended up teaching me some valuable lessons about handling larger-scale projects.
