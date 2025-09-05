@@ -526,8 +526,8 @@ buttonSelect.volume = sameVolume;
 buttonConfirm.volume = sameVolume;
 
 const playerButtonSelection = function(event) {
-event.currentTarget.classList.add("button-highlight");
-event.currentTarget.firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
+    event.currentTarget.classList.add("button-highlight");
+    event.currentTarget.firstElementChild.innerHTML = `<img id="yellow-heart" src="./images/yellow-soul-sprite.png">`;
 };
 
 const removeButtonFocus = function () {
@@ -4181,6 +4181,7 @@ const fightMett = function() {
     clearTextField(); 
     starSpace.classList.add("gone")
     gameState["fightActive"] = true;
+    gameState["currentActiveActionButton"]["fight"] = 0;
 
     let oldSize = gameState["fieldSize"];
 
@@ -5400,10 +5401,7 @@ const createPageNavigation = function(pageNumber, providedText) {
 
         div.addEventListener("mouseout", (event) => {
             if (gameState["actionButtonClicked"] === false) {
-                event.currentTarget.classList.remove("button-highlight");
-            
-                let currentSymbol = event.currentTarget.getAttribute("id").split("-")[0];
-                event.currentTarget.firstElementChild.innerHTML = gameState["symbols"][currentSymbol];
+                removeButtonFocus();
             } else if (gameState["actionButtonClicked"] === true && event.currentTarget.classList.contains("button-highlight")) {
                 hideYellowHeart(event);
             }
