@@ -1600,7 +1600,7 @@ const flavorRatingNegativeIntro = [
     ["The final stroke hits the canvas.", "Smudged. Defiant. A flourish, or a mess - but yours."],
     ["The lights snap to a focused white. No fanfare. No applause."],
     ["Just the heavy hum of the studio - and Mettaton’s unmoving frame, center-stage."],
-    ["Your drawing flickers across his screen: smeared, jagged, or unnervingly plain. A digital sigh crackles through his speakers."],
+    ["Your drawing flickers across his screen: smeared and jagged. A digital sigh crackles through his speakers."],
     ["His voice is velvet and static, the kind that smiles without softening."],
     ["He turns slightly, mechanical servos whirring as his display reflects your work in fragments."],
     ["From above, mirrors descend - silent and sterile - slowly encircling him like mourners at a wake."],
@@ -2961,7 +2961,7 @@ const negativeMiddleSponsors = [
 ];
 
 const negativeMiddleLegal = [
-    "Mettaton Enterprises™ reserves the right to humiliate performers for entertainment value.",
+    "Mettaton Enterprises reserves the right to humiliate performers for entertainment value.",
     "Refunds not available; pity applause constitutes payment in full."
 ];
 
@@ -3011,74 +3011,109 @@ const negativeHighClosing = [
 
 // low
 
-const betrayalLowTitle = [];
+const betrayalLowTitle = ["METTATON'S PUPPET SHOW/ART SHOW SPECIAL: END CREDITS"];
 
 const betrayalLowDepartment = [
-
+    "Department of Puppet Affairs",
+    "Mettaton - Puppetmaster Extraordinaire",
+    "Mad Dummy - Motion Director (“MAKE ‘EM JERK HARDER!!”)",
+    "Muffet - Web & Wire & String Safety Supervisor",
+    "Shyren - Humiliation Soundtrack Specialist"
 ];
 
 const betrayalLowAwards = [
     "Award Segment",
+    "'Strings Attached' Medal - YOU"
 ];
 
 const betrayalLowSponsors = [
     "This show was made possible by:",
+    "The Underground Clown Union - 'Supporting failed entertainers everywhere.'",
+    "Nice Cream Seasonal Flavors - Tonight’s special: Salted Regret."
 ];
 
 const betrayalLowLegal = [
-
+    "Mettaton Enterprises accepts no liability for crushed ambitions, broken pride,",
+    "or puppet-related injuries."
 ];
 
 const betrayalLowClosing = [
-
+    "Remember, darlings, betrayal makes for such fine theater...",
+    "but only when you’re not the one hanging by the strings."
 ];
 
 // middle
 
-const betrayalMiddleTitle = [];
+const betrayalMiddleTitle = ["METTATON'S YAWN SHOW/ART SHOW SPECIAL: END CREDITS"];
 
 const betrayalMiddleDepartment = [
-
+    "Department of Managing Forgettability",
+    "Mettaton - Archivist of Mediocrity",
+    "Temmie - Merchandising Lead ('wow! boring shirt! 20g!!')",
+    "Nice Cream Guy - Disappointment Distributor",
+    "Jerry - Conversation Killer"
 ];
 
 const betrayalMiddleAwards = [
     "Award Segment",
+    "The Audience Yawn Commendation - YOU, for inspiring drowsiness since tonight."
 ];
 
 const betrayalMiddleSponsors = [
     "This show was made possible by:",
+    "Muffet’s Gossip Blend Tea - Best served lukewarm, just like your scandal.",
+    "Nice Cream 'Meh-Sundae' Special - The flavor you’ll forget five minutes later."
 ];
 
 const betrayalMiddleLegal = [
-
+    "This betrayal was rated PG: ‘Partially Gripping.’ Use only as background noise.",
+    "Warning: Tonight’s act may cause symptoms of indifference, mild apathy,",
+    "or checking your phone during the show.",
+    "Viewer discretion is advised."
 ];
 
 const betrayalMiddleClosing = [
-
+    "Thank you for tuning in.",
+    "Remember, lovely viewers: betrayal should make you shiver, not yawn."
 ];
 
 // high
 
-const betrayalHighTitle = [];
+const betrayalHighTitle = ["METTATON'S 'ART OF BETRAYAL' SHOW SPECIAL: END CREDITS"];
 
 const betrayalHighDepartment = [
-
+    "Department of Fleeting Fame & Scandal",
+    "Mettaton - Chairman of Everlasting Glamour",
+    "Bratty & Catty - Paparazzi Scouts (already sold your photo for 10G)",
+    "Nice Cream Guy - Temporary Delight Distributor",
+    "Burgerpants - PR Exhaustion Specialist",
+    "Gyftrot - Rose Sweeper"
 ];
 
 const betrayalHighAwards = [
     "Award Segment",
+    "The 'Scandal Laurels' Crown - YOU",
+    "The “Thorned Rose” Distinction - to you, who made beauty cut as sharply as betrayal"
 ];
 
 const betrayalHighSponsors = [
     "This show was made possible by:",
+    "Royal Waterfall Press - Tomorrow’s headlines today: ‘Traitor or Triumph?’",
+    "CORE Broadcasting Network - 'Turning treachery into prime-time ratings!'",
+    "Bratty & Catty’s Starlet Boutique",
+    "Mad Dummy’s Puppet School - 'Learn control, lose control, look fabulous doing both.'"
 ];
 
 const betrayalHighLegal = [
-
+    "Roses are symbolic only and hold no transferable value.",
+    "Applause levels are subject to change without notice.",
+    "Any fame accrued tonight will fade in 24 hours unless renewed by authorized sequels."
 ];
 
 const betrayalHighClosing = [
-
+    "What a show! What a scandal! And yet, by sunrise...",
+    "it’ll be just another headline fading into dust.",
+    "Until next time, darlings - may your cheers echo longer than the star who borrowed them."
 ];
 
 
@@ -4721,6 +4756,7 @@ const rating = async function() {
                     leftBlock.remove();
                     rightBlock.remove();
                     miniMettsContainer.remove();
+                    starSpace.classList.remove("gone");
 
                     await finalRate("endFinal");
 

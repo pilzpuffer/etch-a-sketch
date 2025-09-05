@@ -1041,7 +1041,7 @@ also I REALLY need to work on button scaling
     }
 }
 
-@media screen and (max-width: 90px){
+@media screen and (max-width: 900px){
     .buttons {
         gap: 0.5%;
         height: 60%
