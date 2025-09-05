@@ -563,6 +563,8 @@ allMettSounds.forEach(sound => sound.volume = sameVolume - 0.1);
 
 //mettaton's words are output word-by-word instead of letter-by-letter - so a separate function will be needed for that + there will be a different mechanism for playing music
 const typeWriter = function (location, phrase) {
+    let stopCondition = false;
+
     return new Promise((resolve) => {
 
     let phraseDivided = phrase.split(" ");
@@ -590,6 +592,14 @@ const typeWriter = function (location, phrase) {
             typeWriterSound.currentTime = 0;
         }
     }, 50)
+
+    window.addEventListener("keydown", (event) => {
+        if (event.code === "Digit2" || event.code === "Numpad2" ) {
+            stopCondition = true;
+            clearInterval(wordByLetterOutput);
+            clearInterval(musicEffects);
+        }
+    })
 });
 }
 
@@ -3123,7 +3133,7 @@ allCredits = {
     flirty: {
         low: {
             title: flirtyLowTitle,
-            department: flirtyLowAwards,
+            department: flirtyLowDepartment,
             awards: flirtyLowAwards,
             sponsors: flirtyLowSponsors,
             legal: flirtyLowLegal,
@@ -3131,7 +3141,7 @@ allCredits = {
         },
         middle: {
             title: flirtyMiddleTitle,
-            department: flirtyMiddleAwards,
+            department: flirtyMiddleDepartment,
             awards: flirtyMiddleAwards,
             sponsors: flirtyMiddleSponsors,
             legal: flirtyMiddleLegal,
@@ -3139,7 +3149,7 @@ allCredits = {
         },
         high: {
             title: flirtyHighTitle,
-            department: flirtyHighAwards,
+            department: flirtyHighDepartment,
             awards: flirtyHighAwards,
             sponsors: flirtyHighSponsors,
             legal: flirtyHighLegal,
@@ -3147,7 +3157,7 @@ allCredits = {
         },
         fail: {
             title: flirtyFailTitle,
-            department: flirtyFailAwards,
+            department: flirtyFailDepartment,
             awards: flirtyFailAwards,
             sponsors: flirtyFailSponsors,
             legal: flirtyFailLegal,
@@ -3157,7 +3167,7 @@ allCredits = {
     friendly: {
         low: {
             title: friendlyLowTitle,
-            department: friendlyLowAwards,
+            department: friendlyLowDepartment,
             awards: friendlyLowAwards,
             sponsors: friendlyLowSponsors,
             legal: friendlyLowLegal,
@@ -3165,7 +3175,7 @@ allCredits = {
         },
         middle: {
             title: friendlyMiddleTitle,
-            department: friendlyMiddleAwards,
+            department: friendlyMiddleDepartment,
             awards: friendlyMiddleAwards,
             sponsors: friendlyMiddleSponsors,
             legal: friendlyMiddleLegal,
@@ -3173,7 +3183,7 @@ allCredits = {
         },
         high: {
             title: friendlyHighTitle,
-            department: friendlyHighAwards,
+            department: friendlyHighDepartment,
             awards: friendlyHighAwards,
             sponsors: friendlyHighSponsors,
             legal: friendlyHighLegal,
@@ -3183,7 +3193,7 @@ allCredits = {
     neutral: {
         low: {
             title: neutralLowTitle,
-            department: neutralLowAwards,
+            department: neutralLowDepartment,
             awards: neutralLowAwards,
             sponsors: neutralLowSponsors,
             legal: neutralLowLegal,
@@ -3191,7 +3201,7 @@ allCredits = {
         },
         middle: {
             title: neutralMiddleTitle,
-            department: neutralMiddleAwards,
+            department: neutralMiddleDepartment,
             awards: neutralMiddleAwards,
             sponsors: neutralMiddleSponsors,
             legal: neutralMiddleLegal,
@@ -3199,7 +3209,7 @@ allCredits = {
         },
         high: {
             title: neutralHighTitle,
-            department: neutralHighAwards,
+            department: neutralHighDepartment,
             awards: neutralHighAwards,
             sponsors: neutralHighSponsors,
             legal: neutralHighLegal,
@@ -3209,7 +3219,7 @@ allCredits = {
     negative: {
         low: {
             title: negativeLowTitle,
-            department: negativeLowAwards,
+            department: negativeLowDepartment,
             awards: negativeLowAwards,
             sponsors: negativeLowSponsors,
             legal: negativeLowLegal,
@@ -3217,7 +3227,7 @@ allCredits = {
         },
         middle: {
             title: negativeMiddleTitle,
-            department: negativeMiddleAwards,
+            department: negativeMiddleDepartment,
             awards: negativeMiddleAwards,
             sponsors: negativeMiddleSponsors,
             legal: negativeMiddleLegal,
@@ -3225,7 +3235,7 @@ allCredits = {
         },
         high: {
             title: negativeHighTitle,
-            department: negativeHighAwards,
+            department: negativeHighDepartment,
             awards: negativeHighAwards,
             sponsors: negativeHighSponsors,
             legal: negativeHighLegal,
@@ -3235,7 +3245,7 @@ allCredits = {
     betrayal: {
         low: {
             title: betrayalLowTitle,
-            department: betrayalLowAwards,
+            department: betrayalLowDepartment,
             awards: betrayalLowAwards,
             sponsors: betrayalLowSponsors,
             legal: betrayalLowLegal,
@@ -3243,7 +3253,7 @@ allCredits = {
         },
         middle: {
             title: betrayalMiddleTitle,
-            department: betrayalMiddleAwards,
+            department: betrayalMiddleDepartment,
             awards: betrayalMiddleAwards,
             sponsors: betrayalMiddleSponsors,
             legal: betrayalMiddleLegal,
@@ -3251,7 +3261,7 @@ allCredits = {
         },
         high: {
             title: betrayalHighTitle,
-            department: betrayalHighAwards,
+            department: betrayalHighDepartment,
             awards: betrayalHighAwards,
             sponsors: betrayalHighSponsors,
             legal: betrayalHighLegal,
@@ -3679,7 +3689,15 @@ allText = {
 }
 
 const mettTalking = function (phrase) {
-    if (!phrase || (phrase.length === 1 && phrase[0] === "")) { 
+    let stopCondition = false;
+
+    window.addEventListener("keydown", (event) => {
+        if (event.code === "Digit2" || event.code === "Numpad2" ) {
+            stopCondition = true;
+        }
+    })
+
+    if (!phrase || (phrase.length === 1 && phrase[0] === "" || stopCondition)) { 
         return Promise.resolve(); 
     } 
 
@@ -3687,10 +3705,12 @@ const mettTalking = function (phrase) {
         let i = 0; 
         textBubble.classList.remove("gone");
         gameState["mettTextShown"] = true;
+        let stopCondition = false;
 
         window.addEventListener("keydown", (event) => {
         if (event.code === "Digit2" || event.code === "Numpad2" ) {
             removeBubble();
+            stopCondition = true;
         }
     })
 
@@ -3705,6 +3725,9 @@ const mettTalking = function (phrase) {
             bubbleTextField.textContent = "";
 
             for (let word of phraseDivided) {
+                if (stopCondition) {
+                    break;
+                }
                 bubbleTextField.textContent += word + " ";
 
                 let randomSound = randomize(allMettSounds);
