@@ -517,8 +517,9 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
     requestAnimationFrame(handWave);
 
 const actionButtons = document.querySelectorAll(".action-button");
-const textField = document.querySelector("#text-field");
 const textBox = document.querySelector("#textBox");
+const textSection = document.querySelector("#text-section")
+const textField = document.querySelector("#text-field");
 const bubbleTextField = document.querySelector("#bubble-textfield")
 const starSpace = document.querySelector("#star-space");
 const buttonSelect = document.querySelector("#button-select");
@@ -4183,8 +4184,7 @@ const step = 8;
 
 const fightMett = function() {
     clearTextField(); 
-    textBox.replaceChildren(); //new
-    // starSpace.classList.add("gone")
+    textBox.replaceChildren(); 
     gameState["fightActive"] = true;
 
     let oldSize = gameState["fieldSize"];
@@ -4229,7 +4229,9 @@ const fightMett = function() {
                 buttonConfirm.play();
 
                 gameState["fightActive"] = false;
-                starSpace.classList.remove("gone");
+                textBox.replaceChildren();
+                textBox.appendChild(starSpace);
+                textBox.appendChild(textSection);
 
                 let correctKey = newSize > oldSize ? "grow" : "shrink";
                 let selectedIndex = randomIndex(allText["mettaton"]["fight"][correctKey]);
@@ -4247,11 +4249,6 @@ const fightMett = function() {
     createButton();
 
     textBox.appendChild(fightBar);
-
-    // textField.appendChild(mousedBox);
-    // createButton();
-
-    // textField.appendChild(fightBar);
 
 
 
