@@ -3807,6 +3807,7 @@ battleStart.addEventListener("ended", function() {
     pageNavigation.classList.add("invisible");
 
     const allCells = document.querySelectorAll(".innerCells");
+    
 
 const clearSketchField = async function() {
     successfulSelect();
@@ -4646,11 +4647,11 @@ const rating = async function() {
             let scoreCount = gameState["rate"]["colorScore"] + gameState["rate"]["densityScore"] + mannersModifier;
             console.log(`color score is ${gameState["rate"]["colorScore"]}, density score is ${gameState["rate"]["densityScore"]}, manners modifier is ${mannersModifier} - and the total is ${scoreCount}`);
 
-            if (scoreCount <= 4) {
+            if (scoreCount <= 4.4) {
                 score = "low"
-            } else if (scoreCount >= 5 && scoreCount <= 7) {
+            } else if (scoreCount >= 4.5 && scoreCount <= 7.4) {
                 score = "middle"
-            } else if (scoreCount >= 8) {
+            } else if (scoreCount >= 7.5) {
                 score = "high"
             } 
 
