@@ -27,12 +27,41 @@ function getNumber(element, property){
     return toNumber;
 };
 
+function marginAdjust() {
+    let step = 100;
+    let defaultScreen = 2568;
+    let defaultLeftArmX = 29.5;
+    let currentScreen = window.innerWidth;
+    let marginStep = 0.5;
+    
+    let getDifference = Math.abs(parseInt((defaultScreen - currentScreen)/step));
+
+    if (getDifference >= 3) { 
+        marginStep = marginStep + (0.1 * (getDifference / 4));
+    }
+    //step for margin is 0.5 at this screen step.difference between left and right hand margin is always -58 (at least on standard screen height. math might require further adjustment based on the height.)
+
+    document.documentElement.style.setProperty('--left-hand-position-X', `${defaultLeftArmX - (marginStep * getDifference)}%`);
+    document.documentElement.style.setProperty('--right-hand-position-X', `${-(defaultLeftArmX - (marginStep * getDifference)) + 10}%`);
+
+    console.log(`the difference is ${0.5 * getDifference}`)
+    console.log(`the new left X margin is ${defaultLeftArmX - (0.5 * getDifference)}%`)
+    console.log(`the new right X margin is ${-(defaultLeftArmX - (0.5 * getDifference)) + 10}%`)
+}
+
+
 window.addEventListener("resize", function() {
     document.documentElement.style.setProperty('--body-width', `${getNumber('.head', 'height')/1.25}px`);
     document.documentElement.style.setProperty('--body-height', `${getNumber('.head', 'height')/5}px`);
 
-    console.log(`new body width is ${getNumber('.head', 'height')/1.25}px`)
-    console.log(`new body width is ${getNumber('.head', 'height')/5}px`)
+    console.log(`new body width is ${getNumber('.head', 'height')/1.25}px`);
+    console.log(`new body width is ${getNumber('.head', 'height')/5}px`);
+
+    //now i need a function to adjust arm positioning. it's not the 'best', but it's less complicated than going the .getBoundingRect() route
+    //basically, on every screen resize, we will need to increase/reduce the X margin (left) based on how many "steps" away we're from the 'default' screen size
+    //can make the step 100px or 200px? just gotta find the proportion for margin increase/decrease for consistent distance from the body
+
+    marginAdjust();
 });
 
 
@@ -3826,6 +3855,7 @@ const pageNavigation = document.querySelector("#page-navigation");
 battleStart.addEventListener("ended", function() {
     textBubble.classList.add("gone");
     pageNavigation.classList.add("invisible");
+    marginAdjust();
 
     const allCells = document.querySelectorAll(".innerCells");
     
