@@ -19,6 +19,19 @@ const allColors = ["red", "orange", "yellow", "green", "lightBlue", "blue", "pur
 const mettBody = document.querySelector(".top-part");
 const textBubble = document.querySelector("#text-bubble");
 
+function getNumber(element, property){
+    const searchFor = document.querySelector(`${element}`)
+    const initialCss = window.getComputedStyle(searchFor).getPropertyValue(property);
+    let toNumber = parseFloat(initialCss); 
+    toNumber = Math.round(toNumber * 10) / 10;
+    return toNumber;
+};
+
+window.addEventListener("resize", function() {
+    document.documentElement.style.setProperty('--body-width', `${getNumber('.head', 'height')/1.25}px`);
+    console.log(`new body size is ${getNumber('.head', 'height')/1.25}px`)
+});
+
 
 let allNumbers = []; //colors for the rainbowPen function
 
