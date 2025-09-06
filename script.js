@@ -69,7 +69,7 @@ const applyMarker = (event) => {
 const body = document.querySelector("body");
 const unRatedEnd = document.querySelector("#premature-end-noised");
 const creditsRoll = document.querySelector("#premature-end");
-const creditsTextBox = document.querySelector("#end-text");
+const creditstextBox = document.querySelector("#end-text");
 
 const transmissionEnd = function() {
     const static = document.createElement("audio");
@@ -228,7 +228,7 @@ const flirtRoute = function() {
                             event.target.classList.add("yellow-text");
                     })
 
-                    creditsTextBox.appendChild(newLine);
+                    creditstextBox.appendChild(newLine);
                 }
 
                 creditsMusic.play();
@@ -518,6 +518,7 @@ const allSketchFieldElements = document.querySelectorAll("div.innerCells");
 
 const actionButtons = document.querySelectorAll(".action-button");
 const textField = document.querySelector("#text-field");
+const textBox = document.querySelector("#textBox");
 const bubbleTextField = document.querySelector("#bubble-textfield")
 const starSpace = document.querySelector("#star-space");
 const buttonSelect = document.querySelector("#button-select");
@@ -541,7 +542,7 @@ const removeButtonFocus = function () {
     })
 }
 
-const typeWriterSound = document.querySelector("#textbox-typing");
+const typeWriterSound = document.querySelector("#textBox-typing");
 typeWriterSound.volume = sameVolume - 0.1;
 
 function randomIndex (arr) {
@@ -612,6 +613,7 @@ const flavorIntro = [
     ["His screen flickers, a playful glitch of pink and blue."],
     ["He leans in, voice dropping into a near-whisper, the crowd leaning with him."],
     ["He rolls back, the hush replaced with eager shuffling, the glow of stage lights sharp on chrome."],
+    ["He then holds a hand in front of his screen, making a 'shush' gesture with his free hand."]
     ["His screen brightens, outlining you in its glow as he opens his arms to the crowd."]
 ];
 
@@ -624,6 +626,7 @@ const mettIntro = [
     ["Need to spice things up or test the waters?", "Feel free to ACT.", "Try a pose, turn the music on - or off - if you think silence will help your inspiration."],
     ["Or if you crave something special - an ITEM can help.", "A rainbow flourish, a precise pencil, or... something else, if your ambition dares."],
     ["And if, by some cruel twist, you create a disaster too dreadful for this world - take MERCY, darling.", "Spare us the horror, clear my screen, and begin anew."],
+    ["Oh, and if you'll get TOO tired of my magnificent voice...", "Pressing TWO fingers like this will make me get on with my talking."]
     ["Now, let’s see what your Soul can create under the gaze of the lights, the audience...", "and ME - your host, your judge, your star!"]
 ];
 
@@ -4180,7 +4183,8 @@ const step = 8;
 
 const fightMett = function() {
     clearTextField(); 
-    starSpace.classList.add("gone")
+    textBox.replaceChildren(); //new
+    // starSpace.classList.add("gone")
     gameState["fightActive"] = true;
 
     let oldSize = gameState["fieldSize"];
@@ -4239,10 +4243,17 @@ const fightMett = function() {
         }   
     };   
 
-    textField.appendChild(mousedBox);
+    textBox.appendChild(mousedBox);
     createButton();
 
-    textField.appendChild(fightBar);
+    textBox.appendChild(fightBar);
+
+    // textField.appendChild(mousedBox);
+    // createButton();
+
+    // textField.appendChild(fightBar);
+
+
 
     mousedBox.addEventListener("mousemove", (event) => {
         let x = event.clientX;
@@ -4816,7 +4827,7 @@ const rating = async function() {
                         newLine.addEventListener("mouseover", (event) => {
                             event.target.classList.add("yellow-text");
                         })
-                        creditsTextBox.appendChild(newLine);
+                        creditstextBox.appendChild(newLine);
                     }
 
                     if (attitude === "friendly" || attitude === "neutral") {

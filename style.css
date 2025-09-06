@@ -499,7 +499,7 @@ body {
 }
 
 
-#textbox {
+#textBox {
     width: 100%;
     height: 100%;
     padding: 1.5% 0%;
@@ -854,24 +854,18 @@ body {
 }
 
 #mousedBox {
-    position: absolute;
-    box-sizing:content-box;
-    align-self: center;
-
     background-image: url(./images/fight-slider.png);
     background-origin: border-box;
-    background-size: 100% 76%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -1.5%;
-    margin-bottom: -1.8%;
 
-    width: 59.6%;
-    height: 19%;
+    width: 100%;
+    height: 100%;
     cursor: none;
 }
 
@@ -886,7 +880,7 @@ body {
     align-self: flex-start;
     height: 18%;
     width: 0.9%;
-    margin-top: -0.5%;
+    margin-top: -0.6%;
 
     border: solid var(--background-color) 4px;
     background: var(--main-text-color);
@@ -945,13 +939,6 @@ body {
     -o-animation-play-state: paused !important; 
     animation-play-state: paused !important;
 }
-
-/* work on arm scaling for width 2000, mett's body scaling also goes awry at around 1900 - 
-add breakpoints for that resolution and anything lower 
-
-also I REALLY need to work on button scaling
-
-!!don't forget scaling for mousedBox!!*/
 
 @media screen and (max-height: 1000px){
     .top-part {
@@ -1032,7 +1019,6 @@ also I REALLY need to work on button scaling
 
 @media screen and (max-width: 1100px){
     .buttons {
-        gap: 5%;
         height: 60%;
     }
 
@@ -1044,12 +1030,8 @@ also I REALLY need to work on button scaling
 @media screen and (max-width: 900px){
     .buttons {
         gap: 0.5%;
-        height: 60%
     }
 
-    .buttons .action-button {
-        font-size: 300%
-    }
 }
 
 /* for a standard 1920x1080 resolution: action button - font-size 500%
@@ -1067,11 +1049,6 @@ buttons - bottom-padding:0%, top padding: 0.1% gap 3% height: 70%
 .middle-part {margin-bottom: 0px
 
 .leg {width: 21px, height: 48px, margin-top:0.8%, margin bottom - 0.5  
-
-#moused-box {
-width: 69%
-height: 20%
-margin-bottom -2.4%
 
 #fightBar {
 height: 18.5%
