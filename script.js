@@ -29,7 +29,10 @@ function getNumber(element, property){
 
 window.addEventListener("resize", function() {
     document.documentElement.style.setProperty('--body-width', `${getNumber('.head', 'height')/1.25}px`);
-    console.log(`new body size is ${getNumber('.head', 'height')/1.25}px`)
+    document.documentElement.style.setProperty('--body-height', `${getNumber('.head', 'height')/5}px`);
+
+    console.log(`new body width is ${getNumber('.head', 'height')/1.25}px`)
+    console.log(`new body width is ${getNumber('.head', 'height')/5}px`)
 });
 
 

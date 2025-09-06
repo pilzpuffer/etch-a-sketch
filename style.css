@@ -73,6 +73,7 @@ uppercase - letters with bigger spacing, tighter spacing -lowercase
     --background-color: rgb(0, 0, 0);
 
     --body-width: 400px;
+    --body-height: 120px;
     --head-height: 500px;
 
     /* topmost position - animation will bring them down and then back to this position */
@@ -520,10 +521,8 @@ body {
     justify-content: space-around;
     align-items: center;
 
-    /* width: 35%;  -> was the default value*/
-
     width: var(--body-width);
-    height: 120px;
+    height: var(--body-height);
 
     border-top: var(--background-color) solid 12px;
     object-fit: contain;
@@ -1014,10 +1013,6 @@ body {
         width: 1.2%
     }
 
-    .body {
-        height: 85px;
-    }
-
     .body img {
         height: 53%;
         width: auto;
@@ -1069,27 +1064,6 @@ body {
     }
 }
 
-@media screen and (max-width: 2200px){
-    #left-arm {
-        margin-left: 26.5%;   
-    }
-
-    #right-arm {
-        margin-left: -16.5%
-    }
-
-}
-
-@media screen and (max-width: 2000px){
-    #left-arm {
-        margin-left: 28%;   
-    }
-
-    #right-arm {
-        margin-left: -18%
-    }
-}
-
 @media screen and (max-width: 1800px){
     .action-button {
         padding: 3px 6px 12px 12px;
@@ -1098,14 +1072,6 @@ body {
 
     #yellow-heart, #stand-in-for-yellow-heart {
         width: 40px;
-    }
-
-    #left-arm {
-        margin-left: 26.5%;   
-    }
-
-    #right-arm {
-        margin-left: -16.5%
     }
 }
 
@@ -1158,19 +1124,6 @@ body {
        padding: 0% 1% 0% 1%;
        font-size: 80%;
     }
-
-    .body {
-        width: 45%;
-    }
-
-    #left-arm {
-        margin-left: 22.5%;   
-    }
-
-    #right-arm {
-        margin-left: -12.5%
-    }
-
 }
 
 
