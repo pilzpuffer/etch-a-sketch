@@ -199,6 +199,11 @@ body {
     gap: 10%;
 }
 
+.heart-fall {
+    height: var(--heart-size);
+    width: auto;
+}
+
 .heart-hold {
     height: 5%;
     width: auto
@@ -207,6 +212,8 @@ body {
 #load img {
     transition: all 0.5s ease-in-out;
 }
+
+
 
 .title-back {
     font-size: 400%;
@@ -997,7 +1004,44 @@ body {
         margin-top: -10%;
     }
 
+    #fightBar{
+        height: 20.5%;
+        width: 1.2%
+    }
+
+    .head {
+        height: 70%
+    }
+
+    .body {
+        height: 85px;
+    }
+
+    .body img {
+        height: 53%;
+        width: auto;
+    }
+
+    #left-arm {
+        margin-top: 7.4%
+    }
+
+    #right-arm {
+        margin-top: -3.4%
+    }
+
+    .leg {
+        height: 50px;
+        width: 18px;
+    }
+
+    #wheel {
+        height: 9%;
+        width: auto;
+    }
 }
+
+
 
 @media screen and (min-height: 1001px){
     .top-part {
@@ -1047,6 +1091,19 @@ body {
 }
 
 @media screen and (max-width: 1400px){
+    .action-button {
+        padding: 1px 2px 6px 8px;
+    }
+
+    .buttons {
+        height: 75%;
+        padding: 0.5% 0 0.5%;
+    }
+
+    .stats {
+        padding: 2px 0px 2px;
+    }
+    
     .center-section{
         width: 75%
     }
@@ -1055,12 +1112,43 @@ body {
     .right-section {
         width: 12.5%;
     }
+
+    #text-section {
+        font-size: 80%;
+    }
+
+    #bubble-textfield {
+        margin-left: -7%;
+        width: 23%;
+        height: 25%;
+        padding: 1.8%;
+    }
+
+    #star-space{
+       padding: 0% 1% 0% 1%;
+       font-size: 80%;
+    }
+
+    .body {
+        width: 45%;
+    }
+
+    #left-arm {
+        margin-left: 22.5%;   
+    }
+
+    #right-arm {
+        margin-left: -12.5%
+    }
+
+
 }
 
 
 @media screen and (max-width: 1200px){
-    .buttons {
-        padding: 3px 6px 12px 12px;
+    .action-button {
+        font-size: 280%;
+        padding: 0px 3px 5px 8px;
     }
 
     .center-section{
@@ -1078,8 +1166,9 @@ body {
         height: 60%;
     }
 
-    .buttons .action-button {
-        font-size: 300%
+    .action-button {
+        padding: 0px 3px 8px 8px;
+        font-size: 280%
     }
 
      #load {
