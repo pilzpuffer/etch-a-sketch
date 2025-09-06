@@ -114,6 +114,10 @@ body {
     width: 100vw;
     overflow: hidden;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     color: var(--main-text-color);
 }
 
@@ -134,7 +138,7 @@ body {
        flex-direction: column;
        justify-content: center;
        align-items: center;
-       transform: translateY(400%);
+       transform: translateY(420%);
        animation: end-text 45s linear;
        animation-fill-mode: forwards;
        font-family: "Undertale-Text-Dialogue";
@@ -143,12 +147,12 @@ body {
 @keyframes end-text {
     0% {
         visibility: visible;
-        transform: translateY(400%)
+        transform: translateY(420%)
     }
 
     100% {
         visibility: visible;
-        transform: translateY(-500%);
+        transform: translateY(-450%);
     }
 }
 
@@ -192,23 +196,52 @@ body {
     align-items: center;
     z-index: 6;
 
-    gap: 5%;
+    gap: 10%;
+}
+
+.heart-hold {
+    height: 5%;
+    width: auto
 }
 
 #load img {
-    width: 1.8%;
-    height: auto;
     transition: all 0.5s ease-in-out;
 }
 
-.title-back,
+.title-back {
+    font-size: 400%;
+    position: relative;
+}
+
 .title-center,
 .title-front {
-    font-size: 400%;
+    font-size: 100%;
     position: absolute;
-    align-self: center;
+    justify-content: center;
+    align-items: center;
 
-    margin-top: -15%;
+    top: 0;
+}
+
+#allTitleText {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    height: 10%;
+    width: 80%;
+    gap: 3%
+}
+#titleTextLeft,
+#titleTextRight {
+    display: flex;
+    height: 100%;
+    text-align: center;
+}
+
+#titleTextRight {
+    margin-bottom: 5%;
 }
 
 .title-back {
@@ -647,8 +680,7 @@ body {
     width: 100%;
     display: flex;
     padding: 0.5% 0 1%;
-    justify-content: space-between;
-    gap: 5%;   
+    justify-content: space-between; 
 }
 
 #act {
@@ -780,9 +812,9 @@ body {
     width: 75%;
 }
 
-#item-button {
+/* #item-button {
     padding: 5px 13px 15px 20px;
-}
+} */
 
 .button-symbol {
     width: 18%;
@@ -952,6 +984,19 @@ body {
     .bottom-part {
         height: 15%;
     }
+
+    #allTitleText {
+        height: 8%
+    } 
+
+    #load {
+        gap: 15%
+    }
+
+    .start-text {
+        margin-top: -10%;
+    }
+
 }
 
 @media screen and (min-height: 1001px){
@@ -968,17 +1013,6 @@ body {
     }
 }
 
-@media screen and (min-width: 2300px){
-    .center-section{
-        width: 60%;  
-    }
-
-    .left-section,
-    .right-section {
-        width: 20%;
-    }
-}
-
 @media screen and (min-width: 2100px){
     .center-section{
         width: 60%
@@ -990,7 +1024,29 @@ body {
     }
 }
 
-@media screen and (max-width: 1500px){
+@media screen and (max-width: 1800px){
+    .action-button {
+        padding: 3px 6px 12px 12px;
+        font-size: 500%;
+    }
+
+    #yellow-heart, #stand-in-for-yellow-heart {
+        width: 40px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .action-button {
+        padding: 3px 6px 12px 12px;
+        font-size: 400%;
+    }
+
+        #yellow-heart, #stand-in-for-yellow-heart {
+        width: 32px;
+    }
+}
+
+@media screen and (max-width: 1400px){
     .center-section{
         width: 75%
     }
@@ -1004,7 +1060,7 @@ body {
 
 @media screen and (max-width: 1200px){
     .buttons {
-        gap: 5%;
+        padding: 3px 6px 12px 12px;
     }
 
     .center-section{
@@ -1025,16 +1081,17 @@ body {
     .buttons .action-button {
         font-size: 300%
     }
-}
 
-@media screen and (max-width: 900px){
-    .buttons {
-        gap: 0.5%;
+     #load {
+        gap: 20%
     }
 
+    .start-text {
+        margin-top: -10%;
+    }
 }
 
-/* for a standard 1920x1080 resolution: action button - font-size 500%
+/* for a standard 1920x1080 resolution: 
 padding: 3px 6px 12px 12px;
 
 buttons - bottom-padding:0%, top padding: 0.1% gap 3% height: 70%

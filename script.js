@@ -69,7 +69,7 @@ const applyMarker = (event) => {
 const body = document.querySelector("body");
 const unRatedEnd = document.querySelector("#premature-end-noised");
 const creditsRoll = document.querySelector("#premature-end");
-const creditstextBox = document.querySelector("#end-text");
+const creditsTextBox = document.querySelector("#end-text");
 
 const transmissionEnd = function() {
     const static = document.createElement("audio");
@@ -228,10 +228,11 @@ const flirtRoute = function() {
                             event.target.classList.add("yellow-text");
                     })
 
-                    creditstextBox.appendChild(newLine);
+                    creditsTextBox.appendChild(newLine);
                 }
 
                 creditsMusic.play();
+
             } else {
                 setTimeout(function() {
                     leftArm.src = "./images/mett-sprite/arm-left.png";
@@ -614,7 +615,7 @@ const flavorIntro = [
     ["His screen flickers, a playful glitch of pink and blue."],
     ["He leans in, voice dropping into a near-whisper, the crowd leaning with him."],
     ["He rolls back, the hush replaced with eager shuffling, the glow of stage lights sharp on chrome."],
-    ["He then holds a hand in front of his screen, making a 'shush' gesture with his free hand."]
+    ["The spotlight lingers, then blinks twice like a coded cue."]
     ["His screen brightens, outlining you in its glow as he opens his arms to the crowd."]
 ];
 
@@ -627,7 +628,7 @@ const mettIntro = [
     ["Need to spice things up or test the waters?", "Feel free to ACT.", "Try a pose, turn the music on - or off - if you think silence will help your inspiration."],
     ["Or if you crave something special - an ITEM can help.", "A rainbow flourish, a precise pencil, or... something else, if your ambition dares."],
     ["And if, by some cruel twist, you create a disaster too dreadful for this world - take MERCY, darling.", "Spare us the horror, clear my screen, and begin anew."],
-    ["Oh, and if you'll get TOO tired of my magnificent voice...", "Pressing TWO fingers like this will make me get on with my talking."]
+    ["Oh, and if you'll get TOO tired of my magnificent voice...", "Just raise TWO fingers, darling - the signal to let the scene roll forward."]
     ["Now, let’s see what your Soul can create under the gaze of the lights, the audience...", "and ME - your host, your judge, your star!"]
 ];
 
@@ -4824,7 +4825,7 @@ const rating = async function() {
                         newLine.addEventListener("mouseover", (event) => {
                             event.target.classList.add("yellow-text");
                         })
-                        creditstextBox.appendChild(newLine);
+                        creditsTextBox.appendChild(newLine);
                     }
 
                     if (attitude === "friendly" || attitude === "neutral") {

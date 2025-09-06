@@ -3,6 +3,7 @@ let sameVolume = 0.2;
 
 window.addEventListener('load', () => {
     const load = document.querySelector("#load");
+    const allTitleText = document.querySelector("#allTitleText");
     const heart = document.querySelector("#heart");
     const fightSymbol = document.querySelector("#fight-symbol");
     const unRatedEnd = document.querySelector("#premature-end-noised");
@@ -21,20 +22,48 @@ window.addEventListener('load', () => {
 
     unRatedEnd.remove();
     creditsRoll.remove();
-    const titleTextBack = document.createElement("div");
-    titleTextBack.textContent = "Etch-A-Sketch: FabulOus ShOw!";
-    titleTextBack.classList.add("title-back");
-    load.appendChild(titleTextBack);
 
-    const titleTextCenter = document.createElement("div");
-    titleTextCenter.textContent = "Etch-A-Sketch: FabulOus ShOw!";
-    titleTextCenter.classList.add("title-center");
-    load.appendChild(titleTextCenter);
 
-    const titleTextFront = document.createElement("div");
-    titleTextFront.textContent = "Etch-A-Sketch: FabulOus ShOw!";
-    titleTextFront.classList.add("title-front");
-    load.appendChild(titleTextFront);
+    const titleTextLeft = document.querySelector("#titleTextLeft");
+        const titleLeftTextBack = document.createElement("div");
+        titleLeftTextBack.textContent = "Etch-A-Sketch:";
+        titleLeftTextBack.classList.add("title-back");
+        titleTextLeft.appendChild(titleLeftTextBack);
+
+        const titleLeftTextCenter = document.createElement("div");
+        titleLeftTextCenter.textContent = "Etch-A-Sketch:";
+        titleLeftTextCenter.classList.add("title-center");
+        titleLeftTextBack.appendChild(titleLeftTextCenter);
+
+        const titleLeftTextFront = document.createElement("div");
+        titleLeftTextFront.textContent = "Etch-A-Sketch:";
+        titleLeftTextFront.classList.add("title-front");
+        titleLeftTextBack.appendChild(titleLeftTextFront);
+
+    const titleTextRight = document.querySelector("#titleTextRight");
+        const titleRightTextBack = document.createElement("div");
+        titleRightTextBack.textContent = "FabulOus ShOw!";
+        titleRightTextBack.classList.add("title-back");
+        titleTextRight.appendChild(titleRightTextBack);
+
+        const titleRightTextCenter = document.createElement("div");
+        titleRightTextCenter.textContent = "FabulOus ShOw!";
+        titleRightTextCenter.classList.add("title-center");
+        titleRightTextBack.appendChild(titleRightTextCenter);
+
+        const titleRightTextFront = document.createElement("div");
+        titleRightTextFront.textContent = "FabulOus ShOw!";
+        titleRightTextFront.classList.add("title-front");
+        titleRightTextBack.appendChild(titleRightTextFront);
+
+    
+    allTitleText.appendChild(titleTextLeft);
+    allTitleText.appendChild(titleTextRight);
+
+    const heartHolder = document.createElement("div");
+    heartHolder.classList.add("heart-hold")
+    heartHolder.appendChild(heart);
+    load.appendChild(heartHolder)
     
     const startText = document.createElement("div");
     startText.classList.add("start-text");
