@@ -62,10 +62,6 @@ window.addEventListener("resize", function() {
     console.log(`new body width is ${getNumber('.head', 'height')/1.25}px`);
     console.log(`new body width is ${getNumber('.head', 'height')/5}px`);
 
-    //now i need a function to adjust arm positioning. it's not the 'best', but it's less complicated than going the .getBoundingRect() route
-    //basically, on every screen resize, we will need to increase/reduce the X margin (left) based on how many "steps" away we're from the 'default' screen size
-    //can make the step 100px or 200px? just gotta find the proportion for margin increase/decrease for consistent distance from the body
-
     marginAdjust();
 });
 
@@ -3861,12 +3857,11 @@ battleStart.addEventListener("ended", function() {
     textBubble.classList.add("gone");
     pageNavigation.classList.add("invisible");
     marginAdjust();
-
-    const allCells = document.querySelectorAll(".innerCells");
     
 
 const clearSketchField = async function() {
     successfulSelect();
+    let allCells = document.querySelectorAll(".innerCells");
     let correctKey = gameState["hasDrawing"] ? "drawn" : "none";
     let selectedIndex = randomIndex(allText["mettaton"]["mercy"][correctKey]);
 
