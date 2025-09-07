@@ -89,7 +89,6 @@ window.addEventListener('load', () => {
 
                 window.removeEventListener("keydown", handleKeyDown);
                 heart.classList.remove("beat");
-                heart.classList.add("heart-fall");
                 startText.classList.add("invisible");
                 clearInterval(beatingMotion);
                 heartBreak.play();

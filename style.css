@@ -203,11 +203,6 @@ body {
     gap: 10%;
 }
 
-.heart-fall {
-    height: var(--heart-size);
-    width: auto;
-}
-
 .heart-hold {
     height: var(--heart-size);
     width: auto;
@@ -215,8 +210,8 @@ body {
 }
 
 #load img {
-    height: 100%;
-    width: auto;
+    height: var(--heart-size);
+    width: auto;  
     transition: all 0.5s ease-in-out;
 }
 
