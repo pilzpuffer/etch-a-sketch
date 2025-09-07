@@ -210,7 +210,8 @@ body {
 
 .heart-hold {
     height: var(--heart-size);
-    width: auto
+    width: auto;
+    margin-bottom: 5%;
 }
 
 #load img {
