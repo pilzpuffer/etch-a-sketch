@@ -29,23 +29,28 @@ function getNumber(element, property){
 
 function marginAdjust() {
     let step = 100;
-    let defaultScreen = 2568;
+    let defaultScreenWidth = 2568;
+    let defaultScreenHeight = 1218;
+    let currentScreenWidth = window.innerWidth;
+    let currentScreenHeight = window.innerHeight;
     let defaultLeftArmX = 29.5;
-    let currentScreen = window.innerWidth;
-    let marginStep = 0.5;
+
+    let getDifference = Math.abs(parseInt((defaultScreenWidth - currentScreenWidth)/step));
+    let heightDifference = defaultScreenHeight - currentScreenHeight;
     
-    let getDifference = Math.abs(parseInt((defaultScreen - currentScreen)/step));
+    let marginStepWidth = 0.5;
+    let marginStepHeight = Math.min(Math.abs(parseInt(heightDifference/60)), 5);
 
-    if (getDifference >= 3) { 
-        marginStep = marginStep + (0.1 * (getDifference / 4));
+
+    if (getDifference >= 4) { 
+        marginStepWidth = marginStepWidth + (0.1 * (getDifference / 4));
     }
-    //step for margin is 0.5 at this screen step.difference between left and right hand margin is always -58 (at least on standard screen height. math might require further adjustment based on the height.)
 
-    document.documentElement.style.setProperty('--left-hand-position-X', `${defaultLeftArmX - (marginStep * getDifference)}%`);
-    document.documentElement.style.setProperty('--right-hand-position-X', `${-(defaultLeftArmX - (marginStep * getDifference)) + 10}%`);
+    document.documentElement.style.setProperty('--left-hand-position-X', `${(defaultLeftArmX + marginStepHeight) - (marginStepWidth * getDifference)}%`);
+    document.documentElement.style.setProperty('--right-hand-position-X', `${-((defaultLeftArmX + marginStepHeight) - (marginStepWidth * getDifference)) + 10}%`);
 
-    console.log(`the difference is ${0.5 * getDifference}`)
-    console.log(`the new left X margin is ${defaultLeftArmX - (0.5 * getDifference)}%`)
+    console.log(`the difference is ${marginStepWidth * getDifference}`)
+    console.log(`the new left X margin is ${defaultLeftArmX - (marginStepWidth * getDifference)}%`)
     console.log(`the new right X margin is ${-(defaultLeftArmX - (0.5 * getDifference)) + 10}%`)
 }
 
