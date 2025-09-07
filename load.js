@@ -23,6 +23,33 @@ window.addEventListener('load', () => {
     unRatedEnd.remove();
     creditsRoll.remove();
 
+    function marginAdjust() {
+    let step = 100;
+    let defaultScreenWidth = 2568;
+    let defaultScreenHeight = 1218;
+    let currentScreenWidth = window.innerWidth;
+    let currentScreenHeight = window.innerHeight;
+    let defaultLeftArmX = 29.5;
+
+    let getDifference = Math.abs(parseInt((defaultScreenWidth - currentScreenWidth)/step));
+    let heightDifference = defaultScreenHeight - currentScreenHeight;
+    
+    let marginStepWidth = 0.5;
+    let marginStepHeight = Math.min(Math.abs(parseInt(heightDifference/60)), 5);
+
+
+    if (getDifference >= 4) { 
+        marginStepWidth = marginStepWidth + (0.1 * (getDifference / 4));
+    }
+
+    document.documentElement.style.setProperty('--left-hand-position-X', `${(defaultLeftArmX + marginStepHeight) - (marginStepWidth * getDifference)}%`);
+    document.documentElement.style.setProperty('--right-hand-position-X', `${-((defaultLeftArmX + marginStepHeight) - (marginStepWidth * getDifference)) + 10}%`);
+
+    console.log(`the difference is ${marginStepWidth * getDifference}`)
+    console.log(`the new left X margin is ${defaultLeftArmX - (marginStepWidth * getDifference)}%`)
+    console.log(`the new right X margin is ${-(defaultLeftArmX - (0.5 * getDifference)) + 10}%`)
+}
+
 
     const titleTextLeft = document.querySelector("#titleTextLeft");
         const titleLeftTextBack = document.createElement("div");
@@ -135,6 +162,7 @@ window.addEventListener('load', () => {
                                     } else if (event.code === "Enter") {
                                         intro.play();
                                     }
+                                    marginAdjust();
                                     load.remove();
                                 }, 600);   
                             })
