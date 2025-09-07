@@ -214,7 +214,6 @@ body {
     width: auto;  
     transition: all 0.5s ease-in-out;
 }
-
 .title-back {
     font-size: 400%;
     position: relative;
@@ -1070,6 +1069,12 @@ body {
         font-size: 85%;
     }
 
+    #bubble-textfield {
+        margin-left: -5%;
+        width: 21%;
+        height: 22%;
+    }
+
     #star-space{
        padding: 0% 1% 0% 1%;
        font-size: 85%;
@@ -1139,6 +1144,12 @@ body {
     .right-section {
         width: 12.5%;
     }
+
+    #bubble-textfield {
+        margin-left: -8%;
+        width: 24%;
+        height: 26%;
+    }
 }
 
 
@@ -1156,6 +1167,10 @@ body {
     .left-section,
     .right-section {
         width: 10%;
+    }
+
+    #bubble-textfield {
+        height: 28%;
     }
 }
 
