@@ -448,7 +448,10 @@ body {
 
 .middle-part {
     height: 20%;
+    max-height: 241.5px;
     margin-bottom: 10px;
+    display: flex;
+    flex-grow: 0;
 }
 
 .bottom-part {
@@ -553,6 +556,7 @@ body {
     color: var(--main-text-color);
     font-size: 400%;
     flex-shrink: 1.5;
+    flex-grow: 0;
 
     display: flex;
     flex-direction: row;
@@ -1065,6 +1069,18 @@ body {
     }
 }
 
+@media screen and (max-width: 2000px) {
+    #text-section {
+        font-size: 85%;
+    }
+
+    #star-space{
+       padding: 0% 1% 0% 1%;
+       font-size: 85%;
+    }
+}
+
+
 @media screen and (max-width: 1800px){
     .action-button {
         padding: 3px 6px 12px 12px;
@@ -1073,6 +1089,22 @@ body {
 
     #yellow-heart, #stand-in-for-yellow-heart {
         width: 40px;
+    }
+
+    #text-section {
+        font-size: 80%;
+    }
+
+    #bubble-textfield {
+        margin-left: -7%;
+        width: 23%;
+        height: 25%;
+        padding: 1.8%;
+    }
+
+    #star-space{
+       padding: 0% 1% 0% 1%;
+       font-size: 80%;
     }
 }
 
@@ -1108,22 +1140,6 @@ body {
     .left-section,
     .right-section {
         width: 12.5%;
-    }
-
-    #text-section {
-        font-size: 80%;
-    }
-
-    #bubble-textfield {
-        margin-left: -7%;
-        width: 23%;
-        height: 25%;
-        padding: 1.8%;
-    }
-
-    #star-space{
-       padding: 0% 1% 0% 1%;
-       font-size: 80%;
     }
 }
 
