@@ -619,8 +619,15 @@ const typeWriter = function (location, phrase) {
     let phraseDivided = phrase.split(" ");
     let lettersDivided =[...phraseDivided.join(" ")];
     let i = 0;
+    let timer = 35
 
-    const wordByLetterOutput = setInterval(function() {
+    const wordTyping = function() {
+
+        window.addEventListener("click", function() {
+            timer = 0;
+            typeWriterSound.pause()
+            resolve();
+        })
 
         if (i === lettersDivided.length) {
             clearInterval(wordByLetterOutput)
@@ -630,7 +637,11 @@ const typeWriter = function (location, phrase) {
             location.textContent += `${lettersDivided[i]}`;
             i++;      
         }
-    }, 35)
+
+        setTimeout(wordTyping, timer)
+    }
+
+    const wordByLetterOutput = setTimeout(wordTyping, timer);
 
     const musicEffects = setInterval(function() {
 
@@ -723,7 +734,7 @@ const mettQuietDisabled = [
 const flavorStopOnce = [
     ["You raise a single finger, demanding absolute poise.", "The music hesitates, as if holding its breath with you."],
     ["You wave a hand sharply.", "Somewhere backstage, the orchestra falters, unsure whether to continue without their star's rhythm."],
-    ["You pinch your fingers together, indicating 'just a little less'.", "Mettaton responds by locking into a pose with dramatic flair."]
+    ["You pinch your fingers, signaling 'a little less'", "Mettaton responds by locking into a pose with dramatic flair."]
 ];
 
 const flavorStopTwice = [
@@ -3754,6 +3765,7 @@ const mettTalking = function (phrase) {
 
     return new Promise(async (resolve) => {
         let i = 0; 
+        let timer = 100; 
         textBubble.classList.remove("gone");
         gameState["mettTextShown"] = true;
         let stopCondition = false;
@@ -3779,12 +3791,17 @@ const mettTalking = function (phrase) {
                 if (stopCondition) {
                     break;
                 }
+
+                window.addEventListener("click", function() {
+                    timer = 0;
+                })
+                
                 bubbleTextField.textContent += word + " ";
 
                 let randomSound = randomize(allMettSounds);
                 randomSound.play(); // Play sound on each word
 
-                await new Promise((resolve) => setTimeout(resolve, 100)); // Delay before next word
+                await new Promise((resolve) => setTimeout(resolve, timer)); // Delay before next word
             }
 
             i++; // Move to next phrase

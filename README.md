@@ -99,6 +99,7 @@ Roadmap to project finalization - all done!!!
 15) <s>add a mechanic where the ending credits lines become yellow if player hovers over them</s>
 16) <s>maybe add a few different music tracks for endings? as the current one doesn't quite fit all routes</s>
 17) add a different musical track for the judging bit, as it doesn't feel quite correct to just have one main theme through the entire thing. Maybe can use 'Here We Are' or 'Another Medium' for this? I'm honestly unsure. And might be kind of overthinking this, so I won't adjust the soundtrack for judging for now.
+18) make full text show up on click instead of having to wait while it'll show up fully by itself
 
 Debugging Roadmap:
 1) <s>check why hideAndShow doesn't work for properly for motion actions now.</s>
@@ -118,3 +119,4 @@ Debugging Roadmap:
 8) <s>when "fight" action is used once, the entire action gets processed, but when you try to initiate "fight" action again, you need to click twice on that button to actually do that. all other buttons work fine and the same error doesn't occur there. why does this happen?</s> - successfulSelect function wasn't used in fight (because I didn't want the the confirmation sound to play before the new screen size was set) - so to fix it, I had to set fight's gameState of currentActiveActionButton to 0 
 9) <s>in the current code iteration, quiet/music ACT options don't work quite correctly - because the "quiet" option doesn't fully play out (where ALL sounds are muted) - check why</s>
 10) <s>"Mercy" doesn't apply properly if Mettaton's screen resolution as changed, still leaves the drawing on-screen - resolve the issue</s> - the value of allCells wasn't properly re-selected after sizing changes, I had to run querySelector again, as otherwise the game was trying to reach the "allCells" that were there before the size change that caused the entire drawing field to get regenerated, that's why it couldn't find anything to "clean"
+11) I got reports that the site doesn't seem to display properly in Firefox (tested on 1650x1800), as if the site is trying to adjust itself based on width and viewport size is a square?... need to look into that
